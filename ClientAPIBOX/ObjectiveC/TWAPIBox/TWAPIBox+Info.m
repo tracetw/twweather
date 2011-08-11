@@ -64,7 +64,7 @@
 	[self addToArray:_forecastLocations name:"雲林" identifier:@"11"];
 	[self addToArray:_forecastLocations name:"嘉義" identifier:@"12"];
 	[self addToArray:_forecastLocations name:"台南" identifier:@"13"];
-	[self addToArray:_forecastLocations name:"高雄" identifier:@"14"];
+//	[self addToArray:_forecastLocations name:"高雄" identifier:@"14"];
 	[self addToArray:_forecastLocations name:"屏東" identifier:@"15"];
 	[self addToArray:_forecastLocations name:"恆春" identifier:@"16"];
 	[self addToArray:_forecastLocations name:"宜蘭" identifier:@"17"];
@@ -216,7 +216,7 @@
 	[self addToArray:north name:"淡水" identifier:@"46690"];	
 	[self addToArray:north name:"新店" identifier:@"A0A9M"];
 	[self addToArray:north name:"桃園" identifier:@"46697"];
-	[self addToArray:north name:"新屋" identifier:@"C0C45"];	
+//	[self addToArray:north name:"新屋" identifier:@"C0C45"];	
 	[self addToArray:north name:"新竹" identifier:@"46757"];
 	[self addToArray:north name:"雪霸" identifier:@"C0D55"];
 	[self addToArray:north name:"三義" identifier:@"C0E53"];	
@@ -311,7 +311,7 @@
 	[_globalCityLocations addObject:d];
 
 	NSMutableArray *america = [NSMutableArray array];
-	[self addToArray:america name:"關島" identifier:@"GUAM"];
+//	[self addToArray:america name:"關島" identifier:@"GUAM"];
 	[self addToArray:america name:"檀香山" identifier:@"HONOLULU"];	
 	[self addToArray:america name:"洛杉磯" identifier:@"LOSANGELES"];
 	[self addToArray:america name:"舊金山" identifier:@"SANFRANCISCO"];	

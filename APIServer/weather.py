@@ -418,13 +418,15 @@ class Weather3DaySea(Forecast):
 					windScale = line.replace("<br />", "").decode("utf-8")
 				elif count is 4:
 					wave = line.replace("<br />", "").decode("utf-8")
+				elif count is 5:
 					item = {"date": time, "description": description, "wind": wind, "windScale": windScale, "wave": wave}
 					items.append(item)
 					if len(items) >= 3:
 						break
-				elif count is 5:
+				if count >= 5:
 					count = 0
-				count = count + 1
+				else:
+					count = count + 1
 			if line.find("發布時間") > -1:
 				line = line[25:].replace("</p><p>", "")
 				month = int(line[0:2])
@@ -793,9 +795,9 @@ class WeatherOBS(Forecast):
 			elif line.find("天氣現象") > -1:
 				description = line[len("天氣現象:"):len("<br />") * -1]
 				try:
-					description = description.encode("ascii")
+					description = description.decode("ascii")
 				except:
-					description = description.encode("utf-8")
+					description = description.decode("utf-8")
 			elif line.find("溫度") > -1:
 				temperature = float(line[len("溫度(℃):"):len("<br />") * -1])
 			elif line.find("累積雨量") > -1:
@@ -803,21 +805,21 @@ class WeatherOBS(Forecast):
 			elif line.find("風向") > -1:
 				windDirection = line[len("風向:"):len("<br />") * -1]
 				try:
-					windDirection = windDirection.encode("ascii")
+					windDirection = windDirection.decode("ascii")
 				except:
-					windDirection = windDirection.encode("utf-8")
+					windDirection = windDirection.decode("utf-8")
 			elif line.find("風力") > -1:
 				windScale = line[len("風力(級):"):len("<br />") * -1]
 				try:
-					windScale = windScale.encode("ascii")
+					windScale = windScale.decode("ascii")
 				except:
-					windScale = windScale.encode("utf-8")
+					windScale = windScale.decode("utf-8")
 			elif line.find("陣風") > -1:
 				gustWindScale = line[len("陣風(級):"):len("<br />") * -1]
 				try:
-					gustWindScale = gustWindScale.encode("ascii")
+					gustWindScale = gustWindScale.decode("ascii")
 				except:
-					gustWindScale = gustWindScale.encode("utf-8")
+					gustWindScale = gustWindScale.decode("utf-8")
 			elif line.find("</p>") > -1:
 				result = {"locationName": locationName, "id": id, "time": time, "description": description, "temperature": temperature, "rain": rain, "windDirection": windDirection, "windScale": windScale, "gustWindScale": gustWindScale}
 				return result

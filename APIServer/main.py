@@ -98,23 +98,31 @@ class OverviewController(webapp.RequestHandler):
 		self.overview = weather.WeatherOverview()
 	def get(self):
 		outputtype = self.request.get("output")
-		if outputtype == "plain":
-			text = memcache.get("overview_plain")
-			if text is None:
-				self.overview.fetch()
-				text = self.overview.plain
-			if text != None:
-				memcache.add("overview_plain", text, 30 * 60)
-			self.response.headers['Content-Type'] = 'text/plain; charset=utf-8'
-			self.response.out.write(text)
-		else:
-			html = memcache.get("overview_html")
-			if html is None:
-				self.overview.fetch()
-				html = self.overview.html
-			memcache.add("overview_html", html, 30 * 60)
-			self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
-			self.response.out.write(html)
+		text = memcache.get("overview_plain_201108122")
+		if text is None:
+			self.overview.fetch()
+			text = self.overview.plain
+		if text != None:
+			memcache.add("overview_plain_201108122", text, 30 * 60)
+		self.response.headers['Content-Type'] = 'text/plain; charset=utf-8'
+		self.response.out.write(text)
+		# if outputtype == "plain":
+		# 	text = memcache.get("overview_plain_201108122")
+		# 	if text is None:
+		# 		self.overview.fetch()
+		# 		text = self.overview.plain
+		# 	if text != None:
+		# 		memcache.add("overview_plain_201108122", text, 30 * 60)
+		# 	self.response.headers['Content-Type'] = 'text/plain; charset=utf-8'
+		# 	self.response.out.write(text)
+		# else:
+		# 	html = memcache.get("overview_html_201108122")
+		# 	if html is None:
+		# 		self.overview.fetch()
+		# 		html = self.overview.html
+		# 	memcache.add("overview_html_201108122", html, 30 * 60)
+		# 	self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
+		# 	self.response.out.write(html)
 		add_record(self.request)
 
 class ForecastController(webapp.RequestHandler):
@@ -203,37 +211,37 @@ class ForecastController(webapp.RequestHandler):
 class WeekController(ForecastController):
 	def __init__(self):
 		self.model = weather.WeatherWeek()
-		self.key_prefix = "week20110811_"
+		self.key_prefix = "week201108122_"
 
 class WeekTravelController(ForecastController):
 	def __init__(self):
 		self.model = weather.WeatherWeekTravel()
-		self.key_prefix = "weekTravel20110811_"
+		self.key_prefix = "weekTravel201108122_"
 
 class ThreeDaySeaController(ForecastController):
 	def __init__(self):
 		self.model = weather.Weather3DaySea()
-		self.key_prefix = "3sea20110811_"
+		self.key_prefix = "3sea201108122_"
 
 class NearSeaController(ForecastController):
 	def __init__(self):
 		self.model = weather.WeatherNearSea()
-		self.key_prefix = "nearsea20110811_"
+		self.key_prefix = "nearsea201108122_"
 
 class TideController(ForecastController):
 	def __init__(self):
 		self.model = weather.WeatherTide()
-		self.key_prefix = "tide20110811_"
+		self.key_prefix = "tide201108122_"
 
 class OBSController(ForecastController):
 	def __init__(self):
 		self.model = weather.WeatherOBS()
-		self.key_prefix = "obs20110811_"
+		self.key_prefix = "obs201108122_"
 
 class GlobalController(ForecastController):
 	def __init__(self):
 		self.model = weather.WeatherGlobal()
-		self.key_prefix = "global20110811_"
+		self.key_prefix = "global201108122_"
 
 class ImageHandler(webapp.RequestHandler):
 	def __init__(self):
