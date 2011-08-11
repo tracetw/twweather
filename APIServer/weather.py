@@ -49,7 +49,7 @@ Weather3DaySeaURL = "http://www.cwb.gov.tw/mobile/3sea/3sea%(#)d.wml"
 WeatherNearSeaURL = "http://www.cwb.gov.tw/mobile/nearsea/nearsea%(#)d.wml"
 WeatherTideURL = "http://www.cwb.gov.tw/mobile/tide/area%(#)d.wml"
 WeatherOBSURL = "http://www.cwb.gov.tw/mobile/obs/%(location)s.wml"
-WeatherGloabalURL = "http://www.cwb.gov.tw/pda/city/%(area)s/%(location)s.htm"
+WeatherGloabalURL = "http://www.cwb.gov.tw/pda/forecast/global/%(area)s/%(location)s.htm"
 
 class WeatherWarning(object):
 	def __init__(self):
@@ -919,7 +919,7 @@ WeatherGlobalLocations = [
 	{"location": u"伯斯", "id": "PERTH", "area":u"亞洲", "areaID":"asia"},
 	{"location": u"布里斯班", "id": "BRISBANE", "area":u"亞洲", "areaID":"asia"},
 
-	{"location": u"關島", "id": "GUAM", "area":u"美洲", "areaID":"america"},
+	# {"location": u"關島", "id": "GUAM", "area":u"美洲", "areaID":"america"},
 	{"location": u"檀香山", "id": "HONOLULU", "area":u"美洲", "areaID":"america"},
 	{"location": u"洛杉磯", "id": "LOSANGELES", "area":u"美洲", "areaID":"america"},
 	{"location": u"舊金山", "id": "SANFRANCISCO", "area":u"美洲", "areaID":"america"},
@@ -992,19 +992,27 @@ class WeatherGlobal(Forecast):
 			return
 		
 		if locationItem["areaID"] is "asia":
-			area = "aa"
+			area = "AA"
 		elif locationItem["areaID"] is "america":
-			area = "ma"
+			area = "AM"
 		elif locationItem["areaID"] is "europe_africa":
-			area = "of"
+			area = "EA"
 		elif locationItem["areaID"] is "china":
-			area = "ch"
+			area = "CH"
 		
-		URLString = WeatherGloabalURL % {"location": id, "area": area}
+		newid = id.capitalize()
+		if id == 'LOSANGELES':
+			newid = 'Los-angeles'
+		if id == 'NEWYORK':
+			newid = 'New-york'
+		if id == 'JOHANNESBURG':
+			newid = 'Johannesburg'
+
+		URLString = WeatherGloabalURL % {"location": newid, "area": area}
 		try:
 			url = urllib.urlopen(URLString, proxies={})
 		except:
-			return
+			return ""
 		lines = url.readlines()
 
 		locationName = locationItem["location"]
@@ -1016,43 +1024,52 @@ class WeatherGlobal(Forecast):
 		temperature = ""
 		avgTemperature = ""
 		avgRain = ""
-		parseForecast = False
-		parseTemperature = False
-		parseAvgTemperature = False
-		parseAvgRain = False
+		infoline = ""
 	
 		for line in lines:
-			line = line.decode("big5hkscs").encode("utf8")
-			if line.startswith("<span class=\"fontstyle2\">&nbsp;"):
-				aDate = self.parseDate(line)
-				if len(forecastDate):
-					validDate = aDate
-				else:
-					forecastDate = aDate
-			if parseForecast is True:
-				forecast = self.parseData(line)
-				parseForecast = False
-			elif line.find("<th><div>天氣預報</div></th>") > -1:
-				parseForecast = True
-
-			if parseTemperature is True:
-				temperature = self.parseData(line)
-				parseTemperature = False
-			elif line.find("<th><div align=\"center\">溫度</div></th>") > -1:
-				parseTemperature = True
-
-			if parseAvgTemperature is True:
-				avgTemperature = self.parseData(line)
-				parseAvgTemperature = False
-			elif line.find("<th><div align=\"center\">月平均溫度</div></th>") > -1:
-				parseAvgTemperature = True
-
-			if parseAvgRain is True:
-				avgRain = self.parseData(line)
-				parseAvgRain = False
-			elif line.find("<th><div align=\"center\">月平均降雨量</div></th>") > -1:
-				parseAvgRain = True
+			line = line.strip()
+			if line.startswith('<li class="smallfield">'):
+				infoline = line
+				break
+	
+		infoline = infoline.strip()
+		parts = infoline.split('<br />')
+		l = 0
+		h = 0
+		for part in parts:
+				part = re.sub(r'<.*?>' , '', part)
+				someParts = part.split('：')
+				if len(someParts) > 1:
+					if someParts[0].endswith('平均最低溫度'):
+						try:
+							r = re.match('\d+', someParts[1])
+							if r is not None:
+								l = float(r.group(0))
+						except:
+							l = 0
+							h = 0
+					elif someParts[0].endswith('平均最高溫度'):
+						try:
+							r = re.match('\d+', someParts[1])
+							if r is not None:
+								h = float(r.group(0))
+						except:
+							l = 0
+							h = 0
+					elif someParts[0].endswith('平均降水量'):
+						avgRain = someParts[1].strip()
+					elif someParts[0].endswith('天氣'):
+						forecast = someParts[1].strip()
+						try:
+							forecast = forecast.decode("ascii")
+						except:
+							forecast = forecast.decode("utf-8")
+					elif someParts[0].endswith('溫度'):
+						temperature = someParts[1].replace('℃', '').strip()
+				avgTemperature = '%d' % ((l + h) / 2)
 		result = {"locationName": locationName, "id": id, "area": area, "forecastDate": forecastDate, "validDate": validDate, "forecast": forecast,  "temperature": temperature, "avgTemperature": avgTemperature, "avgRain": avgRain}
+		# for key in result.keys():
+		# 	print result[key]
 		return result
 
 
@@ -1102,8 +1119,8 @@ class TestWeatherGlobal(unittest.TestCase):
 			self.assertTrue(result)
 			self.assertTrue(result["locationName"])
 			self.assertTrue(result["id"])
-			self.assertTrue(result["forecastDate"])
-			self.assertTrue(result["validDate"])
+			# self.assertTrue(result["forecastDate"])
+			# self.assertTrue(result["validDate"])
 			self.assertTrue(result["forecast"])
 			self.assertTrue(result["temperature"])
 
