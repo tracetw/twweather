@@ -162,8 +162,16 @@
 		D4E508D1102399E0002B39D7 /* TWOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E508D0102399E0002B39D7 /* TWOverviewViewController.m */; };
 		D4E509431023C17F002B39D7 /* CocoaCryptoHashing.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E509411023C17F002B39D7 /* CocoaCryptoHashing.m */; };
 		D4E509B31023CB85002B39D7 /* TWImageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E509B21023CB85002B39D7 /* TWImageTableViewController.m */; };
+		D4E6D5A0128EEA3300EEBC51 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D59D128EEA3300EEBC51 /* AppIcon.png */; };
+		D4E6D5A1128EEA3300EEBC51 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D59E128EEA3300EEBC51 /* AppIcon@2x.png */; };
+		D4E6D5A2128EEA3300EEBC51 /* AppIcon72.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D59F128EEA3300EEBC51 /* AppIcon72.png */; };
+		D4E6D5D1128EECFE00EEBC51 /* SocialFacebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D5CE128EECFE00EEBC51 /* SocialFacebook@2x.png */; };
+		D4E6D5D2128EECFE00EEBC51 /* SocialPlurk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D5CF128EECFE00EEBC51 /* SocialPlurk@2x.png */; };
+		D4E6D5D3128EECFE00EEBC51 /* SocialTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D5D0128EECFE00EEBC51 /* SocialTwitter@2x.png */; };
+		D4E6D5D7128EEE8600EEBC51 /* alert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D5D6128EEE8600EEBC51 /* alert@2x.png */; };
+		D4E6D5E1128EEFD900EEBC51 /* BlueButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D5E0128EEFD900EEBC51 /* BlueButton@2x.png */; };
+		D4E6D5E3128EEFF200EEBC51 /* forecasts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D5E2128EEFF200EEBC51 /* forecasts@2x.png */; };
 		D4E84FB1102D4BEC00A80676 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E84FAF102D4BEC00A80676 /* Localizable.strings */; };
-		D4E85027102D668E00A80676 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E85026102D668E00A80676 /* Icon.png */; };
 		D4E9C6E510223D6200B955C7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E9C6E410223D6200B955C7 /* SystemConfiguration.framework */; };
 		D4E9C70110223DBB00B955C7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E9C70010223DBB00B955C7 /* CFNetwork.framework */; };
 		D4EDBEF31082032900C9EBFE /* TWWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EDBEF21082032900C9EBFE /* TWWebController.m */; };
@@ -435,10 +443,18 @@
 		D4E509421023C17F002B39D7 /* CocoaCryptoHashing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaCryptoHashing.h; path = ../External/cocoa_crypto_hashing/CocoaCryptoHashing.h; sourceTree = SOURCE_ROOT; };
 		D4E509B11023CB85002B39D7 /* TWImageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWImageTableViewController.h; sourceTree = "<group>"; };
 		D4E509B21023CB85002B39D7 /* TWImageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWImageTableViewController.m; sourceTree = "<group>"; };
+		D4E6D59D128EEA3300EEBC51 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon.png; path = AppIcons/AppIcon.png; sourceTree = "<group>"; };
+		D4E6D59E128EEA3300EEBC51 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon@2x.png"; path = "AppIcons/AppIcon@2x.png"; sourceTree = "<group>"; };
+		D4E6D59F128EEA3300EEBC51 /* AppIcon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon72.png; path = AppIcons/AppIcon72.png; sourceTree = "<group>"; };
+		D4E6D5CE128EECFE00EEBC51 /* SocialFacebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SocialFacebook@2x.png"; sourceTree = "<group>"; };
+		D4E6D5CF128EECFE00EEBC51 /* SocialPlurk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SocialPlurk@2x.png"; sourceTree = "<group>"; };
+		D4E6D5D0128EECFE00EEBC51 /* SocialTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SocialTwitter@2x.png"; sourceTree = "<group>"; };
+		D4E6D5D6128EEE8600EEBC51 /* alert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alert@2x.png"; path = "Images/alert@2x.png"; sourceTree = "<group>"; };
+		D4E6D5E0128EEFD900EEBC51 /* BlueButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BlueButton@2x.png"; path = "Images/BlueButton@2x.png"; sourceTree = "<group>"; };
+		D4E6D5E2128EEFF200EEBC51 /* forecasts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forecasts@2x.png"; path = "Images/forecasts@2x.png"; sourceTree = "<group>"; };
 		D4E84FAA102D4A5200A80676 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D4E84FB0102D4BEC00A80676 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D4E84FB3102D4C0500A80676 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		D4E85026102D668E00A80676 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		D4E9C6E410223D6200B955C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D4E9C70010223DBB00B955C7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D4EDBEF11082032900C9EBFE /* TWWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWWebController.h; sourceTree = "<group>"; };
@@ -509,7 +525,6 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
-				D40948E31111EEEF008A17D6 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				D471EAB9102F460600768C5B /* TWTests-Info.plist */,
@@ -738,7 +753,9 @@
 		D40082D010C34C95007416F6 /* App Images */ = {
 			isa = PBXGroup;
 			children = (
-				D4E85026102D668E00A80676 /* Icon.png */,
+				D4E6D59D128EEA3300EEBC51 /* AppIcon.png */,
+				D4E6D59E128EEA3300EEBC51 /* AppIcon@2x.png */,
+				D4E6D59F128EEA3300EEBC51 /* AppIcon72.png */,
 				D489E5951024DD7600189460 /* Default.png */,
 			);
 			name = "App Images";
@@ -764,19 +781,15 @@
 			name = "Global Cities";
 			sourceTree = "<group>";
 		};
-		D40948E31111EEEF008A17D6 /* Resources-iPad */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Resources-iPad";
-			sourceTree = "<group>";
-		};
 		D41B171F1107F39600D78B27 /* Social */ = {
 			isa = PBXGroup;
 			children = (
 				D41B17201107F39600D78B27 /* SocialFacebook.png */,
 				D41B17211107F39600D78B27 /* SocialPlurk.png */,
 				D41B17221107F39600D78B27 /* SocialTwitter.png */,
+				D4E6D5CE128EECFE00EEBC51 /* SocialFacebook@2x.png */,
+				D4E6D5CF128EECFE00EEBC51 /* SocialPlurk@2x.png */,
+				D4E6D5D0128EECFE00EEBC51 /* SocialTwitter@2x.png */,
 			);
 			name = Social;
 			path = Images/Social;
@@ -814,6 +827,7 @@
 			isa = PBXGroup;
 			children = (
 				D46AE29910E8863900B9E152 /* BlueButton.png */,
+				D4E6D5E0128EEFD900EEBC51 /* BlueButton@2x.png */,
 			);
 			name = "Other Images";
 			sourceTree = "<group>";
@@ -831,7 +845,9 @@
 			isa = PBXGroup;
 			children = (
 				D46046491083B69600B97EEF /* forecasts.png */,
+				D4E6D5E2128EEFF200EEBC51 /* forecasts@2x.png */,
 				D46045A01083A92200B97EEF /* alert.png */,
+				D4E6D5D6128EEE8600EEBC51 /* alert@2x.png */,
 				D46045921083A64B00B97EEF /* tel.png */,
 				D4EDBEF91082042000C9EBFE /* webBack.png */,
 				D4EDBEFA1082042000C9EBFE /* webForward.png */,
@@ -1203,7 +1219,6 @@
 				D489E5961024DD7600189460 /* Default.png in Resources */,
 				D489E59E1024EA4600189460 /* InfoPlist.strings in Resources */,
 				D4E84FB1102D4BEC00A80676 /* Localizable.strings in Resources */,
-				D4E85027102D668E00A80676 /* Icon.png in Resources */,
 				D41B04361031F212000AA604 /* Entitlements.plist in Resources */,
 				D4EDBEF71082034800C9EBFE /* TWWebController.xib in Resources */,
 				D4EDBEFB1082042000C9EBFE /* webBack.png in Resources */,
@@ -1219,6 +1234,15 @@
 				D41B18221107FD2600D78B27 /* sfx.wav in Resources */,
 				D49F6E6D1281F08900DA872D /* FBDialog.bundle in Resources */,
 				D49F6E801281F0D000DA872D /* FBConnect.bundle in Resources */,
+				D4E6D5A0128EEA3300EEBC51 /* AppIcon.png in Resources */,
+				D4E6D5A1128EEA3300EEBC51 /* AppIcon@2x.png in Resources */,
+				D4E6D5A2128EEA3300EEBC51 /* AppIcon72.png in Resources */,
+				D4E6D5D1128EECFE00EEBC51 /* SocialFacebook@2x.png in Resources */,
+				D4E6D5D2128EECFE00EEBC51 /* SocialPlurk@2x.png in Resources */,
+				D4E6D5D3128EECFE00EEBC51 /* SocialTwitter@2x.png in Resources */,
+				D4E6D5D7128EEE8600EEBC51 /* alert@2x.png in Resources */,
+				D4E6D5E1128EEFD900EEBC51 /* BlueButton@2x.png in Resources */,
+				D4E6D5E3128EEFF200EEBC51 /* forecasts@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

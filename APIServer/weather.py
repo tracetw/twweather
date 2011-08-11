@@ -283,48 +283,31 @@ class WeatherWeek(Forecast):
 		lines = url.readlines()
 		publishTime = ""
 		items = []
-		
-		isHandlingPublishTime = False
-		isHandlingTime = False
-		isHandlingTemprature = False
-		isHandlingItems = False
 		temperature = ""
 		description = ""
 		time = ""
 		
+		mainLine = ""
+		
 		for line in lines:
 			line = line.rstrip()
-			if isHandlingItems is True and len(line) is 1 and len(items) > 0:
+			if line.find("<p>發布時間") > -1:
+				mainLine = line
 				break
-			if line.find("發布時間") > -1:
-				isHandlingPublishTime = True
-			elif isHandlingPublishTime is True:
-				xdatetime = datetime(int(line[0:4]), int(line[5:7]), int(line[8:10]), int(line[11:13]), int(line[14:16]))
-				publishTime = xdatetime.__str__()
-				isHandlingPublishTime = False
-			elif line.startswith("溫度"):
-				isHandlingItems = True
-				isHandlingTime = True
-			elif isHandlingTemprature is True:
-				temperature = line.replace("</p>", "").decode("utf-8")
-				isHandlingTemprature = False
-				item = {"date": time, "description": description, "temperature": temperature}
-				items.append(item)
-			elif isHandlingTime is True:
-				if line.startswith("<p>") and len(line) > 10:
-					line = line.replace("<p>", "").replace("<br />", "")
-					parts = line.split("　")
-					timeString = parts[0].decode("utf-8")
-					timeParts = timeString.split("/")
-					month = int(timeParts[0])
-					day = int(timeParts[1])
-					year = int(date.today().year)
-					if date.today().month == 12 and month == 1:
-						year = year + 1
-					time = date(year, month, day).__str__()
-					description = parts[1].decode("utf-8")
-					isHandlingTemprature = True
-		self.items = items
+
+		lines = mainLine.split('</p><p> ')
+		firstLine = lines[0].strip()
+		year = datetime.now().year
+		publishTime = datetime(year, int(firstLine[24:26]), int(firstLine[27:29]), int(firstLine[30:32]), int(firstLine[33:35])).__str__()
+
+		for line in lines[1:]:
+			line = line.strip()
+			parts = line.split('<br />')
+			time = date(year, int(parts[0][0:2]), int(parts[0][3:5])).__str__()
+			description = parts[0][11:].decode("utf-8")
+			temperature = parts[1].replace('</p>', '')
+			item = {"date": time, "description": description, "temperature": temperature}
+			items.append(item)
 		result = {"locationName":locationName, "id":name, "publishTime": publishTime, "items": items}
 		return result
 	def fetchWithID(self, name):
@@ -332,6 +315,7 @@ class WeatherWeek(Forecast):
 		if locationName is None:
 			return None
 		URLString = WeatherWeekURL % {"location": name}
+		print URLString
 		return self.handleLines(URLString, locationName, name)
 
 

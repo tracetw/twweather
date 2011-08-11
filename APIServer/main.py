@@ -141,7 +141,11 @@ class ForecastController(webapp.RequestHandler):
 		if outputtype == "json":
 			self.response.headers['Content-Type'] = 'text/plain; charset=utf-8'
 			jsonText = json.write({"result":allItems})
-			self.response.out.write(jsonText)
+			callback = self.request.get("callback")
+			if len(callback) > 0:
+				self.response.out.write(callback + '(' + jsonText + ')')
+			else:
+				self.response.out.write(jsonText)
 		else:
 			pl = dict(result=allItems)
 			output = plistlib.writePlistToString(pl)
@@ -199,7 +203,7 @@ class ForecastController(webapp.RequestHandler):
 class WeekController(ForecastController):
 	def __init__(self):
 		self.model = weather.WeatherWeek()
-		self.key_prefix = "week_"
+		self.key_prefix = "week20110811_"
 
 class WeekTravelController(ForecastController):
 	def __init__(self):
