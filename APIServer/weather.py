@@ -792,16 +792,32 @@ class WeatherOBS(Forecast):
 				isHandlingTime = True
 			elif line.find("天氣現象") > -1:
 				description = line[len("天氣現象:"):len("<br />") * -1]
+				try:
+					description = description.encode("ascii")
+				except:
+					description = description.encode("utf-8")
 			elif line.find("溫度") > -1:
 				temperature = float(line[len("溫度(℃):"):len("<br />") * -1])
 			elif line.find("累積雨量") > -1:
 				rain = line[len("累積雨量(毫米):"):len("<br />") * -1]
 			elif line.find("風向") > -1:
 				windDirection = line[len("風向:"):len("<br />") * -1]
+				try:
+					windDirection = windDirection.encode("ascii")
+				except:
+					windDirection = windDirection.encode("utf-8")
 			elif line.find("風力") > -1:
 				windScale = line[len("風力(級):"):len("<br />") * -1]
+				try:
+					windScale = windScale.encode("ascii")
+				except:
+					windScale = windScale.encode("utf-8")
 			elif line.find("陣風") > -1:
 				gustWindScale = line[len("陣風(級):"):len("<br />") * -1]
+				try:
+					gustWindScale = gustWindScale.encode("ascii")
+				except:
+					gustWindScale = gustWindScale.encode("utf-8")
 			elif line.find("</p>") > -1:
 				result = {"locationName": locationName, "id": id, "time": time, "description": description, "temperature": temperature, "rain": rain, "windDirection": windDirection, "windScale": windScale, "gustWindScale": gustWindScale}
 				return result

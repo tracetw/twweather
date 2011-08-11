@@ -39,11 +39,11 @@ class TestAPI(unittest.TestCase):
 		self.assertNotEqual(type(response), "")
 
 	def testOverview(self):
-		response = self.app.get("/overview")
-		self.assertEqual(response.status, "200 OK")
-		html = response.body
-		self.assertNotEqual(html, "")
-		self.assertNotEqual(html.find("<p>"), -1)
+		# response = self.app.get("/overview")
+		# self.assertEqual(response.status, "200 OK")
+		# html = response.body
+		# self.assertNotEqual(html, "")
+		# self.assertNotEqual(html.find("<p>"), -1)
 		response = self.app.get("/overview?output=plain")
 		self.assertEqual(response.status, "200 OK")
 		plain = response.body
