@@ -4,4 +4,6 @@ build
 *.tm_build_errors
 .DS_Store
 *.pyc
+*.xcworkspace
+xcuserdata
 TWFacebookAPI.h
