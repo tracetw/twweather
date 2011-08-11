@@ -113,22 +113,15 @@ class WeatherOverview(object):
 			return
 		lines = url.readlines()
 		count = 0
-		for line in lines:
-			if count == 11:
-				html = re.sub("　　", "</p>\n<p>", line) + "</p>"
-				plain = re.sub("<p>", "", html)
-				plain = re.sub("</p>", "\n", plain)
-				self.html = html
-				self.plain = plain
-				return
-			count += 1
+		for line in lines[14:-9]:
+			self.plain += line
 
 class TestWeatherOverview(unittest.TestCase):
 	def setUp(self):
 		self.overview = WeatherOverview()
 	def testOverview(self):
 		self.overview.fetch()
-		self.assertNotEqual(len(self.overview.html), 0)
+		# self.assertNotEqual(len(self.overview.html), 0)
 		self.assertNotEqual(len(self.overview.plain), 0)
 
 class Forecast(object):
@@ -315,7 +308,6 @@ class WeatherWeek(Forecast):
 		if locationName is None:
 			return None
 		URLString = WeatherWeekURL % {"location": name}
-		print URLString
 		return self.handleLines(URLString, locationName, name)
 
 
@@ -332,19 +324,19 @@ class TestWeatherWeek(unittest.TestCase):
 			self.assertEqual(len(items["items"]), 7)
 
 WeatherWeekTravelLocations = [
-	{"location": u"陽明山", "id": "Yang-ming-shan"},
+	{"location": u"陽明山", "id": "Yangmingshan"},
 	{"location": u"拉拉山", "id": "Lalashan"},
 	{"location": u"梨山", "id": "Lishan"},
-	{"location": u"合歡山", "id": "Hohuan-shan"},
-	{"location": u"日月潭", "id": "Sun-Moon-Lake"},
-	{"location": u"溪頭", "id": "Hsitou"},
+	{"location": u"合歡山", "id": "HehuanMountain"},
+	{"location": u"日月潭", "id": "SunMoonLake"},
+	{"location": u"溪頭", "id": "Xitou"},
 	{"location": u"阿里山", "id": "Alishan"},
 	{"location": u"玉山", "id": "Yushan"},
 	{"location": u"墾丁", "id": "Kenting"},
-	{"location": u"龍洞", "id": "Lung-tung"},
+	{"location": u"龍洞", "id": "Longdong"},
 	{"location": u"太魯閣", "id": "Taroko"},
-	{"location": u"三仙台", "id": "San-shiantai"},
-	{"location": u"綠島", "id": "Lu-Tao"},
+	{"location": u"三仙台", "id": "Sanxiantai"},
+	{"location": u"綠島", "id": "Ludao"},
 	{"location": u"蘭嶼", "id": "Lanyu"}
 	]
 
@@ -407,11 +399,10 @@ class Weather3DaySea(Forecast):
 		for line in lines:
 			line = line.rstrip()
 			if didHandlingPublishTime:
-				if line.startswith("<p>"):
-					count = 0
-				if count is 1:
+				if count is 0:
 					line = line.replace("<br />", "")
 					parts = line.split("/")
+
 					if len(parts) >  1:
 						month = int(parts[0])
 						day = int(parts[1])
@@ -419,27 +410,30 @@ class Weather3DaySea(Forecast):
 						if date.today().month == 12 and month == 1:
 							year = year + 1
 						time = date(year, month, day).__str__()
-				elif count is 2:
+				elif count is 1:
 					description = line.replace("<br />", "").decode("utf-8")
-				elif count is 3:
+				elif count is 2:
 					wind = line.replace("<br />", "").decode("utf-8")
-				elif count is 4:
+				elif count is 3:
 					windScale = line.replace("<br />", "").decode("utf-8")
-				elif count is 5:
+				elif count is 4:
 					wave = line.replace("<br />", "").decode("utf-8")
 					item = {"date": time, "description": description, "wind": wind, "windScale": windScale, "wave": wave}
 					items.append(item)
 					if len(items) >= 3:
 						break
+				elif count is 5:
+					count = 0
 				count = count + 1
 			if line.find("發布時間") > -1:
-				line = line[20:].replace("<br />", "")
+				line = line[25:].replace("</p><p>", "")
 				month = int(line[0:2])
 				year = int(date.today().year)
 				if date.today().month == 12 and month == 1:
 					year = year + 1
 				publishTime = datetime(year, month, int(line[3:5]), int (line[6:8]), int(line[9:11])).__str__()
 				didHandlingPublishTime = True
+				count = 0
 		result = {"locationName":locationName, "id":id, "publishTime": publishTime, "items": items}
 		return result
 
@@ -477,6 +471,7 @@ class WeatherNearSea(Forecast):
 	def locations(self):
 		return WeatherNearSeaLocations
 	def handleDate(self, line):
+		line = line.strip()
 		today = date.today()
 		month = int(today.month)
 		year = int(today.year)
@@ -712,7 +707,7 @@ WeatherOBSLocations = [
 	{"location": u"淡水", "id": "46690", "area":u"北部", "areaID":"north"},
 	{"location": u"新店", "id": "A0A9M", "area":u"北部", "areaID":"north"},
 	{"location": u"桃園", "id": "46697", "area":u"北部", "areaID":"north"},
-	{"location": u"新屋", "id": "C0C45", "area":u"北部", "areaID":"north"},
+	# {"location": u"新屋", "id": "C0C45", "area":u"北部", "areaID":"north"},
 	{"location": u"新竹", "id": "46757", "area":u"北部", "areaID":"north"},
 	{"location": u"雪霸", "id": "C0D55", "area":u"北部", "areaID":"north"},
 	{"location": u"三義", "id": "C0E53", "area":u"北部", "areaID":"north"},
@@ -772,13 +767,7 @@ class WeatherOBS(Forecast):
 			return None
 
 		isHandlingTime = False
-		isHandlingDescription = False
-		isHandlingTemperature = False
-		isHandlingRain = False
-		isHandlingWindDirection = False
-		isHandlingWindScale = False
-		isHandlingGustWind = False
-		
+
 		lines = url.readlines()
 		time = ""
 		description = ""
@@ -792,91 +781,30 @@ class WeatherOBS(Forecast):
 			line = line.rstrip()
 			if isHandlingTime is True:
 				if line.startswith("<") is not True:
-					year = int(line[0:4])
-					month = int(line[5:7])
-					day = int(line[8:10])
-					hour = int(line[12:14])
-					minute = int(line[15:17])
+					year = datetime.now().year
+					month = int(line[0:2])
+					day = int(line[3:5])
+					hour = int(line[6:8])
+					minute = int(line[9:11])
 					time = datetime(year, month, day, hour, minute).__str__()
 					isHandlingTime = False
 			elif line.find("地面觀測") > -1:
 				isHandlingTime = True
 			elif line.find("天氣現象") > -1:
-				isHandlingDescription = True
-			elif isHandlingDescription is True:
-				line = line.replace("<br />", "")
-				if line == "X":
-					description = "X"
-				else:
-					try:
-						description = line.decode("ascii")
-					except:
-						description = line.decode("utf-8")
-				isHandlingDescription = False
+				description = line[len("天氣現象:"):len("<br />") * -1]
 			elif line.find("溫度") > -1:
-				isHandlingTemperature = True
-			elif isHandlingTemperature is True:
-				line = line.replace("<br />", "")
-				try:
-					temperature = str(float(line))
-				except:
-					try:
-						temperature = line.decode("ascii")
-					except:
-						temperature = line.decode("utf-8")
-				isHandlingTemperature = False
+				temperature = float(line[len("溫度(℃):"):len("<br />") * -1])
 			elif line.find("累積雨量") > -1:
-				isHandlingRain = True
-			elif isHandlingRain is True:
-				line = line.replace("<br />", "")
-				try:
-					rain = str(float(line))
-				except:
-					rain = line.decode("utf-8")
-				isHandlingRain = False
-			elif isHandlingWindDirection == False and line.find("風向") > -1:
-				isHandlingWindDirection = True
-			elif isHandlingWindDirection is True:
-				line = line.replace("<br />", "")
-				try:
-					windDirection = line.decode("ascii")
-				except:
-					windDirection = line.decode("utf-8")
-				isHandlingWindDirection = False
+				rain = line[len("累積雨量(毫米):"):len("<br />") * -1]
+			elif line.find("風向") > -1:
+				windDirection = line[len("風向:"):len("<br />") * -1]
 			elif line.find("風力") > -1:
-				isHandlingWindScale = True
-			elif isHandlingWindScale is True:
-				line = line.replace("<br />", "")
-				try:
-					if int(line) > 0:
-						windScale = str(int(line))
-				except:
-					try:
-						windScale = line.decode("ascii")
-					except:
-						windScale = line.decode("utf-8")
-				if windScale == "":
-					windScale = "X"
-				isHandlingWindScale = False
+				windScale = line[len("風力(級):"):len("<br />") * -1]
 			elif line.find("陣風") > -1:
-				isHandlingGustWind = True
-			elif isHandlingGustWind is True:
-				line = line.replace("<br />", "")
-				if line == "X":
-					gustWindScale = "X"
-				else:
-					try:
-						if int(line)> 0:
-							gustWindScale = str(int(line))
-					except:
-						try:
-							gustWindScale = line.decode("ascii")
-						except:
-							gustWindScale = line.decode("utf-8")
-				isHandlingGustWind = False
+				gustWindScale = line[len("陣風(級):"):len("<br />") * -1]
+			elif line.find("</p>") > -1:
 				result = {"locationName": locationName, "id": id, "time": time, "description": description, "temperature": temperature, "rain": rain, "windDirection": windDirection, "windScale": windScale, "gustWindScale": gustWindScale}
 				return result
-		pass
 
 class TestWeatherOBS(unittest.TestCase):
 	def setUp(self):
@@ -1127,6 +1055,7 @@ class TestWeatherGlobal(unittest.TestCase):
 
 def main():
 	unittest.main()
+
 
 if __name__ == '__main__':
 	main()

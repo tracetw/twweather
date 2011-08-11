@@ -208,32 +208,32 @@ class WeekController(ForecastController):
 class WeekTravelController(ForecastController):
 	def __init__(self):
 		self.model = weather.WeatherWeekTravel()
-		self.key_prefix = "weekTravel_"
+		self.key_prefix = "weekTravel20110811_"
 
 class ThreeDaySeaController(ForecastController):
 	def __init__(self):
 		self.model = weather.Weather3DaySea()
-		self.key_prefix = "3sea_"
+		self.key_prefix = "3sea20110811_"
 
 class NearSeaController(ForecastController):
 	def __init__(self):
 		self.model = weather.WeatherNearSea()
-		self.key_prefix = "nearsea_"
+		self.key_prefix = "nearsea20110811_"
 
 class TideController(ForecastController):
 	def __init__(self):
 		self.model = weather.WeatherTide()
-		self.key_prefix = "tide_"
+		self.key_prefix = "tide20110811_"
 
 class OBSController(ForecastController):
 	def __init__(self):
 		self.model = weather.WeatherOBS()
-		self.key_prefix = "obs_"
+		self.key_prefix = "obs20110811_"
 
 class GlobalController(ForecastController):
 	def __init__(self):
 		self.model = weather.WeatherGlobal()
-		self.key_prefix = "global_"
+		self.key_prefix = "global20110811_"
 
 class ImageHandler(webapp.RequestHandler):
 	def __init__(self):
