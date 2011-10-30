@@ -32,6 +32,7 @@
 #import "TWWeatherAppDelegate.h"
 #import "TWPlurkSettingTableViewController.h"
 #import "TWTwitterSettingTableViewController.h"
+#import "UIViewController+Compatibility.h"
 
 static TWSocialComposer *sharedComposer;
 
@@ -244,8 +245,8 @@ static TWSocialComposer *sharedComposer;
 
 - (IBAction)cancelAction:(id)sender
 {
-	if (self.navigationController.parentViewController) {
-		[self.navigationController.parentViewController dismissModalViewControllerAnimated:YES];
+	if ([self.navigationController compitibaleParentViewController]) {
+		[[self.navigationController compitibaleParentViewController] dismissModalViewControllerAnimated:YES];
 	}
 }
 - (IBAction)doneAction:(id)sender

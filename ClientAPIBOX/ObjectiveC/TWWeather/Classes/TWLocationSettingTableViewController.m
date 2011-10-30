@@ -31,6 +31,7 @@
 #import "TWWeatherAppDelegate.h"
 #import "TWAPIBox.h"
 #import "TWAPIBox+Info.h"
+#import "UIViewController+Compatibility.h"
 
 @implementation TWLocationSettingTableViewController
 
@@ -81,8 +82,8 @@
 }
 - (IBAction)donelAction:(id)sender
 {
-	if ([self.navigationController parentViewController]) {
-		[[self.navigationController parentViewController] dismissModalViewControllerAnimated:YES];
+	if ([self.navigationController compitibaleParentViewController]) {
+		[[self.navigationController compitibaleParentViewController] dismissModalViewControllerAnimated:YES];
 	}
 }
 

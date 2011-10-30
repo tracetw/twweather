@@ -31,6 +31,7 @@
 #import "TWWeatherAppDelegate.h"
 #import "TWAPIBox.h"
 #import "TWAPIBox+Info.h"
+#import "UIViewController+Compatibility.h"
 
 @implementation TWLocationAddTableViewController
 
@@ -54,7 +55,7 @@
 }
 - (IBAction)cancelAction:(id)sender
 {
-	[self.navigationController.parentViewController dismissModalViewControllerAnimated:YES];
+	[[self.navigationController compitibaleParentViewController] dismissModalViewControllerAnimated:YES];
 }
 - (void)updateContentArrayWithFilterArray:(NSArray *)filterArray
 {
@@ -101,7 +102,7 @@
 	if (delegate && [delegate respondsToSelector:@selector(locationAddTableViewController:didSelectedLocationIdentifier:)]) {
 		NSUInteger filterID = [[[self.contentArray objectAtIndex:indexPath.row] objectForKey:@"filterID"] intValue];		
 		[delegate locationAddTableViewController:self didSelectedLocationIdentifier:filterID];
-		[self.navigationController.parentViewController dismissModalViewControllerAnimated:YES];
+		[[self.navigationController compitibaleParentViewController] dismissModalViewControllerAnimated:YES];
 	}
 }
 

@@ -33,6 +33,7 @@
 #import "TWWebController.h"
 #import "TWFacebookController.h"
 #import "TWWeatherAppDelegate.h"
+#import "UIViewController+Compatibility.h"
 
 @implementation TWMoreViewController
 
@@ -181,7 +182,7 @@
 			return;
 		}
 		
-		UITableViewController *controller = nil;
+		UIViewController *controller = nil;
 		if (indexPath.row == 0) {
 			controller = [[TWSettingTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 		}
@@ -211,7 +212,7 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-	UIViewController *parentController = controller.parentViewController;
+	UIViewController *parentController = [controller compitibaleParentViewController];
 	[parentController dismissModalViewControllerAnimated:YES];
 	if (result == MFMailComposeResultSent) {
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Your mail is sent!", @"") message:NSLocalizedString(@"Thanks for your feedback.", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];

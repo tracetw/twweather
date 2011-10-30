@@ -55,6 +55,7 @@
 		D471EBB8102F476100768C5B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E9C6E410223D6200B955C7 /* SystemConfiguration.framework */; };
 		D471EBB9102F476100768C5B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E9C70010223DBB00B955C7 /* CFNetwork.framework */; };
 		D471EBD8102F47D400768C5B /* TWAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = D471EBD7102F47D400768C5B /* TWAPITest.m */; };
+		D47B0452145DA5C50008D6FB /* UIViewController+Compatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = D47B0451145DA5C50008D6FB /* UIViewController+Compatibility.m */; };
 		D47B4F761104EDC60008FE6B /* TWPlurkSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D47B4F751104EDC60008FE6B /* TWPlurkSettingTableViewController.m */; };
 		D47B4FEA1104F3560008FE6B /* TWTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = D47B4FE91104F3560008FE6B /* TWTwitterEngine.m */; };
 		D47B50331104FAFE0008FE6B /* TWTwitterSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D47B50321104FAFE0008FE6B /* TWTwitterSettingTableViewController.m */; };
@@ -243,6 +244,8 @@
 		D471EAB9102F460600768C5B /* TWTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TWTests-Info.plist"; sourceTree = "<group>"; };
 		D471EBD6102F47D400768C5B /* TWAPITest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWAPITest.h; path = ../TWAPIBox/Tests/TWAPITest.h; sourceTree = SOURCE_ROOT; };
 		D471EBD7102F47D400768C5B /* TWAPITest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWAPITest.m; path = ../TWAPIBox/Tests/TWAPITest.m; sourceTree = SOURCE_ROOT; wrapsLines = 1; };
+		D47B0450145DA5C50008D6FB /* UIViewController+Compatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Compatibility.h"; sourceTree = "<group>"; };
+		D47B0451145DA5C50008D6FB /* UIViewController+Compatibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Compatibility.m"; sourceTree = "<group>"; };
 		D47B4F741104EDC60008FE6B /* TWPlurkSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPlurkSettingTableViewController.h; sourceTree = "<group>"; };
 		D47B4F751104EDC60008FE6B /* TWPlurkSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPlurkSettingTableViewController.m; sourceTree = "<group>"; };
 		D47B4FE81104F3560008FE6B /* TWTwitterEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTwitterEngine.h; sourceTree = "<group>"; };
@@ -697,6 +700,8 @@
 				D4E50842102391DB002B39D7 /* TWErrorViewController.m */,
 				D4EDBEF11082032900C9EBFE /* TWWebController.h */,
 				D4EDBEF21082032900C9EBFE /* TWWebController.m */,
+				D47B0450145DA5C50008D6FB /* UIViewController+Compatibility.h */,
+				D47B0451145DA5C50008D6FB /* UIViewController+Compatibility.m */,
 			);
 			name = "Other UI Controls";
 			sourceTree = "<group>";
@@ -1379,6 +1384,7 @@
 				D49F6D181281EA6F00DA872D /* FBLoginDialog.m in Sources */,
 				D49F6D191281EA6F00DA872D /* FBDialog.m in Sources */,
 				D49F6DD71281EE2800DA872D /* FBLoginButton.m in Sources */,
+				D47B0452145DA5C50008D6FB /* UIViewController+Compatibility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
