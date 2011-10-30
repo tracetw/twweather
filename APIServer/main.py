@@ -106,23 +106,6 @@ class OverviewController(webapp.RequestHandler):
 			memcache.add("overview_plain_201108122", text, 30 * 60)
 		self.response.headers['Content-Type'] = 'text/plain; charset=utf-8'
 		self.response.out.write(text)
-		# if outputtype == "plain":
-		# 	text = memcache.get("overview_plain_201108122")
-		# 	if text is None:
-		# 		self.overview.fetch()
-		# 		text = self.overview.plain
-		# 	if text != None:
-		# 		memcache.add("overview_plain_201108122", text, 30 * 60)
-		# 	self.response.headers['Content-Type'] = 'text/plain; charset=utf-8'
-		# 	self.response.out.write(text)
-		# else:
-		# 	html = memcache.get("overview_html_201108122")
-		# 	if html is None:
-		# 		self.overview.fetch()
-		# 		html = self.overview.html
-		# 	memcache.add("overview_html_201108122", html, 30 * 60)
-		# 	self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
-		# 	self.response.out.write(html)
 		add_record(self.request)
 
 class ForecastController(webapp.RequestHandler):
