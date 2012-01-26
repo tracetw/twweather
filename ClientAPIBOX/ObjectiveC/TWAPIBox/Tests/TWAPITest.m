@@ -11,6 +11,8 @@
 	[box fetchWarningsWithDelegate:self	userInfo:nil];
 	[box fetchOverviewWithFormat:TWOverviewPlainFormat delegate:self userInfo:nil];
 	[box fetchAllForecastsWithDelegate:self userInfo:nil];
+
+	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]];	
 }
 - (void)testForecasts
 {
@@ -21,6 +23,7 @@
 		NSString *identifier = [d objectForKey:@"identifier"];
 //		STFail(@"%s %@", __PRETTY_FUNCTION__, identifier);
 		[[TWAPIBox sharedBox] fetchForecastWithLocationIdentifier:identifier delegate:self userInfo:identifier];
+		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 	}
 }
 - (void)testWeek
@@ -32,6 +35,7 @@
 		NSString *identifier = [d objectForKey:@"identifier"];
 //		STFail(@"%s %@", __PRETTY_FUNCTION__, identifier);
 		[[TWAPIBox sharedBox] fetchWeekWithLocationIdentifier:identifier delegate:self userInfo:identifier];
+		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 	}
 }
 - (void)testWeekTravel
@@ -43,6 +47,7 @@
 		NSString *identifier = [d objectForKey:@"identifier"];
 //		STFail(@"%s %@", __PRETTY_FUNCTION__, identifier);
 		[[TWAPIBox sharedBox] fetchWeekTravelWithLocationIdentifier:identifier delegate:self userInfo:identifier];
+		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 	}
 }
 - (void)testThreeDaySea
@@ -54,6 +59,7 @@
 		NSString *identifier = [d objectForKey:@"identifier"];
 //		STFail(@"%s %@", __PRETTY_FUNCTION__, identifier);
 		[[TWAPIBox sharedBox] fetchThreeDaySeaWithLocationIdentifier:identifier delegate:self userInfo:identifier];
+		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 	}
 }
 - (void)testNearSea
@@ -65,12 +71,11 @@
 		NSString *identifier = [d objectForKey:@"identifier"];
 //		STFail(@"%s %@", __PRETTY_FUNCTION__, identifier);
 		[[TWAPIBox sharedBox] fetchNearSeaWithLocationIdentifier:identifier delegate:self userInfo:identifier];
+		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 	}
 }
 - (void)testTide
 {
-	STFail(@"%s", __PRETTY_FUNCTION__);
-	
 	NSArray *locations = [[TWAPIBox sharedBox] tideLocations];
 	NSDictionary *d = nil;
 	NSEnumerator *e = [locations objectEnumerator];
@@ -78,6 +83,7 @@
 		NSString *identifier = [d objectForKey:@"identifier"];
 //		STFail(@"%s %@", __PRETTY_FUNCTION__, identifier);
 		[[TWAPIBox sharedBox] fetchTideWithLocationIdentifier:identifier delegate:self userInfo:identifier];
+		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 	}
 }
 

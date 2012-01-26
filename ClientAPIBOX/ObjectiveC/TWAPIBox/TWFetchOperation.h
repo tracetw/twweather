@@ -31,6 +31,10 @@
 #import "LFHTTPRequest.h"
 #import "LFSiteReachability.h"
 
+#ifdef TARGET_OS_IPHONE
+	#import <UIKit/UIKit.h>
+#endif
+
 #define BASE_URL_STRING @"http://4.latest.twweatherapi.appspot.com/"
 
 @interface TWFetchOperation : NSOperation <LFSiteReachabilityDelegate>
