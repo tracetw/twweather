@@ -88,12 +88,15 @@ static TWAPIBox *apibox;
 - (void)sendRequestWithPath:(NSString *)path identifier:(NSString *)identifier action:(SEL)action failedAction:(SEL)failedAction delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSMutableDictionary *sessionInfo = [NSMutableDictionary dictionary];
-	if (delegate)
+	if (delegate) {
 		[sessionInfo setObject:delegate forKey:@"delegate"];
-	if (userInfo)
+	}
+	if (userInfo) {
 		[sessionInfo setObject:userInfo forKey:@"userInfo"];
-	if (identifier)
+	}
+	if (identifier) {
 		[sessionInfo setObject:identifier forKey:@"identifier"];
+	}
 	[sessionInfo setObject:NSStringFromSelector(action) forKey:@"action"];
 	[sessionInfo setObject:NSStringFromSelector(failedAction) forKey:@"failedAction"];
 	NSString *URLString = [BASE_URL_STRING stringByAppendingString:path];
