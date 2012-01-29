@@ -1,7 +1,7 @@
 //
 // TWWebController.m
 //
-// Copyright (c) 2009 - 2010 Weizhong Yang (http://zonble.net)
+// Copyright (c)  Weizhong Yang (http://zonble.net)
 // All Rights Reserved
 //
 // Redistribution and use in source and binary forms, with or without
@@ -108,6 +108,10 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+	if ([error code] == -999) {
+		return;
+	}
+	
 	[activityIndicatorView startAnimating];	
 	[self updateButtonState];
 	[reloadItem setEnabled:YES];
