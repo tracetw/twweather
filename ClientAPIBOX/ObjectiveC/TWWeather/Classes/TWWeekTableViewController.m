@@ -37,7 +37,7 @@
 - (void)viewDidLoad 
 {
 	[super viewDidLoad];
-	self.array = [[TWAPIBox sharedBox] weekLocations];
+	self.array = [[TWAPIBox sharedBox] forecastLocations];
 	self.title = @"一週天氣預報";
 }
 

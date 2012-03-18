@@ -160,7 +160,7 @@ static TWAPIBox *apibox;
 }
 - (void)fetchWeekWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
-	NSString *path = [NSString stringWithFormat:@"week?location=%@", identifier];
+	NSString *path = [NSString stringWithFormat:@"week2?location=%@", identifier];
 	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"identifier", userInfo, @"userInfo", nil];
 	[self sendRequestWithPath:path identifier:@"week" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];	
 }
@@ -317,13 +317,10 @@ static TWAPIBox *apibox;
 	}
 	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:actionString, @"action", request, @"request", data, @"data", nil];
 	[self performSelectorOnMainThread:@selector(performAction:) withObject:d waitUntilDone:NO];
-//	[self performSelector:action withObject:request withObject:data];
 }
 - (void)httpRequestDidCancel:(LFHTTPRequest *)request
 {
 	NSString *actionString = [[request sessionInfo] objectForKey:@"action"];
-//	SEL action = NSSelectorFromString(actionString);
-//	[self performSelector:action withObject:request withObject:nil];
 	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:actionString, @"action", request, nil];
 	[self performSelectorOnMainThread:@selector(performAction:) withObject:d waitUntilDone:NO];
 }
@@ -340,8 +337,6 @@ static TWAPIBox *apibox;
 			[sessionInfo setObject:date forKey:@"date"];
 
 			NSString *actionString = [[request sessionInfo] objectForKey:@"action"];
-//			SEL action = NSSelectorFromString(actionString);
-//			[self performSelector:action withObject:request withObject:data];
 			NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:actionString, @"action", request, @"request", data, @"data", nil];
 			[self performSelectorOnMainThread:@selector(performAction:) withObject:d waitUntilDone:NO];
 			return;
@@ -349,8 +344,6 @@ static TWAPIBox *apibox;
 	}
 	
 	NSString *failedActionString = [[request sessionInfo] objectForKey:@"failedAction"];
-//	SEL failedAction = NSSelectorFromString(failedActionString);
-//	[self performSelector:failedAction withObject:request withObject:error];
 	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:failedActionString, @"action", request, @"request", error, @"error", nil];
 	[self performSelectorOnMainThread:@selector(performFailedAction:) withObject:d waitUntilDone:NO];
 

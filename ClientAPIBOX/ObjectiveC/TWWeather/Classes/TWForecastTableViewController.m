@@ -65,7 +65,7 @@
 		TWForecastResultTableViewController *controller = [[TWForecastResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 		controller.title = [dictionary objectForKey:@"locationName"];
 		controller.forecastArray = [dictionary objectForKey:@"items"];
-		controller.weekLocation = [dictionary objectForKey:@"weekLocation"];
+		controller.weekLocation = [dictionary objectForKey:@"id"];
 		[self.navigationController pushViewController:controller animated:YES];
 		[controller release];
 	}

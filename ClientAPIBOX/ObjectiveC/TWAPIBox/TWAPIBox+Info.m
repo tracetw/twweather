@@ -53,26 +53,26 @@
 	_forecastLocations = [[NSMutableArray alloc] init];	
 	[self addToArray:_forecastLocations name:"台北市" identifier:@"1"];
 	[self addToArray:_forecastLocations name:"高雄市" identifier:@"2"];
-	[self addToArray:_forecastLocations name:"基隆" identifier:@"3"];
-	[self addToArray:_forecastLocations name:"台北" identifier:@"4"];
-	[self addToArray:_forecastLocations name:"桃園" identifier:@"5"];
-	[self addToArray:_forecastLocations name:"新竹" identifier:@"6"];
-	[self addToArray:_forecastLocations name:"苗栗" identifier:@"7"];
-	[self addToArray:_forecastLocations name:"台中" identifier:@"8"];
-	[self addToArray:_forecastLocations name:"彰化" identifier:@"9"];
-	[self addToArray:_forecastLocations name:"南投" identifier:@"10"];
-	[self addToArray:_forecastLocations name:"雲林" identifier:@"11"];
-	[self addToArray:_forecastLocations name:"嘉義" identifier:@"12"];
-	[self addToArray:_forecastLocations name:"台南" identifier:@"13"];
-//	[self addToArray:_forecastLocations name:"高雄" identifier:@"14"];
-	[self addToArray:_forecastLocations name:"屏東" identifier:@"15"];
-	[self addToArray:_forecastLocations name:"恆春" identifier:@"16"];
-	[self addToArray:_forecastLocations name:"宜蘭" identifier:@"17"];
-	[self addToArray:_forecastLocations name:"花蓮" identifier:@"18"];
-	[self addToArray:_forecastLocations name:"台東" identifier:@"19"];
-	[self addToArray:_forecastLocations name:"澎湖" identifier:@"20"];
-	[self addToArray:_forecastLocations name:"金門" identifier:@"21"];
-	[self addToArray:_forecastLocations name:"馬祖" identifier:@"22"];
+	[self addToArray:_forecastLocations name:"基隆縣" identifier:@"3"];
+	[self addToArray:_forecastLocations name:"新北市" identifier:@"4"];
+	[self addToArray:_forecastLocations name:"桃園縣" identifier:@"5"];
+	[self addToArray:_forecastLocations name:"新竹市" identifier:@"14"];
+	[self addToArray:_forecastLocations name:"新竹縣" identifier:@"6"];
+	[self addToArray:_forecastLocations name:"苗栗縣" identifier:@"7"];
+	[self addToArray:_forecastLocations name:"台中市" identifier:@"8"];
+	[self addToArray:_forecastLocations name:"彰化縣" identifier:@"9"];
+	[self addToArray:_forecastLocations name:"南投縣" identifier:@"10"];
+	[self addToArray:_forecastLocations name:"雲林縣" identifier:@"11"];
+	[self addToArray:_forecastLocations name:"嘉義市" identifier:@"16"];
+	[self addToArray:_forecastLocations name:"嘉義縣" identifier:@"12"];
+	[self addToArray:_forecastLocations name:"台南市" identifier:@"13"];
+	[self addToArray:_forecastLocations name:"屏東縣" identifier:@"15"];
+	[self addToArray:_forecastLocations name:"宜蘭縣" identifier:@"17"];
+	[self addToArray:_forecastLocations name:"花蓮縣" identifier:@"18"];
+	[self addToArray:_forecastLocations name:"台東縣" identifier:@"19"];
+	[self addToArray:_forecastLocations name:"澎湖縣" identifier:@"20"];
+	[self addToArray:_forecastLocations name:"金門縣" identifier:@"21"];
+	[self addToArray:_forecastLocations name:"連江縣" identifier:@"22"];
 }
 - (void)initWeekLocations
 {

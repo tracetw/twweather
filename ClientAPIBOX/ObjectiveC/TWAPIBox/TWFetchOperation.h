@@ -35,7 +35,7 @@
 	#import <UIKit/UIKit.h>
 #endif
 
-#define BASE_URL_STRING @"http://twweatherapi.herokuapp.com/"
+#define BASE_URL_STRING @"https://twweatherapi.herokuapp.com/"
 
 @interface TWFetchOperation : NSOperation <LFSiteReachabilityDelegate>
 {

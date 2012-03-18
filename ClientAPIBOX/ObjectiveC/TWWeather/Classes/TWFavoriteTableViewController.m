@@ -393,7 +393,7 @@ static NSString *favoitesPreferenceName = @"favoitesPreferenceName";
 	NSDictionary *dictionary = [_filteredArray objectAtIndex:indexPath.section - 1];
 	
 	if (indexPath.row == 0) {
-		NSString *weekLocation = [dictionary objectForKey:@"weekLocation"];
+		NSString *weekLocation = [dictionary objectForKey:@"id"];
 		
 		if ([weekDictionary valueForKey:weekLocation]) {
 			NSDictionary *result = [weekDictionary valueForKey:weekLocation];
