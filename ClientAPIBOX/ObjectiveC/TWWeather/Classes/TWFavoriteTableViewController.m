@@ -39,8 +39,8 @@
 #import "TWAPIBox.h"
 #import "TWAPIBox+Info.h"
 
-static NSString *lastAllForecastsPreferenceName = @"lastAllForecastsPreferenceName";
-static NSString *favoitesPreferenceName = @"favoitesPreferenceName";
+static NSString *lastAllForecastsPreferenceName = @"myLastAllForecastsPreferenceName";
+static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 
 @implementation TWFavoriteTableViewController
 

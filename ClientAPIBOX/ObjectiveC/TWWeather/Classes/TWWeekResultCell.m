@@ -111,6 +111,7 @@
 {
 	[_ourContentView removeFromSuperview];
 	[_ourContentView release];
+	[day release];
 	[date release];
 	[description release];
 	[temperature release];
@@ -135,7 +136,11 @@
 }
 - (void)draw:(CGRect)bounds
 {
-	[date drawInRect:CGRectMake(10, 2, 200, 15) withFont:[UIFont systemFontOfSize:14.0]];
+	NSString *d = date;
+	if (day) {
+		d = [NSString stringWithFormat:@"%@ %@", date, day];
+	}	
+	[d drawInRect:CGRectMake(10, 2, 200, 15) withFont:[UIFont systemFontOfSize:14.0]];
 	[description drawInRect:CGRectMake(10, 23, 200, 30) withFont:[UIFont boldSystemFontOfSize:18.0]];
 	NSString *temperatureString = [NSString stringWithFormat:@"%@ ℃", temperature];
 	[temperatureString drawInRect:CGRectMake(40, 23, 240, 15) withFont:[UIFont systemFontOfSize:12.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentRight];
@@ -175,6 +180,7 @@
 	return UIAccessibilityTraitNone;
 }
 
+@synthesize day;
 @synthesize date;
 @synthesize description;
 @synthesize temperature;

@@ -131,6 +131,7 @@
 	NSString *dateString = [dictionary objectForKey:@"date"];
 	NSDate *date = [[TWAPIBox sharedBox] dateFromShortString:dateString];
 	cell.date = [[TWAPIBox sharedBox] shortDateStringFromDate:date];
+	cell.day = [dictionary objectForKey:@"day"];
     cell.description = [dictionary objectForKey:@"description"];
 	cell.temperature = [dictionary objectForKey:@"temperature"];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;

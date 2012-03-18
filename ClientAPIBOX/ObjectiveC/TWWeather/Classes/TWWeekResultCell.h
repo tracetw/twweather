@@ -32,11 +32,13 @@
 @interface TWWeekResultCell : UITableViewCell 
 {
 	TWWeekResultCellContentView *_ourContentView;
+	NSString *day;
 	NSString *date;
 	NSString *description;
 	NSString *temperature;
 }
 
+@property (retain, nonatomic) NSString *day;
 @property (retain, nonatomic) NSString *date;
 @property (retain, nonatomic) NSString *description;
 @property (retain, nonatomic) NSString *temperature;
