@@ -34,7 +34,7 @@
 
 NSString *TWAPIErrorDomain = @"TWAPIErrorDomain";
 
-static TWAPIBox *apibox;
+static TWAPIBox *apibox = nil;
 
 @implementation TWAPIBox
 

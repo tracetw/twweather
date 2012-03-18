@@ -28,7 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <AVFoundation/AVFoundation.h>
-//#import "FBConnect.h"
 #import "FBConnect.h"
 #import "ObjectivePlurk.h"
 #import "TWTwitterEngine.h"

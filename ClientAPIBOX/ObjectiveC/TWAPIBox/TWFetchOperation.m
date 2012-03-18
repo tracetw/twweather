@@ -145,7 +145,7 @@
 	
 	NSMutableString *URLString = [NSMutableString stringWithString:[URL absoluteString]];
 	NSRange range = [URLString rangeOfString:@"?"];
-	if (range.location != NSNotFound && range.location > -1) {
+	if (range.location == NSNotFound) {
 		[URLString appendString:@"?"];
 	}
 	for (NSString *key in [deviceInfo allKeys]) {

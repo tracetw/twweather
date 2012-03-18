@@ -411,7 +411,7 @@ static NSString *favoitesPreferenceName = @"favoitesPreferenceName";
 	TWForecastResultTableViewController *controller = [[TWForecastResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	controller.title = [dictionary objectForKey:@"locationName"];
 	controller.forecastArray = [dictionary objectForKey:@"items"];
-	NSString *weekLocation = [dictionary objectForKey:@"weekLocation"];
+	NSString *weekLocation = [dictionary objectForKey:@"id"];
 	controller.weekLocation = weekLocation;
 
 	if ([weekDictionary valueForKey:weekLocation]) {

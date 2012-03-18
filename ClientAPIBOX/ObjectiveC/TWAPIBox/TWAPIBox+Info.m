@@ -53,7 +53,7 @@
 	_forecastLocations = [[NSMutableArray alloc] init];	
 	[self addToArray:_forecastLocations name:"台北市" identifier:@"1"];
 	[self addToArray:_forecastLocations name:"高雄市" identifier:@"2"];
-	[self addToArray:_forecastLocations name:"基隆縣" identifier:@"3"];
+	[self addToArray:_forecastLocations name:"基隆市" identifier:@"3"];
 	[self addToArray:_forecastLocations name:"新北市" identifier:@"4"];
 	[self addToArray:_forecastLocations name:"桃園縣" identifier:@"5"];
 	[self addToArray:_forecastLocations name:"新竹市" identifier:@"14"];
