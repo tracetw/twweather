@@ -5,31 +5,35 @@
 // All Rights Reserved
 //
 // Redistribution and use in source and binary forms, with or without
-// modification, are permitted provided that the following conditions are met:
+// modification, are permitted provided that the following conditions
+// are met:
 //
-//     * Redistributions of source code must retain the above copyright
-//       notice, this list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above copyright
-//       notice, this list of conditions and the following disclaimer in the
-//       documentation and/or other materials provided with the distribution.
-//     * Neither the name of Weizhong Yang (zonble) nor the
-//       names of its contributors may be used to endorse or promote products
-//       derived from this software without specific prior written permission.
-// 
+//     * Redistributions of source code must retain the above
+//       copyright notice, this list of conditions and the following
+//       disclaimer.
+//     * Redistributions in binary form must reproduce the above
+//       copyright notice, this list of conditions and the following
+//       disclaimer in the documentation and/or other materials
+//       provided with the distribution.
+//     * Neither the name of Weizhong Yang (zonble) nor the names of
+//       its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written
+//       permission.
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
-// EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-// DISCLAIMED. IN NO EVENT SHALL WEIZHONG YANG BE LIABLE FOR ANY
-// DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-// (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-// ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-// SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.OTHER DEALINGS IN THE SOFTWARE.
-//
+// EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+// PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WEIZHONG YANG BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+// OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+// BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+// LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+// USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+// DAMAGE.
 
 #import "TWAPIBox+Private.h"
-
 
 @implementation TWAPIBox(Private)
 
@@ -56,22 +60,22 @@
 	NSString *error;
 	id plist = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];
 	id result = [plist objectForKey:@"result"];
-	
+
 	NSDictionary *sessionInfo = [request sessionInfo];
 	NSString *identifier = [sessionInfo objectForKey:@"identifier"];
 	id delegate = [sessionInfo objectForKey:@"delegate"];
 	NSDictionary *info = [sessionInfo objectForKey:@"userInfo"];
 	if (!info) {
 		info = [sessionInfo objectForKey:@"date"];
-	}	
-	
+	}
+
 	if ([identifier isEqualToString:@"warning"] && delegate && [delegate respondsToSelector:@selector(APIBox:didFetchWarnings:userInfo:)]) {
 		[delegate APIBox:self didFetchWarnings:result userInfo:info];
 	}
 	else if ([identifier isEqualToString:@"forecastAll"] && delegate && [delegate respondsToSelector:@selector(APIBox:didFetchAllForecasts:userInfo:)]) {
 		[delegate APIBox:self didFetchAllForecasts:result userInfo:info];
 	}
-	
+
 }
 - (void)didFailedFetchWarning:(LFHTTPRequest *)request error:(NSString *)error
 {
@@ -84,16 +88,16 @@
 	}
 	NSError *theError = [NSError errorWithDomain:TWAPIErrorDomain code:code userInfo:[self _errorDictionaryWithCode:code]];
 	NSDictionary *sessionInfo = [request sessionInfo];
-	id delegate = [sessionInfo objectForKey:@"delegate"];		
-	
-	NSString *identifier = [sessionInfo objectForKey:@"identifier"];	
+	id delegate = [sessionInfo objectForKey:@"delegate"];
+
+	NSString *identifier = [sessionInfo objectForKey:@"identifier"];
 	if ([identifier isEqualToString:@"warning"] && delegate && [delegate respondsToSelector:@selector(APIBox:didFailedFetchWarningsWithError:)]) {
 		[delegate APIBox:self didFailedFetchWarningsWithError:theError];
-	}	
+	}
 	else if ([identifier isEqualToString:@"forecastAll"] && delegate && [delegate respondsToSelector:@selector(APIBox:didFailedFetchAllForecastsWithError:)]) {
 		[delegate APIBox:self didFailedFetchAllForecastsWithError:theError];
-	}	
-	
+	}
+
 }
 
 - (void)didFetchOverview:(LFHTTPRequest *)request data:(NSData *)data
@@ -121,10 +125,10 @@
 	NSError *theError = [NSError errorWithDomain:TWAPIErrorDomain code:code userInfo:[self _errorDictionaryWithCode:code]];
 	NSDictionary *sessionInfo = [request sessionInfo];
 	id delegate = [sessionInfo objectForKey:@"delegate"];
-	
+
 	if (delegate && [delegate respondsToSelector:@selector(APIBox:didFailedFetchOverviewWithError:)]) {
 		[delegate APIBox:self didFailedFetchOverviewWithError:theError];
-	}	
+	}
 }
 - (void)didFetchForecast:(LFHTTPRequest *)request data:(NSData *)data
 {
@@ -137,7 +141,7 @@
 	}
 	NSString *inIdentifier = [info objectForKey:@"identifier"];
 	id userInfo = [info objectForKey:@"userInfo"];
-	
+
 	NSPropertyListFormat format;
 	NSString *error;
 	id plist = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];
@@ -163,10 +167,10 @@
 		}
 		else if ([identifier isEqualToString:@"obs"] && delegate && [delegate respondsToSelector:@selector(APIBox:didFetchOBS:identifier:userInfo:)]) {
 			[delegate APIBox:self didFetchOBS:result identifier:inIdentifier userInfo:userInfo];
-		}		
+		}
 		else if ([identifier isEqualToString:@"global"] && delegate && [delegate respondsToSelector:@selector(APIBox:didFetchGlobalCity:identifier:userInfo:)]) {
 			[delegate APIBox:self didFetchGlobalCity:result identifier:inIdentifier userInfo:userInfo];
-		}		
+		}
 	}
 	else {
 		NSInteger code = TWAPIDataError;
@@ -191,12 +195,12 @@
 		}
 		else if ([identifier isEqualToString:@"obs"] && delegate && [delegate respondsToSelector:@selector(APIBox:didFailedFetchOBSWithError:identifier:userInfo:)]) {
 			[delegate APIBox:self didFailedFetchOBSWithError:theError identifier:inIdentifier userInfo:userInfo];
-		}		
+		}
 		else if ([identifier isEqualToString:@"global"] && delegate && [delegate respondsToSelector:@selector(APIBox:didFailedFetchGlobalCityWithError:identifier:userInfo:)]) {
 			[delegate APIBox:self didFailedFetchGlobalCityWithError:theError identifier:inIdentifier userInfo:userInfo];
-		}		
+		}
 	}
-	
+
 }
 - (void)didFailedFetchForecast:(LFHTTPRequest *)request error:(NSString *)error
 {
@@ -205,8 +209,8 @@
 	NSString *identifier = [sessionInfo objectForKey:@"identifier"];
 	NSDictionary *info = [sessionInfo objectForKey:@"userInfo"];
 	NSString *inIdentifier = [info objectForKey:@"identifier"];
-	id userInfo = [info objectForKey:@"userInfo"];	
-	
+	id userInfo = [info objectForKey:@"userInfo"];
+
 	NSInteger code = TWAPIUnkownError;
 	if (error == LFHTTPRequestConnectionError) {
 		code = TWAPIConnectionError;
@@ -251,8 +255,8 @@
 	id delegate = [sessionInfo objectForKey:@"delegate"];
 	NSDictionary *info = [sessionInfo objectForKey:@"userInfo"];
 	NSString *inIdentifier = [info objectForKey:@"identifier"];
-	id userInfo = [info objectForKey:@"userInfo"];	
-	
+	id userInfo = [info objectForKey:@"userInfo"];
+
 	NSInteger code = TWAPIUnkownError;
 	if (error == LFHTTPRequestConnectionError) {
 		code = TWAPIConnectionError;
@@ -260,8 +264,8 @@
 	else if (error == LFHTTPRequestTimeoutError) {
 		code = TWAPITimeOutError;
 	}
-	NSError *theError = [NSError errorWithDomain:TWAPIErrorDomain code:code userInfo:[self _errorDictionaryWithCode:code]];	
-	
+	NSError *theError = [NSError errorWithDomain:TWAPIErrorDomain code:code userInfo:[self _errorDictionaryWithCode:code]];
+
 	if (delegate && [delegate respondsToSelector:@selector(APIBox:didFailedFetchImageWithError:identifier:userInfo:)]) {
 		[delegate APIBox:self didFailedFetchImageWithError:theError identifier:inIdentifier userInfo:userInfo];
 	}
