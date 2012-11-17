@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -33,20 +33,19 @@
 
 @implementation TWTwitterSettingTableViewController
 
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	self.title = NSLocalizedString(@"Twitter Setting", @"");
-}	
+}
 
 - (BOOL)isLoggedIn
 {
 	return [TWTwitterEngine sharedEngine].loggedIn;
 }
 - (void)updateLoginInfo
-{	
+{
 	if ([TWTwitterEngine sharedEngine].loggedIn) {
-//		MGTwitterEngine *engine = [TWTwitterEngine sharedEngine].engine;
 		TWTwitterEngine *engine = [TWTwitterEngine sharedEngine];
 		self.loginName = [engine username];
 		self.password = [engine password];
@@ -59,7 +58,7 @@
 	self.password = [passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	loginNameField.text = loginName;
 	passwordField.text = password;
-	
+
 	if (![loginName length]) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Please input your Twitter login name.", @"") message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
 		[alert show];
@@ -67,7 +66,7 @@
 		[loginNameField becomeFirstResponder];
 		return;
 	}
-	
+
 	if (![password length]) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Please input your Twitter password.", @"") message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
 		[alert show];
@@ -75,7 +74,7 @@
 		[passwordField becomeFirstResponder];
 		return;
 	}
-	
+
 	[self showLoadingView];
 	[TWTwitterEngine sharedEngine].delegate = self;
 	[TWTwitterEngine sharedEngine].username = loginName;
@@ -83,27 +82,23 @@
 	MGTwitterEngine *engine = [TWTwitterEngine sharedEngine].engine;
 
 	self.connectionID = [engine getXAuthAccessTokenForUsername:loginName password:password];
-//	[engine setUsername:loginName password:password];
-//	self.connectionID = [engine checkUserCredentials];
 }
 
 - (IBAction)logoutAction:(id)sender
 {
-//	MGTwitterEngine *engine = [TWTwitterEngine sharedEngine].engine;
 	TWTwitterEngine *engine = [TWTwitterEngine sharedEngine];
 	NSString *username = [engine username];
 	NSError *error = nil;
 	[SFHFKeychainUtils deleteItemForUsername:username andServiceName:TWTwitterService error:&error];
-	
-//	[engine setUsername:@"" password:@""];
+
 	engine.username = nil;
 	engine.password = nil;
-	
+
 	[TWTwitterEngine sharedEngine].loggedIn = NO;
-	
+
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:TWTwitterLoginNamePreference];
 	[OAToken removeFromUserDefaultsWithServiceProviderName:TWTwitterTokenPreference prefix:@""];
-	
+
 	[self refresh];
 	[loginNameField becomeFirstResponder];
 }
@@ -115,17 +110,15 @@
 {
 	[self hideLoadingView];
 	[TWTwitterEngine sharedEngine].loggedIn = YES;
-//	[[TWTwitterEngine sharedEngine].engine setAccessToken:token];
-//	[token storeInUserDefaultsWithServiceProviderName:TWTwitterTokenPreference prefix:@""];
-	
-	if (loginName && password) { 
+
+	if (loginName && password) {
 		NSError *error = nil;
 		[[NSUserDefaults standardUserDefaults] setObject:loginName forKey:TWTwitterLoginNamePreference];
 		[SFHFKeychainUtils storeUsername:loginName andPassword:password forServiceName:TWTwitterService updateExisting:YES error:&error];
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 	[self refresh];
-	
+
 	if (self.navigationItem.leftBarButtonItem) {
 		UIBarButtonItem *item = self.navigationItem.leftBarButtonItem;
 		SEL action = [item action];
@@ -133,26 +126,7 @@
 		[target performSelector:action withObject:self];
 	}
 }
-//- (void)requestSucceeded:(NSString *)requestIdentifier
-//{
-//	[self hideLoadingView];
-//	[TWTwitterEngine sharedEngine].loggedIn = YES;
-//	
-//	if (loginName && password) { 
-//		NSError *error = nil;
-//		[[NSUserDefaults standardUserDefaults] setObject:loginName forKey:TWTwitterLoginNamePreference];
-//		[SFHFKeychainUtils storeUsername:loginName andPassword:password forServiceName:TWTwitterService updateExisting:YES error:&error];
-//		[[NSUserDefaults standardUserDefaults] synchronize];
-//	}
-//	[self refresh];
-//	
-//	if (self.navigationItem.leftBarButtonItem) {
-//		UIBarButtonItem *item = self.navigationItem.leftBarButtonItem;
-//		SEL action = [item action];
-//		id target = [item target];
-//		[target performSelector:action withObject:self];
-//	}
-//}
+
 - (void)requestFailed:(NSString *)requestIdentifier withError:(NSError *)error
 {
 	[self hideLoadingView];

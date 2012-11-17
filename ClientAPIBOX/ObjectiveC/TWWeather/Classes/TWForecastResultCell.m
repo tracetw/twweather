@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -45,7 +45,7 @@
 
 @implementation TWForecastResultCellContentView
 
-- (void) dealloc
+- (void)dealloc
 {
 	[touchBeginDate release];
 	[super dealloc];
@@ -70,7 +70,7 @@
 }
 - (IBAction)copy:(id)sender
 {
-	[_delegate copy:sender];	
+	[_delegate copy:sender];
 }
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
@@ -94,8 +94,8 @@
 {
 	if (_delegate.selectionStyle != UITableViewCellSelectionStyleNone) {
 		[super touchesEnded:touches withEvent:event];
-	}	
-	else if ( touchBeginDate && ([[NSDate date] timeIntervalSinceDate:touchBeginDate] > 1.0)) {	
+	}
+	else if ( touchBeginDate && ([[NSDate date] timeIntervalSinceDate:touchBeginDate] > 1.0)) {
 		[self becomeFirstResponder];
 		[[UIMenuController sharedMenuController] update];
 		[[UIMenuController sharedMenuController] setTargetRect:CGRectMake(0, 0, 100, 100) inView:self];
@@ -142,7 +142,7 @@
 		[self _init];
     }
     return self;
-	
+
 }
 - (NSString *)_description
 {
@@ -165,27 +165,27 @@
 }
 
 - (void)draw:(CGRect)bounds
-{	
+{
 	CGSize size = weatherImage.size;
 	[weatherImage drawInRect:CGRectMake(0, -5, size.width * 0.75, size.height * 0.75)];
-	
+
 	if (self.highlighted || self.selected) {
 		[[UIColor whiteColor] set];
 	}
 	else {
 		[[UIColor blackColor] set];
 	}
-		
+
 	[title drawInRect:CGRectMake(140, 5, 100, 20) withFont:[UIFont boldSystemFontOfSize:14.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentLeft];
 	NSString *timeString = [NSString stringWithFormat:@"%@\n%@", beginTime, endTime];
 	[timeString drawInRect:CGRectMake(140, 26, 160, 40) withFont:[UIFont systemFontOfSize:10.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentLeft];
 
-	[description drawInRect:CGRectMake(10, 80, 100, 60) withFont:[UIFont systemFontOfSize:12.0] lineBreakMode:UILineBreakModeCharacterWrap alignment:UITextAlignmentCenter];	
+	[description drawInRect:CGRectMake(10, 80, 100, 60) withFont:[UIFont systemFontOfSize:12.0] lineBreakMode:UILineBreakModeCharacterWrap alignment:UITextAlignmentCenter];
 	NSString *temperatureString = [NSString stringWithFormat:@"%@ ℃", temperature];
 	[temperatureString drawInRect:CGRectMake(140, 56, 100, 20) withFont:[UIFont boldSystemFontOfSize:18.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentLeft];
 	NSString *rainString = [NSString stringWithFormat:@"降雨機率： %@ %%", rain];
 	[rainString drawInRect:CGRectMake(140, 80, 100, 20) withFont:[UIFont systemFontOfSize:12.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentLeft];
-	
+
 }
 - (IBAction)copy:(id)sender
 {
@@ -203,22 +203,18 @@
 {
 	return YES;
 }
-
 - (NSString *)accessibilityLabel
 {
 	return [self _shortDescription];
 }
-
 - (NSString *)accessibilityValue
 {
 	return [NSString stringWithFormat:@"%@ - %@\n", beginTime, endTime];
 }
-
 - (UIAccessibilityTraits)accessibilityTraits
 {
 	return UIAccessibilityTraitNone;
 }
-
 
 @synthesize title;
 @synthesize description;

@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -35,11 +35,11 @@
 
 @implementation TWWeekResultTableViewController
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[forecastArray release];
 	[publishTime release];
-    [super dealloc];
+	[super dealloc];
 }
 
 #pragma mark UIViewContoller Methods
@@ -48,12 +48,12 @@
 {
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];	
+	[item release];
 }
 
-- (void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning]; 
+    [super didReceiveMemoryWarning];
 }
 
 - (IBAction)navBarAction:(id)sender
@@ -78,18 +78,18 @@
 {
 	if ([[TWWeatherAppDelegate sharedDelegate] confirmFacebookLoggedIn]) {
 		NSString *feedTitle = [NSString stringWithFormat:@"%@ 一周天氣預報", [self title]];
-		NSString *description = [self _feedDescription];	
+		NSString *description = [self _feedDescription];
 		NSString *attachment = [NSString stringWithFormat:@"{\"name\":\"%@\", \"description\":\"%@\"}", feedTitle, description];
 		NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys: API_KEY, @"api_key", feedTitle,  @"user_message_prompt", attachment, @"attachment", nil];
-		
+
 		[[TWWeatherAppDelegate sharedDelegate].facebook dialog:@"stream.publish" andParams:params andDelegate:[TWWeatherAppDelegate sharedDelegate]];
-	}	
+	}
 }
 - (void)shareViaSocialComposer
 {
 	NSString *feedTitle = [NSString stringWithFormat:@"%@ 一周天氣預報", [self title]];
 	NSString *description = [self _feedDescription];
-	
+
 	NSString *text = [NSString stringWithFormat:@"%@ %@", feedTitle, description];
 	[[TWSocialComposer sharedComposer] showWithText:text];
 }
@@ -106,7 +106,7 @@
 	else if (buttonIndex == 2) {
 		[TWSocialComposer sharedComposer].mode = TWSocialComposerTwitterMode;
 		[self shareViaSocialComposer];
-	}	
+	}
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate
@@ -119,10 +119,10 @@
 {
     return [forecastArray count];
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"Cell";
-    
+
     TWWeekResultCell *cell = (TWWeekResultCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[TWWeekResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];

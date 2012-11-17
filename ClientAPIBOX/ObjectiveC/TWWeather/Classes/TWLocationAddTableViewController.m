@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -37,18 +37,18 @@
 
 #pragma mark Routines
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[contentArray release];
-    [super dealloc];
+	[super dealloc];
 }
 
 #pragma mark -
 #pragma mark UIViewContoller Methods
 
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction:)];
 	self.navigationItem.leftBarButtonItem = cancelItem;
 	[cancelItem release];
@@ -77,30 +77,30 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+	return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [contentArray count];
+	return [contentArray count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    static NSString *CellIdentifier = @"Cell";
+	static NSString *CellIdentifier = @"Cell";
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+	}
 	NSDictionary *d = [contentArray objectAtIndex:indexPath.row];
 	NSString *name = [d valueForKey:@"name"];
 	cell.textLabel.text = name;
-    return cell;
+	return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (delegate && [delegate respondsToSelector:@selector(locationAddTableViewController:didSelectedLocationIdentifier:)]) {
-		NSUInteger filterID = [[[self.contentArray objectAtIndex:indexPath.row] objectForKey:@"filterID"] intValue];		
+		NSUInteger filterID = [[[self.contentArray objectAtIndex:indexPath.row] objectForKey:@"filterID"] intValue];
 		[delegate locationAddTableViewController:self didSelectedLocationIdentifier:filterID];
 		[[self.navigationController compitibaleParentViewController] dismissModalViewControllerAnimated:YES];
 	}

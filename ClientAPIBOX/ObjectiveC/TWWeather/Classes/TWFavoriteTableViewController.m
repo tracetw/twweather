@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -46,7 +46,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 
 #pragma mark Routines
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[self viewDidUnload];
 	[_filteredArray release];
@@ -55,13 +55,13 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	[warningArray release];
 	[weekDictionary release];
 	[updateDate release];
-    [super dealloc];
+	[super dealloc];
 }
 
 - (void)viewDidUnload
 {
 	[super viewDidLoad];
-	[loadingView release];	
+	[loadingView release];
 	loadingView = nil;
 	[errorLabel release];
 	errorLabel = nil;
@@ -71,13 +71,13 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 
 #pragma mark UIViewContoller Methods
 
-- (void)loadView 
+- (void)loadView
 {
 	UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
 	view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	view.backgroundColor = [UIColor colorWithHue:1.0 saturation:0.0 brightness:0.9 alpha:1.0];
 	self.view = view;
-	
+
 	errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 200)];
 	errorLabel.textAlignment = UITextAlignmentCenter;
 	errorLabel.numberOfLines = 10;
@@ -86,21 +86,21 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	errorLabel.shadowColor = [UIColor whiteColor];
 	errorLabel.shadowOffset = CGSizeMake(0, 2);
 	[self.view addSubview:errorLabel];
-	
+
 	UITableView *aTableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
 	aTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	aTableView.delegate = self;
 	aTableView.dataSource = self;
 	self.tableView = aTableView;
 	[self.view addSubview:self.tableView];
-	
-	loadingView = [[TWLoadingView alloc] initWithFrame:CGRectMake(100, 100, 120, 120)];	
+
+	loadingView = [[TWLoadingView alloc] initWithFrame:CGRectMake(100, 100, 120, 120)];
 }
 
-- (void)viewDidLoad 
-{	
+- (void)viewDidLoad
+{
 	[super viewDidLoad];
-	
+
 	if (!_favArray) {
 		_favArray = [[NSMutableArray alloc] init];
 	}
@@ -108,9 +108,9 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	if (savedResult) {
 		[_favArray setArray:savedResult];
 	}
-	
+
 	if (!_filterArray) {
-		_filterArray = [[NSMutableArray alloc] init];		
+		_filterArray = [[NSMutableArray alloc] init];
 	}
 	NSArray *favoitesSetting = [[NSUserDefaults standardUserDefaults] objectForKey:favoitesPreferenceName];
 	if (!favoitesSetting) {
@@ -118,7 +118,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 		[[NSUserDefaults standardUserDefaults] setObject:favoitesSetting forKey:favoitesPreferenceName];
 	}
 	[_filterArray setArray:favoitesSetting];
-	
+
 	if (!_filteredArray) {
 		_filteredArray = [[NSMutableArray alloc] init];
 	}
@@ -127,11 +127,11 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	if (!warningArray) {
 		warningArray = [[NSMutableArray alloc] init];
 	}
-	
+
 	if (!weekDictionary) {
 		weekDictionary = [[NSMutableDictionary alloc] init];
 	}
-	
+
 	dataLoaded = NO;
 }
 
@@ -141,20 +141,20 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	if (!dataLoaded) {
 		[self loadData];
 		dataLoaded = YES;
-	}	
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-		
+
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(changeSetting:)];
 	self.tabBarController.navigationItem.rightBarButtonItem = item;
 	[item release];
-	
+
 	UIBarButtonItem *reloadItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reload:)];
 	self.tabBarController.navigationItem.leftBarButtonItem = reloadItem;
-	[reloadItem release];	
+	[reloadItem release];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -167,9 +167,9 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	self.tabBarController.navigationItem.leftBarButtonItem = nil;
 }
 
-- (void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
+	[super didReceiveMemoryWarning];
 	if (!self.view) {
 		[_filterArray release];
 		_filterArray = nil;
@@ -177,11 +177,11 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 		_filteredArray = nil;
 		[_favArray release];
 		_favArray = nil;
-		[warningArray release];	
+		[warningArray release];
 		warningArray = nil;
 		[weekDictionary release];
 		weekDictionary = nil;
-	}	
+	}
 }
 
 #pragma mark -
@@ -212,9 +212,9 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 {
 	if (isLoading || isLoadingWeek) {
 		return;
-	}	
-	
-	self.tabBarController.selectedIndex = 0;	
+	}
+
+	self.tabBarController.selectedIndex = 0;
 	TWLocationSettingTableViewController *controller = [[TWLocationSettingTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	controller.delegate = self;
 	[controller setFilter:_filterArray];
@@ -240,14 +240,14 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 		if ([_favArray count]  > index) {
 			NSDictionary *d = [_favArray objectAtIndex:index];
 			[_filteredArray addObject:d];
-		}		
+		}
 	}
 }
 - (void)loadData
 {
 	[self showLoadingView];
 	[[TWAPIBox sharedBox] fetchAllForecastsWithDelegate:self userInfo:nil];
-	[[TWAPIBox sharedBox] fetchWarningsWithDelegate:self userInfo:nil];	
+	[[TWAPIBox sharedBox] fetchWarningsWithDelegate:self userInfo:nil];
 }
 - (void)showLoadingView
 {
@@ -258,7 +258,6 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 }
 - (void)hideLoadingView
 {
-//	[loadingView removeFromSuperview];
 	[loadingView stopAnimating];
 	isLoading = NO;
 	self.tableView.userInteractionEnabled = YES;
@@ -286,14 +285,14 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 		}
 		return count;
 	}
-	
+
 	if ([_filteredArray count]) {
 		return 2;
 	}
 	return 0;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	static NSString *WarningCellIdentifier = @"WarningCellIdentifier";
 
 	if (indexPath.section == 0) {
@@ -315,12 +314,12 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 		}
 		return cell;
 	}
-	
-    static NSString *CellIdentifier = @"Cell";
+
+	static NSString *CellIdentifier = @"Cell";
 	static NSString *SectionCellIdentifier = @"SectionCell";
-	
+
 	NSDictionary *item = [_filteredArray objectAtIndex:indexPath.section - 1];
-	
+
 	if (indexPath.row == 0) {
 		TWFavoriteSectionCell *cell = (TWFavoriteSectionCell *)[tableView dequeueReusableCellWithIdentifier:SectionCellIdentifier];
 		if (cell == nil) {
@@ -337,12 +336,12 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 		[cell setNeedsDisplay];
 		return cell;
 	}
-    
-    TWForecastResultCell *cell = (TWForecastResultCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[TWForecastResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-	
+
+	TWForecastResultCell *cell = (TWForecastResultCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[TWForecastResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+	}
+
 	if ([item isKindOfClass:[NSDictionary class]]) {
 		NSDictionary *dictionary = [[item objectForKey:@"items"] objectAtIndex:0];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -356,18 +355,18 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 		NSString *endTimeString = [dictionary objectForKey:@"endTime"];
 		NSDate *endDate = [[TWAPIBox sharedBox] dateFromString:endTimeString];
 		cell.endTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:endDate];
-		
+
 		NSString *imageString = [[TWWeatherAppDelegate sharedDelegate] imageNameWithTimeTitle:cell.title description:cell.description ];
 		cell.weatherImage = [UIImage imageNamed:imageString];
-		
+
 		[cell setNeedsDisplay];
 	}
-    return cell;
+	return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:NO];
-	
+
 	if (isLoading || isLoadingWeek) {
 		return;
 	}
@@ -379,8 +378,8 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 			[[TWWeatherAppDelegate sharedDelegate] pushViewController:webController animated:YES];
 			[webController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.cpa.gov.tw/"]]];
 			[webController release];
-			return;			
-		}		
+			return;
+		}
 		NSDictionary *dictionary = [warningArray objectAtIndex:indexPath.row];
 		TWOverviewViewController *controller = [[TWOverviewViewController alloc] init];
 		[controller setText:[dictionary objectForKey:@"text"]];
@@ -389,25 +388,25 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 		[controller release];
 		return;
 	}
-	
+
 	NSDictionary *dictionary = [_filteredArray objectAtIndex:indexPath.section - 1];
-	
+
 	if (indexPath.row == 0) {
 		NSString *weekLocation = [dictionary objectForKey:@"id"];
-		
+
 		if ([weekDictionary valueForKey:weekLocation]) {
 			NSDictionary *result = [weekDictionary valueForKey:weekLocation];
 			[self pushWeekViewController:result];
 			return;
 		}
-		
+
 		isLoadingWeek = YES;
 		loadingWeekIndex = indexPath.section - 1;
 		[tableView reloadData];
 		[[TWAPIBox sharedBox] fetchWeekWithLocationIdentifier:weekLocation delegate:self userInfo:nil];
 		return;
 	}
-	
+
 	TWForecastResultTableViewController *controller = [[TWForecastResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	controller.title = [dictionary objectForKey:@"locationName"];
 	controller.forecastArray = [dictionary objectForKey:@"items"];
@@ -418,13 +417,13 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 		NSDictionary *result = [weekDictionary valueForKey:weekLocation];
 		controller.weekDictionary = result;
 	}
-		
+
 	[self.navigationController pushViewController:controller animated:YES];
 	[controller release];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
-{	
+{
 	if (section == [_filteredArray count] && self.updateDate) {
 		NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 		[formatter setDateStyle:kCFDateFormatterMediumStyle];
@@ -443,7 +442,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	}
 	if (indexPath.row == 0) {
 		return 30.0;
-	}	
+	}
 	return 112.0;
 }
 
@@ -501,24 +500,25 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 }
 - (void)APIBox:(TWAPIBox *)APIBox didFailedFetchWarningsWithError:(NSError *)error
 {
-	
+
 }
 
 - (void)APIBox:(TWAPIBox *)APIBox didFetchWeek:(id)result identifier:(NSString *)identifier userInfo:(id)userInfo
 {
 	isLoadingWeek = NO;
 	[self.tableView reloadData];
-	
+
 	if ([result isKindOfClass:[NSDictionary class]]) {
 		[weekDictionary setObject:result forKey:identifier];
 		[self pushWeekViewController:result];
 	}
 }
+
 - (void)APIBox:(TWAPIBox *)APIBox didFailedFetchWeekWithError:(NSError *)error identifier:(NSString *)identifier userInfo:(id)userInfo
 {
 	isLoadingWeek = NO;
 	[self.tableView reloadData];
-	
+
 	[self pushErrorViewWithError:error];
 }
 

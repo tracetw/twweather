@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -31,7 +31,7 @@
 
 @implementation TWGlobalResultTableViewController
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[image release];
 	[description release];
@@ -40,7 +40,7 @@
 	[avgRain release];
 	[pubDate release];
 	[validDate release];
-    [super dealloc];
+	[super dealloc];
 }
 
 - (void)viewDidLoad
@@ -53,16 +53,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+	return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+	return 5;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	static NSString *ImageCellIdentifier = @"ImageCell";
-	
+
 	if (indexPath.row == 0) {
 		UITableViewCell *imageCell = [tableView dequeueReusableCellWithIdentifier:ImageCellIdentifier];
 		if (imageCell == nil) {
@@ -71,14 +71,14 @@
 		imageCell.imageView.image = self.image;
 		return imageCell;
 	}
-	
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
+
+	static NSString *CellIdentifier = @"Cell";
+
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+	}
+
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 	switch (indexPath.row) {
@@ -113,15 +113,15 @@
 		default:
 			break;
 	}
-	
-    return cell;
+
+	return cell;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
 	if (![pubDate length]) {
 		return nil;
 	}
-	
+
 	NSMutableString *s = [NSMutableString string];
 	[s appendFormat:NSLocalizedString(@"Published at: %@\n", @""), pubDate];
 	[s appendString:validDate];
@@ -131,7 +131,7 @@
 {
 	if (indexPath.row == 0) {
 		return 120.0;
-	}	
+	}
 	return 44.0;
 }
 
@@ -143,5 +143,6 @@
 @synthesize avgRain;
 @synthesize pubDate;
 @synthesize validDate;
+
 @end
 

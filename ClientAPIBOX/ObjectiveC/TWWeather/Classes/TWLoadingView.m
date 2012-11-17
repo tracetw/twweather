@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -36,7 +36,7 @@ static NSString *TWLoadingViewAnimationID = @"TWLoadingViewAnimationID";
 - (void)dealloc
 {
 	[activityIndicator release];
-    [super dealloc];
+	[super dealloc];
 }
 
 - (void)resetActivityIndicator
@@ -45,30 +45,30 @@ static NSString *TWLoadingViewAnimationID = @"TWLoadingViewAnimationID";
 	CGFloat x = (frame.size.width - 40) / 2;
 	CGFloat y = (frame.size.height - 40) / 2;
 	CGRect rect = CGRectMake(x, y, 40, 40);
-	activityIndicator.frame = rect;	
+	activityIndicator.frame = rect;
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
-    if (self = [super initWithFrame:frame]) {
+	if (self = [super initWithFrame:frame]) {
 		originalFrame = frame;
 		self.backgroundColor = [UIColor clearColor];
 		activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 		activityIndicator.hidesWhenStopped = YES;
 		[self resetActivityIndicator];
 		[self addSubview:activityIndicator];
-    }
-    return self;
+	}
+	return self;
 }
 - (void)drawRect:(CGRect)rect
 {
-	CGContextRef context = UIGraphicsGetCurrentContext();	
+	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGRect selfRect = [self bounds];
 	CGMutablePathRef path = CGPathCreateMutable();
 	CGFloat radius = 10;
-	
+
 	CGFloat left = selfRect.origin.x + 10, top = selfRect.origin.y + 10, width = selfRect.size.width - 20, height = selfRect.size.height - 20;
-	
+
 	CGPathMoveToPoint(path, NULL, left, top + radius);
 	CGPathAddArcToPoint(path, NULL, left, top, left + radius, top, radius);
 	CGPathAddLineToPoint(path, NULL, left + width - radius, top);
@@ -76,10 +76,10 @@ static NSString *TWLoadingViewAnimationID = @"TWLoadingViewAnimationID";
 	CGPathAddLineToPoint(path, NULL, left + width, top + height - radius);
 	CGPathAddArcToPoint(path, NULL, left + width, top + height, left + width - radius, top + height, radius);
 	CGPathAddLineToPoint(path, NULL, left + radius, top + height);
-	CGPathAddArcToPoint(path, NULL, left, top + height, left, top + height - radius, radius);	
+	CGPathAddArcToPoint(path, NULL, left, top + height, left, top + height - radius, radius);
 	CGPathCloseSubpath(path);
 	CGContextAddPath(context, path);
-	
+
 	CGFloat black[] = {0.0, 0.0, 0.0, 0.7 * self.opaque};
 	CGContextSetFillColor(context, black);
 	CGContextFillPath(context);
@@ -104,23 +104,23 @@ static NSString *TWLoadingViewAnimationID = @"TWLoadingViewAnimationID";
 	if (![self superview]) {
 		return;
 	}
-	
+
 	[activityIndicator stopAnimating];
-	
+
 	CGRect newFrame = self.frame;
 	newFrame.origin.x += 50;
 	newFrame.origin.y += 50;
 	newFrame.size.width -= 100;
 	newFrame.size.height -= 100;
-	
+
 	[UIView beginAnimations:TWLoadingViewAnimationID context:NULL];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDuration:0.1];
 	[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
 	self.frame = newFrame;
-	
-	[UIView commitAnimations];	
+
+	[UIView commitAnimations];
 }
 
-
 @end
+

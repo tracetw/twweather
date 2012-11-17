@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -34,12 +34,12 @@
 
 @implementation TWBasicForecastTableViewController
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[self viewDidUnload];
 	[_array release];
 	[_filteredArray release];
-    [super dealloc];
+	[super dealloc];
 }
 - (void)viewDidUnload
 {
@@ -65,7 +65,6 @@
 	if (!_filteredArray) {
 		_filteredArray = [[NSMutableArray alloc] init];
 	}
-	
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -84,19 +83,19 @@
 	return self;
 }
 
-- (void)loadView 
+- (void)loadView
 {
 	UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
 	view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	self.view = view;
-	
+
 	UITableView *aTableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:self.style] autorelease];
 	aTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	aTableView.delegate = self;
 	aTableView.dataSource = self;
 	self.tableView = aTableView;
 	[self.view addSubview:self.tableView];
-	
+
 	if (!_searchBar) {
 		_searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
 		_searchBar.delegate = self;
@@ -112,21 +111,21 @@
 		_searchController = [[UISearchDisplayController alloc] initWithSearchBar:_searchBar contentsController:self];
 		_searchController.delegate = self;
 		_searchController.searchResultsDataSource = self;
-		_searchController.searchResultsDelegate = self;	
+		_searchController.searchResultsDelegate = self;
 	}
 }
 
 
 #pragma mark UIViewContoller Methods
 
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
 	[super viewDidLoad];
 	self.tableView.tableHeaderView = _searchBar;
 	self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", @"") style:UIBarButtonItemStyleBordered target:nil action:NULL] autorelease];
-	_firstTimeVisiable = YES;	
+	_firstTimeVisiable = YES;
 }
-- (void)viewWillAppear:(BOOL)animated 
+- (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 	if (_firstTimeVisiable) {
@@ -136,12 +135,6 @@
 	self.searchDisplayController.active = NO;
 }
 
-- (void)didReceiveMemoryWarning 
-{
-    [super didReceiveMemoryWarning]; 
-	// Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
-}
 - (void)setArray:(NSArray *)array
 {
 	[_array removeAllObjects];
@@ -185,26 +178,26 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+	return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	NSArray *array = [self arrayForTableView:tableView];
-    return [array count];
+	return [array count];
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
-    static NSString *CellIdentifier = @"Cell";
-    
-    TWLoadingCell *cell = (TWLoadingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	static NSString *CellIdentifier = @"Cell";
+
+	TWLoadingCell *cell = (TWLoadingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+	}
 	NSArray *array = [self arrayForTableView:tableView];
 	NSDictionary *dictionary = [array objectAtIndex:indexPath.row];
 	NSString *name = [dictionary objectForKey:@"name"];
 	cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0];
-    cell.textLabel.text = name;
+	cell.textLabel.text = name;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	if ([[dictionary objectForKey:@"isLoading"] boolValue]) {
 		[cell startAnimating];
@@ -212,10 +205,10 @@
 	else {
 		[cell stopAnimating];
 	}
-	
-    return cell;
+
+	return cell;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 }
 

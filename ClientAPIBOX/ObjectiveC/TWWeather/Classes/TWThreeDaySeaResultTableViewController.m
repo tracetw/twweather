@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -35,25 +35,18 @@
 
 @implementation TWThreeDaySeaResultTableViewController
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[forecastArray release];
 	[publishTime release];
     [super dealloc];
 }
 
-- (void)didReceiveMemoryWarning 
-{
-    [super didReceiveMemoryWarning]; 
-	// Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
-}
-
 - (void)viewDidLoad
 {
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];	
+	[item release];
 }
 
 #pragma mark -
@@ -83,10 +76,10 @@
 {
 	if ([[TWWeatherAppDelegate sharedDelegate] confirmFacebookLoggedIn]) {
 		NSString *feedTitle = [NSString stringWithFormat:@"%@ 三天漁業預報", [self title]];
-		NSString *description = [self _feedDescription];		
+		NSString *description = [self _feedDescription];
 		NSString *attachment = [NSString stringWithFormat:@"{\"name\":\"%@\", \"description\":\"%@\"}", feedTitle, description];
 		NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys: API_KEY, @"api_key", feedTitle,  @"user_message_prompt", attachment, @"attachment", nil];
-		
+
 		[[TWWeatherAppDelegate sharedDelegate].facebook dialog:@"stream.publish" andParams:params andDelegate:[TWWeatherAppDelegate sharedDelegate]];
 	}
 }
@@ -111,7 +104,7 @@
 	else if (buttonIndex == 2) {
 		[TWSocialComposer sharedComposer].mode = TWSocialComposerTwitterMode;
 		[self shareViaSocialComposer];
-	}	
+	}
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate
@@ -124,10 +117,10 @@
 {
     return [forecastArray count];
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"Cell";
-    
+
     TWThreeDaySeaCell *cell = (TWThreeDaySeaCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[TWThreeDaySeaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -135,13 +128,13 @@
 	NSDictionary *dictionary = [forecastArray objectAtIndex:indexPath.row];
 	NSString *dateString = [dictionary objectForKey:@"date"];
 	NSDate *date = [[TWAPIBox sharedBox] dateFromShortString:dateString];
-	cell.date = [[TWAPIBox sharedBox] shortDateStringFromDate:date];	
+	cell.date = [[TWAPIBox sharedBox] shortDateStringFromDate:date];
 	cell.description = [dictionary objectForKey:@"description"];
 	cell.wind = [dictionary objectForKey:@"wind"];
 	cell.windScale = [dictionary objectForKey:@"windScale"];
 	cell.wave = [dictionary objectForKey:@"wave"];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	
+
 	NSString *imageString = [[TWWeatherAppDelegate sharedDelegate] imageNameWithTimeTitle:@"" description:cell.description ];
 	cell.weatherImage = [UIImage imageNamed:imageString];
 
@@ -162,4 +155,3 @@
 @synthesize publishTime;
 
 @end
-

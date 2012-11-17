@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -45,7 +45,7 @@
 
 @implementation TWTideCellContentView
 
-- (void) dealloc
+- (void)dealloc
 {
 	[touchBeginDate release];
 	[super dealloc];
@@ -69,7 +69,7 @@
 }
 - (IBAction)copy:(id)sender
 {
-	[_delegate copy:sender];	
+	[_delegate copy:sender];
 }
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
@@ -88,7 +88,7 @@
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	if ( touchBeginDate && ([[NSDate date] timeIntervalSinceDate:touchBeginDate] > 1.0)) {	
+	if ( touchBeginDate && ([[NSDate date] timeIntervalSinceDate:touchBeginDate] > 1.0)) {
 		[self becomeFirstResponder];
 		[[UIMenuController sharedMenuController] update];
 		[[UIMenuController sharedMenuController] setTargetRect:CGRectMake(0, 0, 100, 100) inView:self];
@@ -110,12 +110,12 @@
 {
 	[_ourContentView removeFromSuperview];
 	[_ourContentView release];
-	
+
 	[dateString release];
 	[lunarDateString release];
-	
+
 	[tides release];
-	
+
 	[super dealloc];
 }
 - (void)_init
@@ -190,10 +190,8 @@
 	return UIAccessibilityTraitNone;
 }
 
-
 @synthesize dateString;
 @synthesize lunarDateString;
-
 @synthesize tides;
 
 @end

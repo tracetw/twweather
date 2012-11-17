@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -63,7 +63,7 @@
 }
 - (IBAction)copy:(id)sender
 {
-	[_delegate copy:sender];	
+	[_delegate copy:sender];
 }
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
@@ -82,7 +82,7 @@
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	if ( touchBeginDate && ([[NSDate date] timeIntervalSinceDate:touchBeginDate] > 1.0)) {	
+	if ( touchBeginDate && ([[NSDate date] timeIntervalSinceDate:touchBeginDate] > 1.0)) {
 		[self becomeFirstResponder];
 		[[UIMenuController sharedMenuController] update];
 		[[UIMenuController sharedMenuController] setTargetRect:CGRectMake(0, 0, 100, 100) inView:self];
@@ -104,15 +104,15 @@
 {
 	[_ourContentView removeFromSuperview];
 	[_ourContentView release];
-	
+
 	[date release];
 	[description release];
 	[wind release];
 	[windScale release];
 	[wave release];
 	[weatherImage release];
-	
-    [super dealloc];
+
+	[super dealloc];
 }
 - (void)_init
 {
@@ -120,15 +120,15 @@
 		CGRect cellFrame = CGRectMake(10, 1, 280, 110);
 		_ourContentView = [[TWThreeDaySeaCellContentView alloc] initWithFrame:cellFrame];
 		_ourContentView.delegate = self;
-		[self.contentView addSubview:_ourContentView];		
+		[self.contentView addSubview:_ourContentView];
 	}
 }
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+	if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
 		[self _init];
-    }
-    return self;
+	}
+	return self;
 }
 
 - (void)draw:(CGRect)bounds
@@ -138,7 +138,7 @@
 	[wind drawInRect:CGRectMake(10, 55, 260, 20) withFont:[UIFont systemFontOfSize:12.0]];
 	[windScale drawInRect:CGRectMake(10, 75, 260, 20) withFont:[UIFont systemFontOfSize:12.0]];
 	[wave drawInRect:CGRectMake(10, 95, 260, 20) withFont:[UIFont systemFontOfSize:12.0]];
-	
+
 	CGSize size = weatherImage.size;
 	[weatherImage drawInRect:CGRectMake(180, 20, size.width * 0.6, size.height * 0.6)];
 }
@@ -177,7 +177,6 @@
 {
 	return UIAccessibilityTraitNone;
 }
-
 
 @synthesize date;
 @synthesize description;

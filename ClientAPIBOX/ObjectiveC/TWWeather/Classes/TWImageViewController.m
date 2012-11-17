@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -42,7 +42,7 @@
 	_image = nil;
 
 	[self viewDidUnload];
-    [super dealloc];
+	[super dealloc];
 }
 - (void)viewDidUnload
 {
@@ -54,22 +54,22 @@
 
 #pragma mark UIViewContoller Methods
 
-- (void)loadView 
+- (void)loadView
 {
 	UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)] autorelease];
-	scrollView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;	
+	scrollView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	scrollView.backgroundColor = [UIColor blackColor];
 	scrollView.canCancelContentTouches = NO;
-	scrollView.clipsToBounds = YES; 
+	scrollView.clipsToBounds = YES;
 	scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
 	scrollView.minimumZoomScale = 1;
 	scrollView.maximumZoomScale = 2.5;
 	scrollView.scrollEnabled = YES;
 	scrollView.delegate = self;
 	scrollView.userInteractionEnabled = YES;
-	
+
 	self.view = scrollView;
-	
+
 	UIImageView *imageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
 	imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	imageView.backgroundColor = [UIColor blackColor];
@@ -77,36 +77,36 @@
 	self.imageView = imageView;
 	[scrollView setContentSize:self.imageView.frame.size];
 	[scrollView addSubview:imageView];
-	
-	loadingView = [[TWLoadingView alloc] initWithFrame:CGRectMake(100, 100, 120, 120)];	
+
+	loadingView = [[TWLoadingView alloc] initWithFrame:CGRectMake(100, 100, 120, 120)];
 }
-- (void)viewDidLoad 
-{	
-    [super viewDidLoad];	
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
 	self.imageView.image = self.image;
 	[(UIScrollView *)self.view setContentSize:_imageView.frame.size];
-	
+
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];		
+	[item release];
 }
-- (void)viewWillAppear:(BOOL)animated 
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+	[super viewWillAppear:animated];
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
 }
-- (void)viewWillDisappear:(BOOL)animated 
+- (void)viewWillDisappear:(BOOL)animated
 {
 	[[ObjectivePlurk sharedInstance] cancelAllRequest];
-	
-	if (!pushingPlurkComposer) {	
+
+	if (!pushingPlurkComposer) {
 		self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
 		[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 	}
 	pushingPlurkComposer = NO;
-	
-	[super viewWillDisappear:animated];	
+
+	[super viewWillDisappear:animated];
 }
 
 #pragma mark -
@@ -136,7 +136,7 @@
 - (void)shareImageViaFacebook
 {
 	if ([[TWWeatherAppDelegate sharedDelegate] confirmFacebookLoggedIn]) {
-		NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:API_KEY, @"api_key", _image, @"picture", self.title, @"caption", nil];	
+		NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:API_KEY, @"api_key", _image, @"picture", self.title, @"caption", nil];
 		[[TWWeatherAppDelegate sharedDelegate].facebook requestWithMethodName: @"photos.upload" andParams: params andHttpMethod: @"POST" andDelegate:self];
 	}
 }
@@ -145,12 +145,12 @@
 	if (![[ObjectivePlurk sharedInstance] isLoggedIn]) {
 		[[TWSocialComposer sharedComposer] showLoginAlert];
 		return;
-	}	
+	}
 	NSString *tmpFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.png"];
 	[UIImagePNGRepresentation(_image) writeToFile:tmpFile atomically:YES];
 	[self showLoadingView];
 	[[ObjectivePlurk sharedInstance] uploadPicture:tmpFile delegate:self userInfo:nil];
-	
+
 }
 - (void)doCopy
 {
@@ -162,7 +162,7 @@
 {
 	NSString *alertTitle = nil;
 	NSString *message = nil;
-	
+
 	if (error) {
 		alertTitle = NSLocalizedString(@"Failed to save your image.", @"");
 		message = [error localizedDescription];
@@ -204,10 +204,10 @@
 			break;
 		case 1:
 			[self shareImageViaFacebook];
-			break;			
+			break;
 		case 2:
 			[self shareImageViaPlurk];
-			break;						
+			break;
 		case 3:
 			[self save];
 			break;
@@ -235,21 +235,21 @@
 }
 - (void)request:(FBRequest*)request didLoad:(id)result
 {
-	[self hideLoadingView];	
+	[self hideLoadingView];
 
 	NSString *feedTitle = self.title;
 	NSString *name = [result objectForKey:@"caption"];
-	NSString *link = [result objectForKey:@"link"];	
+	NSString *link = [result objectForKey:@"link"];
 	NSString *attachment = [NSString stringWithFormat:@"{\"name\":\"%@\", \"href\":\"%@\"}", name, link];
-	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:API_KEY, @"api_key", feedTitle,  @"user_message_prompt", attachment, @"attachment", nil];
+	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:API_KEY, @"api_key", feedTitle,	 @"user_message_prompt", attachment, @"attachment", nil];
 	[[TWWeatherAppDelegate sharedDelegate].facebook dialog:@"stream.publish" andParams:params andDelegate:[TWWeatherAppDelegate sharedDelegate]];
 }
 - (void)request:(FBRequest*)request didFailWithError:(NSError*)error
 {
-	[self hideLoadingView];	
+	[self hideLoadingView];
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Unable to upload image to Facebook.", @"") message:[error localizedDescription] delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
 	[alertView show];
-	[alertView release];	
+	[alertView release];
 }
 
 #pragma mark -
@@ -257,7 +257,7 @@
 
 - (void)plurk:(ObjectivePlurk *)plurk didUploadPicture:(NSDictionary *)result
 {
-	[self hideLoadingView];	
+	[self hideLoadingView];
 	NSString *full = [result valueForKey:@"full"];
 	if (full) {
 		NSString *text = [NSString stringWithFormat:@"%@ %@", full, self.title];
@@ -268,14 +268,14 @@
 }
 - (void)plurk:(ObjectivePlurk *)plurk didFailUploadingPicture:(NSError *)error
 {
-	[self hideLoadingView];	
+	[self hideLoadingView];
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Unable to upload image to Plurk.", @"") message:[error localizedDescription] delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
 	[alertView show];
 	[alertView release];
 }
 
 @synthesize imageView = _imageView;
-@synthesize imageURL = _imageURL;	
+@synthesize imageURL = _imageURL;
 @dynamic image;
 
 @end

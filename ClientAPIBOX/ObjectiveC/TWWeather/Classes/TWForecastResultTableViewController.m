@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -38,12 +38,12 @@
 
 @implementation TWForecastResultTableViewController
 
-- (void)dealloc 
+- (void)dealloc
 {
 	self.forecastArray = nil;
 	self.weekLocation = nil;
 	self.weekDictionary = nil;
-    [super dealloc];
+	[super dealloc];
 }
 
 #pragma mark UIViewContoller Methods
@@ -52,16 +52,16 @@
 {
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];	
+	[item release];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
 	[[TWAPIBox sharedBox] cancelAllRequestWithDelegate:self];
 }
-- (void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning]; 
+	[super didReceiveMemoryWarning];
 }
 
 - (IBAction)navBarAction:(id)sender
@@ -91,7 +91,7 @@
 		NSString *description = [self _feedDescription];
 		NSString *attachment = [NSString stringWithFormat:@"{\"name\":\"%@\", \"description\":\"%@\"}", feedTitle, description];
 		NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys: API_KEY, @"api_key", feedTitle,  @"user_message_prompt", attachment, @"attachment", nil];
-		
+
 		[[TWWeatherAppDelegate sharedDelegate].facebook dialog:@"stream.publish" andParams:params andDelegate:[TWWeatherAppDelegate sharedDelegate]];
 	}
 }
@@ -137,12 +137,12 @@
 	}
 	else if (section == 1) {
 		return 1;
-	}	
+	}
 	return 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	static NSString *CellIdentifier = @"Cell";
 	static NSString *NormalIdentifier = @"NormalCell";
 	if (indexPath.section == 0) {
@@ -162,10 +162,10 @@
 		NSString *endTimeString = [dictionary objectForKey:@"endTime"];
 		NSDate *endDate = [[TWAPIBox sharedBox] dateFromString:endTimeString];
 		cell.endTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:endDate];
-		
+
 		NSString *imageString = [[TWWeatherAppDelegate sharedDelegate] imageNameWithTimeTitle:cell.title description:cell.description ];
 		cell.weatherImage = [UIImage imageNamed:imageString];
-		
+
 		[cell setNeedsDisplay];
 		return cell;
 	}
@@ -177,16 +177,16 @@
 		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		cell.textLabel.text = @"一週預報";
-		
+
 		if (isLoadingWeek) {
 			[cell startAnimating];
 		}
 		else {
 			[cell stopAnimating];
 		}
-		
+
 		return cell;
-	}	
+	}
 	return nil;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -245,7 +245,7 @@
 {
 	isLoadingWeek = NO;
 	[self.tableView reloadData];
-	
+
 	[self pushErrorViewWithError:error];
 }
 

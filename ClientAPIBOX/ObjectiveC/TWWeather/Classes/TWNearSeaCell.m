@@ -45,7 +45,7 @@
 
 @implementation TWNearSeaCellContentView
 
-- (void) dealloc
+- (void)dealloc
 {
 	[touchBeginDate release];
 	[super dealloc];

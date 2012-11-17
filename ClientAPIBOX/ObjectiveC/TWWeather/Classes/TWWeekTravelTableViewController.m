@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -34,32 +34,32 @@
 
 #pragma mark UIViewContoller Methods
 
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
 	[super viewDidLoad];
 	self.array = [[TWAPIBox sharedBox] weekTravelLocations];
 	self.title = @"一週旅遊天氣預報";
 }
-- (void)viewWillAppear:(BOOL)animated 
+- (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 }
-- (void)viewDidAppear:(BOOL)animated 
+- (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
 }
-- (void)viewWillDisappear:(BOOL)animated 
+- (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
 }
-- (void)viewDidDisappear:(BOOL)animated 
+- (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	NSMutableDictionary *dictionary = [[self arrayForTableView:tableView] objectAtIndex:indexPath.row];
 	tableView.userInteractionEnabled = NO;
@@ -89,7 +89,6 @@
 	[self resetLoading];
 	[self pushErrorViewWithError:error];
 }
-
 
 @end
 

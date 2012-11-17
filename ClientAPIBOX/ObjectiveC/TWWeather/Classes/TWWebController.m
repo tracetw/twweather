@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -45,10 +45,10 @@
 	self.reloadItem = nil;
 }
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[self removeOutletsAndControls_TWWebController];
-    [super dealloc];
+	[super dealloc];
 }
 - (void)viewDidUnload
 {
@@ -59,9 +59,9 @@
 #pragma mark -
 #pragma mark UIViewContoller Methods
 
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:activityIndicatorView];
 	self.navigationItem.rightBarButtonItem = item;
 	[item release];
@@ -111,12 +111,12 @@
 	if ([error code] == -999) {
 		return;
 	}
-	
-	[activityIndicatorView startAnimating];	
+
+	[activityIndicatorView startAnimating];
 	[self updateButtonState];
 	[reloadItem setEnabled:YES];
 	[stopItem setEnabled:NO];
-	
+
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Failed to open web page.", @"") message:[error localizedDescription] delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
 	[alertView show];
 	[alertView release];
@@ -125,7 +125,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)aWebView
 {
 	self.title = [aWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
-	
+
 	[activityIndicatorView stopAnimating];
 	[self updateButtonState];
 	[reloadItem setEnabled:YES];

@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -29,9 +29,5 @@
 
 #import "TWBasicForecastTableViewController.h"
 
-@interface TWWeekTableViewController : TWBasicForecastTableViewController 
-{
-
-}
-
+@interface TWWeekTableViewController : TWBasicForecastTableViewController
 @end

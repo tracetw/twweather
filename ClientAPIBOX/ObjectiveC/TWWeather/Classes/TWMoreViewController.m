@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -56,28 +56,28 @@
 
 #pragma mark Table view methods
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+	return 2;
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (section == 0) {
 		return 4;
-	}		
+	}
 	else if (section == 1) {
 		return 3;
-	}	
+	}
 //	else if (section == 1) {
 //		return 1;
-//	}	
-	
-    return 0;
+//	}
+
+	return 0;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	static NSString *NormalIdentifier = @"NormalCell";
-    
+
 	if (indexPath.section == 0) {
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NormalIdentifier];
 		if (cell == nil) {
@@ -93,7 +93,7 @@
 			case 1:
 				cell.textLabel.text = @"中央氣象局網頁 PDA 版";
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-				break;				
+				break;
 			case 2:
 				cell.textLabel.text = @"氣象查詢：886-2-23491234";
 				cell.imageView.image = [UIImage imageNamed:@"tel.png"];
@@ -101,12 +101,12 @@
 			case 3:
 				cell.textLabel.text = @"地震查詢：886-2-23491168";
 				cell.imageView.image = [UIImage imageNamed:@"tel.png"];
-				break;				
+				break;
 			default:
 				break;
 		}
 		return cell;
-	}	
+	}
 	else if (indexPath.section == 1) {
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NormalIdentifier];
 		if (cell == nil) {
@@ -120,25 +120,25 @@
 				break;
 			case 1:
 				cell.textLabel.text = NSLocalizedString(@"About", @"");
-				break;				
+				break;
 			case 2:
 				cell.accessoryType = UITableViewCellAccessoryNone;
 				cell.textLabel.text = NSLocalizedString(@"Feedback", @"");
-				break;				
+				break;
 			default:
 				break;
 		}
 		return cell;
 	}
-	
+
 	return nil;
-	
+
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (indexPath.section == 0) {
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
-		
+
 		if (indexPath.row < 2) {
 			TWWebController *webController = [[TWWebController alloc] initWithNibName:@"TWWebController" bundle:[NSBundle mainBundle]];
 			[[TWWeatherAppDelegate sharedDelegate] pushViewController:webController animated:YES];
@@ -154,7 +154,7 @@
 			[webController release];
 			return;
 		}
-		
+
 		NSString *model = [UIDevice currentDevice].model;
 		if (![model isEqualToString:@"iPhone"]) {
 			NSString *title = [NSString stringWithFormat:NSLocalizedString(@"You can not make a phone call with an %@", @""), model];
@@ -162,7 +162,7 @@
 			[alertview show];
 			[alertview release];
 		}
-		
+
 		NSString *URLString = nil;
 		if (indexPath.row == 2) {
 			URLString = @"tel://+886223491234";
@@ -174,14 +174,14 @@
 			NSURL *URL = [NSURL URLWithString:URLString];
 			[[UIApplication sharedApplication] openURL:URL];
 		}
-		
+
 	}
 	else if (indexPath.section == 1) {
 		if (indexPath.row == 2) {
 			[self sendEmailAction:self];
 			return;
 		}
-		
+
 		UIViewController *controller = nil;
 		if (indexPath.row == 0) {
 			controller = [[TWSettingTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
@@ -192,7 +192,7 @@
 		if (controller) {
 			[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
 			[controller release];
-		}		
+		}
 	}
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

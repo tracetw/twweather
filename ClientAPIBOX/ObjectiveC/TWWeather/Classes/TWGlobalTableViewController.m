@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -36,10 +36,10 @@
 
 @implementation TWGlobalTableViewController
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[_locations release];
-    [super dealloc];
+	[super dealloc];
 }
 
 - (void)_init
@@ -59,7 +59,7 @@
 	if (!_filteredArray) {
 		_filteredArray = [[NSMutableArray alloc] init];
 	}
-	
+
 	if (!_locations) {
 		_locations = [[NSMutableArray alloc] init];
 		NSArray *allLocations = [[TWAPIBox sharedBox] globalCityLocations];
@@ -108,12 +108,6 @@
 	[super viewDidLoad];
 	self.title = @"全球都市";
 }
-- (void)didReceiveMemoryWarning 
-{
-    [super didReceiveMemoryWarning]; 
-	// Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
-}
 
 #pragma mark UITableViewDataSource and UITableViewDelegate
 
@@ -128,7 +122,7 @@
 	else if (tableView == self.searchDisplayController.searchResultsTableView) {
 		return 1;
 	}
-    return 1;
+	return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -142,8 +136,8 @@
 	}
 	else if (tableView == self.searchDisplayController.searchResultsTableView) {
 		return [_filteredArray count];
-	}	
-    return 0;
+	}
+	return 0;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -153,14 +147,14 @@
 	}
 	return nil;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
-    static NSString *CellIdentifier = @"Cell";
-    
-    TWLoadingCell *cell = (TWLoadingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[TWLoadingCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	static NSString *CellIdentifier = @"Cell";
+
+	TWLoadingCell *cell = (TWLoadingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[TWLoadingCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+	}
 	NSDictionary *dictionary = nil;
 	if (tableView == self.tableView) {
 		NSDictionary *sectionDictionary = [_locations objectAtIndex:indexPath.section];
@@ -175,33 +169,32 @@
 	}
 	cell.textLabel.text = [dictionary objectForKey:@"name"];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	
+
 	if ([[dictionary objectForKey:@"isLoading"] boolValue]) {
 		[cell startAnimating];
 	}
 	else {
 		[cell stopAnimating];
 	}
-	
-    return cell;
+
+	return cell;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSMutableDictionary *dictionary  = nil;
+	NSMutableDictionary *dictionary	 = nil;
 	if (tableView == self.tableView) {
 		NSDictionary *sectionDictionary = [_locations objectAtIndex:indexPath.section];
 		NSArray *items = [sectionDictionary objectForKey:@"items"];
 		dictionary = [items objectAtIndex:indexPath.row];
 	}
 	else {
-		dictionary = [_filteredArray objectAtIndex:indexPath.row];	
+		dictionary = [_filteredArray objectAtIndex:indexPath.row];
 	}
-	if (dictionary) {	
-		NSString *identifier = [dictionary objectForKey:@"identifier"];		
+	if (dictionary) {
+		NSString *identifier = [dictionary objectForKey:@"identifier"];
 		[dictionary setObject:[NSNumber numberWithBool:YES] forKey:@"isLoading"];
 		self.tableView.userInteractionEnabled = NO;
-		[self.tableView reloadData];		
-//		[[TWAPIBox sharedBox] fetchOBSWithLocationIdentifier:identifier delegate:self userInfo:nil];		
+		[self.tableView reloadData];
 		[[TWAPIBox sharedBox] fetchGlobalCityWithLocationIdentifier:identifier delegate:self userInfo:nil];
 	}
 }
@@ -217,12 +210,12 @@
 		NSArray *items = [d objectForKey:@"items"];
 		for (NSMutableDictionary *item in items) {
 			[item setObject:[NSNumber numberWithBool:NO] forKey:@"isLoading"];
-		}		
+		}
 	}
 	[self.tableView reloadData];
 	[_searchController.searchResultsTableView reloadData];
 	self.tableView.userInteractionEnabled = YES;
-	_searchController.searchResultsTableView.userInteractionEnabled = YES;	
+	_searchController.searchResultsTableView.userInteractionEnabled = YES;
 }
 
 #pragma mark -
@@ -233,10 +226,10 @@
 	if ([result isKindOfClass:[NSDictionary class]]) {
 		TWGlobalResultTableViewController *controller = [[TWGlobalResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 		controller.title = [result objectForKey:@"locationName"];
-		
+
 		NSString *imageName = [[TWWeatherAppDelegate sharedDelegate] imageNameWithTimeTitle:@"" description:[result objectForKey:@"forecast"]];
 		UIImage *image = [UIImage imageNamed:imageName];
-		controller.image = image;		
+		controller.image = image;
 		controller.description = [result objectForKey:@"forecast"];
 		controller.temperature = [result objectForKey:@"temperature"];
 		controller.avgTemperature = [result objectForKey:@"avgTemperature"];

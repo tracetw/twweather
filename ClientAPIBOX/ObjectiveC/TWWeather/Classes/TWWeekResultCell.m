@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,7 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "TWWeekResultCell.h"
-
 
 @interface TWWeekResultCell (ProtectedMethods)
 - (void)draw:(CGRect)bounds;
@@ -45,7 +44,7 @@
 
 @implementation TWWeekResultCellContentView
 
-- (void) dealloc
+- (void)dealloc
 {
 	[touchBeginDate release];
 	[super dealloc];
@@ -69,7 +68,7 @@
 }
 - (IBAction)copy:(id)sender
 {
-	[_delegate copy:sender];	
+	[_delegate copy:sender];
 }
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
@@ -88,7 +87,7 @@
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	if ( touchBeginDate && ([[NSDate date] timeIntervalSinceDate:touchBeginDate] > 1.0)) {	
+	if (touchBeginDate && ([[NSDate date] timeIntervalSinceDate:touchBeginDate] > 1.0)) {
 		[self becomeFirstResponder];
 		[[UIMenuController sharedMenuController] update];
 		[[UIMenuController sharedMenuController] setTargetRect:CGRectMake(0, 0, 100, 100) inView:self];
@@ -115,7 +114,7 @@
 	[date release];
 	[description release];
 	[temperature release];
-    [super dealloc];
+	[super dealloc];
 }
 - (void)_init
 {
@@ -128,18 +127,18 @@
 }
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+	if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
 		[self _init];
-    }
-    return self;
-	
+	}
+	return self;
+
 }
 - (void)draw:(CGRect)bounds
 {
 	NSString *d = date;
 	if (day) {
 		d = [NSString stringWithFormat:@"%@ %@", date, day];
-	}	
+	}
 	[d drawInRect:CGRectMake(10, 2, 200, 15) withFont:[UIFont systemFontOfSize:14.0]];
 	[description drawInRect:CGRectMake(10, 23, 200, 30) withFont:[UIFont boldSystemFontOfSize:18.0]];
 	NSString *temperatureString = [NSString stringWithFormat:@"%@ ℃", temperature];

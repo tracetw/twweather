@@ -37,7 +37,7 @@
 {
 	[_error release];
 	[self viewDidUnload];
-    [super dealloc];
+	[super dealloc];
 }
 - (void)viewDidUnload
 {
@@ -71,7 +71,7 @@
 
 - (void)viewDidLoad 
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	NSString *description = [_error localizedDescription];
 	if (description) {
 		textLabel.text = description;
@@ -83,7 +83,7 @@
 
 - (void)didReceiveMemoryWarning 
 {
-    [super didReceiveMemoryWarning]; 
+	[super didReceiveMemoryWarning]; 
 }
 
 #pragma mark Getters/Setters

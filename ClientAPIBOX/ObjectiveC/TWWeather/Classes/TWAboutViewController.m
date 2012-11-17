@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -48,56 +48,52 @@
 
 #pragma mark UIViewContoller Methods
 
-- (void)loadView 
+- (void)loadView
 {
 	UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
 	scrollView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	scrollView.backgroundColor = [UIColor whiteColor];
 	scrollView.scrollEnabled = YES;
 	self.view = scrollView;
-	
+
 	UIView *contentView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 800)] autorelease];
 	contentView.backgroundColor = [UIColor whiteColor];
 	[self.view addSubview:contentView];
 	scrollView.contentSize = contentView.frame.size;
 
 	self.title = NSLocalizedString(@"About", @"");
-		
+
 	NSBundle *bundle = [NSBundle mainBundle];
 	NSDictionary *loaclizedDictionary = [bundle localizedInfoDictionary];
 	NSDictionary *infoDictionary = [bundle infoDictionary];
-	
+
 	UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 30)] autorelease];
 	label.font = [UIFont boldSystemFontOfSize:20.0];
 	label.text = [loaclizedDictionary objectForKey:@"CFBundleDisplayName"];
 	self.titleLabel = label;
 	[contentView addSubview:self.titleLabel];
-	
+
 	label = [[[UILabel alloc] initWithFrame:CGRectMake(20, 50, 280, 60)] autorelease];
 	label.font = [UIFont systemFontOfSize:14.0];
-	label.numberOfLines = 3;	
+	label.numberOfLines = 3;
 	label.text = [NSString stringWithFormat:NSLocalizedString(@"Version: %@\n%@", @""), [infoDictionary objectForKey:@"CFBundleVersion"], [loaclizedDictionary objectForKey:@"NSHumanReadableCopyright"]];
 	self.copyrightLabel = label;
 	[contentView addSubview:self.copyrightLabel];
-	
+
 	label = [[[UILabel alloc] initWithFrame:CGRectMake(20, 120, 280, 600)] autorelease];
 	label.font = [UIFont systemFontOfSize:12.0];
 	label.numberOfLines = 100;
-	NSMutableString *text = [NSMutableString stringWithString:NSLocalizedString(@"Data comes from Central Weather Bureau\n\n", @"")];	
+	NSMutableString *text = [NSMutableString stringWithString:NSLocalizedString(@"Data comes from Central Weather Bureau\n\n", @"")];
 	[text appendString:[NSString stringWithFormat:NSLocalizedString(@"%@ copyright ifno" , @""), [loaclizedDictionary objectForKey:@"CFBundleDisplayName"]]];
 	label.text = text;
 	self.externalLibraryLabel = label;
 	[contentView addSubview:self.externalLibraryLabel];
 }
 
-- (void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning]; 
+    [super didReceiveMemoryWarning];
 }
-
-
-
-
 
 @synthesize titleLabel;
 @synthesize copyrightLabel;
