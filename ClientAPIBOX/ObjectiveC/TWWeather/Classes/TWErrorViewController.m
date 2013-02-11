@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -49,14 +49,14 @@
 #pragma mark -
 #pragma mark UIViewContoller Methods
 
-- (void)loadView 
+- (void)loadView
 {
 	UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
 	view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	view.backgroundColor = [UIColor colorWithHue:1.0 saturation:0.0 brightness:0.9 alpha:1.0];
 	self.view = view;
 	self.title = NSLocalizedString(@"Error!", @"");
-	
+
 	textLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 200)];
 	textLabel.text = @"";
 	textLabel.textAlignment = UITextAlignmentCenter;
@@ -65,11 +65,11 @@
 	textLabel.backgroundColor = [UIColor colorWithHue:1.0 saturation:0.0 brightness:0.9 alpha:1.0];
 	textLabel.shadowColor = [UIColor whiteColor];
 	textLabel.shadowOffset = CGSizeMake(0, 2);
-	
+
 	[self.view addSubview:textLabel];
 }
 
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
 	[super viewDidLoad];
 	NSString *description = [_error localizedDescription];
@@ -81,9 +81,9 @@
 	}
 }
 
-- (void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning
 {
-	[super didReceiveMemoryWarning]; 
+	[super didReceiveMemoryWarning];
 }
 
 #pragma mark Getters/Setters

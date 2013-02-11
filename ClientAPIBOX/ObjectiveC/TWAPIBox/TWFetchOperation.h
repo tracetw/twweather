@@ -42,7 +42,6 @@
 #endif
 
 #define BASE_URL_STRING @"https://twweatherapi.herokuapp.com/"
-//#define BASE_URL_STRING @"http://localhost:5000/"
 
 @interface TWFetchOperation : NSOperation <LFSiteReachabilityDelegate>
 {
@@ -50,9 +49,9 @@
 	LFHTTPRequest *_request;
 	LFSiteReachability *_reachability;
 	id sessionInfo;
-	NSUInteger _retryCount;	
+	NSUInteger _retryCount;
 	NSString *note;
-	
+
 	BOOL runloopRunning;
 }
 

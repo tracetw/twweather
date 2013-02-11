@@ -35,7 +35,7 @@
 - (void)dealloc
 {
 	[self viewDidUnload];
-    [super dealloc];
+	[super dealloc];
 }
 
 - (void)viewDidUnload
@@ -92,7 +92,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
+	[super didReceiveMemoryWarning];
 }
 
 @synthesize titleLabel;

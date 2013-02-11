@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -38,11 +38,11 @@
 	NSMutableArray *warningArray;
 	NSMutableDictionary *weekDictionary;
 	NSDate *updateDate;
-	
+
 	TWLoadingView *loadingView;
 	UITableView *_tableView;
 	UILabel *errorLabel;
-	
+
 	BOOL dataLoaded;
 	BOOL isLoading;
 	BOOL isLoadingWeek;

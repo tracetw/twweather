@@ -29,7 +29,6 @@
 
 #import "TWForecastResultCell.h"
 
-
 @interface TWForecastResultCell (ProtectedMethods)
 - (void)draw:(CGRect)bounds;
 - (IBAction)copy:(id)sender;
@@ -124,7 +123,7 @@
 	[beginTime release];
 	[endTime release];
 	[weatherImage release];
-    [super dealloc];
+	[super dealloc];
 }
 - (void)_init
 {
@@ -138,10 +137,10 @@
 }
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+	if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
 		[self _init];
-    }
-    return self;
+	}
+	return self;
 
 }
 - (NSString *)_description

@@ -352,7 +352,6 @@ static TWAPIBox *apibox = nil;
 	NSString *failedActionString = [[request sessionInfo] objectForKey:@"failedAction"];
 	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:failedActionString, @"action", request, @"request", error, @"error", nil];
 	[self performSelectorOnMainThread:@selector(performFailedAction:) withObject:d waitUntilDone:NO];
-
 }
 
 @end

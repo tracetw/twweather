@@ -527,4 +527,3 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 @synthesize tableView = _tableView;
 
 @end
-

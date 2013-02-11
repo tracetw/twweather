@@ -199,7 +199,6 @@
 	runloopRunning = NO;
 }
 
-
 #pragma mark -
 
 - (void)reachability:(LFSiteReachability *)inReachability site:(NSURL *)inURL isAvailableOverConnectionType:(NSString *)inConnectionType
@@ -213,7 +212,6 @@
 	[delegate httpRequest:_request didFailWithError:LFHTTPRequestConnectionError];
 	runloopRunning = NO;
 }
-
 
 @synthesize sessionInfo;
 @synthesize note;

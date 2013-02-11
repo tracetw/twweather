@@ -145,4 +145,3 @@
 @synthesize validDate;
 
 @end
-
