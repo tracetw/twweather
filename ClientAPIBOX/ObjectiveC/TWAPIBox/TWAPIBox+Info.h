@@ -1,7 +1,7 @@
 //
 // TWAPIBox+Info.h
 //
-// Copyright (c)  Weizhong Yang (http://zonble.net)
+// Copyright (c) Weizhong Yang (http://zonble.net)
 // All Rights Reserved
 //
 // Redistribution and use in source and binary forms, with or without
@@ -41,14 +41,14 @@
 - (void)initInfoArrays;
 - (void)releaseInfoArrays;
 
-- (NSArray *)forecastLocations;
-- (NSArray *)weekLocations;
-- (NSArray *)weekTravelLocations;
-- (NSArray *)threeDaySeaLocations;
-- (NSArray *)nearSeaLocations;
-- (NSArray *)tideLocations;
-- (NSArray *)imageIdentifiers;
-- (NSArray *)OBSLocations;
-- (NSArray *)globalCityLocations;
+@property (readonly) NSArray *forecastLocations;
+@property (readonly) NSArray *weekLocations;
+@property (readonly) NSArray *weekTravelLocations;
+@property (readonly) NSArray *threeDaySeaLocations;
+@property (readonly) NSArray *nearSeaLocations;
+@property (readonly) NSArray *tideLocations;
+@property (readonly) NSArray *imageIdentifiers;
+@property (readonly) NSArray *OBSLocations;
+@property (readonly) NSArray *globalCityLocations;
 
 @end

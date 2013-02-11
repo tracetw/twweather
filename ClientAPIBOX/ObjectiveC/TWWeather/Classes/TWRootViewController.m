@@ -1,7 +1,7 @@
 //
 // TWRootViewController.m
 //
-// Copyright (c)  Weizhong Yang (http://zonble.net)
+// Copyright (c) Weizhong Yang (http://zonble.net)
 // All Rights Reserved
 //
 // Redistribution and use in source and binary forms, with or without
@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -52,40 +52,35 @@
 }
 - (void)viewDidUnload
 {
-	// Release anything that can be recreated in viewDidLoad or on demand.
-	// e.g. self.myOutlet = nil;
 	[super viewDidLoad];
 }
 
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	self.title = NSLocalizedString(@"Forecasts", @"");
 }
 
-- (void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning
 {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
+	[super didReceiveMemoryWarning];
 }
 
 #pragma mark Table view methods
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+	return 1;
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	return 10;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 #define U8(x) [NSString stringWithUTF8String:x]
-	
-    static NSString *CellIdentifier = @"Cell";    
+
+	static NSString *CellIdentifier = @"Cell";
 	TWLoadingCell *cell = (TWLoadingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		cell = [[[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -95,11 +90,11 @@
 	cell.imageView.image = nil;
 	if (indexPath.row != 0) {
 		[cell stopAnimating];
-	}		
+	}
 	switch (indexPath.row) {
 		case 0:
 			cell.textLabel.text = U8("目前天氣");
-			break;				
+			break;
 		case 1:
 			cell.textLabel.text = U8("關心天氣");
 			if (isLoadingOverview) {
@@ -108,28 +103,28 @@
 			else {
 				[cell stopAnimating];
 			}
-			break;				
+			break;
 		case 2:
 			cell.textLabel.text = U8("今明預報");
 			break;
 		case 3:
 			cell.textLabel.text = U8("一週天氣");
-			break;				
+			break;
 		case 4:
 			cell.textLabel.text = U8("一週旅遊");
-			break;				
+			break;
 		case 5:
 			cell.textLabel.text = U8("三天漁業");
-			break;				
+			break;
 		case 6:
 			cell.textLabel.text = U8("台灣近海");
-			break;				
+			break;
 		case 7:
 			cell.textLabel.text = U8("三天潮汐");
-			break;				
+			break;
 		case 8:
 			cell.textLabel.text = U8("全球都市");
-			break;				
+			break;
 		case 9:
 			cell.textLabel.text = U8("天氣觀測雲圖");
 			break;
@@ -138,15 +133,15 @@
 	}
 	return cell;
 
-#undef U8(x)
-	
+#undef U8
+
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewController *controller = nil;
 	if (indexPath.row == 0) {
 		controller = [[TWOBSTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	}		
+	}
 	else if (indexPath.row == 1) {
 		isLoadingOverview = YES;
 		[self.tableView reloadData];
@@ -192,9 +187,6 @@
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-//	if (section == 0) {
-//		return @"功能列表";
-//	}
 	return nil;
 }
 
@@ -222,4 +214,3 @@
 }
 
 @end
-
