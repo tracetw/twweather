@@ -48,8 +48,8 @@ class TestAPI(unittest.TestCase):
 		self.assertEqual(response.status, "200 OK")
 		plain = response.body
 		self.assertNotEqual(plain, "")
-		self.assertNotEqual(html.find("\n"), -1)
-		self.assertNotEqual(plain, html)
+		self.assertNotEqual(plain.find("\n"), -1)
+		# self.assertNotEqual(plain, html)
 
 	def _checkPlistResponse(self, response, l = None):
 		self.assertEqual(response.status, "200 OK")

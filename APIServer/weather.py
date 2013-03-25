@@ -977,7 +977,10 @@ class WeatherGlobal(Forecast):
 			line = line.strip()
 			if line.startswith('<li class="smallfield">'):
 				infoline = line
-				break
+			elif line.startswith('發布時間'):
+				forecastDate = line.split('<br />')[0].split('發布時間：')[1]
+			elif line.startswith('有效時間'):
+				validDate = line.split('<br />')[0].split('有效時間：')[1]
 	
 		infoline = infoline.strip()
 		parts = infoline.split('<br />')
@@ -1013,7 +1016,7 @@ class WeatherGlobal(Forecast):
 							forecast = forecast.decode("utf-8")
 					elif someParts[0].endswith('溫度'):
 						temperature = someParts[1].replace('℃', '').strip()
-				avgTemperature = '%d' % ((l + h) / 2)
+		avgTemperature = '%d' % ((l + h) / 2)
 		result = {"locationName": locationName, "id": id, "area": area, "forecastDate": forecastDate, "validDate": validDate, "forecast": forecast,  "temperature": temperature, "avgTemperature": avgTemperature, "avgRain": avgRain}
 		# for key in result.keys():
 		# 	print result[key]
