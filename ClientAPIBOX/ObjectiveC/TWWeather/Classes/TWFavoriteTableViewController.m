@@ -221,7 +221,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
 	[controller release];
 	navController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	[self.tabBarController presentModalViewController:navController animated:YES];
+	[self.tabBarController presentViewController:navController animated:YES completion:nil];
 	[navController release];
 }
 - (IBAction)reload:(id)sender

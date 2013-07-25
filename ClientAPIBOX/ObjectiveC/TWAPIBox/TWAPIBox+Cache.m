@@ -52,11 +52,11 @@
 #endif
 	BOOL isDir = NO;
 	if (![[NSFileManager defaultManager] fileExistsAtPath:cachePath isDirectory:&isDir]) {
-		[[NSFileManager defaultManager] createDirectoryAtPath:cachePath attributes:nil];
+		[[NSFileManager defaultManager] createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
 	}
 	if (!isDir) {
 		[[NSFileManager defaultManager] removeItemAtPath:cachePath error:nil];
-		[[NSFileManager defaultManager] createDirectoryAtPath:cachePath attributes:nil];
+		[[NSFileManager defaultManager] createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
 	}
 	return cachePath;
 }
@@ -68,11 +68,11 @@
 	NSString *folderPath = [[self cacheFolderPath] stringByAppendingPathComponent:part];
 	BOOL isDir = NO;
 	if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath isDirectory:&isDir]) {
-		[[NSFileManager defaultManager] createDirectoryAtPath:folderPath attributes:nil];
+		[[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:nil];
 	}
 	if (!isDir) {
 		[[NSFileManager defaultManager] removeItemAtPath:folderPath error:nil];
-		[[NSFileManager defaultManager] createDirectoryAtPath:folderPath attributes:nil];
+		[[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:nil];
 	}
 	return [folderPath stringByAppendingPathComponent:md5Hash];
 }
@@ -83,8 +83,7 @@
 	NSString *path = [self md5HashPathForURLString:string];
 	if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
 		NSDate *fileModDate;
-		NSDictionary *fileAttributes = [[NSFileManager defaultManager] fileAttributesAtPath:path traverseLink:YES];
-		if (fileModDate = fileAttributes[NSFileModificationDate]) {
+		NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];		if ((fileModDate = fileAttributes[NSFileModificationDate])) {
 			if ([fileModDate timeIntervalSinceNow] > -60.0 * 10) {
 				return YES;
 			}

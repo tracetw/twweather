@@ -16,9 +16,6 @@
 		D40803AF1198BDA40042091E /* TWGlobalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40803AE1198BDA40042091E /* TWGlobalTableViewController.m */; };
 		D40803D71198C1730042091E /* TWGlobalResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40803D61198C1730042091E /* TWGlobalResultTableViewController.m */; };
 		D41B04361031F212000AA604 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D41B04351031F212000AA604 /* Entitlements.plist */; };
-		D41B17231107F39600D78B27 /* SocialFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = D41B17201107F39600D78B27 /* SocialFacebook.png */; };
-		D41B17241107F39600D78B27 /* SocialPlurk.png in Resources */ = {isa = PBXBuildFile; fileRef = D41B17211107F39600D78B27 /* SocialPlurk.png */; };
-		D41B17251107F39600D78B27 /* SocialTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = D41B17221107F39600D78B27 /* SocialTwitter.png */; };
 		D41B18221107FD2600D78B27 /* sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = D41B18211107FD2600D78B27 /* sfx.wav */; };
 		D41B18301107FE0200D78B27 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41B182F1107FE0200D78B27 /* AudioToolbox.framework */; };
 		D41E1D391084288400A6675D /* bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D41E1D381084288400A6675D /* bgm.mp3 */; };
@@ -115,9 +112,6 @@
 		D4E6D5A0128EEA3300EEBC51 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D59D128EEA3300EEBC51 /* AppIcon.png */; };
 		D4E6D5A1128EEA3300EEBC51 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D59E128EEA3300EEBC51 /* AppIcon@2x.png */; };
 		D4E6D5A2128EEA3300EEBC51 /* AppIcon72.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D59F128EEA3300EEBC51 /* AppIcon72.png */; };
-		D4E6D5D1128EECFE00EEBC51 /* SocialFacebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D5CE128EECFE00EEBC51 /* SocialFacebook@2x.png */; };
-		D4E6D5D2128EECFE00EEBC51 /* SocialPlurk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D5CF128EECFE00EEBC51 /* SocialPlurk@2x.png */; };
-		D4E6D5D3128EECFE00EEBC51 /* SocialTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D5D0128EECFE00EEBC51 /* SocialTwitter@2x.png */; };
 		D4E6D5D7128EEE8600EEBC51 /* alert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D5D6128EEE8600EEBC51 /* alert@2x.png */; };
 		D4E6D5E1128EEFD900EEBC51 /* BlueButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D5E0128EEFD900EEBC51 /* BlueButton@2x.png */; };
 		D4E6D5E3128EEFF200EEBC51 /* forecasts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E6D5E2128EEFF200EEBC51 /* forecasts@2x.png */; };
@@ -148,9 +142,6 @@
 		D40803D51198C1730042091E /* TWGlobalResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWGlobalResultTableViewController.h; sourceTree = "<group>"; };
 		D40803D61198C1730042091E /* TWGlobalResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWGlobalResultTableViewController.m; sourceTree = "<group>"; };
 		D41B04351031F212000AA604 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		D41B17201107F39600D78B27 /* SocialFacebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SocialFacebook.png; sourceTree = "<group>"; };
-		D41B17211107F39600D78B27 /* SocialPlurk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SocialPlurk.png; sourceTree = "<group>"; };
-		D41B17221107F39600D78B27 /* SocialTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SocialTwitter.png; sourceTree = "<group>"; };
 		D41B18211107FD2600D78B27 /* sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sfx.wav; path = AudioClip/sfx.wav; sourceTree = "<group>"; };
 		D41B182F1107FE0200D78B27 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D41E1D381084288400A6675D /* bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bgm.mp3; path = AudioClip/bgm.mp3; sourceTree = "<group>"; };
@@ -286,9 +277,6 @@
 		D4E6D59D128EEA3300EEBC51 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon.png; path = AppIcons/AppIcon.png; sourceTree = "<group>"; };
 		D4E6D59E128EEA3300EEBC51 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon@2x.png"; path = "AppIcons/AppIcon@2x.png"; sourceTree = "<group>"; };
 		D4E6D59F128EEA3300EEBC51 /* AppIcon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon72.png; path = AppIcons/AppIcon72.png; sourceTree = "<group>"; };
-		D4E6D5CE128EECFE00EEBC51 /* SocialFacebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SocialFacebook@2x.png"; sourceTree = "<group>"; };
-		D4E6D5CF128EECFE00EEBC51 /* SocialPlurk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SocialPlurk@2x.png"; sourceTree = "<group>"; };
-		D4E6D5D0128EECFE00EEBC51 /* SocialTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SocialTwitter@2x.png"; sourceTree = "<group>"; };
 		D4E6D5D6128EEE8600EEBC51 /* alert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alert@2x.png"; path = "Images/alert@2x.png"; sourceTree = "<group>"; };
 		D4E6D5E0128EEFD900EEBC51 /* BlueButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BlueButton@2x.png"; path = "Images/BlueButton@2x.png"; sourceTree = "<group>"; };
 		D4E6D5E2128EEFF200EEBC51 /* forecasts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forecasts@2x.png"; path = "Images/forecasts@2x.png"; sourceTree = "<group>"; };
@@ -388,7 +376,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D41B171F1107F39600D78B27 /* Social */,
 				D46AE29610E8863200B9E152 /* Other Images */,
 				D40082D110C34C9D007416F6 /* Sounds */,
 				D40082D010C34C95007416F6 /* App Images */,
@@ -616,20 +603,6 @@
 				D40803D61198C1730042091E /* TWGlobalResultTableViewController.m */,
 			);
 			name = "Global Cities";
-			sourceTree = "<group>";
-		};
-		D41B171F1107F39600D78B27 /* Social */ = {
-			isa = PBXGroup;
-			children = (
-				D41B17201107F39600D78B27 /* SocialFacebook.png */,
-				D41B17211107F39600D78B27 /* SocialPlurk.png */,
-				D41B17221107F39600D78B27 /* SocialTwitter.png */,
-				D4E6D5CE128EECFE00EEBC51 /* SocialFacebook@2x.png */,
-				D4E6D5CF128EECFE00EEBC51 /* SocialPlurk@2x.png */,
-				D4E6D5D0128EECFE00EEBC51 /* SocialTwitter@2x.png */,
-			);
-			name = Social;
-			path = Images/Social;
 			sourceTree = "<group>";
 		};
 		D46AE29610E8863200B9E152 /* Other Images */ = {
@@ -865,16 +838,10 @@
 				D460464A1083B69600B97EEF /* forecasts.png in Resources */,
 				D41E1D391084288400A6675D /* bgm.mp3 in Resources */,
 				D46AE29A10E8863900B9E152 /* BlueButton.png in Resources */,
-				D41B17231107F39600D78B27 /* SocialFacebook.png in Resources */,
-				D41B17241107F39600D78B27 /* SocialPlurk.png in Resources */,
-				D41B17251107F39600D78B27 /* SocialTwitter.png in Resources */,
 				D41B18221107FD2600D78B27 /* sfx.wav in Resources */,
 				D4E6D5A0128EEA3300EEBC51 /* AppIcon.png in Resources */,
 				D4E6D5A1128EEA3300EEBC51 /* AppIcon@2x.png in Resources */,
 				D4E6D5A2128EEA3300EEBC51 /* AppIcon72.png in Resources */,
-				D4E6D5D1128EECFE00EEBC51 /* SocialFacebook@2x.png in Resources */,
-				D4E6D5D2128EECFE00EEBC51 /* SocialPlurk@2x.png in Resources */,
-				D4E6D5D3128EECFE00EEBC51 /* SocialTwitter@2x.png in Resources */,
 				D4E6D5D7128EEE8600EEBC51 /* alert@2x.png in Resources */,
 				D4E6D5E1128EEFD900EEBC51 /* BlueButton@2x.png in Resources */,
 				D4E6D5E3128EEFF200EEBC51 /* forecasts@2x.png in Resources */,

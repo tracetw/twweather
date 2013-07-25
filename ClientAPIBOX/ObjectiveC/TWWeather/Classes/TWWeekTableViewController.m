@@ -68,6 +68,7 @@
 		[controller release];
 	}
 }
+
 - (void)APIBox:(TWAPIBox *)APIBox didFailedFetchWeekWithError:(NSError *)error identifier:(NSString *)identifier userInfo:(id)userInfo
 {
 	[self resetLoading];

@@ -27,9 +27,3 @@
 
 #define TWBGMPreference @"TWBGMPreference"
 #define TWSFXPreference @"TWSFXPreference"
-
-#define TWTwitterService @"TWTwitterService"
-#define TWTwitterLoginNamePreference @"TWTwitterLoginNamePreference"
-#define TWTwitterTokenPreference @"TWTwitterTokenPreference"
-#define TWPlurkService @"TWPlurkService"
-#define TWPlurkLoginNamePreference @"TWPlurkLoginNamePreference"
