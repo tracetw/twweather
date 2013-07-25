@@ -28,25 +28,16 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <AVFoundation/AVFoundation.h>
-#import "FBConnect.h"
-#import "ObjectivePlurk.h"
-#import "TWTwitterEngine.h"
-#import "TWFacebookAPI.h"
 #import "TWNavigationController.h"
 
 @interface TWWeatherAppDelegate : NSObject <
 	UIApplicationDelegate,
-	AVAudioPlayerDelegate,
-	FBSessionDelegate,
-	FBDialogDelegate,
-	UIAlertViewDelegate> 
+	AVAudioPlayerDelegate>
 {
     UIWindow *window;
 	TWNavigationController *navigationController;
     UITabBarController *tabBarController;
-	
 	AVAudioPlayer *audioPlayer;
-	Facebook *facebook;
 }
 
 + (TWWeatherAppDelegate*)sharedDelegate;
@@ -54,14 +45,9 @@
 - (void)pushViewController:(UIViewController *)controller animated:(BOOL)animated;
 - (NSString *)imageNameWithTimeTitle:(NSString *)timeTitle description:(NSString *)description;
 
-#pragma mark Facebook
-
-- (BOOL)confirmFacebookLoggedIn;
-
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
-@property (readonly) Facebook *facebook;
 
 @end
 

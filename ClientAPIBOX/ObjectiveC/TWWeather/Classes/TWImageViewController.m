@@ -27,8 +27,6 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "ObjectivePlurk.h"
-#import "TWSocialComposer.h"
 #import "TWImageViewController.h"
 #import "TWWeatherAppDelegate.h"
 
@@ -98,15 +96,9 @@
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
-	[[ObjectivePlurk sharedInstance] cancelAllRequest];
-
-	if (!pushingPlurkComposer) {
-		self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
-		[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-	}
-	pushingPlurkComposer = NO;
-
 	[super viewWillDisappear:animated];
+	self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 #pragma mark -
@@ -129,56 +121,10 @@
 
 - (IBAction)navBarAction:(id)sender
 {
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Copy", @""), NSLocalizedString(@"Share via Facebook", @""), NSLocalizedString(@"Share via Plurk", @""), NSLocalizedString(@"Save", @""), nil];
-	[actionSheet showInView:[self view]];
-	[actionSheet release];
-}
-- (void)shareImageViaFacebook
-{
-	if ([[TWWeatherAppDelegate sharedDelegate] confirmFacebookLoggedIn]) {
-		NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:API_KEY, @"api_key", _image, @"picture", self.title, @"caption", nil];
-		[[TWWeatherAppDelegate sharedDelegate].facebook requestWithMethodName: @"photos.upload" andParams: params andHttpMethod: @"POST" andDelegate:self];
-	}
-}
-- (void)shareImageViaPlurk
-{
-	if (![[ObjectivePlurk sharedInstance] isLoggedIn]) {
-		[[TWSocialComposer sharedComposer] showLoginAlert];
-		return;
-	}
-	NSString *tmpFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.png"];
-	[UIImagePNGRepresentation(_image) writeToFile:tmpFile atomically:YES];
-	[self showLoadingView];
-	[[ObjectivePlurk sharedInstance] uploadPicture:tmpFile delegate:self userInfo:nil];
-
-}
-- (void)doCopy
-{
-	UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
-	pasteBoard.image = self.image;
-}
-
-- (void)_image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo
-{
-	NSString *alertTitle = nil;
-	NSString *message = nil;
-
-	if (error) {
-		alertTitle = NSLocalizedString(@"Failed to save your image.", @"");
-		message = [error localizedDescription];
-	}
-	else {
-		alertTitle = NSLocalizedString(@"The image is saved!", @"");
-		message = @"";
-	}
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
-	[alert show];
-	[alert release];
-}
-
-- (void)save
-{
-	UIImageWriteToSavedPhotosAlbum(self.image, self, @selector(_image:didFinishSavingWithError:contextInfo:), NULL);
+	NSArray *activityItems = @[_image];
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+	[activityController release];
 }
 
 - (void)showLoadingView
@@ -193,85 +139,11 @@
 	self.view.userInteractionEnabled = YES;
 }
 
-#pragma mark -
-#pragma mark UIActionSheet delegate methods
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	switch (buttonIndex) {
-		case 0:
-			[self doCopy];
-			break;
-		case 1:
-			[self shareImageViaFacebook];
-			break;
-		case 2:
-			[self shareImageViaPlurk];
-			break;
-		case 3:
-			[self save];
-			break;
-		default:
-			break;
-	}
-}
-
 #pragma mark UIScrollView delegate methods
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
 	return _imageView;
-}
-
-#pragma mark -
-#pragma mark Facebook Connect Request delegate methods
-
-- (void)requestLoading:(FBRequest*)request
-{
-	[self showLoadingView];
-}
-- (void)request:(FBRequest*)request didReceiveResponse:(NSURLResponse*)response
-{
-}
-- (void)request:(FBRequest*)request didLoad:(id)result
-{
-	[self hideLoadingView];
-
-	NSString *feedTitle = self.title;
-	NSString *name = result[@"caption"];
-	NSString *link = result[@"link"];
-	NSString *attachment = [NSString stringWithFormat:@"{\"name\":\"%@\", \"href\":\"%@\"}", name, link];
-	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:API_KEY, @"api_key", feedTitle,	 @"user_message_prompt", attachment, @"attachment", nil];
-	[[TWWeatherAppDelegate sharedDelegate].facebook dialog:@"stream.publish" andParams:params andDelegate:[TWWeatherAppDelegate sharedDelegate]];
-}
-- (void)request:(FBRequest*)request didFailWithError:(NSError*)error
-{
-	[self hideLoadingView];
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Unable to upload image to Facebook.", @"") message:[error localizedDescription] delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
-	[alertView show];
-	[alertView release];
-}
-
-#pragma mark -
-#pragma mark ObjectivePlurk delegate methods
-
-- (void)plurk:(ObjectivePlurk *)plurk didUploadPicture:(NSDictionary *)result
-{
-	[self hideLoadingView];
-	NSString *full = [result valueForKey:@"full"];
-	if (full) {
-		NSString *text = [NSString stringWithFormat:@"%@ %@", full, self.title];
-		pushingPlurkComposer = YES;
-		[TWSocialComposer sharedComposer].mode = TWSocialComposerPlurkMode;
-		[[TWSocialComposer sharedComposer] showWithText:text];
-	}
-}
-- (void)plurk:(ObjectivePlurk *)plurk didFailUploadingPicture:(NSError *)error
-{
-	[self hideLoadingView];
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Unable to upload image to Plurk.", @"") message:[error localizedDescription] delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
-	[alertView show];
-	[alertView release];
 }
 
 @synthesize imageView = _imageView;

@@ -27,15 +27,13 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-@interface TWOverviewViewController : UIViewController <UIActionSheetDelegate>
+@interface TWOverviewViewController : UIViewController
 {
 	UITextView *textView;
 	NSString *_text;
 }
 
 - (void)setText:(NSString *)text;
-- (void)doCopy;
-- (void)shareViaFacebook;
 - (IBAction)navBarAction:(id)sender;
 
 @property (retain, nonatomic) UITextView *textView;

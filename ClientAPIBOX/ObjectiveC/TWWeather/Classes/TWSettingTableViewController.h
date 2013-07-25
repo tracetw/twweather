@@ -27,14 +27,10 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "FBConnect.h"
-#import "FBLoginButton.h"
-
-@interface TWSettingTableViewController : UITableViewController <FBSessionDelegate>
+@interface TWSettingTableViewController : UITableViewController
 {
 	UISwitch *BGMSwitch;
 	UISwitch *SFXSwitch;
-	FBLoginButton *loginButton;	
 }
 
 - (IBAction)toggleBGMSettingAction:(id)sender;

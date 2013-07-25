@@ -29,7 +29,6 @@
 
 #import "TWOverviewViewController.h"
 #import "TWWeatherAppDelegate.h"
-#import "TWSocialComposer.h"
 
 @implementation TWOverviewViewController
 
@@ -73,8 +72,6 @@
 - (void)didReceiveMemoryWarning 
 {
     [super didReceiveMemoryWarning]; 
-	// Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
 }
 
 - (void)setText:(NSString *)text
@@ -82,56 +79,20 @@
 	id tmp = _text;
 	_text = [text retain];
 	[tmp release];
-
 	self.textView.text = text;
-}
-- (void)doCopy
-{
-	[[UIPasteboard generalPasteboard] setString:_text];
-}
-
-- (void)shareViaFacebook
-{
-	NSString *feedTitle = [self title];
-	NSString *description = [_text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-	NSString *attachment = [NSString stringWithFormat:@"{\"name\":\"%@\", \"description\":\"%@\"}", feedTitle, description];
-	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys: API_KEY, @"api_key", feedTitle,  @"user_message_prompt", attachment, @"attachment", nil];
-
-	[[TWWeatherAppDelegate sharedDelegate].facebook dialog:@"stream.publish" andParams:params andDelegate:[TWWeatherAppDelegate sharedDelegate]];
-}
-
-- (void)shareViaSocialComposer
-{
-	NSString *feedTitle = [self title];
-	NSString *description = [_text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-	NSString *text = [NSString stringWithFormat:@"%@ %@", feedTitle, description];
-	[[TWSocialComposer sharedComposer] showWithText:text];
 }
 
 - (IBAction)navBarAction:(id)sender
 {
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Copy", @""), NSLocalizedString(@"Share via Facebook", @""), NSLocalizedString(@"Share via Plurk", @""), NSLocalizedString(@"Share via Twitter", @""), nil];
-	[actionSheet showInView:[self view]];
-	[actionSheet release];
+	NSString *feedTitle = [self title];
+	NSString *description = [_text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+	NSString *text = [NSString stringWithFormat:@"%@ %@", feedTitle, description];
+	NSArray *activityItems = @[text];
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+	[activityController release];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	if (buttonIndex == 0) {
-		[self doCopy];
-	}
-	else if (buttonIndex == 1) {
-		[self shareViaFacebook];
-	}
-	else if (buttonIndex == 2) {
-		[TWSocialComposer sharedComposer].mode = TWSocialComposerPlurkMode;
-		[self shareViaSocialComposer];
-	}
-	else if (buttonIndex == 3) {
-		[TWSocialComposer sharedComposer].mode = TWSocialComposerTwitterMode;
-		[self shareViaSocialComposer];
-	}	
-}
 
 
 @synthesize textView;

@@ -35,13 +35,11 @@
 #import "TWAPIBox.h"
 #import "TWAPIBox+Info.h"
 #import "TWCommonHeader.h"
-#import "SFHFKeychainUtils.h"
 
 @implementation TWWeatherAppDelegate
 
 + (TWWeatherAppDelegate*)sharedDelegate
 {
-	// Just a wrapper of [UIApplication sharedApplication].delegate.
 	return (TWWeatherAppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
@@ -51,7 +49,6 @@
 	[navigationController release];
 	[window release];
 	[audioPlayer release];
-	[facebook release];
 	[super dealloc];
 }
 
@@ -101,46 +98,8 @@
 	self.navigationController = ourNavigationController;
 	[ourNavigationController release];
 
-	[window addSubview:[self.navigationController view]];
+	window.rootViewController = self.navigationController;
 	[window makeKeyAndVisible];
-
-	facebook = [[Facebook alloc] init];
-	NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"FBAccessToken"];
-	if (accessToken) {
-		facebook.accessToken = accessToken;
-		facebook.expirationDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"FBSessionExpires"];
-	}
-
-	[ObjectivePlurk sharedInstance].APIKey = PLURK_API_KEY;
-	if (![[ObjectivePlurk sharedInstance] resume]) {
-		NSString *loginName = [[NSUserDefaults standardUserDefaults] stringForKey:TWPlurkLoginNamePreference];
-		if (loginName) {
-			NSError *error = nil;
-			NSString *password = [SFHFKeychainUtils getPasswordForUsername:loginName andServiceName:TWPlurkService error:&error];
-			if (password && !error) {
-				[[ObjectivePlurk sharedInstance] loginWithUsername:loginName password:password delegate:self userInfo:nil];
-			}
-		}
-	}
-
-	NSString *theLoginName = [[NSUserDefaults standardUserDefaults] stringForKey:TWTwitterLoginNamePreference];
-	if (theLoginName) {
-		NSError *error = nil;
-		NSString *thePassword = [SFHFKeychainUtils getPasswordForUsername:theLoginName andServiceName:TWTwitterService error:&error];
-		if (thePassword && !error) {
-			OAToken *token = [[[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:TWTwitterTokenPreference prefix:@""] autorelease];
-			TWTwitterEngine *engine = [TWTwitterEngine sharedEngine];
-			[engine.engine setAccessToken:token];
-			engine.username = theLoginName;
-			engine.password = thePassword;
-			if (![token hasExpired]) {
-				[TWTwitterEngine sharedEngine].loggedIn = YES;
-			}
-			else {
-				[[TWTwitterEngine sharedEngine].engine getXAuthAccessTokenForUsername:theLoginName password:thePassword];
-			}
-		}
-	}
 
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:TWBGMPreference]) {
 		[self startPlayingBGM];
@@ -192,58 +151,9 @@
 	return string;
 }
 
-#pragma mark -
-#pragma mark Facebook dialog delegate methods
-
-- (BOOL)confirmFacebookLoggedIn
-{
-	if (![facebook isSessionValid]) {
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"You did not connect to Facebook.", @"") message:NSLocalizedString(@"Do you want to connect now?", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:NSLocalizedString(@"Connect", @""), nil];
-		[alertView show];
-		[alertView release];
-	}
-	return [facebook isSessionValid];
-}
-
-- (void)_showFacebookLoginViewWithDelay
-{
-	NSArray *permissions = @[@"publish_stream", @"offline_access", @"user_photos", @"user_notes"];
-	[facebook authorize:APP_ID permissions:permissions delegate:self];
-}
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-	if (buttonIndex == 1) {
-		[self performSelector:@selector(_showFacebookLoginViewWithDelay) withObject:nil afterDelay:0.2];
-	}
-}
-
-#pragma mark -
-#pragma mark FacebookSession delegate methods
-
-- (void)fbDidLogin
-{
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Successfully connected on Facebook!", @"") message:@"" delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
-	[alert show];
-	[alert release];
-
-	[[NSUserDefaults standardUserDefaults] setObject:facebook.accessToken forKey:@"FBAccessToken"];
-	[[NSUserDefaults standardUserDefaults] setObject:facebook.expirationDate forKey:@"FBSessionExpires"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-}
-- (void)fbDidNotLogin:(BOOL)cancelled
-{
-}
-- (void)fbDidLogout
-{
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FBAccessToken"];
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FBSessionExpires"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-}
 
 @synthesize window;
 @synthesize tabBarController;
 @synthesize navigationController;
-@synthesize facebook;
 
 @end

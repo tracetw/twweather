@@ -48,7 +48,6 @@
 	[_searchController release];
 	_searchController = nil;
 	self.tableView = nil;
-	self.view = nil;
 	[super viewDidLoad];
 }
 - (void)viewWillDisappear:(BOOL)animated

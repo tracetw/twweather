@@ -142,7 +142,7 @@
 	CGSize size = weatherImage.size;
 	[weatherImage drawInRect:CGRectMake(180, 20, size.width * 0.6, size.height * 0.6)];
 }
-- (NSString *)_desciption
+- (NSString *)_description
 {
 	NSMutableString *s = [NSMutableString string];
 	[s appendFormat:@"%@\n", date];

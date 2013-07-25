@@ -28,12 +28,10 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "TWLoadingView.h"
-#import "FBConnect.h"
 
 @interface TWImageViewController : UIViewController <
 	UIScrollViewDelegate, 
-	UIActionSheetDelegate,
-	FBRequestDelegate>
+	UIActionSheetDelegate>
 {
 	UIImageView *_imageView;
 	UIImage *_image;
@@ -44,9 +42,6 @@
 }
 
 - (IBAction)navBarAction:(id)sender;
-- (void)shareImageViaFacebook;
-- (void)doCopy;
-- (void)save;
 - (void)showLoadingView;
 - (void)hideLoadingView;
 

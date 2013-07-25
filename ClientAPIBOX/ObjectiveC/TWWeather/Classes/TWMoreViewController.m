@@ -31,7 +31,6 @@
 #import "TWSettingTableViewController.h"
 #import "TWAboutViewController.h"
 #import "TWWebController.h"
-#import "TWFacebookController.h"
 #import "TWWeatherAppDelegate.h"
 #import "UIViewController+Compatibility.h"
 
@@ -68,10 +67,6 @@
 	else if (section == 1) {
 		return 3;
 	}
-//	else if (section == 1) {
-//		return 1;
-//	}
-
 	return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

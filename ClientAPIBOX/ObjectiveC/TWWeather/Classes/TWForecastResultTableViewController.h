@@ -27,9 +27,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "FBConnect.h"
-
-@interface TWForecastResultTableViewController : UITableViewController <UIActionSheetDelegate>
+@interface TWForecastResultTableViewController : UITableViewController
 {
 	NSArray *forecastArray;
 	NSString *weekLocation;
@@ -39,7 +37,6 @@
 }
 
 - (IBAction)navBarAction:(id)sender;
-- (void)shareViaFacebook;
 - (void)pushWeekViewController;
 
 @property (retain, nonatomic) NSArray *forecastArray;

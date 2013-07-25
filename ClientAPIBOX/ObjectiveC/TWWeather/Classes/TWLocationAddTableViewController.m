@@ -62,9 +62,9 @@
 	NSMutableArray *array = [NSMutableArray array];
 	NSArray *locations = [[TWAPIBox sharedBox] forecastLocations];
 	for (NSUInteger i = 0; i < [locations count]; i++) {
-		if (![filterArray containsObject:[NSNumber numberWithInt:i]]) {
+		if (![filterArray containsObject:@(i)]) {
 			NSMutableDictionary *d = [NSMutableDictionary dictionaryWithDictionary:locations[i]];
-			d[@"filterID"] = [NSNumber numberWithInt:i];
+			d[@"filterID"] = @(i);
 			[array addObject:d];
 		}
 	}

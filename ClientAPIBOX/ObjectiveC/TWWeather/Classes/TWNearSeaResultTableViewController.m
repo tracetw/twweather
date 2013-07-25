@@ -30,7 +30,6 @@
 #import "TWNearSeaResultTableViewController.h"
 #import "TWWeatherAppDelegate.h"
 #import "TWNearSeaCell.h"
-#import "TWSocialComposer.h"
 
 @implementation TWNearSeaResultTableViewController
 
@@ -50,8 +49,6 @@
 - (void)didReceiveMemoryWarning 
 {
     [super didReceiveMemoryWarning]; 
-	// Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
 }
 
 - (void)viewDidLoad
@@ -62,13 +59,6 @@
 }
 
 #pragma mark -
-
-- (IBAction)navBarAction:(id)sender
-{
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Share via Facebook", @""), NSLocalizedString(@"Share via Plurk", @""), NSLocalizedString(@"Share via Twitter", @""), nil];
-	[actionSheet showInView:[self view]];
-	[actionSheet release];
-}
 
 - (NSString *)_feedDescription
 {
@@ -82,38 +72,14 @@
 	return attachmentDescription;
 }
 
-- (void)shareViaFacebook
-{
-	if ([[TWWeatherAppDelegate sharedDelegate] confirmFacebookLoggedIn]) {
-		NSString *feedTitle = [NSString stringWithFormat:@"%@ 天氣預報", [self title]];
-		NSString *attachmentDescription = [self _feedDescription];				
-		NSString *attachment = [NSString stringWithFormat:@"{\"name\":\"%@\", \"description\":\"%@\"}", feedTitle, attachmentDescription];
-		NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys: API_KEY, @"api_key", feedTitle,  @"user_message_prompt", attachment, @"attachment", nil];
-		
-		[[TWWeatherAppDelegate sharedDelegate].facebook dialog:@"stream.publish" andParams:params andDelegate:[TWWeatherAppDelegate sharedDelegate]];
-	}
-}
-- (void)shareViaSocialComposer
+- (IBAction)navBarAction:(id)sender
 {
 	NSString *feedTitle = [NSString stringWithFormat:@"%@ 天氣預報", [self title]];
-	NSString *attachmentDescription = [self _feedDescription];
-	NSString *text = [NSString stringWithFormat:@"%@ %@", feedTitle, attachmentDescription];
-	[[TWSocialComposer sharedComposer] showWithText:text];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	if (buttonIndex == 0) {
-		[self shareViaFacebook];
-	}
-	else if (buttonIndex == 1) {
-		[TWSocialComposer sharedComposer].mode = TWSocialComposerPlurkMode;
-		[self shareViaSocialComposer];
-	}
-	else if (buttonIndex == 2) {
-		[TWSocialComposer sharedComposer].mode = TWSocialComposerTwitterMode;
-		[self shareViaSocialComposer];
-	}	
+	NSString *text = [NSString stringWithFormat:@"%@ %@", feedTitle, [self _feedDescription]];
+	NSArray *activityItems = @[text];
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+	[activityController release];
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate

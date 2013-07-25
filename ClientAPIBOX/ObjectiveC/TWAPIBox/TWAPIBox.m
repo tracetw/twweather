@@ -161,55 +161,55 @@ static TWAPIBox *apibox = nil;
 		return;
 	}
 	NSString *path = [NSString stringWithFormat:@"forecast?location=%@", identifier];
-	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
+	NSDictionary *info = userInfo ? @{@"identifier": identifier, @"userInfo": userInfo} : @{@"identifier": identifier};
 	[self sendRequestWithPath:path identifier:@"forecast" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchWeekWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"week2?location=%@", identifier];
-	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
+	NSDictionary *info = userInfo ? @{@"identifier": identifier, @"userInfo": userInfo} : @{@"identifier": identifier};
 	[self sendRequestWithPath:path identifier:@"week" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchWeekTravelWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"week_travel?location=%@", identifier];
-	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
+	NSDictionary *info = userInfo ? @{@"identifier": identifier, @"userInfo": userInfo} : @{@"identifier": identifier};
 	[self sendRequestWithPath:path identifier:@"week_travel" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchThreeDaySeaWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"3sea?location=%@", identifier];
-	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
+	NSDictionary *info = userInfo ? @{@"identifier": identifier, @"userInfo": userInfo} : @{@"identifier": identifier};
 	[self sendRequestWithPath:path identifier:@"3sea" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchNearSeaWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"nearsea?location=%@", identifier];
-	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
+	NSDictionary *info = userInfo ? @{@"identifier": identifier, @"userInfo": userInfo} : @{@"identifier": identifier};
 	[self sendRequestWithPath:path identifier:@"nearsea" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchTideWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"tide?location=%@", identifier];
-	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
+	NSDictionary *info = userInfo ? @{@"identifier": identifier, @"userInfo": userInfo} : @{@"identifier": identifier};
 	[self sendRequestWithPath:path identifier:@"tide" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchImageWithIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"image?id=%@&redirect=1", identifier];
-	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
+	NSDictionary *info = userInfo ? @{@"identifier": identifier, @"userInfo": userInfo} : @{@"identifier": identifier};
 	[self sendRequestWithPath:path identifier:@"image" action:@selector(didFetchImage:data:) failedAction:@selector(didFailedFetchImage:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchOBSWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"obs?location=%@", identifier];
-	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
+	NSDictionary *info = userInfo ? @{@"identifier": identifier, @"userInfo": userInfo} : @{@"identifier": identifier};
 	[self sendRequestWithPath:path identifier:@"obs" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchGlobalCityWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"global?location=%@", identifier];
-	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
+	NSDictionary *info = userInfo ? @{@"identifier": identifier, @"userInfo": userInfo} : @{@"identifier": identifier};
 	[self sendRequestWithPath:path identifier:@"global" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 
@@ -316,8 +316,6 @@ static TWAPIBox *apibox = nil;
 	sessionInfo[@"date"] = [NSDate date];
 
 	NSString *actionString = [request sessionInfo][@"action"];
-	SEL action = NSSelectorFromString(actionString);
-
 	if (URL) {
 		[self writeDataToCache:data fromURL:URL];
 	}
