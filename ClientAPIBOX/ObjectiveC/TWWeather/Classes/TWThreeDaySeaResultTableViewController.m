@@ -62,11 +62,11 @@
 {
 	NSMutableString *description = [NSMutableString string];
 	for (NSDictionary *forecast in forecastArray) {
-		[description appendFormat:@"※ %@ ", [forecast objectForKey:@"date"]];
-		[description appendFormat:@"%@ ", [forecast objectForKey:@"description"]];
-		[description appendFormat:@"%@ ", [forecast objectForKey:@"wind"]];
-		[description appendFormat:@"%@ ", [forecast objectForKey:@"windScale"]];
-		[description appendFormat:@"%@ ", [forecast objectForKey:@"wave"]];
+		[description appendFormat:@"※ %@ ", forecast[@"date"]];
+		[description appendFormat:@"%@ ", forecast[@"description"]];
+		[description appendFormat:@"%@ ", forecast[@"wind"]];
+		[description appendFormat:@"%@ ", forecast[@"windScale"]];
+		[description appendFormat:@"%@ ", forecast[@"wave"]];
 	}
 	[description appendFormat:@" 發佈時間%@", publishTime];
 	return description;
@@ -125,14 +125,14 @@
     if (cell == nil) {
         cell = [[[TWThreeDaySeaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-	NSDictionary *dictionary = [forecastArray objectAtIndex:indexPath.row];
-	NSString *dateString = [dictionary objectForKey:@"date"];
+	NSDictionary *dictionary = forecastArray[indexPath.row];
+	NSString *dateString = dictionary[@"date"];
 	NSDate *date = [[TWAPIBox sharedBox] dateFromShortString:dateString];
 	cell.date = [[TWAPIBox sharedBox] shortDateStringFromDate:date];
-	cell.description = [dictionary objectForKey:@"description"];
-	cell.wind = [dictionary objectForKey:@"wind"];
-	cell.windScale = [dictionary objectForKey:@"windScale"];
-	cell.wave = [dictionary objectForKey:@"wave"];
+	cell.description = dictionary[@"description"];
+	cell.wind = dictionary[@"wind"];
+	cell.windScale = dictionary[@"windScale"];
+	cell.wave = dictionary[@"wave"];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 	NSString *imageString = [[TWWeatherAppDelegate sharedDelegate] imageNameWithTimeTitle:@"" description:cell.description ];

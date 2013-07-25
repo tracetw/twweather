@@ -66,8 +66,8 @@
 
 		NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 		NSDictionary *infoDictionary = [bundle infoDictionary];
-		NSString *clientName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
-		NSString *version = [infoDictionary objectForKey:@"CFBundleVersion"];
+		NSString *clientName = infoDictionary[@"CFBundleDisplayName"];
+		NSString *version = infoDictionary[@"CFBundleVersion"];
 		NSString *userAgent = [NSString stringWithFormat:@"%@ %@", clientName, version];
 
 #ifdef TARGET_OS_IPHONE
@@ -108,7 +108,7 @@
 		}
 		else {
 			_request.shouldWaitUntilDone = YES;
-			NSURL *URL = [sessionInfo objectForKey:@"URL"];
+			NSURL *URL = sessionInfo[@"URL"];
 			[_request performMethod:LFHTTPRequestGETMethod onURL:URL withData:nil];
 		}
 
@@ -124,30 +124,21 @@
 
 - (void)doFetch
 {
-	NSURL *URL = [_request.sessionInfo objectForKey:@"URL"];
+	NSURL *URL = (_request.sessionInfo)[@"URL"];
 //	NSLog(@"doFetch");
 
 	NSMutableDictionary *deviceInfo = [NSMutableDictionary dictionary];
 
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 	NSDictionary *infoDictionary = [bundle infoDictionary];
-	[deviceInfo setObject:[infoDictionary objectForKey:@"CFBundleDisplayName"] forKey:@"app_name"];
-	[deviceInfo setObject:[infoDictionary objectForKey:@"CFBundleVersion"] forKey:@"app_version"];
+	deviceInfo[@"app_name"] = infoDictionary[@"CFBundleDisplayName"];
+	deviceInfo[@"app_version"] = infoDictionary[@"CFBundleVersion"];
 	if (note) {
-		[deviceInfo setObject:note forKey:@"note"];
+		deviceInfo[@"note"] = note;
 	}
 	else {
-		[deviceInfo setObject:@"" forKey:@"note"];
+		deviceInfo[@"note"] = @"";
 	}
-
-#ifdef TARGET_OS_IPHONE
-	UIDevice *device = [UIDevice currentDevice];
-	[deviceInfo setObject:device.uniqueIdentifier forKey:@"device_id"];
-	[deviceInfo setObject:device.name forKey:@"device_name"];
-	[deviceInfo setObject:device.model forKey:@"device_model"];
-	[deviceInfo setObject:device.systemName forKey:@"os_name"];
-	[deviceInfo setObject:device.systemVersion forKey:@"os_version"];
-#endif
 
 	NSMutableString *URLString = [NSMutableString stringWithString:[URL absoluteString]];
 	NSRange range = [URLString rangeOfString:@"?"];
@@ -155,7 +146,7 @@
 		[URLString appendString:@"?"];
 	}
 	for (NSString *key in [deviceInfo allKeys]) {
-		NSString *v = [[deviceInfo objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+		NSString *v = [deviceInfo[key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 		[URLString appendFormat:@"&%@=%@", key, v];
 	}
 	URL =  [NSURL URLWithString:URLString];
@@ -191,7 +182,7 @@
 {
 	if (!_retryCount) {
 		_retryCount++;
-		NSURL *URL = [request.sessionInfo objectForKey:@"URL"];
+		NSURL *URL = (request.sessionInfo)[@"URL"];
 		[_request performMethod:LFHTTPRequestGETMethod onURL:URL withData:nil];
 		return;
 	}

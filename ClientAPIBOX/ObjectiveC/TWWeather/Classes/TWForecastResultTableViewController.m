@@ -75,11 +75,11 @@
 {
 	NSMutableString *description = [NSMutableString string];
 	for (NSDictionary *forecast in forecastArray) {
-		[description appendFormat:@"※ %@", [forecast objectForKey:@"title"]];
-		[description appendFormat:@"(%@ - %@) ", [forecast objectForKey:@"beginTime"], [forecast objectForKey:@"endTime"]];
-		[description appendFormat:@"%@ ", [forecast objectForKey:@"description"]];
-		[description appendFormat:@"降雨機率：%@ ", [forecast objectForKey:@"rain"]];
-		[description appendFormat:@"氣溫：%@ ", [forecast objectForKey:@"temperature"]];
+		[description appendFormat:@"※ %@", forecast[@"title"]];
+		[description appendFormat:@"(%@ - %@) ", forecast[@"beginTime"], forecast[@"endTime"]];
+		[description appendFormat:@"%@ ", forecast[@"description"]];
+		[description appendFormat:@"降雨機率：%@ ", forecast[@"rain"]];
+		[description appendFormat:@"氣溫：%@ ", forecast[@"temperature"]];
 	}
 	return description;
 }
@@ -151,15 +151,15 @@
 			cell = [[[TWForecastResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 		}
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
-		NSDictionary *dictionary = [forecastArray objectAtIndex:indexPath.row];
-		cell.title = [dictionary objectForKey:@"title"];
-		cell.description = [dictionary objectForKey:@"description"];
-		cell.rain = [dictionary objectForKey:@"rain"];
-		cell.temperature = [dictionary objectForKey:@"temperature"];
-		NSString *beginTimeString = [dictionary objectForKey:@"beginTime"];
+		NSDictionary *dictionary = forecastArray[indexPath.row];
+		cell.title = dictionary[@"title"];
+		cell.description = dictionary[@"description"];
+		cell.rain = dictionary[@"rain"];
+		cell.temperature = dictionary[@"temperature"];
+		NSString *beginTimeString = dictionary[@"beginTime"];
 		NSDate *beginDate = [[TWAPIBox sharedBox] dateFromString:beginTimeString];
 		cell.beginTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:beginDate];
-		NSString *endTimeString = [dictionary objectForKey:@"endTime"];
+		NSString *endTimeString = dictionary[@"endTime"];
 		NSDate *endDate = [[TWAPIBox sharedBox] dateFromString:endTimeString];
 		cell.endTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:endDate];
 
@@ -215,9 +215,9 @@
 - (void)pushWeekViewController
 {
 	TWWeekResultTableViewController *controller = [[TWWeekResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	controller.title = [self.weekDictionary objectForKey:@"locationName"];
-	controller.forecastArray = [self.weekDictionary objectForKey:@"items"];
-	NSString *dateString = [self.weekDictionary objectForKey:@"publishTime"];
+	controller.title = (self.weekDictionary)[@"locationName"];
+	controller.forecastArray = (self.weekDictionary)[@"items"];
+	NSString *dateString = (self.weekDictionary)[@"publishTime"];
 	NSDate *date = [[TWAPIBox sharedBox] dateFromString:dateString];
 	controller.publishTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];
 	[self.navigationController pushViewController:controller animated:YES];

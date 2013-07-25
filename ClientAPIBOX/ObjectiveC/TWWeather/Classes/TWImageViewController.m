@@ -238,8 +238,8 @@
 	[self hideLoadingView];
 
 	NSString *feedTitle = self.title;
-	NSString *name = [result objectForKey:@"caption"];
-	NSString *link = [result objectForKey:@"link"];
+	NSString *name = result[@"caption"];
+	NSString *link = result[@"link"];
 	NSString *attachment = [NSString stringWithFormat:@"{\"name\":\"%@\", \"href\":\"%@\"}", name, link];
 	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:API_KEY, @"api_key", feedTitle,	 @"user_message_prompt", attachment, @"attachment", nil];
 	[[TWWeatherAppDelegate sharedDelegate].facebook dialog:@"stream.publish" andParams:params andDelegate:[TWWeatherAppDelegate sharedDelegate]];

@@ -67,9 +67,9 @@
 {
 	NSMutableString *description = [NSMutableString string];
 	for (NSDictionary *forecast in forecastArray) {
-		[description appendFormat:@"※ %@", [forecast objectForKey:@"date"]];
-		[description appendFormat:@" %@ ", [forecast objectForKey:@"description"]];
-		[description appendFormat:@"氣溫：%@ ", [forecast objectForKey:@"temperature"]];
+		[description appendFormat:@"※ %@", forecast[@"date"]];
+		[description appendFormat:@" %@ ", forecast[@"description"]];
+		[description appendFormat:@"氣溫：%@ ", forecast[@"temperature"]];
 	}
 	[description appendFormat:@" 發佈時間%@", publishTime];
 	return description;
@@ -127,13 +127,13 @@
     if (cell == nil) {
         cell = [[[TWWeekResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-	NSDictionary *dictionary = [forecastArray objectAtIndex:indexPath.row];
-	NSString *dateString = [dictionary objectForKey:@"date"];
+	NSDictionary *dictionary = forecastArray[indexPath.row];
+	NSString *dateString = dictionary[@"date"];
 	NSDate *date = [[TWAPIBox sharedBox] dateFromShortString:dateString];
 	cell.date = [[TWAPIBox sharedBox] shortDateStringFromDate:date];
-	cell.day = [dictionary objectForKey:@"day"];
-    cell.description = [dictionary objectForKey:@"description"];
-	cell.temperature = [dictionary objectForKey:@"temperature"];
+	cell.day = dictionary[@"day"];
+    cell.description = dictionary[@"description"];
+	cell.temperature = dictionary[@"temperature"];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	[cell setNeedsDisplay];
     return cell;

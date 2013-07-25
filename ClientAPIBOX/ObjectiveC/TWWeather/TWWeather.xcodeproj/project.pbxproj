@@ -135,6 +135,7 @@
 		D4C3A0D7102235DB00E7A430 /* LFSiteReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C3A0D2102235DB00E7A430 /* LFSiteReachability.m */; };
 		D4C3A0DD1022361E00E7A430 /* TWAPIBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C3A0DC1022361E00E7A430 /* TWAPIBox.m */; };
 		D4CE0EF01113DF1A00043EDE /* TWFacebookController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CE0EEF1113DF1A00043EDE /* TWFacebookController.m */; };
+		D4D82D8417A18448008393AB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D82D8317A18448008393AB /* Default-568h@2x.png */; };
 		D4E5025810233338002B39D7 /* TWAPIBox+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E5025710233338002B39D7 /* TWAPIBox+Info.m */; };
 		D4E5029A10234126002B39D7 /* TWBasicForecastTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E5029910234126002B39D7 /* TWBasicForecastTableViewController.m */; };
 		D4E502A8102343C6002B39D7 /* TWForecastTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E502A7102343C6002B39D7 /* TWForecastTableViewController.m */; };
@@ -385,6 +386,7 @@
 		D4C3A0DC1022361E00E7A430 /* TWAPIBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWAPIBox.m; path = ../TWAPIBox/TWAPIBox.m; sourceTree = SOURCE_ROOT; };
 		D4CE0EEE1113DF1A00043EDE /* TWFacebookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWFacebookController.h; sourceTree = "<group>"; };
 		D4CE0EEF1113DF1A00043EDE /* TWFacebookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWFacebookController.m; sourceTree = "<group>"; };
+		D4D82D8317A18448008393AB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D4E5025610233338002B39D7 /* TWAPIBox+Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TWAPIBox+Info.h"; path = "../TWAPIBox/TWAPIBox+Info.h"; sourceTree = SOURCE_ROOT; };
 		D4E5025710233338002B39D7 /* TWAPIBox+Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TWAPIBox+Info.m"; path = "../TWAPIBox/TWAPIBox+Info.m"; sourceTree = SOURCE_ROOT; };
 		D4E5029810234126002B39D7 /* TWBasicForecastTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWBasicForecastTableViewController.h; sourceTree = "<group>"; };
@@ -746,6 +748,7 @@
 				D4E6D59D128EEA3300EEBC51 /* AppIcon.png */,
 				D4E6D59E128EEA3300EEBC51 /* AppIcon@2x.png */,
 				D4E6D59F128EEA3300EEBC51 /* AppIcon72.png */,
+				D4D82D8317A18448008393AB /* Default-568h@2x.png */,
 				D489E5951024DD7600189460 /* Default.png */,
 			);
 			name = "App Images";
@@ -1145,6 +1148,8 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TWWeather" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -1174,6 +1179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D489E3AC1023E00100189460 /* DayCloudy.png in Resources */,
+				D4D82D8417A18448008393AB /* Default-568h@2x.png in Resources */,
 				D489E3AD1023E00100189460 /* DayCloudyGlommy.png in Resources */,
 				D489E3AE1023E00100189460 /* DayCloudySunny.png in Resources */,
 				D489E3AF1023E00100189460 /* DayGlommy.png in Resources */,

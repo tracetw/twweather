@@ -47,7 +47,7 @@
 	NSString *cachePath = [docPath stringByAppendingPathComponent:@"net.zonble.twweather.widget"];
 #else
 	NSArray *docPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *docPath = [docPaths objectAtIndex:0];
+	NSString *docPath = docPaths[0];
 	NSString *cachePath = [docPath stringByAppendingPathComponent:@"cache"];
 #endif
 	BOOL isDir = NO;
@@ -84,7 +84,7 @@
 	if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
 		NSDate *fileModDate;
 		NSDictionary *fileAttributes = [[NSFileManager defaultManager] fileAttributesAtPath:path traverseLink:YES];
-		if (fileModDate = [fileAttributes objectForKey:NSFileModificationDate]) {
+		if (fileModDate = fileAttributes[NSFileModificationDate]) {
 			if ([fileModDate timeIntervalSinceNow] > -60.0 * 10) {
 				return YES;
 			}

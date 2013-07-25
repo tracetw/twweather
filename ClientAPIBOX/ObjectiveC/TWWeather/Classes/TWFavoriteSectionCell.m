@@ -219,7 +219,7 @@
 	}
 	else {
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 15, 15)];
-		label.text = [NSString stringWithUTF8String:"➲"];
+		label.text = @"➲";
 		label.font = [UIFont boldSystemFontOfSize:15.0];
 		label.backgroundColor = [UIColor clearColor];
 		label.textColor = [UIColor whiteColor];

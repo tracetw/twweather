@@ -48,10 +48,10 @@
 		_array = [[NSMutableArray alloc] init];
 		NSArray *allLocations = [[TWAPIBox sharedBox] globalCityLocations];
 		for (NSDictionary *d in allLocations) {
-			NSArray *items = [d objectForKey:@"items"];
+			NSArray *items = d[@"items"];
 			for (NSDictionary *item in items) {
 				NSMutableDictionary *newItem = [NSMutableDictionary dictionaryWithDictionary:item];
-				[newItem setObject:[NSNumber numberWithBool:NO] forKey:@"isLoading"];
+				newItem[@"isLoading"] = @NO;
 				[_array addObject:newItem];
 			}
 		}
@@ -65,15 +65,15 @@
 		NSArray *allLocations = [[TWAPIBox sharedBox] globalCityLocations];
 		for (NSDictionary *d in allLocations) {
 			NSMutableDictionary *category = [NSMutableDictionary dictionary];
-			[category setObject:[d objectForKey:@"AreaID"] forKey:@"AreaID"];
-			[category setObject:[d objectForKey:@"areaName"] forKey:@"areaName"];
+			category[@"AreaID"] = d[@"AreaID"];
+			category[@"areaName"] = d[@"areaName"];
 			NSMutableArray *items = [NSMutableArray array];
-			for (NSDictionary *item in [d objectForKey:@"items"]) {
+			for (NSDictionary *item in d[@"items"]) {
 				NSMutableDictionary *newItem = [NSMutableDictionary dictionaryWithDictionary:item];
-				[newItem setObject:[NSNumber numberWithBool:NO] forKey:@"isLoading"];
+				newItem[@"isLoading"] = @NO;
 				[items addObject:newItem];
 			}
-			[category setObject:items forKey:@"items"];
+			category[@"items"] = items;
 			[_locations addObject:category];
 		}
 	}
@@ -127,8 +127,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (tableView == self.tableView) {
-		NSDictionary *sectionDictionary = [_locations objectAtIndex:section];
-		NSArray *items = [sectionDictionary objectForKey:@"items"];
+		NSDictionary *sectionDictionary = _locations[section];
+		NSArray *items = sectionDictionary[@"items"];
 		NSInteger count = [items count];
 		if (count) {
 			return count;
@@ -142,8 +142,8 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
 	if (tableView == self.tableView) {
-		NSDictionary *sectionDictionary = [_locations objectAtIndex:section];
-		return [sectionDictionary objectForKey:@"areaName"];
+		NSDictionary *sectionDictionary = _locations[section];
+		return sectionDictionary[@"areaName"];
 	}
 	return nil;
 }
@@ -157,20 +157,20 @@
 	}
 	NSDictionary *dictionary = nil;
 	if (tableView == self.tableView) {
-		NSDictionary *sectionDictionary = [_locations objectAtIndex:indexPath.section];
-		NSArray *items = [sectionDictionary objectForKey:@"items"];
-		dictionary = [items objectAtIndex:indexPath.row];
+		NSDictionary *sectionDictionary = _locations[indexPath.section];
+		NSArray *items = sectionDictionary[@"items"];
+		dictionary = items[indexPath.row];
 	}
 	else if (tableView == self.searchDisplayController.searchResultsTableView) {
-		dictionary = [_filteredArray objectAtIndex:indexPath.row];
+		dictionary = _filteredArray[indexPath.row];
 	}
 	if (!dictionary) {
 		return cell;
 	}
-	cell.textLabel.text = [dictionary objectForKey:@"name"];
+	cell.textLabel.text = dictionary[@"name"];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
-	if ([[dictionary objectForKey:@"isLoading"] boolValue]) {
+	if ([dictionary[@"isLoading"] boolValue]) {
 		[cell startAnimating];
 	}
 	else {
@@ -183,16 +183,16 @@
 {
 	NSMutableDictionary *dictionary	 = nil;
 	if (tableView == self.tableView) {
-		NSDictionary *sectionDictionary = [_locations objectAtIndex:indexPath.section];
-		NSArray *items = [sectionDictionary objectForKey:@"items"];
-		dictionary = [items objectAtIndex:indexPath.row];
+		NSDictionary *sectionDictionary = _locations[indexPath.section];
+		NSArray *items = sectionDictionary[@"items"];
+		dictionary = items[indexPath.row];
 	}
 	else {
-		dictionary = [_filteredArray objectAtIndex:indexPath.row];
+		dictionary = _filteredArray[indexPath.row];
 	}
 	if (dictionary) {
-		NSString *identifier = [dictionary objectForKey:@"identifier"];
-		[dictionary setObject:[NSNumber numberWithBool:YES] forKey:@"isLoading"];
+		NSString *identifier = dictionary[@"identifier"];
+		dictionary[@"isLoading"] = @YES;
 		self.tableView.userInteractionEnabled = NO;
 		[self.tableView reloadData];
 		[[TWAPIBox sharedBox] fetchGlobalCityWithLocationIdentifier:identifier delegate:self userInfo:nil];
@@ -204,12 +204,12 @@
 - (void)resetLoading
 {
 	for (NSMutableDictionary *d in _filteredArray) {
-		[d setObject:[NSNumber numberWithBool:NO] forKey:@"isLoading"];
+		d[@"isLoading"] = @NO;
 	}
 	for (NSDictionary *d in _locations) {
-		NSArray *items = [d objectForKey:@"items"];
+		NSArray *items = d[@"items"];
 		for (NSMutableDictionary *item in items) {
-			[item setObject:[NSNumber numberWithBool:NO] forKey:@"isLoading"];
+			item[@"isLoading"] = @NO;
 		}
 	}
 	[self.tableView reloadData];
@@ -225,17 +225,17 @@
 	[self resetLoading];
 	if ([result isKindOfClass:[NSDictionary class]]) {
 		TWGlobalResultTableViewController *controller = [[TWGlobalResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-		controller.title = [result objectForKey:@"locationName"];
+		controller.title = result[@"locationName"];
 
-		NSString *imageName = [[TWWeatherAppDelegate sharedDelegate] imageNameWithTimeTitle:@"" description:[result objectForKey:@"forecast"]];
+		NSString *imageName = [[TWWeatherAppDelegate sharedDelegate] imageNameWithTimeTitle:@"" description:result[@"forecast"]];
 		UIImage *image = [UIImage imageNamed:imageName];
 		controller.image = image;
-		controller.description = [result objectForKey:@"forecast"];
-		controller.temperature = [result objectForKey:@"temperature"];
-		controller.avgTemperature = [result objectForKey:@"avgTemperature"];
-		controller.avgRain = [result objectForKey:@"avgRain"];
-		controller.pubDate = [result objectForKey:@"forecastDate"];
-		controller.validDate = [result objectForKey:@"validDate"];
+		controller.description = result[@"forecast"];
+		controller.temperature = result[@"temperature"];
+		controller.avgTemperature = result[@"avgTemperature"];
+		controller.avgRain = result[@"avgRain"];
+		controller.pubDate = result[@"forecastDate"];
+		controller.validDate = result[@"validDate"];
 		[self.navigationController pushViewController:controller animated:YES];
 		[controller release];
 	}

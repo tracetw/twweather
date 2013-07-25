@@ -43,12 +43,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	NSMutableDictionary *dictionary = [[self arrayForTableView:tableView] objectAtIndex:indexPath.row];
+	NSMutableDictionary *dictionary = [self arrayForTableView:tableView][indexPath.row];
 	tableView.userInteractionEnabled = NO;
-	[dictionary setObject:[NSNumber numberWithBool:YES] forKey:@"isLoading"];
+	dictionary[@"isLoading"] = @YES;
 	[tableView reloadData];
 
-	NSString *identifier = [dictionary objectForKey:@"identifier"];
+	NSString *identifier = dictionary[@"identifier"];
 	[[TWAPIBox sharedBox] fetchNearSeaWithLocationIdentifier:identifier delegate:self userInfo:dictionary];
 }
 
@@ -57,24 +57,24 @@
 	[self resetLoading];
 	if ([result isKindOfClass:[NSDictionary class]]) {
 		TWNearSeaResultTableViewController *controller = [[TWNearSeaResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-		controller.title = [result objectForKey:@"locationName"];
-		NSString *dateString = [result objectForKey:@"publishTime"];
+		controller.title = result[@"locationName"];
+		NSString *dateString = result[@"publishTime"];
 		NSDate *date = [[TWAPIBox sharedBox] dateFromShortString:dateString];
 		controller.publishTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];
 
-		dateString = [result objectForKey:@"validBeginTime"];
+		dateString = result[@"validBeginTime"];
 		date = [[TWAPIBox sharedBox] dateFromString:dateString];
 		controller.validBeginTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];
 
-		dateString = [result objectForKey:@"validEndTime"];
+		dateString = result[@"validEndTime"];
 		date = [[TWAPIBox sharedBox] dateFromString:dateString];
 		controller.validEndTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];
 		
-		controller.description = [result objectForKey:@"description"];
-		controller.wave = [result objectForKey:@"wave"];
-		controller.waveLevel = [result objectForKey:@"waveLevel"];
-		controller.wind = [result objectForKey:@"wind"];
-		controller.windScale = [result objectForKey:@"windScale"];
+		controller.description = result[@"description"];
+		controller.wave = result[@"wave"];
+		controller.waveLevel = result[@"waveLevel"];
+		controller.wind = result[@"wind"];
+		controller.windScale = result[@"windScale"];
 		
 		[self.navigationController pushViewController:controller animated:YES];
 		[controller release];

@@ -58,8 +58,8 @@ static TWTwitterEngine* sharedEngine;
 		delegate = nil;
 		engine = [[MGTwitterEngine alloc] initWithDelegate:self];
 		NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-		NSString *clientName = [infoDictionary objectForKey:@"CFBundleName"];
-		NSString *version = [infoDictionary objectForKey:@"CFBundleVersion"];	
+		NSString *clientName = infoDictionary[@"CFBundleName"];
+		NSString *version = infoDictionary[@"CFBundleVersion"];	
 		[engine setConsumerKey:TWITTER_CONSUMER_KEY secret:TWITTER_CONSUMER_SECRET];
 		[engine setClientName:clientName version:version URL:@"http://zonble.net" token:@"twweather"];			
 	}

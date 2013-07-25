@@ -120,7 +120,7 @@
 - (IBAction)facebookButtonAction:(id)sender
 {
 	if (![[TWWeatherAppDelegate sharedDelegate].facebook isSessionValid]) {
-		NSArray *permissions = [NSArray arrayWithObjects:@"publish_stream", @"offline_access", @"user_photos", @"user_notes", nil];
+		NSArray *permissions = @[@"publish_stream", @"offline_access", @"user_photos", @"user_notes"];
 		[[TWWeatherAppDelegate sharedDelegate].facebook authorize:APP_ID permissions:permissions delegate:self];
 	}
 	else {

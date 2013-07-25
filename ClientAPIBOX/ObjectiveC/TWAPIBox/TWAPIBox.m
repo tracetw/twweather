@@ -84,7 +84,7 @@ static TWAPIBox *apibox = nil;
 	NSArray *operations = [NSArray arrayWithArray:[_operationQueue operations]];
 	for (TWFetchOperation *op in operations) {
 		id sessionInfo = op.sessionInfo;
-		id theDelegate = [sessionInfo objectForKey:@"delegate"];
+		id theDelegate = sessionInfo[@"delegate"];
 		if (theDelegate == delegate) {
 			[op cancel];
 		}
@@ -95,19 +95,19 @@ static TWAPIBox *apibox = nil;
 {
 	NSMutableDictionary *sessionInfo = [NSMutableDictionary dictionary];
 	if (delegate) {
-		[sessionInfo setObject:delegate forKey:@"delegate"];
+		sessionInfo[@"delegate"] = delegate;
 	}
 	if (userInfo) {
-		[sessionInfo setObject:userInfo forKey:@"userInfo"];
+		sessionInfo[@"userInfo"] = userInfo;
 	}
 	if (identifier) {
-		[sessionInfo setObject:identifier forKey:@"identifier"];
+		sessionInfo[@"identifier"] = identifier;
 	}
-	[sessionInfo setObject:NSStringFromSelector(action) forKey:@"action"];
-	[sessionInfo setObject:NSStringFromSelector(failedAction) forKey:@"failedAction"];
+	sessionInfo[@"action"] = NSStringFromSelector(action);
+	sessionInfo[@"failedAction"] = NSStringFromSelector(failedAction);
 	NSString *URLString = [BASE_URL_STRING stringByAppendingString:path];
 	NSURL *URL = [NSURL URLWithString:URLString];
-	[sessionInfo setObject:URL forKey:@"URL"];
+	sessionInfo[@"URL"] = URL;
 
 	if ([identifier isEqualToString:@"image"]) {
 		if ([self shouldUseCachedDataForURL:URL]) {
@@ -161,55 +161,55 @@ static TWAPIBox *apibox = nil;
 		return;
 	}
 	NSString *path = [NSString stringWithFormat:@"forecast?location=%@", identifier];
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"identifier", userInfo, @"userInfo", nil];
+	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
 	[self sendRequestWithPath:path identifier:@"forecast" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchWeekWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"week2?location=%@", identifier];
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"identifier", userInfo, @"userInfo", nil];
+	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
 	[self sendRequestWithPath:path identifier:@"week" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchWeekTravelWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"week_travel?location=%@", identifier];
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"identifier", userInfo, @"userInfo", nil];
+	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
 	[self sendRequestWithPath:path identifier:@"week_travel" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchThreeDaySeaWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"3sea?location=%@", identifier];
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"identifier", userInfo, @"userInfo", nil];
+	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
 	[self sendRequestWithPath:path identifier:@"3sea" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchNearSeaWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"nearsea?location=%@", identifier];
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"identifier", userInfo, @"userInfo", nil];
+	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
 	[self sendRequestWithPath:path identifier:@"nearsea" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchTideWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"tide?location=%@", identifier];
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"identifier", userInfo, @"userInfo", nil];
+	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
 	[self sendRequestWithPath:path identifier:@"tide" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchImageWithIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"image?id=%@&redirect=1", identifier];
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"identifier", userInfo, @"userInfo", nil];
+	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
 	[self sendRequestWithPath:path identifier:@"image" action:@selector(didFetchImage:data:) failedAction:@selector(didFailedFetchImage:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchOBSWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"obs?location=%@", identifier];
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"identifier", userInfo, @"userInfo", nil];
+	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
 	[self sendRequestWithPath:path identifier:@"obs" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 - (void)fetchGlobalCityWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo
 {
 	NSString *path = [NSString stringWithFormat:@"global?location=%@", identifier];
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"identifier", userInfo, @"userInfo", nil];
+	NSDictionary *info = @{@"identifier": identifier, @"userInfo": userInfo};
 	[self sendRequestWithPath:path identifier:@"global" action:@selector(didFetchForecast:data:) failedAction:@selector(didFailedFetchForecast:error:) delegate:delegate userInfo:info];
 }
 
@@ -291,48 +291,48 @@ static TWAPIBox *apibox = nil;
 
 - (void)performAction:(NSDictionary *)actionDictionary
 {
-	NSString *actionString = [actionDictionary objectForKey:@"action"];
+	NSString *actionString = actionDictionary[@"action"];
 	SEL action = NSSelectorFromString(actionString);
-	LFHTTPRequest *request = [actionDictionary objectForKey:@"request"];
-	NSData *data = [actionDictionary objectForKey:@"data"];
+	LFHTTPRequest *request = actionDictionary[@"request"];
+	NSData *data = actionDictionary[@"data"];
 	[self performSelector:action withObject:request withObject:data];
 }
 
 - (void)performFailedAction:(NSDictionary *)actionDictionary
 {
-	NSString *actionString = [actionDictionary objectForKey:@"action"];
+	NSString *actionString = actionDictionary[@"action"];
 	SEL action = NSSelectorFromString(actionString);
-	LFHTTPRequest *request = [actionDictionary objectForKey:@"request"];
-	NSString *error = [actionDictionary objectForKey:@"error"];
+	LFHTTPRequest *request = actionDictionary[@"request"];
+	NSString *error = actionDictionary[@"error"];
 	[self performSelector:action withObject:request withObject:error];
 }
 
 - (void)httpRequestDidComplete:(LFHTTPRequest *)request
 {
 	NSData *data = [request receivedData];
-	NSURL *URL = [request.sessionInfo objectForKey:@"URL"];
+	NSURL *URL = (request.sessionInfo)[@"URL"];
 
 	NSMutableDictionary *sessionInfo = request.sessionInfo;
-	[sessionInfo setObject:[NSDate date] forKey:@"date"];
+	sessionInfo[@"date"] = [NSDate date];
 
-	NSString *actionString = [[request sessionInfo] objectForKey:@"action"];
+	NSString *actionString = [request sessionInfo][@"action"];
 	SEL action = NSSelectorFromString(actionString);
 
 	if (URL) {
 		[self writeDataToCache:data fromURL:URL];
 	}
-	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:actionString, @"action", request, @"request", data, @"data", nil];
+	NSDictionary *d = @{@"action": actionString, @"request": request, @"data": data};
 	[self performSelectorOnMainThread:@selector(performAction:) withObject:d waitUntilDone:NO];
 }
 - (void)httpRequestDidCancel:(LFHTTPRequest *)request
 {
-	NSString *actionString = [[request sessionInfo] objectForKey:@"action"];
+	NSString *actionString = [request sessionInfo][@"action"];
 	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:actionString, @"action", request, nil];
 	[self performSelectorOnMainThread:@selector(performAction:) withObject:d waitUntilDone:NO];
 }
 - (void)httpRequest:(LFHTTPRequest *)request didFailWithError:(NSString *)error
 {
-	NSURL *URL = [[request sessionInfo] objectForKey:@"URL"];
+	NSURL *URL = [request sessionInfo][@"URL"];
 
 	if (URL) {
 		NSData *data = [self dataInCacheForURL:URL];
@@ -340,17 +340,17 @@ static TWAPIBox *apibox = nil;
 
 		if (data) {
 			NSDate *date = [self dateOfCacheForURL:URL];
-			[sessionInfo setObject:date forKey:@"date"];
+			sessionInfo[@"date"] = date;
 
-			NSString *actionString = [[request sessionInfo] objectForKey:@"action"];
-			NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:actionString, @"action", request, @"request", data, @"data", nil];
+			NSString *actionString = [request sessionInfo][@"action"];
+			NSDictionary *d = @{@"action": actionString, @"request": request, @"data": data};
 			[self performSelectorOnMainThread:@selector(performAction:) withObject:d waitUntilDone:NO];
 			return;
 		}
 	}
 
-	NSString *failedActionString = [[request sessionInfo] objectForKey:@"failedAction"];
-	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:failedActionString, @"action", request, @"request", error, @"error", nil];
+	NSString *failedActionString = [request sessionInfo][@"failedAction"];
+	NSDictionary *d = @{@"action": failedActionString, @"request": request, @"error": error};
 	[self performSelectorOnMainThread:@selector(performFailedAction:) withObject:d waitUntilDone:NO];
 }
 

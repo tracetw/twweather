@@ -123,8 +123,8 @@
 		cell.textLabel.text = NSLocalizedString(@"Add...", @"");
 	}
 	else {
-		NSInteger locationID = [[_filterArray objectAtIndex:indexPath.row] intValue];
-		NSString *locationName = [[[[TWAPIBox sharedBox] forecastLocations] objectAtIndex:locationID] objectForKey:@"name"];
+		NSInteger locationID = [_filterArray[indexPath.row] intValue];
+		NSString *locationName = [[TWAPIBox sharedBox] forecastLocations][locationID][@"name"];
 		cell.textLabel.text = locationName;	
 	}
     return cell;
@@ -167,7 +167,7 @@
 		NSInteger index = indexPath.row;
 		[_filterArray removeObjectAtIndex:index];
 		if ([_filterArray count] && [_filterArray count] < [[[TWAPIBox sharedBox] forecastLocations] count] - 1) {
-			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:YES];
 		}
 		else {
 			[tableView reloadData];
@@ -209,7 +209,7 @@
 {
 	NSNumber *number = [NSNumber numberWithInt:locationIdentifier];
 	[_filterArray addObject:number];
-	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:[_filterArray count] - 1 inSection:1]] withRowAnimation:YES];
+	[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[_filterArray count] - 1 inSection:1]] withRowAnimation:YES];
 //	[self.tableView reloadData];
 	
 	if (delegate && [delegate respondsToSelector:@selector(settingController:didUpdateFilter:)]) {

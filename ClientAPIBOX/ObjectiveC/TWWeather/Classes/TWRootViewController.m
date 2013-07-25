@@ -93,10 +93,10 @@
 	}
 	switch (indexPath.row) {
 		case 0:
-			cell.textLabel.text = U8("目前天氣");
+			cell.textLabel.text = @"目前天氣";
 			break;
 		case 1:
-			cell.textLabel.text = U8("關心天氣");
+			cell.textLabel.text = @"關心天氣";
 			if (isLoadingOverview) {
 				[cell startAnimating];
 			}
@@ -105,28 +105,28 @@
 			}
 			break;
 		case 2:
-			cell.textLabel.text = U8("今明預報");
+			cell.textLabel.text = @"今明預報";
 			break;
 		case 3:
-			cell.textLabel.text = U8("一週天氣");
+			cell.textLabel.text = @"一週天氣";
 			break;
 		case 4:
-			cell.textLabel.text = U8("一週旅遊");
+			cell.textLabel.text = @"一週旅遊";
 			break;
 		case 5:
-			cell.textLabel.text = U8("三天漁業");
+			cell.textLabel.text = @"三天漁業";
 			break;
 		case 6:
-			cell.textLabel.text = U8("台灣近海");
+			cell.textLabel.text = @"台灣近海";
 			break;
 		case 7:
-			cell.textLabel.text = U8("三天潮汐");
+			cell.textLabel.text = @"三天潮汐";
 			break;
 		case 8:
-			cell.textLabel.text = U8("全球都市");
+			cell.textLabel.text = @"全球都市";
 			break;
 		case 9:
-			cell.textLabel.text = U8("天氣觀測雲圖");
+			cell.textLabel.text = @"天氣觀測雲圖";
 			break;
 		default:
 			break;

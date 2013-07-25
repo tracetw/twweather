@@ -66,12 +66,12 @@
 {
 	NSMutableString *description = [NSMutableString string];
 	for (NSDictionary *forecast in forecastArray) {
-		[description appendFormat:@"※ %@ ", [forecast objectForKey:@"date"]];
-		[description appendFormat:@"%@ ", [forecast objectForKey:@"lunarDate"]];
-		for (NSDictionary *tide in [forecast objectForKey:@"tides"]) {
-			NSString *name = [tide objectForKey:@"name"];
-			NSString *shortTime = [tide objectForKey:@"shortTime"];
-			NSString *height = [tide objectForKey:@"height"];
+		[description appendFormat:@"※ %@ ", forecast[@"date"]];
+		[description appendFormat:@"%@ ", forecast[@"lunarDate"]];
+		for (NSDictionary *tide in forecast[@"tides"]) {
+			NSString *name = tide[@"name"];
+			NSString *shortTime = tide[@"shortTime"];
+			NSString *height = tide[@"height"];
 			[description appendFormat:@"%@ %@ %@", name, shortTime, height];
 		}
 	}
@@ -130,21 +130,21 @@
     if (cell == nil) {
         cell = [[[TWTideCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-	NSDictionary *dictionary = [forecastArray objectAtIndex:indexPath.row];
+	NSDictionary *dictionary = forecastArray[indexPath.row];
 	
-	NSString *dateString = [dictionary objectForKey:@"date"];
+	NSString *dateString = dictionary[@"date"];
 	NSDate *date = [[TWAPIBox sharedBox] dateFromShortString:dateString];
 	cell.dateString = [[TWAPIBox sharedBox] shortDateStringFromDate:date];
-	cell.lunarDateString = [dictionary objectForKey:@"lunarDate"];
-	cell.tides = [dictionary objectForKey:@"tides"];
+	cell.lunarDateString = dictionary[@"lunarDate"];
+	cell.tides = dictionary[@"tides"];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	[cell setNeedsDisplay];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSDictionary *dictionary = [forecastArray objectAtIndex:indexPath.row];
-	NSArray *tides = [dictionary objectForKey:@"tides"];
+	NSDictionary *dictionary = forecastArray[indexPath.row];
+	NSArray *tides = dictionary[@"tides"];
 	return 60.0 + [tides count] * 30.0;
 }
 

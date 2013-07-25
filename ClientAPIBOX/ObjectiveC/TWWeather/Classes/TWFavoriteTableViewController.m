@@ -114,7 +114,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	}
 	NSArray *favoitesSetting = [[NSUserDefaults standardUserDefaults] objectForKey:favoitesPreferenceName];
 	if (!favoitesSetting) {
-		favoitesSetting = [NSArray arrayWithObjects:[NSNumber numberWithInt:0], [NSNumber numberWithInt:1], nil];
+		favoitesSetting = @[@0, @1];
 		[[NSUserDefaults standardUserDefaults] setObject:favoitesSetting forKey:favoitesPreferenceName];
 	}
 	[_filterArray setArray:favoitesSetting];
@@ -197,9 +197,9 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 - (void)pushWeekViewController:(NSDictionary *)result
 {
 	TWWeekResultTableViewController *controller = [[TWWeekResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	controller.title = [result objectForKey:@"locationName"];
-	controller.forecastArray = [result objectForKey:@"items"];
-	NSString *dateString = [result objectForKey:@"publishTime"];
+	controller.title = result[@"locationName"];
+	controller.forecastArray = result[@"items"];
+	NSString *dateString = result[@"publishTime"];
 	NSDate *date = [[TWAPIBox sharedBox] dateFromString:dateString];
 	controller.publishTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];
 	[self.navigationController pushViewController:controller animated:YES];
@@ -238,7 +238,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	for (NSNumber *number in _filterArray) {
 		NSUInteger index = [number intValue];
 		if ([_favArray count]  > index) {
-			NSDictionary *d = [_favArray objectAtIndex:index];
+			NSDictionary *d = _favArray[index];
 			[_filteredArray addObject:d];
 		}
 	}
@@ -278,7 +278,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	if (section == 0) {
 		NSUInteger count = [warningArray count];
 		for (NSDictionary *dictionary in warningArray) {
-			NSString *name = [dictionary objectForKey:@"name"];
+			NSString *name = dictionary[@"name"];
 			if ([name rangeOfString:@"颱風"].location != NSNotFound) {
 				return count + 1;
 			}
@@ -307,8 +307,8 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 			cell.textLabel.textColor = [UIColor blackColor];
 		}
 		else {
-			NSDictionary *dictionary = [warningArray objectAtIndex:indexPath.row];
-			cell.textLabel.text = [dictionary objectForKey:@"name"];
+			NSDictionary *dictionary = warningArray[indexPath.row];
+			cell.textLabel.text = dictionary[@"name"];
 			cell.imageView.image = [UIImage imageNamed:@"alert.png"];
 			cell.textLabel.textColor = [UIColor redColor];
 		}
@@ -318,7 +318,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	static NSString *CellIdentifier = @"Cell";
 	static NSString *SectionCellIdentifier = @"SectionCell";
 
-	NSDictionary *item = [_filteredArray objectAtIndex:indexPath.section - 1];
+	NSDictionary *item = _filteredArray[indexPath.section - 1];
 
 	if (indexPath.row == 0) {
 		TWFavoriteSectionCell *cell = (TWFavoriteSectionCell *)[tableView dequeueReusableCellWithIdentifier:SectionCellIdentifier];
@@ -326,7 +326,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 			cell = [[[TWFavoriteSectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionCellIdentifier] autorelease];
 		}
 //		cell.textLabel.text = [item objectForKey:@"locationName"];
-		cell.locationName = [item objectForKey:@"locationName"];
+		cell.locationName = item[@"locationName"];
 		if (isLoadingWeek && loadingWeekIndex == indexPath.section - 1) {
 			cell.loading = YES;
 		}
@@ -343,16 +343,16 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	}
 
 	if ([item isKindOfClass:[NSDictionary class]]) {
-		NSDictionary *dictionary = [[item objectForKey:@"items"] objectAtIndex:0];
+		NSDictionary *dictionary = item[@"items"][0];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.title = [dictionary objectForKey:@"title"];
-		cell.description = [dictionary objectForKey:@"description"];
-		cell.rain = [dictionary objectForKey:@"rain"];
-		cell.temperature = [dictionary objectForKey:@"temperature"];
-		NSString *beginTimeString = [dictionary objectForKey:@"beginTime"];
+		cell.title = dictionary[@"title"];
+		cell.description = dictionary[@"description"];
+		cell.rain = dictionary[@"rain"];
+		cell.temperature = dictionary[@"temperature"];
+		NSString *beginTimeString = dictionary[@"beginTime"];
 		NSDate *beginDate = [[TWAPIBox sharedBox] dateFromString:beginTimeString];
 		cell.beginTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:beginDate];
-		NSString *endTimeString = [dictionary objectForKey:@"endTime"];
+		NSString *endTimeString = dictionary[@"endTime"];
 		NSDate *endDate = [[TWAPIBox sharedBox] dateFromString:endTimeString];
 		cell.endTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:endDate];
 
@@ -380,19 +380,19 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 			[webController release];
 			return;
 		}
-		NSDictionary *dictionary = [warningArray objectAtIndex:indexPath.row];
+		NSDictionary *dictionary = warningArray[indexPath.row];
 		TWOverviewViewController *controller = [[TWOverviewViewController alloc] init];
-		[controller setText:[dictionary objectForKey:@"text"]];
-		controller.title = [dictionary objectForKey:@"name"];
+		[controller setText:dictionary[@"text"]];
+		controller.title = dictionary[@"name"];
 		[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
 		[controller release];
 		return;
 	}
 
-	NSDictionary *dictionary = [_filteredArray objectAtIndex:indexPath.section - 1];
+	NSDictionary *dictionary = _filteredArray[indexPath.section - 1];
 
 	if (indexPath.row == 0) {
-		NSString *weekLocation = [dictionary objectForKey:@"id"];
+		NSString *weekLocation = dictionary[@"id"];
 
 		if ([weekDictionary valueForKey:weekLocation]) {
 			NSDictionary *result = [weekDictionary valueForKey:weekLocation];
@@ -408,9 +408,9 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	}
 
 	TWForecastResultTableViewController *controller = [[TWForecastResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	controller.title = [dictionary objectForKey:@"locationName"];
-	controller.forecastArray = [dictionary objectForKey:@"items"];
-	NSString *weekLocation = [dictionary objectForKey:@"id"];
+	controller.title = dictionary[@"locationName"];
+	controller.forecastArray = dictionary[@"items"];
+	NSString *weekLocation = dictionary[@"id"];
 	controller.weekLocation = weekLocation;
 
 	if ([weekDictionary valueForKey:weekLocation]) {
@@ -509,7 +509,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	[self.tableView reloadData];
 
 	if ([result isKindOfClass:[NSDictionary class]]) {
-		[weekDictionary setObject:result forKey:identifier];
+		weekDictionary[identifier] = result;
 		[self pushWeekViewController:result];
 	}
 }

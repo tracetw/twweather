@@ -78,7 +78,7 @@ static TWSocialComposer *sharedComposer;
 		return;
 	}
 		
-	TWSocialComposerViewController *composer = (TWSocialComposerViewController *)[[self viewControllers] objectAtIndex:0];
+	TWSocialComposerViewController *composer = (TWSocialComposerViewController *)[self viewControllers][0];
 	[composer view];
 	UINavigationController *rootNavController = [TWWeatherAppDelegate sharedDelegate].navigationController;
 	[rootNavController presentModalViewController:self animated:YES];

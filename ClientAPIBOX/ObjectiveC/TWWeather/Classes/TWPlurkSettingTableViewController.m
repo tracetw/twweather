@@ -80,7 +80,7 @@
 	}
 	
 	[self showLoadingView];
-	[[ObjectivePlurk sharedInstance] loginWithUsername:loginName password:password delegate:self userInfo:[NSDictionary dictionaryWithObjectsAndKeys:loginName, @"loginName", password, @"password", nil]];
+	[[ObjectivePlurk sharedInstance] loginWithUsername:loginName password:password delegate:self userInfo:@{@"loginName": loginName, @"password": password}];
 }
 
 - (IBAction)logoutAction:(id)sender

@@ -142,9 +142,9 @@
 	[s appendFormat:@"%@\n", dateString];
 	[s appendFormat:@"%@\n", lunarDateString];
 	for (NSDictionary *tide in tides) {
-		NSString *name = [tide objectForKey:@"name"];
-		NSString *shortTime = [tide objectForKey:@"shortTime"];
-		NSString *height = [tide objectForKey:@"height"];
+		NSString *name = tide[@"name"];
+		NSString *shortTime = tide[@"shortTime"];
+		NSString *height = tide[@"height"];
 		[s appendFormat:@"%@ %@ %@\n", name, shortTime, height];
 	}
 	return s;
@@ -155,9 +155,9 @@
 	[lunarDateString drawInRect:CGRectMake(10, 6, 260, 30) withFont:[UIFont systemFontOfSize:14.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentRight];
 	NSUInteger i = 0;
 	for (NSDictionary *tide in tides) {
-		NSString *name = [tide objectForKey:@"name"];
-		NSString *shortTime = [tide objectForKey:@"shortTime"];
-		NSString *height = [tide objectForKey:@"height"];
+		NSString *name = tide[@"name"];
+		NSString *shortTime = tide[@"shortTime"];
+		NSString *height = tide[@"height"];
 		[name drawInRect:CGRectMake(10, 40.0 + 30 * i, 100, 40) withFont:[UIFont boldSystemFontOfSize:20.0]];
 		[shortTime drawInRect:CGRectMake(90, 44 + 30 * i, 80, 20) withFont:[UIFont systemFontOfSize:16.0]];
 		[[height stringByAppendingString:@"cm"] drawInRect:CGRectMake(160, 44 + 30 * i, 80, 20) withFont:[UIFont systemFontOfSize:16.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentRight];

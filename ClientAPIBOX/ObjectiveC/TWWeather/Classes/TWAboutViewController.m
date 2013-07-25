@@ -69,14 +69,14 @@
 
 	UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 30)] autorelease];
 	label.font = [UIFont boldSystemFontOfSize:20.0];
-	label.text = [loaclizedDictionary objectForKey:@"CFBundleDisplayName"];
+	label.text = loaclizedDictionary[@"CFBundleDisplayName"];
 	self.titleLabel = label;
 	[contentView addSubview:self.titleLabel];
 
 	label = [[[UILabel alloc] initWithFrame:CGRectMake(20, 50, 280, 60)] autorelease];
 	label.font = [UIFont systemFontOfSize:14.0];
 	label.numberOfLines = 3;
-	label.text = [NSString stringWithFormat:NSLocalizedString(@"Version: %@\n%@", @""), [infoDictionary objectForKey:@"CFBundleVersion"], [loaclizedDictionary objectForKey:@"NSHumanReadableCopyright"]];
+	label.text = [NSString stringWithFormat:NSLocalizedString(@"Version: %@\n%@", @""), infoDictionary[@"CFBundleVersion"], loaclizedDictionary[@"NSHumanReadableCopyright"]];
 	self.copyrightLabel = label;
 	[contentView addSubview:self.copyrightLabel];
 
@@ -84,7 +84,7 @@
 	label.font = [UIFont systemFontOfSize:12.0];
 	label.numberOfLines = 100;
 	NSMutableString *text = [NSMutableString stringWithString:NSLocalizedString(@"Data comes from Central Weather Bureau\n\n", @"")];
-	[text appendString:[NSString stringWithFormat:NSLocalizedString(@"%@ copyright ifno" , @""), [loaclizedDictionary objectForKey:@"CFBundleDisplayName"]]];
+	[text appendString:[NSString stringWithFormat:NSLocalizedString(@"%@ copyright ifno" , @""), loaclizedDictionary[@"CFBundleDisplayName"]]];
 	label.text = text;
 	self.externalLibraryLabel = label;
 	[contentView addSubview:self.externalLibraryLabel];

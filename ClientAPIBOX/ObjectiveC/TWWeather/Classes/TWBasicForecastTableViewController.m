@@ -101,7 +101,7 @@
 		_searchBar.delegate = self;
 		// _searchBar.tintColor = [UIColor grayColor];
 		if ([[_searchBar subviews] count]) {
-			UIView *bgView = [[_searchBar subviews] objectAtIndex:0];
+			UIView *bgView = [_searchBar subviews][0];
 			if (bgView) {
 				[bgView setValue:[UIColor colorWithHue:1.0 saturation:0.0 brightness:0.9 alpha:1.0] forKey:@"tintColor"];
 			}
@@ -140,7 +140,7 @@
 	[_array removeAllObjects];
 	for (NSDictionary *d in array) {
 		NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:d];
-		[dictionary setObject:[NSNumber numberWithBool:NO] forKey:@"isLoading"];
+		dictionary[@"isLoading"] = @NO;
 		[_array addObject:dictionary];
 	}
 }
@@ -159,7 +159,7 @@
 - (void)resetLoading
 {
 	for (NSMutableDictionary *d in _array) {
-		[d setObject:[NSNumber numberWithBool:NO] forKey:@"isLoading"];
+		d[@"isLoading"] = @NO;
 	}
 	[self.tableView reloadData];
 	[_searchController.searchResultsTableView reloadData];
@@ -194,12 +194,12 @@
 		cell = [[[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 	}
 	NSArray *array = [self arrayForTableView:tableView];
-	NSDictionary *dictionary = [array objectAtIndex:indexPath.row];
-	NSString *name = [dictionary objectForKey:@"name"];
+	NSDictionary *dictionary = array[indexPath.row];
+	NSString *name = dictionary[@"name"];
 	cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0];
 	cell.textLabel.text = name;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	if ([[dictionary objectForKey:@"isLoading"] boolValue]) {
+	if ([dictionary[@"isLoading"] boolValue]) {
 		[cell startAnimating];
 	}
 	else {
@@ -217,7 +217,7 @@
 	[_filteredArray removeAllObjects];
 	searchText = [searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	for (NSDictionary *d in _array) {
-		NSString *name = [d objectForKey:@"name"];
+		NSString *name = d[@"name"];
 		NSRange range = [name rangeOfString:searchText];
 		if (range.location != NSNotFound) {
 			[_filteredArray addObject:d];

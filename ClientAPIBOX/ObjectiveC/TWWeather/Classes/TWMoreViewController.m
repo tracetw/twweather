@@ -43,7 +43,7 @@
 		MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
 		controller.mailComposeDelegate = self;
 		[controller setSubject:NSLocalizedString(@"TW Weather Questions/Inquiry", @"")];
-		[controller setToRecipients:[NSArray arrayWithObject:@"Weizhong Yang<service@zonble.net>"]];
+		[controller setToRecipients:@[@"Weizhong Yang<service@zonble.net>"]];
 		[self presentModalViewController:controller animated:YES];
 		[controller release];
 	}

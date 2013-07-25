@@ -46,12 +46,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSMutableDictionary *dictionary = [[self arrayForTableView:tableView] objectAtIndex:indexPath.row];
+	NSMutableDictionary *dictionary = [self arrayForTableView:tableView][indexPath.row];
 	tableView.userInteractionEnabled = NO;
-	[dictionary setObject:[NSNumber numberWithBool:YES] forKey:@"isLoading"];
+	dictionary[@"isLoading"] = @YES;
 	[tableView reloadData];
 
-	NSString *identifier = [dictionary objectForKey:@"identifier"];
+	NSString *identifier = dictionary[@"identifier"];
 	[[TWAPIBox sharedBox] fetchForecastWithLocationIdentifier:identifier delegate:self userInfo:dictionary];
 }
 
@@ -63,9 +63,9 @@
 	if ([result isKindOfClass:[NSDictionary class]]) {
 		NSDictionary *dictionary = (NSDictionary *)result;
 		TWForecastResultTableViewController *controller = [[TWForecastResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-		controller.title = [dictionary objectForKey:@"locationName"];
-		controller.forecastArray = [dictionary objectForKey:@"items"];
-		controller.weekLocation = [dictionary objectForKey:@"id"];
+		controller.title = dictionary[@"locationName"];
+		controller.forecastArray = dictionary[@"items"];
+		controller.weekLocation = dictionary[@"id"];
 		[self.navigationController pushViewController:controller animated:YES];
 		[controller release];
 	}

@@ -26,7 +26,7 @@
 	<key>CFBundleSignature</key>
 	<string>ZNBL</string>
 	<key>CFBundleVersion</key>
-	<string>3.0.2</string>
+	<string>3.2.0</string>
 	<key>LSHasLocalizedDisplayName</key>
 	<true/>
 	<key>LSRequiresIPhoneOS</key>
@@ -38,6 +38,10 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>wifi</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 </dict>
 </plist>

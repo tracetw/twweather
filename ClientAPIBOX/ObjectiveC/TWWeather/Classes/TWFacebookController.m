@@ -36,7 +36,7 @@
 
 
 	NSMutableDictionary *args = [[[NSMutableDictionary alloc] init] autorelease];
-	[args setObject:@"188341743092" forKey:@"source_ids"];
+	args[@"source_ids"] = @"188341743092";
 	FBRequest *request = [FBRequest requestWithDelegate:self];
 	[request call:@"stream.get" params:args];
 
@@ -77,7 +77,7 @@
 	if (cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 	}
-	NSDictionary *item = [posts objectAtIndex:indexPath.row];
+	NSDictionary *item = posts[indexPath.row];
 	cell.textLabel.text = [item valueForKey:@"message"];
 	return cell;
 }

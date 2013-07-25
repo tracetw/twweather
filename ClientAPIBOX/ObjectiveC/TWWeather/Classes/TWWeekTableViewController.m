@@ -45,12 +45,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSMutableDictionary *dictionary = [[self arrayForTableView:tableView] objectAtIndex:indexPath.row];
+	NSMutableDictionary *dictionary = [self arrayForTableView:tableView][indexPath.row];
 	tableView.userInteractionEnabled = NO;
-	[dictionary setObject:[NSNumber numberWithBool:YES] forKey:@"isLoading"];
+	dictionary[@"isLoading"] = @YES;
 	[tableView reloadData];
 
-	NSString *identifier = [dictionary objectForKey:@"identifier"];
+	NSString *identifier = dictionary[@"identifier"];
 	[[TWAPIBox sharedBox] fetchWeekWithLocationIdentifier:identifier delegate:self userInfo:dictionary];
 }
 
@@ -59,9 +59,9 @@
 	[self resetLoading];
 	if ([result isKindOfClass:[NSDictionary class]]) {
 		TWWeekResultTableViewController *controller = [[TWWeekResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-		controller.title = [result objectForKey:@"locationName"];
-		controller.forecastArray = [result objectForKey:@"items"];
-		NSString *dateString = [result objectForKey:@"publishTime"];
+		controller.title = result[@"locationName"];
+		controller.forecastArray = result[@"items"];
+		NSString *dateString = result[@"publishTime"];
 		NSDate *date = [[TWAPIBox sharedBox] dateFromString:dateString];
 		controller.publishTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];
 		[self.navigationController pushViewController:controller animated:YES];

@@ -43,12 +43,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	NSMutableDictionary *dictionary = [[self arrayForTableView:tableView] objectAtIndex:indexPath.row];
+	NSMutableDictionary *dictionary = [self arrayForTableView:tableView][indexPath.row];
 	tableView.userInteractionEnabled = NO;
-	[dictionary setObject:[NSNumber numberWithBool:YES] forKey:@"isLoading"];
+	dictionary[@"isLoading"] = @YES;
 	[tableView reloadData];
 
-	NSString *identifier = [dictionary objectForKey:@"identifier"];
+	NSString *identifier = dictionary[@"identifier"];
 	[[TWAPIBox sharedBox] fetchImageWithIdentifier:identifier delegate:self userInfo:dictionary];
 }
 
@@ -57,7 +57,7 @@
 	[self resetLoading];
 	
 	NSDictionary *dictionary = (NSDictionary *)userInfo;
-	NSString *name = [dictionary objectForKey:@"name"];
+	NSString *name = dictionary[@"name"];
 	
 	TWImageViewController *controller = [[TWImageViewController alloc] init];
 	UIImage *image = [UIImage imageWithData:data];

@@ -50,8 +50,8 @@
 
 - (void)addToArray:(NSMutableArray *)array name:(char *)name identifier:(NSString *)identifier
 {
-	NSString *nameString = [NSString stringWithUTF8String:name];
-	[array addObject:[NSDictionary dictionaryWithObjectsAndKeys:identifier, @"identifier", nameString, @"name", nil]];
+	NSString *nameString = @(name);
+	[array addObject:@{@"identifier": identifier, @"name": nameString}];
 }
 
 - (void)initForecastLocations
@@ -228,7 +228,7 @@
 	[self addToArray:north name:"三義" identifier:@"C0E53"];
 	[self addToArray:north name:"竹南" identifier:@"C0E42"];
 
-	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:north, @"items", @"north", @"AreaID", [NSString stringWithUTF8String:"北部"], @"areaName", nil];
+	NSDictionary *d = @{@"items": north, @"AreaID": @"north", @"areaName": @"北部"};
 	[_OBSLocations addObject:d];
 
 	NSMutableArray *center = [NSMutableArray array];
@@ -246,7 +246,7 @@
 	[self addToArray:center name:"阿里山" identifier:@"46753"];
 	[self addToArray:center name:"玉山" identifier:@"46755"];
 
-	d = [NSDictionary dictionaryWithObjectsAndKeys:center, @"items", @"center", @"AreaID", [NSString stringWithUTF8String:"中部"], @"areaName", nil];
+	d = @{@"items": center, @"AreaID": @"center", @"areaName": @"中部"};
 	[_OBSLocations addObject:d];
 
 	NSMutableArray *south = [NSMutableArray array];
@@ -256,7 +256,7 @@
 	[self addToArray:south name:"三地門" identifier:@"C0R15"];
 	[self addToArray:south name:"恆春" identifier:@"46759"];
 
-	d = [NSDictionary dictionaryWithObjectsAndKeys:south, @"items", @"south", @"AreaID", [NSString stringWithUTF8String:"南部"], @"areaName", nil];
+	d = @{@"items": south, @"AreaID": @"south", @"areaName": @"南部"};
 	[_OBSLocations addObject:d];
 
 	NSMutableArray *east = [NSMutableArray array];
@@ -269,7 +269,7 @@
 	[self addToArray:east name:"台東" identifier:@"46766"];
 	[self addToArray:east name:"大武" identifier:@"46754"];
 
-	d = [NSDictionary dictionaryWithObjectsAndKeys:east, @"items", @"east", @"AreaID", [NSString stringWithUTF8String:"東部"], @"areaName", nil];
+	d = @{@"items": east, @"AreaID": @"east", @"areaName": @"東部"};
 	[_OBSLocations addObject:d];
 
 	NSMutableArray *island = [NSMutableArray array];
@@ -282,7 +282,7 @@
 	[self addToArray:island name:"東吉島" identifier:@"46730"];
 	[self addToArray:island name:"琉球嶼" identifier:@"C0R27"];
 
-	d = [NSDictionary dictionaryWithObjectsAndKeys:island, @"items", @"island", @"AreaID", [NSString stringWithUTF8String:"外島"], @"areaName", nil];
+	d = @{@"items": island, @"AreaID": @"island", @"areaName": @"外島"};
 	[_OBSLocations addObject:d];
 }
 - (void)initGlobalCityLocations
@@ -313,7 +313,7 @@
 	[self addToArray:asia name:"伯斯" identifier:@"PERTH"];
 	[self addToArray:asia name:"布里斯班" identifier:@"BRISBANE"];
 
-	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:asia, @"items", @"asia", @"AreaID", [NSString stringWithUTF8String:"亞洲"], @"areaName", nil];
+	NSDictionary *d = @{@"items": asia, @"AreaID": @"asia", @"areaName": @"亞洲"};
 	[_globalCityLocations addObject:d];
 
 	NSMutableArray *america = [NSMutableArray array];
@@ -336,7 +336,7 @@
 	[self addToArray:america name:"華盛頓特區" identifier:@"WASHINGTON-DC"];
 	[self addToArray:america name:"布宜諾斯艾利斯" identifier:@"BUENOS-AIRES"];
 
-	d = [NSDictionary dictionaryWithObjectsAndKeys:america, @"items", @"america", @"AreaID", [NSString stringWithUTF8String:"美洲"], @"areaName", nil];
+	d = @{@"items": america, @"AreaID": @"america", @"areaName": @"美洲"};
 	[_globalCityLocations addObject:d];
 
 	NSMutableArray *europeAfrica = [NSMutableArray array];
@@ -362,7 +362,7 @@
 	[self addToArray:europeAfrica name:"約翰尼斯堡" identifier:@"JOHANNESBURG"];
 	[self addToArray:europeAfrica name:"斯德哥爾摩" identifier:@"STOCKHOLM"];
 
-	d = [NSDictionary dictionaryWithObjectsAndKeys:europeAfrica, @"items", @"europeAfrica", @"AreaID", [NSString stringWithUTF8String:"歐非"], @"areaName", nil];
+	d = @{@"items": europeAfrica, @"AreaID": @"europeAfrica", @"areaName": @"歐非"};
 	[_globalCityLocations addObject:d];
 
 	NSMutableArray *china = [NSMutableArray array];
@@ -384,7 +384,7 @@
 	[self addToArray:china name:"蘭州" identifier:@"LANZHOU"];
 	[self addToArray:china name:"海口" identifier:@"HAIKOU"];
 
-	d = [NSDictionary dictionaryWithObjectsAndKeys:china, @"items", @"china", @"AreaID", [NSString stringWithUTF8String:"中國"], @"areaName", nil];
+	d = @{@"items": china, @"AreaID": @"china", @"areaName": @"中國"};
 	[_globalCityLocations addObject:d];
 }
 

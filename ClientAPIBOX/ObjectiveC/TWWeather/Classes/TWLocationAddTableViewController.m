@@ -63,8 +63,8 @@
 	NSArray *locations = [[TWAPIBox sharedBox] forecastLocations];
 	for (NSUInteger i = 0; i < [locations count]; i++) {
 		if (![filterArray containsObject:[NSNumber numberWithInt:i]]) {
-			NSMutableDictionary *d = [NSMutableDictionary dictionaryWithDictionary:[locations objectAtIndex:i]];
-			[d setObject:[NSNumber numberWithInt:i] forKey:@"filterID"];
+			NSMutableDictionary *d = [NSMutableDictionary dictionaryWithDictionary:locations[i]];
+			d[@"filterID"] = [NSNumber numberWithInt:i];
 			[array addObject:d];
 		}
 	}
@@ -92,7 +92,7 @@
 	if (cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 	}
-	NSDictionary *d = [contentArray objectAtIndex:indexPath.row];
+	NSDictionary *d = contentArray[indexPath.row];
 	NSString *name = [d valueForKey:@"name"];
 	cell.textLabel.text = name;
 	return cell;
@@ -100,7 +100,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (delegate && [delegate respondsToSelector:@selector(locationAddTableViewController:didSelectedLocationIdentifier:)]) {
-		NSUInteger filterID = [[[self.contentArray objectAtIndex:indexPath.row] objectForKey:@"filterID"] intValue];
+		NSUInteger filterID = [(self.contentArray)[indexPath.row][@"filterID"] intValue];
 		[delegate locationAddTableViewController:self didSelectedLocationIdentifier:filterID];
 		[[self.navigationController compitibaleParentViewController] dismissModalViewControllerAnimated:YES];
 	}

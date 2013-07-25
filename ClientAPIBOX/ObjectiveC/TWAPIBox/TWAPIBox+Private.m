@@ -43,13 +43,13 @@
 {
 	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
 	if (code == TWAPIConnectionError) {
-		[dictionary setObject:NSLocalizedString(@"Connection Error. Unable to connect to the remote server, please try again.", @"") forKey:NSLocalizedDescriptionKey];
+		dictionary[NSLocalizedDescriptionKey] = NSLocalizedString(@"Connection Error. Unable to connect to the remote server, please try again.", @"");
 	}
 	else if (code == TWAPITimeOutError) {
-		[dictionary setObject:NSLocalizedString(@"Connection Time Out. Unable to connect to the remote server, please try again.", @"") forKey:NSLocalizedDescriptionKey];
+		dictionary[NSLocalizedDescriptionKey] = NSLocalizedString(@"Connection Time Out. Unable to connect to the remote server, please try again.", @"");
 	}
 	else if (code == TWAPIDataError) {
-		[dictionary setObject:NSLocalizedString(@"Data Error. Unable to parse the data from the remote server, please contact me to fix the server.", @"") forKey:NSLocalizedDescriptionKey];
+		dictionary[NSLocalizedDescriptionKey] = NSLocalizedString(@"Data Error. Unable to parse the data from the remote server, please contact me to fix the server.", @"");
 	}
 	return dictionary;
 }
@@ -59,14 +59,14 @@
 	NSPropertyListFormat format;
 	NSString *error;
 	id plist = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];
-	id result = [plist objectForKey:@"result"];
+	id result = plist[@"result"];
 
 	NSDictionary *sessionInfo = [request sessionInfo];
-	NSString *identifier = [sessionInfo objectForKey:@"identifier"];
-	id delegate = [sessionInfo objectForKey:@"delegate"];
-	NSDictionary *info = [sessionInfo objectForKey:@"userInfo"];
+	NSString *identifier = sessionInfo[@"identifier"];
+	id delegate = sessionInfo[@"delegate"];
+	NSDictionary *info = sessionInfo[@"userInfo"];
 	if (!info) {
-		info = [sessionInfo objectForKey:@"date"];
+		info = sessionInfo[@"date"];
 	}
 
 	if ([identifier isEqualToString:@"warning"] && delegate && [delegate respondsToSelector:@selector(APIBox:didFetchWarnings:userInfo:)]) {
@@ -88,9 +88,9 @@
 	}
 	NSError *theError = [NSError errorWithDomain:TWAPIErrorDomain code:code userInfo:[self _errorDictionaryWithCode:code]];
 	NSDictionary *sessionInfo = [request sessionInfo];
-	id delegate = [sessionInfo objectForKey:@"delegate"];
+	id delegate = sessionInfo[@"delegate"];
 
-	NSString *identifier = [sessionInfo objectForKey:@"identifier"];
+	NSString *identifier = sessionInfo[@"identifier"];
 	if ([identifier isEqualToString:@"warning"] && delegate && [delegate respondsToSelector:@selector(APIBox:didFailedFetchWarningsWithError:)]) {
 		[delegate APIBox:self didFailedFetchWarningsWithError:theError];
 	}
@@ -108,9 +108,9 @@
 		string = @"";
 	}
 	NSDictionary *sessionInfo = [request sessionInfo];
-	id delegate = [sessionInfo objectForKey:@"delegate"];
+	id delegate = sessionInfo[@"delegate"];
 	if (delegate && [delegate respondsToSelector:@selector(APIBox:didFetchOverview:userInfo:)]) {
-		[delegate APIBox:self didFetchOverview:string userInfo:[sessionInfo objectForKey:@"userInfo"]];
+		[delegate APIBox:self didFetchOverview:string userInfo:sessionInfo[@"userInfo"]];
 	}
 }
 - (void)didFailedFetchOverview:(LFHTTPRequest *)request error:(NSString *)error
@@ -124,7 +124,7 @@
 	}
 	NSError *theError = [NSError errorWithDomain:TWAPIErrorDomain code:code userInfo:[self _errorDictionaryWithCode:code]];
 	NSDictionary *sessionInfo = [request sessionInfo];
-	id delegate = [sessionInfo objectForKey:@"delegate"];
+	id delegate = sessionInfo[@"delegate"];
 
 	if (delegate && [delegate respondsToSelector:@selector(APIBox:didFailedFetchOverviewWithError:)]) {
 		[delegate APIBox:self didFailedFetchOverviewWithError:theError];
@@ -133,19 +133,19 @@
 - (void)didFetchForecast:(LFHTTPRequest *)request data:(NSData *)data
 {
 	NSDictionary *sessionInfo = [request sessionInfo];
-	id delegate = [sessionInfo objectForKey:@"delegate"];
-	NSString *identifier = [sessionInfo objectForKey:@"identifier"];
-	NSDictionary *info = [sessionInfo objectForKey:@"userInfo"];
+	id delegate = sessionInfo[@"delegate"];
+	NSString *identifier = sessionInfo[@"identifier"];
+	NSDictionary *info = sessionInfo[@"userInfo"];
 	if (!info) {
-		info = [sessionInfo objectForKey:@"date"];
+		info = sessionInfo[@"date"];
 	}
-	NSString *inIdentifier = [info objectForKey:@"identifier"];
-	id userInfo = [info objectForKey:@"userInfo"];
+	NSString *inIdentifier = info[@"identifier"];
+	id userInfo = info[@"userInfo"];
 
 	NSPropertyListFormat format;
 	NSString *error;
 	id plist = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];
-	id result = [plist objectForKey:@"result"];
+	id result = plist[@"result"];
 	if (result) {
 		if ([identifier isEqualToString:@"forecast"] && delegate && [delegate respondsToSelector:@selector(APIBox:didFetchForecast:identifier:userInfo:)]) {
 			[delegate APIBox:self didFetchForecast:result identifier:inIdentifier userInfo:userInfo];
@@ -205,11 +205,11 @@
 - (void)didFailedFetchForecast:(LFHTTPRequest *)request error:(NSString *)error
 {
 	NSDictionary *sessionInfo = [request sessionInfo];
-	id delegate = [sessionInfo objectForKey:@"delegate"];
-	NSString *identifier = [sessionInfo objectForKey:@"identifier"];
-	NSDictionary *info = [sessionInfo objectForKey:@"userInfo"];
-	NSString *inIdentifier = [info objectForKey:@"identifier"];
-	id userInfo = [info objectForKey:@"userInfo"];
+	id delegate = sessionInfo[@"delegate"];
+	NSString *identifier = sessionInfo[@"identifier"];
+	NSDictionary *info = sessionInfo[@"userInfo"];
+	NSString *inIdentifier = info[@"identifier"];
+	id userInfo = info[@"userInfo"];
 
 	NSInteger code = TWAPIUnkownError;
 	if (error == LFHTTPRequestConnectionError) {
@@ -241,10 +241,10 @@
 - (void)didFetchImage:(LFHTTPRequest *)request data:(NSData *)data
 {
 	NSDictionary *sessionInfo = [request sessionInfo];
-	id delegate = [sessionInfo objectForKey:@"delegate"];
-	NSDictionary *info = [sessionInfo objectForKey:@"userInfo"];
-	NSString *inIdentifier = [info objectForKey:@"identifier"];
-	id userInfo = [info objectForKey:@"userInfo"];
+	id delegate = sessionInfo[@"delegate"];
+	NSDictionary *info = sessionInfo[@"userInfo"];
+	NSString *inIdentifier = info[@"identifier"];
+	id userInfo = info[@"userInfo"];
 	if (delegate && [delegate respondsToSelector:@selector(APIBox:didFetchImageData:identifier:userInfo:)]) {
 		[delegate APIBox:self didFetchImageData:data identifier:inIdentifier userInfo:userInfo];
 	}
@@ -252,10 +252,10 @@
 - (void)didFailedFetchImage:(LFHTTPRequest *)request error:(NSString *)error
 {
 	NSDictionary *sessionInfo = [request sessionInfo];
-	id delegate = [sessionInfo objectForKey:@"delegate"];
-	NSDictionary *info = [sessionInfo objectForKey:@"userInfo"];
-	NSString *inIdentifier = [info objectForKey:@"identifier"];
-	id userInfo = [info objectForKey:@"userInfo"];
+	id delegate = sessionInfo[@"delegate"];
+	NSDictionary *info = sessionInfo[@"userInfo"];
+	NSString *inIdentifier = info[@"identifier"];
+	id userInfo = info[@"userInfo"];
 
 	NSInteger code = TWAPIUnkownError;
 	if (error == LFHTTPRequestConnectionError) {
