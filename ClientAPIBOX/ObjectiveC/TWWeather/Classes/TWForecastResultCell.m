@@ -179,7 +179,7 @@
 	NSString *timeString = [NSString stringWithFormat:@"%@\n%@", beginTime, endTime];
 	[timeString drawInRect:CGRectMake(140, 26, 160, 40) withFont:[UIFont systemFontOfSize:10.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentLeft];
 
-	[description drawInRect:CGRectMake(10, 80, 100, 60) withFont:[UIFont systemFontOfSize:12.0] lineBreakMode:UILineBreakModeCharacterWrap alignment:UITextAlignmentCenter];
+	[description drawInRect:CGRectMake(10, 80, 100, 60) withFont:[UIFont systemFontOfSize:10.0] lineBreakMode:UILineBreakModeCharacterWrap alignment:UITextAlignmentCenter];
 	NSString *temperatureString = [NSString stringWithFormat:@"%@ ℃", temperature];
 	[temperatureString drawInRect:CGRectMake(140, 56, 100, 20) withFont:[UIFont boldSystemFontOfSize:18.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentLeft];
 	NSString *rainString = [NSString stringWithFormat:@"降雨機率： %@ %%", rain];

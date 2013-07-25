@@ -62,6 +62,9 @@
 
 	audioPlayer = nil;
 	window.backgroundColor = [UIColor blackColor];
+	if ([window respondsToSelector:@selector(setTintColor:)]) {
+		[window setTintColor:[UIColor grayColor]];
+	}
 
 	UITabBarController *controller = [[UITabBarController alloc] init];
 

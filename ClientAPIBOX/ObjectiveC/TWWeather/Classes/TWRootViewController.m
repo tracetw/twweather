@@ -59,6 +59,13 @@
 {
 	[super viewDidLoad];
 	self.title = NSLocalizedString(@"Forecasts", @"");
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
+	// Work around for iOS 7
+	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
+		self.tableView.contentInset = UIEdgeInsetsMake(64.0, 0.0, 44.0, 0.0);
+	}
+#endif
 }
 
 - (void)didReceiveMemoryWarning

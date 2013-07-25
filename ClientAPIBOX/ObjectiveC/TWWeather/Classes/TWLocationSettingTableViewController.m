@@ -83,7 +83,7 @@
 - (IBAction)donelAction:(id)sender
 {
 	if ([self.navigationController compitibaleParentViewController]) {
-		[[self.navigationController compitibaleParentViewController] dismissModalViewControllerAnimated:YES];
+		[[self.navigationController compitibaleParentViewController] dismissViewControllerAnimated:YES completion:nil];
 	}
 }
 
@@ -179,7 +179,7 @@
 	else if (editingStyle == UITableViewCellEditingStyleInsert) {
 		[_addController updateContentArrayWithFilterArray:_filterArray];
 		UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_addController];
-		[self presentModalViewController:controller animated:YES];
+		[self presentViewController:controller animated:YES completion:nil];
 		[controller release];
 	}
 }

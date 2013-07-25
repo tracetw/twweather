@@ -34,8 +34,8 @@
 {
 	NSMutableArray *_array;
 	NSMutableArray *_filteredArray;
-	UISearchBar *_searchBar;
-	UISearchDisplayController *_searchController;
+//	UISearchBar *_searchBar;
+//	UISearchDisplayController *_searchController;
 	BOOL _firstTimeVisiable;
 	
 	UITableViewStyle _style;

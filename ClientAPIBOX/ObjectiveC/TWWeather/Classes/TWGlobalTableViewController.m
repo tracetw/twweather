@@ -213,9 +213,9 @@
 		}
 	}
 	[self.tableView reloadData];
-	[_searchController.searchResultsTableView reloadData];
+//	[_searchController.searchResultsTableView reloadData];
 	self.tableView.userInteractionEnabled = YES;
-	_searchController.searchResultsTableView.userInteractionEnabled = YES;
+//	_searchController.searchResultsTableView.userInteractionEnabled = YES;
 }
 
 #pragma mark -

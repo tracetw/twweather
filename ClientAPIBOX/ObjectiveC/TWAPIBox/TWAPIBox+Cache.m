@@ -40,7 +40,6 @@
 
 - (NSString *)cacheFolderPath
 {
-
 #ifdef WIDGET
 	NSArray *docPaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
 	NSString *docPath = [docPaths objectAtIndex:0];

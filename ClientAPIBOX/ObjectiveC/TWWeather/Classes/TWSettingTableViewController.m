@@ -56,10 +56,10 @@
 #pragma mark -
 #pragma mark UIViewContoller Methods
 
-
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
+
 	if (!BGMSwitch) {
 		BGMSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(190, 8, 80, 40)];
 		[BGMSwitch addTarget:self action:@selector(toggleBGMSettingAction:) forControlEvents:UIControlEventValueChanged];

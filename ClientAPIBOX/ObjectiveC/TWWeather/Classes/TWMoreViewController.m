@@ -43,7 +43,7 @@
 		controller.mailComposeDelegate = self;
 		[controller setSubject:NSLocalizedString(@"TW Weather Questions/Inquiry", @"")];
 		[controller setToRecipients:@[@"Weizhong Yang<service@zonble.net>"]];
-		[self presentModalViewController:controller animated:YES];
+		[self presentViewController:controller animated:YES completion:nil];
 		[controller release];
 	}
 	else {
@@ -51,6 +51,17 @@
 		[alertView show];
 		[alertView release];
 	}
+}
+
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
+	// Work around for iOS 7
+	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
+		self.tableView.contentInset = UIEdgeInsetsMake(64.0, 0.0, 44.0, 0.0);
+	}
+#endif
 }
 
 #pragma mark Table view methods
@@ -139,10 +150,12 @@
 			[[TWWeatherAppDelegate sharedDelegate] pushViewController:webController animated:YES];
 			if (indexPath.row == 0) {
 				webController.title = @"中央氣象局網頁";
+				[webController view];
 				[webController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.cwb.gov.tw/"]]];
 			}
 			else if (indexPath.row == 1) {
 				webController.title = @"中央氣象局網頁 PDA 版";
+				[webController view];
 				webController.webView.scalesPageToFit = NO;
 				[webController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.cwb.gov.tw/pda/"]]];
 			}
@@ -208,7 +221,7 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
 	UIViewController *parentController = [controller compitibaleParentViewController];
-	[parentController dismissModalViewControllerAnimated:YES];
+	[parentController dismissViewControllerAnimated:YES completion:nil];
 	if (result == MFMailComposeResultSent) {
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Your mail is sent!", @"") message:NSLocalizedString(@"Thanks for your feedback.", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
 		[alertView show];

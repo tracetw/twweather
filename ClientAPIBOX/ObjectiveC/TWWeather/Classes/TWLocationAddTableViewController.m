@@ -55,7 +55,7 @@
 }
 - (IBAction)cancelAction:(id)sender
 {
-	[[self.navigationController compitibaleParentViewController] dismissModalViewControllerAnimated:YES];
+	[[self.navigationController compitibaleParentViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)updateContentArrayWithFilterArray:(NSArray *)filterArray
 {
@@ -102,7 +102,7 @@
 	if (delegate && [delegate respondsToSelector:@selector(locationAddTableViewController:didSelectedLocationIdentifier:)]) {
 		NSUInteger filterID = [(self.contentArray)[indexPath.row][@"filterID"] intValue];
 		[delegate locationAddTableViewController:self didSelectedLocationIdentifier:filterID];
-		[[self.navigationController compitibaleParentViewController] dismissModalViewControllerAnimated:YES];
+		[[self.navigationController compitibaleParentViewController] dismissViewControllerAnimated:YES completion:nil];
 	}
 }
 

@@ -43,10 +43,10 @@
 }
 - (void)viewDidUnload
 {
-	[_searchBar release];
-	_searchBar = nil;
-	[_searchController release];
-	_searchController = nil;
+//	[_searchController release];
+//	_searchController = nil;
+//	[_searchBar release];
+//	_searchBar = nil;
 	self.tableView = nil;
 	[super viewDidLoad];
 }
@@ -95,23 +95,22 @@
 	self.tableView = aTableView;
 	[self.view addSubview:self.tableView];
 
-	if (!_searchBar) {
-		_searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-		_searchBar.delegate = self;
-		// _searchBar.tintColor = [UIColor grayColor];
-		if ([[_searchBar subviews] count]) {
-			UIView *bgView = [_searchBar subviews][0];
-			if (bgView) {
-				[bgView setValue:[UIColor colorWithHue:1.0 saturation:0.0 brightness:0.9 alpha:1.0] forKey:@"tintColor"];
-			}
-		}
-	}
-	if (!_searchController) {
-		_searchController = [[UISearchDisplayController alloc] initWithSearchBar:_searchBar contentsController:self];
-		_searchController.delegate = self;
-		_searchController.searchResultsDataSource = self;
-		_searchController.searchResultsDelegate = self;
-	}
+//	if (!_searchBar) {
+//		_searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+//		_searchBar.delegate = self;
+//		if ([[_searchBar subviews] count]) {
+//			UIView *bgView = [_searchBar subviews][0];
+//			if (bgView) {
+//				[bgView setValue:[UIColor colorWithHue:1.0 saturation:0.0 brightness:0.9 alpha:1.0] forKey:@"tintColor"];
+//			}
+//		}
+//	}
+//	if (!_searchController) {
+//		_searchController = [[UISearchDisplayController alloc] initWithSearchBar:_searchBar contentsController:self];
+//		_searchController.delegate = self;
+//		_searchController.searchResultsDataSource = self;
+//		_searchController.searchResultsDelegate = self;
+//	}
 }
 
 
@@ -120,7 +119,7 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	self.tableView.tableHeaderView = _searchBar;
+//	self.tableView.tableHeaderView = _searchBar;
 	self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", @"") style:UIBarButtonItemStyleBordered target:nil action:NULL] autorelease];
 	_firstTimeVisiable = YES;
 }
@@ -145,9 +144,9 @@
 }
 - (NSArray *)arrayForTableView:(UITableView *)tableView
 {
-	if (tableView == _searchController.searchResultsTableView) {
-		return _filteredArray;
-	}
+//	if (tableView == _searchController.searchResultsTableView) {
+//		return _filteredArray;
+//	}
 	return _array;
 }
 - (NSArray *)array
@@ -161,9 +160,9 @@
 		d[@"isLoading"] = @NO;
 	}
 	[self.tableView reloadData];
-	[_searchController.searchResultsTableView reloadData];
+//	[_searchController.searchResultsTableView reloadData];
 	self.tableView.userInteractionEnabled = YES;
-	_searchController.searchResultsTableView.userInteractionEnabled = YES;
+//	_searchController.searchResultsTableView.userInteractionEnabled = YES;
 }
 - (void)pushErrorViewWithError:(NSError *)error
 {
