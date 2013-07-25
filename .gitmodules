@@ -1,21 +1,3 @@
 [submodule "ClientAPIBOX/ObjectiveC/External/LFWebAPIKit"]
-	path = ClientAPIBOX/ObjectiveC/External/LFWebAPIKit
-	url = git://github.com/lukhnos/LFWebAPIKit.git
-[submodule "ClientAPIBOX/ObjectiveC/External/ObjectivePlurk2"]
-	path = ClientAPIBOX/ObjectiveC/External/ObjectivePlurk2
-	url = git://github.com/zonble/ObjectivePlurk2.git
-[submodule "ClientAPIBOX/ObjectiveC/External/scifihifi-iphone"]
-	path = ClientAPIBOX/ObjectiveC/External/scifihifi-iphone
-	url = git://github.com/ldandersen/scifihifi-iphone.git
-[submodule "ClientAPIBOX/ObjectiveC/External/MGTwitterEngine-1.0.8-OAuth"]
-	path = ClientAPIBOX/ObjectiveC/External/MGTwitterEngine-1.0.8-OAuth
-	url = git://github.com/kimptoc/MGTwitterEngine-1.0.8-OAuth.git
-[submodule "ClientAPIBOX/ObjectiveC/External/MGTwitterEngine"]
-	path = ClientAPIBOX/ObjectiveC/External/MGTwitterEngine
-	url = git://github.com/mattgemmell/MGTwitterEngine.git
-[submodule "ClientAPIBOX/ObjectiveC/External/oauthconsumer"]
-	path = ClientAPIBOX/ObjectiveC/External/oauthconsumer
-	url = git://github.com/jdg/oauthconsumer.git
-[submodule "ClientAPIBOX/ObjectiveC/External/facebook-ios-sdk"]
-	path = ClientAPIBOX/ObjectiveC/External/facebook-ios-sdk
-	url = git://github.com/facebook/facebook-ios-sdk.git
+    path = ClientAPIBOX/ObjectiveC/External/LFWebAPIKit
+    url = git://github.com/lukhnos/LFWebAPIKit.git
