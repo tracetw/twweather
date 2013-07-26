@@ -49,8 +49,8 @@
 
 - (void)loadView
 {
-	UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
-	scrollView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+	UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+	scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	scrollView.backgroundColor = [UIColor whiteColor];
 	scrollView.scrollEnabled = YES;
 	self.view = scrollView;

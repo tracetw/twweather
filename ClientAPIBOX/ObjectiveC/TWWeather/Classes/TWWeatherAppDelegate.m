@@ -80,10 +80,11 @@
 
 	NSMutableArray *controllerArray = [NSMutableArray array];
 
-	TWFavoriteTableViewController *favControlelr = [[TWFavoriteTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	favControlelr.tabBarItem = [[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:0] autorelease];
-	[controllerArray addObject:favControlelr];
-	[favControlelr release];
+	TWFavoriteTableViewController *favController = [[TWFavoriteTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	favController.tabBarItem = [[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:0] autorelease];
+	[favController view];
+	[controllerArray addObject:favController];
+	[favController release];
 
 	TWRootViewController *rootController = [[TWRootViewController alloc] initWithStyle:UITableViewStylePlain];
 	rootController.tabBarItem = [[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Forecasts", @"") image:[UIImage imageNamed:@"forecasts.png"] tag:1] autorelease];
@@ -95,19 +96,18 @@
 	[controllerArray addObject:moreController];
 	[moreController release];
 
-	self.tabBarController.viewControllers = controllerArray;
-
 	TWNavigationController *ourNavigationController = [[TWNavigationController alloc] initWithRootViewController:self.tabBarController];
 	self.navigationController = ourNavigationController;
 	[ourNavigationController release];
-
-	window.rootViewController = self.navigationController;
-	[window makeKeyAndVisible];
 
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:TWBGMPreference]) {
 		[self startPlayingBGM];
 	}
 
+	window.rootViewController = nil;
+	window.rootViewController = self.navigationController;
+	[window makeKeyAndVisible];
+	self.tabBarController.viewControllers = controllerArray;
 	return YES;
 }
 

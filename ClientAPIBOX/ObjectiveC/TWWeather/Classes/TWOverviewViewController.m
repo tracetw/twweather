@@ -50,8 +50,8 @@
 
 - (void)loadView 
 {
-	UITextView *theTextView = [[[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
-	theTextView.autoresizingMask =  UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+	UITextView *theTextView = [[[UITextView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+	theTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	theTextView.editable = NO;
 	theTextView.font = [UIFont systemFontOfSize:18.0];
 	self.textView = theTextView;
