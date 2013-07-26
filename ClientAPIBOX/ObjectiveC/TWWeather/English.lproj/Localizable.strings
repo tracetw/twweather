@@ -1,118 +1,67 @@
-﻿/* No comment provided by engineer. */
-"%@ copyright ifno" = "%@ is an open source project. please check the web site of the project(http://github.com/zonble/twweather) for furthor information.\n\nLFWebAPIKit\nCopyright (c) 2007-2009 Lithoglyph Inc. (http://lithoglyph.com)\nCopyright (c) 2007-2009 Lukhnos D. Liu (http://lukhnos.org)\n\nCocoaCryptoHashing\nCopyright (c) 2004-2009 Denis Defreyne\nCopyright (c) 2008 Chris Verwymeren\nCopyright (c) 2009 Mike Fischer\nAll rights reserved.\n\nfacebook-iphone-sdk\nCopyright 2009 Facebook\nhttp://github.com/facebook/facebook-iphone-sdk\n\nObjectivePlurk\nCopyright (c) 2009 Weizhong Yang. (http://zonble.net)\n\nSFHFKeychainUtils\nby Buzz Andersen\nCopyright 2008 Sci-Fi Hi-Fi.\nAll rights reserved.\n\nMGTwitterEngine\nby Matt Gemmell on 10/02/2008.\nCopyright (c) 2008 Instinctive Code.";
-
-/* No comment provided by engineer. */
-"About" = "About";
-
-/* No comment provided by engineer. */
+/*
+Scan List
+../../Classes,
+../../../TWAPIBox
+*/
+/* TWAPIBox+Private.m */
+"Connection Time Out. Unable to connect to the remote server, please try again." = "Connection Time Out. Unable to connect to the remote server, please try again.";
+"Data Error. Unable to parse the data from the remote server, please contact me to fix the server." = "Data Error. Unable to parse the data from the remote server, please contact me to fix the server.";
 "Connection Error. Unable to connect to the remote server, please try again." = "Connection Error. Unable to connect to the remote server, please try again.";
 
-/* No comment provided by engineer. */
-"Connection Time Out. Unable to connect to the remote server, please try again." = "Connection Time Out. Unable to connect to the remote server, please try again.";
 
-/* No comment provided by engineer. */
-"Copy" = "Copy";
-
-/* No comment provided by engineer. */
-"Data Error. Unable to parse the data from the remote server, please contact me to fix the server." = "Data Error. Unable to parse the data from the remote server, please contact me to fix the server.";
-
-/* No comment provided by engineer. */
-"Dismiss" = "Dismiss";
-
-/* No comment provided by engineer. */
-"Error!" = "Error!";
-
-/* No comment provided by engineer. */
-"Failed to load data!" = "Failed to load data!";
-
-/* No comment provided by engineer. */
-"Feedback" = "Feedback";
-
-/* No comment provided by engineer. */
-"Thanks for your feedback." = "Thanks for your feedback.";
-
-/* No comment provided by engineer. */
-"TW Weather Questions/Inquiry" = "TW Weather Questions/Inquiry";
-
-/* No comment provided by engineer. */
+/* TWAboutViewController.m */
+"About" = "About";
+"Data comes from Central Weather Bureau\n\n" = "Data comes from Central Weather Bureau\n\n";
 "Version: %@\n%@" = "Version: %1$@\n%2$@";
+"%@ copyright ifno" = "%@ is an open source project. please check the web site of the project(http://github.com/zonble/twweather) for furthor information.\n\nLFWebAPIKit\nCopyright (c) 2007-2009 Lithoglyph Inc. (http://lithoglyph.com)\nCopyright (c) 2007-2009 Lukhnos D. Liu (http://lukhnos.org)\n\nCocoaCryptoHashing\nCopyright (c) 2004-2009 Denis Defreyne\nCopyright (c) 2008 Chris Verwymeren\nCopyright (c) 2009 Mike Fischer\nAll rights reserved.\n\nfacebook-iphone-sdk\nCopyright 2009 Facebook\nhttp://github.com/facebook/facebook-iphone-sdk\n\nObjectivePlurk\nCopyright (c) 2009 Weizhong Yang. (http://zonble.net)\n\nSFHFKeychainUtils\nby Buzz Andersen\nCopyright 2008 Sci-Fi Hi-Fi.\nAll rights reserved.\n\nMGTwitterEngine\nby Matt Gemmell on 10/02/2008.\nCopyright (c) 2008 Instinctive Code.";
 
-/* No comment provided by engineer. */
-"You can not make a phone call with an %@" = "You can not make a phone call with an %@";
 
-/* No comment provided by engineer. */
-
-"You cannot send email now" = "You cannot send email now";
-
-/* No comment provided by engineer. */
-"Your device does not supprt to make a phone call, please use a telephone or cellphone to dial the number." = "Your device does not supprt to make a phone call, please use a telephone or cellphone to dial the number.";
-
-/* No comment provided by engineer. */
-"Your mail is sent!" = "Your mail is sent!";
-
+/* TWBasicForecastTableViewController.m */
 "Back" = "Back";
 
-"Data comes from Central Weather Bureau\n\n" = "Data comes from Central Weather Bureau\n\n";
-"Failed to open web page." = "Failed to open web page.";
-"Forecasts" = "Forecasts";
-"Settings" = "Settings";
-"BGM" = "BGM";
-"Cancel" = "Cancel";
-"Open in Safari" = "Open in Safari";
 
-"Basic Settings" = "Basic Settings";
-"Social Network" = "Social Network";
-"You can share the forecasts with your friends via Facebook and Plurk!" = "You can share the forecasts with your friends via Facebook and Plurk!";
-"Share via Facebook" = "Share via Facebook";
-"Share via Plurk" = "Share via Plurk";
+/* TWErrorViewController.m */
+"Error!" = "Error!";
 
-"You did not connect to Facebook." = "You did not connect to Facebook.";
-"Please visit the \"Settings\" to connect to Facebook." = "Please visit the \"Settings\" to connect to Facebook.";
-"Failed to post on Facebook!" = "Failed to post on Facebook!";
-"Do you want to connect now?" = "Do you want to connect now?"; 
-"Connect" = "Connect";
-"Successfully connected on Facebook!" = "Successfully connected on Facebook!";
-"Failed to save your image." = "Failed to save your image.";
-"Save" = "Save";
-"The image is saved!" = "The image is saved!";
-"Add..." = "Add..."; 
 
-"Plurk Setting" = "Plurk Setting";
-"Your Login Name" = "Your Login Name";
-"Your Password" = "Your Password";
-"Logged In" = "Logged In";
-"Not Logged In" = "Not Logged In";
-
-"Please input your Plurk login name." = "Please input your Plurk login name.";
-"Please input your Plurk password." = "Please input your Plurk password.";
-"Login Name:" = "Login Name:";
-"Password:" = "Password:";
-"Login" = "Login";
-"Logout" = "Logout";
-
-"Failed to login Plurk." = "Failed to login Plurk.";
-"Failed to post on Plurk" = "Failed to post on Plurk";
-"Posting your message..." = "Posting your message...";
-"You did not login Plurk." = "You did not login Plurk.";
-"Do you want to login now?" = "Do you want to login now?";
-"Please input your Plurk login name." = "Please input your Plurk login name.";
-"Please input your Plurk password." = "Please input your Plurk password.";
-"Unable to upload image to Facebook." = "Unable to upload image to Facebook.";
-"Unable to upload image to Plurk." = "Unable to upload image to Plurk.";
-
-"Twitter Setting" = "Twitter Setting";
-
-"Please input your Twitter login name." = "Please input your Twitter login name.";
-"Please input your Twitter password." = "Please input your Twitter password.";
-
-"Failed to login Twitter." = "Failed to login Twitter.";
-"Failed to post on Twitter" = "Failed to post on Twitter";
-"You did not login Twitter." = "You did not login Twitter.";
-"Please input your Twitter login name." = "Please input your Twitter login name.";
-"Please input your Twitter password." = "Please input your Twitter password.";
-"Share via Twitter" = "Share via Twitter";
-
-"Post to Plurk" = "Post to Plurk";
-"Post to Twitter" = "Post to Twitter";
-"SFX" = "SFX";
+/* TWFavoriteTableViewController.m */
+"Failed to load data!" = "Failed to load data!";
 "Updated at %@" = "Updated at %@";
+
+
+/* TWGlobalResultTableViewController.m */
+"Published at: %@\n" = "Published at: %@\n";
+
+
+/* TWLocationSettingTableViewController.m */
+"Add..." = "Add...";
+
+
+/* TWMoreViewController.m */
+"Thanks for your feedback." = "Thanks for your feedback.";
+"Dismiss" = "Dismiss";
+"TW Weather Questions/Inquiry" = "TW Weather Questions/Inquiry";
+"You can not make a phone call with an %@" = "You can not make a phone call with an %@";
+"You cannot send email now" = "You cannot send email now";
+"Your device does not supprt to make a phone call, please use a telephone or cellphone to dial the number." = "Your device does not supprt to make a phone call, please use a telephone or cellphone to dial the number.";
+"Your mail is sent!" = "Your mail is sent!";
+"Feedback" = "Feedback";
+"Settings" = "Settings";
+
+
+/* TWRootViewController.m */
+"Forecasts" = "Forecasts";
+
+
+/* TWSettingTableViewController.m */
+"Basic Settings" = "Basic Settings";
+"BGM" = "BGM";
+"SFX" = "SFX";
+
+
+/* TWWebController.m */
+"Open in Safari" = "Open in Safari";
+"Cancel" = "Cancel";
+"Failed to open web page." = "Failed to open web page.";
+
+
