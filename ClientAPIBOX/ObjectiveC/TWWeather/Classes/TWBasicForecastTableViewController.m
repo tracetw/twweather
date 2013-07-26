@@ -194,7 +194,6 @@
 	NSArray *array = [self arrayForTableView:tableView];
 	NSDictionary *dictionary = array[indexPath.row];
 	NSString *name = dictionary[@"name"];
-	cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0];
 	cell.textLabel.text = name;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	if ([dictionary[@"isLoading"] boolValue]) {

@@ -97,7 +97,6 @@
 		cell = [[[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 	}
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0];
 	cell.imageView.image = nil;
 	if (indexPath.row != 0) {
 		[cell stopAnimating];

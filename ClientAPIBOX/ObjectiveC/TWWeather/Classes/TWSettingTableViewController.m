@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -42,10 +42,10 @@
 	SFXSwitch = nil;
 }
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[self removeOutletsAndControls_TWSettingTableViewController];
-    [super dealloc];
+	[super dealloc];
 }
 - (void)viewDidUnload
 {
@@ -56,9 +56,9 @@
 #pragma mark -
 #pragma mark UIViewContoller Methods
 
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 
 	if (!BGMSwitch) {
 		BGMSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(190, 8, 80, 40)];
@@ -69,22 +69,22 @@
 		SFXSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(190, 8, 80, 40)];
 		[SFXSwitch addTarget:self action:@selector(toggleSFXSettingAction:) forControlEvents:UIControlEventValueChanged];
 		SFXSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:TWSFXPreference];
-	}	
+	}
 	self.title = NSLocalizedString(@"Settings", @"");
 }
-- (void)viewWillAppear:(BOOL)animated 
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+	[super viewWillAppear:animated];
 }
-- (void)viewDidAppear:(BOOL)animated 
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+	[super viewDidAppear:animated];
 	[self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
+	[super didReceiveMemoryWarning];
 }
 
 #pragma mark Actions
@@ -111,22 +111,21 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+	return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+	return 2;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    static NSString *CellIdentifier = @"Cell";
+	static NSString *CellIdentifier = @"Cell";
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-	cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0];
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+	}
 	cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	cell.accessoryType = UITableViewCellAccessoryNone;
@@ -146,7 +145,7 @@
 				break;
 		}
 	}
-    return cell;
+	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -164,4 +163,3 @@
 }
 
 @end
-
