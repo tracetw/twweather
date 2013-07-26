@@ -56,6 +56,11 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
 	// Work around for iOS 7
 	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {

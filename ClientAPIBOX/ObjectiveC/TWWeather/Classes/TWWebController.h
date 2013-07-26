@@ -42,13 +42,12 @@
 - (IBAction)openInExternalWebBrowser:(id)sender;
 - (void)updateButtonState;
 
-@property (retain, nonatomic) IBOutlet UIWebView *webView;
-@property (retain, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
-@property (retain, nonatomic) IBOutlet UIToolbar *toolbar;
-@property (retain, nonatomic) IBOutlet UIBarButtonItem *goBackItem;
-@property (retain, nonatomic) IBOutlet UIBarButtonItem *goFowardItem;
-@property (retain, nonatomic) IBOutlet UIBarButtonItem *stopItem;
-@property (retain, nonatomic) IBOutlet UIBarButtonItem *reloadItem;
-
+@property (retain, nonatomic) UIWebView *webView;
+@property (retain, nonatomic) UIActivityIndicatorView *activityIndicatorView;
+@property (retain, nonatomic) UIToolbar *toolbar;
+@property (retain, nonatomic) UIBarButtonItem *goBackItem;
+@property (retain, nonatomic) UIBarButtonItem *goFowardItem;
+@property (retain, nonatomic) UIBarButtonItem *stopItem;
+@property (retain, nonatomic) UIBarButtonItem *reloadItem;
 
 @end

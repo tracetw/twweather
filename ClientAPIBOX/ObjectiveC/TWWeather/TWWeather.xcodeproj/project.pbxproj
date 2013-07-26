@@ -25,6 +25,8 @@
 		D426D6B7102D142C00BBBEB3 /* TWOBSResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D426D6B6102D142C00BBBEB3 /* TWOBSResultTableViewController.m */; };
 		D426D6DD102D17D400BBBEB3 /* TWOBSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D426D6DC102D17D400BBBEB3 /* TWOBSCell.m */; };
 		D426D8CF102D377600BBBEB3 /* TWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D426D8CE102D377600BBBEB3 /* TWLoadingView.m */; };
+		D42A5FED17A234350013E67E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D42A5FE717A22FF50013E67E /* Default@2x.png */; };
+		D42A5FEE17A234370013E67E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D42A5FE517A22E7B0013E67E /* Default-568h@2x.png */; };
 		D42C7A091023CF59009C3C4E /* TWImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D42C7A081023CF59009C3C4E /* TWImageViewController.m */; };
 		D42DDA0F10E932CF00F24E16 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42DDA0E10E932CF00F24E16 /* Security.framework */; };
 		D46045931083A64B00B97EEF /* tel.png in Resources */ = {isa = PBXBuildFile; fileRef = D46045921083A64B00B97EEF /* tel.png */; };
@@ -81,9 +83,10 @@
 		D4C3A0D6102235DB00E7A430 /* LFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C3A0D0102235DB00E7A430 /* LFHTTPRequest.m */; };
 		D4C3A0D7102235DB00E7A430 /* LFSiteReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C3A0D2102235DB00E7A430 /* LFSiteReachability.m */; };
 		D4C3A0DD1022361E00E7A430 /* TWAPIBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C3A0DC1022361E00E7A430 /* TWAPIBox.m */; };
-		D4D82D8417A18448008393AB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D82D8317A18448008393AB /* Default-568h@2x.png */; };
 		D4D82D8E17A19284008393AB /* CocoaCryptoHashing.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D82D8D17A19284008393AB /* CocoaCryptoHashing.m */; };
 		D4D82D8F17A19284008393AB /* CocoaCryptoHashing.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D82D8D17A19284008393AB /* CocoaCryptoHashing.m */; };
+		D4DC6ACA17A244B30023B2C9 /* AppIcon72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4DC6AC917A244B30023B2C9 /* AppIcon72@2x.png */; };
+		D4DC6ACC17A244BB0023B2C9 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = D4DC6ACB17A244BB0023B2C9 /* iTunesArtwork */; };
 		D4E5025810233338002B39D7 /* TWAPIBox+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E5025710233338002B39D7 /* TWAPIBox+Info.m */; };
 		D4E5029A10234126002B39D7 /* TWBasicForecastTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E5029910234126002B39D7 /* TWBasicForecastTableViewController.m */; };
 		D4E502A8102343C6002B39D7 /* TWForecastTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E502A7102343C6002B39D7 /* TWForecastTableViewController.m */; };
@@ -116,7 +119,6 @@
 		D4E9C6E510223D6200B955C7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E9C6E410223D6200B955C7 /* SystemConfiguration.framework */; };
 		D4E9C70110223DBB00B955C7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E9C70010223DBB00B955C7 /* CFNetwork.framework */; };
 		D4EDBEF31082032900C9EBFE /* TWWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EDBEF21082032900C9EBFE /* TWWebController.m */; };
-		D4EDBEF71082034800C9EBFE /* TWWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4EDBEF61082034800C9EBFE /* TWWebController.xib */; };
 		D4EDBEFB1082042000C9EBFE /* webBack.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EDBEF91082042000C9EBFE /* webBack.png */; };
 		D4EDBEFC1082042000C9EBFE /* webForward.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EDBEFA1082042000C9EBFE /* webForward.png */; };
 /* End PBXBuildFile section */
@@ -154,6 +156,10 @@
 		D426D6DC102D17D400BBBEB3 /* TWOBSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWOBSCell.m; sourceTree = "<group>"; };
 		D426D8CD102D377600BBBEB3 /* TWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLoadingView.h; sourceTree = "<group>"; };
 		D426D8CE102D377600BBBEB3 /* TWLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLoadingView.m; sourceTree = "<group>"; };
+		D42A5FE517A22E7B0013E67E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Images/Default-568h@2x.png"; sourceTree = "<group>"; };
+		D42A5FE717A22FF50013E67E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Images/Default@2x.png"; sourceTree = "<group>"; };
+		D42A5FE917A2335B0013E67E /* Defaults-568h-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Defaults-568h-iOS7@2x.png"; path = "../../../../../../Library/Developer/Xcode/DerivedData/TWWeather-fospnqumbkgavrfyvfngwsidsqph/Build/Products/Debug-iphoneos/TWWeather.app/Defaults-568h-iOS7@2x.png"; sourceTree = "<group>"; };
+		D42A5FEA17A2335B0013E67E /* Defaults-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Defaults-iOS7@2x.png"; path = "../../../../../../Library/Developer/Xcode/DerivedData/TWWeather-fospnqumbkgavrfyvfngwsidsqph/Build/Products/Debug-iphoneos/TWWeather.app/Defaults-iOS7@2x.png"; sourceTree = "<group>"; };
 		D42C7A071023CF59009C3C4E /* TWImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWImageViewController.h; sourceTree = "<group>"; };
 		D42C7A081023CF59009C3C4E /* TWImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWImageViewController.m; sourceTree = "<group>"; };
 		D42DDA0E10E932CF00F24E16 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -221,12 +227,13 @@
 		D4C3A0D4102235DB00E7A430 /* NSData+LFHTTPFormExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+LFHTTPFormExtensions.h"; path = "../External/LFWebAPIKit/NSData+LFHTTPFormExtensions.h"; sourceTree = SOURCE_ROOT; };
 		D4C3A0DB1022361E00E7A430 /* TWAPIBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWAPIBox.h; path = ../TWAPIBox/TWAPIBox.h; sourceTree = SOURCE_ROOT; };
 		D4C3A0DC1022361E00E7A430 /* TWAPIBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWAPIBox.m; path = ../TWAPIBox/TWAPIBox.m; sourceTree = SOURCE_ROOT; };
-		D4D82D8317A18448008393AB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D4D82D8517A1877F008393AB /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		D4D82D8717A1878A008393AB /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		D4D82D8917A18793008393AB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D4D82D8C17A19284008393AB /* CocoaCryptoHashing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaCryptoHashing.h; path = ../External/cocoa_crypto_hashing/CocoaCryptoHashing.h; sourceTree = "<group>"; };
 		D4D82D8D17A19284008393AB /* CocoaCryptoHashing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocoaCryptoHashing.m; path = ../External/cocoa_crypto_hashing/CocoaCryptoHashing.m; sourceTree = "<group>"; };
+		D4DC6AC917A244B30023B2C9 /* AppIcon72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon72@2x.png"; path = "AppIcons/AppIcon72@2x.png"; sourceTree = "<group>"; };
+		D4DC6ACB17A244BB0023B2C9 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = AppIcons/iTunesArtwork; sourceTree = "<group>"; };
 		D4E5025610233338002B39D7 /* TWAPIBox+Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TWAPIBox+Info.h"; path = "../TWAPIBox/TWAPIBox+Info.h"; sourceTree = SOURCE_ROOT; };
 		D4E5025710233338002B39D7 /* TWAPIBox+Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TWAPIBox+Info.m"; path = "../TWAPIBox/TWAPIBox+Info.m"; sourceTree = SOURCE_ROOT; };
 		D4E5029810234126002B39D7 /* TWBasicForecastTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWBasicForecastTableViewController.h; sourceTree = "<group>"; };
@@ -284,7 +291,6 @@
 		D4E9C70010223DBB00B955C7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D4EDBEF11082032900C9EBFE /* TWWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWWebController.h; sourceTree = "<group>"; };
 		D4EDBEF21082032900C9EBFE /* TWWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWWebController.m; sourceTree = "<group>"; };
-		D4EDBEF61082034800C9EBFE /* TWWebController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TWWebController.xib; sourceTree = "<group>"; };
 		D4EDBEF91082042000C9EBFE /* webBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = webBack.png; path = Images/webBack.png; sourceTree = "<group>"; };
 		D4EDBEFA1082042000C9EBFE /* webForward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = webForward.png; path = Images/webForward.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -377,7 +383,6 @@
 				8D1107310486CEB800E47090 /* TWWeather-Info.plist */,
 				D4E84FAF102D4BEC00A80676 /* Localizable.strings */,
 				D489E59D1024EA4600189460 /* InfoPlist.strings */,
-				D4EDBEF61082034800C9EBFE /* TWWebController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -570,10 +575,15 @@
 		D40082D010C34C95007416F6 /* App Images */ = {
 			isa = PBXGroup;
 			children = (
+				D4DC6ACB17A244BB0023B2C9 /* iTunesArtwork */,
 				D4E6D59D128EEA3300EEBC51 /* AppIcon.png */,
 				D4E6D59E128EEA3300EEBC51 /* AppIcon@2x.png */,
 				D4E6D59F128EEA3300EEBC51 /* AppIcon72.png */,
-				D4D82D8317A18448008393AB /* Default-568h@2x.png */,
+				D4DC6AC917A244B30023B2C9 /* AppIcon72@2x.png */,
+				D42A5FE917A2335B0013E67E /* Defaults-568h-iOS7@2x.png */,
+				D42A5FEA17A2335B0013E67E /* Defaults-iOS7@2x.png */,
+				D42A5FE517A22E7B0013E67E /* Default-568h@2x.png */,
+				D42A5FE717A22FF50013E67E /* Default@2x.png */,
 				D489E5951024DD7600189460 /* Default.png */,
 			);
 			name = "App Images";
@@ -805,7 +815,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D489E3AC1023E00100189460 /* DayCloudy.png in Resources */,
-				D4D82D8417A18448008393AB /* Default-568h@2x.png in Resources */,
 				D489E3AD1023E00100189460 /* DayCloudyGlommy.png in Resources */,
 				D489E3AE1023E00100189460 /* DayCloudySunny.png in Resources */,
 				D489E3AF1023E00100189460 /* DayGlommy.png in Resources */,
@@ -821,11 +830,11 @@
 				D489E3BA1023E00100189460 /* NightRainy.png in Resources */,
 				D489E3BB1023E00100189460 /* NightSunny.png in Resources */,
 				D489E3BC1023E00100189460 /* NightSunnyCloudy.png in Resources */,
+				D42A5FED17A234350013E67E /* Default@2x.png in Resources */,
 				D489E5961024DD7600189460 /* Default.png in Resources */,
 				D489E59E1024EA4600189460 /* InfoPlist.strings in Resources */,
 				D4E84FB1102D4BEC00A80676 /* Localizable.strings in Resources */,
 				D41B04361031F212000AA604 /* Entitlements.plist in Resources */,
-				D4EDBEF71082034800C9EBFE /* TWWebController.xib in Resources */,
 				D4EDBEFB1082042000C9EBFE /* webBack.png in Resources */,
 				D4EDBEFC1082042000C9EBFE /* webForward.png in Resources */,
 				D46045931083A64B00B97EEF /* tel.png in Resources */,
@@ -837,9 +846,12 @@
 				D4E6D5A0128EEA3300EEBC51 /* AppIcon.png in Resources */,
 				D4E6D5A1128EEA3300EEBC51 /* AppIcon@2x.png in Resources */,
 				D4E6D5A2128EEA3300EEBC51 /* AppIcon72.png in Resources */,
+				D42A5FEE17A234370013E67E /* Default-568h@2x.png in Resources */,
 				D4E6D5D7128EEE8600EEBC51 /* alert@2x.png in Resources */,
 				D4E6D5E1128EEFD900EEBC51 /* BlueButton@2x.png in Resources */,
 				D4E6D5E3128EEFF200EEBC51 /* forecasts@2x.png in Resources */,
+				D4DC6ACA17A244B30023B2C9 /* AppIcon72@2x.png in Resources */,
+				D4DC6ACC17A244BB0023B2C9 /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -974,6 +986,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -997,6 +1010,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1061,7 +1075,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

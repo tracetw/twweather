@@ -136,9 +136,8 @@
 - (void)drawBackground:(CGRect)bounds
 {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
-	// Work around for iOS 7
 	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
-		[[UIColor grayColor] setFill];
+		[[UIColor lightGrayColor] setFill];
 		[[UIBezierPath bezierPathWithRect:bounds] fill];
 		return;
 	}

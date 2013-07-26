@@ -379,7 +379,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 
 	if (indexPath.section == 0) {
 		if (indexPath.row >= [warningArray count]) {
-			TWWebController *webController = [[TWWebController alloc] initWithNibName:@"TWWebController" bundle:[NSBundle mainBundle]];
+			TWWebController *webController = [[TWWebController alloc] init];
 			webController.title = @"人事行政局網頁";
 			[[TWWeatherAppDelegate sharedDelegate] pushViewController:webController animated:YES];
 			[webController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.cpa.gov.tw/"]]];

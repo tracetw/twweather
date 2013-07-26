@@ -59,6 +59,34 @@
 #pragma mark -
 #pragma mark UIViewContoller Methods
 
+- (void)loadView
+{
+	UIView *aView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	aView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	self.view = aView;
+	[aView release];
+
+	CGRect webFrame = self.view.bounds;
+	webFrame.size.height -= 44.0;
+	webView = [[UIWebView alloc] initWithFrame:webFrame];
+	webView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	webView.scalesPageToFit = YES;
+	[self.view addSubview:webView];
+
+	toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 44.0, self.view.bounds.size.width, 44.0)];
+	toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+	[self.view addSubview:toolbar];
+
+#define SPACE [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:NULL]
+	goBackItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"webBack"] style:UIBarButtonItemStylePlain target:webView action:@selector(goBack)];
+	goFowardItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"webForward"] style:UIBarButtonItemStylePlain target:webView action:@selector(goForward)];
+	stopItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:webView action:@selector(stopLoading)];
+	reloadItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:webView action:@selector(reload)];
+	activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	toolbar.items = @[SPACE, goBackItem, SPACE, goFowardItem, SPACE, stopItem, SPACE, reloadItem, SPACE];
+#undef SPACE
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
