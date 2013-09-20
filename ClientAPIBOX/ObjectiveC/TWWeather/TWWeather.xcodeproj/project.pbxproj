@@ -151,6 +151,10 @@
 		D42C7A081023CF59009C3C4E /* TWImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWImageViewController.m; sourceTree = "<group>"; };
 		D42DDA0E10E932CF00F24E16 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D447953217EC17A10086A027 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TWWeather/Images.xcassets; sourceTree = "<group>"; };
+		D447953717EC3AE00086A027 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D447953817EC3AE00086A027 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D447953917EC3B6F0086A027 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D447953A17EC3B770086A027 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D46045921083A64B00B97EEF /* tel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tel.png; path = Images/tel.png; sourceTree = "<group>"; };
 		D46045A01083A92200B97EEF /* alert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = alert.png; path = Images/alert.png; sourceTree = "<group>"; };
 		D46045FF1083B40E00B97EEF /* TWMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMoreViewController.h; sourceTree = "<group>"; };
@@ -184,7 +188,6 @@
 		D489E3A91023E00100189460 /* NightSunnyCloudy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NightSunnyCloudy.png; path = Images/NightSunnyCloudy.png; sourceTree = "<group>"; };
 		D489E4F81023F2A200189460 /* TWLocationSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLocationSettingTableViewController.h; sourceTree = "<group>"; };
 		D489E4F91023F2A200189460 /* TWLocationSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLocationSettingTableViewController.m; sourceTree = "<group>"; };
-		D489E59B1024EA4300189460 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D489E5A41024EB3F00189460 /* TWAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWAboutViewController.h; sourceTree = "<group>"; };
 		D489E5A51024EB3F00189460 /* TWAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWAboutViewController.m; sourceTree = "<group>"; };
 		D489E5DB1024EF6000189460 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -266,7 +269,6 @@
 		D4E6D5D6128EEE8600EEBC51 /* alert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alert@2x.png"; path = "Images/alert@2x.png"; sourceTree = "<group>"; };
 		D4E6D5E2128EEFF200EEBC51 /* forecasts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forecasts@2x.png"; path = "Images/forecasts@2x.png"; sourceTree = "<group>"; };
 		D4E84FAA102D4A5200A80676 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		D4E84FB0102D4BEC00A80676 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D4E84FB3102D4C0500A80676 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D4E9C6E410223D6200B955C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D4E9C70010223DBB00B955C7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -747,6 +749,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = X29ZB2LBKB;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TWWeather" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -760,6 +767,7 @@
 				en,
 				"zh-Hant",
 				"zh-Hans",
+				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -916,9 +924,10 @@
 		D489E59D1024EA4600189460 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D489E59B1024EA4300189460 /* English */,
 				D4E84FAA102D4A5200A80676 /* zh-Hant */,
 				D49E91DC1199C23300793FCA /* zh-Hans */,
+				D447953817EC3AE00086A027 /* en */,
+				D447953917EC3B6F0086A027 /* Base */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -926,9 +935,10 @@
 		D4E84FAF102D4BEC00A80676 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D4E84FB0102D4BEC00A80676 /* English */,
 				D4E84FB3102D4C0500A80676 /* zh-Hant */,
 				D49E91DB1199C22B00793FCA /* zh-Hans */,
+				D447953717EC3AE00086A027 /* en */,
+				D447953A17EC3B770086A027 /* Base */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -943,6 +953,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -957,6 +968,7 @@
 				INFOPLIST_FILE = "TWWeather-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = TWWeather;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -969,7 +981,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TWWeather_Prefix.pch;
@@ -982,6 +994,7 @@
 				INFOPLIST_FILE = "TWWeather-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = TWWeather;
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1036,7 +1049,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TWWeather_Prefix.pch;

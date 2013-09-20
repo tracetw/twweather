@@ -8,8 +8,6 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFile</key>
-	<string>AppIcon.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.twbbs.zonble.TWWeather</string>
 	<key>CFBundleInfoDictionaryVersion</key>
