@@ -382,6 +382,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 			TWWebController *webController = [[TWWebController alloc] init];
 			webController.title = @"人事行政局網頁";
 			[[TWWeatherAppDelegate sharedDelegate] pushViewController:webController animated:YES];
+			[webController view];
 			[webController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.cpa.gov.tw/"]]];
 			[webController release];
 			return;

@@ -63,7 +63,7 @@
 	audioPlayer = nil;
 	window.backgroundColor = [UIColor blackColor];
 	if ([window respondsToSelector:@selector(setTintColor:)]) {
-		[window setTintColor:[UIColor grayColor]];
+		[window setTintColor:[UIColor colorWithWhite:0.2 alpha:1.0]];
 	}
 
 	UITabBarController *controller = [[UITabBarController alloc] init];
@@ -99,6 +99,13 @@
 	TWNavigationController *ourNavigationController = [[TWNavigationController alloc] initWithRootViewController:self.tabBarController];
 	self.navigationController = ourNavigationController;
 	[ourNavigationController release];
+
+//	if ([ourNavigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+//		[[UINavigationBar appearance] setBarTintColor:[UIColor blueColor]];
+//		[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+//		[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+//		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+//	}
 
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:TWBGMPreference]) {
 		[self startPlayingBGM];
