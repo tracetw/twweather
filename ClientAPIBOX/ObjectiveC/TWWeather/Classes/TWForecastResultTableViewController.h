@@ -28,13 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @interface TWForecastResultTableViewController : UITableViewController
-{
-	NSArray *forecastArray;
-	NSString *weekLocation;
-	NSDictionary *weekDictionary;
-
-	BOOL isLoadingWeek;
-}
 
 - (IBAction)navBarAction:(id)sender;
 - (void)pushWeekViewController;

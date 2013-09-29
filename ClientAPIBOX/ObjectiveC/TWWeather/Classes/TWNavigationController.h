@@ -32,8 +32,4 @@
 void TWSFX();
 
 @interface TWNavigationController : UINavigationController <UINavigationBarDelegate>
-{
-
-}
-
 @end

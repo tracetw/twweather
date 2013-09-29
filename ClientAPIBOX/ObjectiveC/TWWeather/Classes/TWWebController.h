@@ -28,15 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @interface TWWebController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate>
-{
-	UIWebView *webView;
-	UIActivityIndicatorView *activityIndicatorView;
-	UIBarButtonItem *goBackItem;
-	UIBarButtonItem *goFowardItem;
-	UIBarButtonItem *stopItem;
-	UIBarButtonItem *reloadItem;
-	UIToolbar *toolbar;
-}
 
 - (void)openInExternalWebBrowser;
 - (IBAction)openInExternalWebBrowser:(id)sender;

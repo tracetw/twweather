@@ -43,6 +43,23 @@ static NSString *lastAllForecastsPreferenceName = @"myLastAllForecastsPreference
 static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 
 @implementation TWFavoriteTableViewController
+{
+	NSMutableArray *_filterArray;
+	NSMutableArray *_filteredArray;
+	NSMutableArray *_favArray;
+	NSMutableArray *warningArray;
+	NSMutableDictionary *weekDictionary;
+	NSDate *updateDate;
+
+	TWLoadingView *loadingView;
+	UITableView *_tableView;
+	UILabel *errorLabel;
+
+	BOOL dataLoaded;
+	BOOL isLoading;
+	BOOL isLoadingWeek;
+	NSUInteger loadingWeekIndex;
+}
 
 #pragma mark Routines
 

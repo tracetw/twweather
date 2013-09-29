@@ -30,6 +30,10 @@
 #import "TWErrorViewController.h"
 
 @implementation TWErrorViewController
+{
+	NSError *_error;
+	UILabel *textLabel;
+}
 
 #pragma mark Routines
 

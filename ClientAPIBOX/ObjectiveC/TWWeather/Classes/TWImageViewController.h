@@ -32,14 +32,6 @@
 @interface TWImageViewController : UIViewController <
 	UIScrollViewDelegate, 
 	UIActionSheetDelegate>
-{
-	UIImageView *_imageView;
-	UIImage *_image;
-	NSURL *_imageURL;
-
-	TWLoadingView *loadingView;
-	BOOL pushingPlurkComposer;
-}
 
 - (IBAction)navBarAction:(id)sender;
 - (void)showLoadingView;

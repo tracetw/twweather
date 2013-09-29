@@ -28,16 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @interface TWNearSeaResultTableViewController : UITableViewController <UIActionSheetDelegate>
-{
-	NSString *description;;
-	NSString *publishTime;
-	NSString *validBeginTime;
-    NSString *validEndTime;
-    NSString *wave;
-    NSString *waveLevel;
-    NSString *wind;
-    NSString *windScale;
-}
 
 @property (retain, nonatomic) NSString *description;
 @property (retain, nonatomic) NSString *publishTime;

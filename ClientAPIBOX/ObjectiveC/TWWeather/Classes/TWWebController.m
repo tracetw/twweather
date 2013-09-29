@@ -30,6 +30,15 @@
 #import "TWWebController.h"
 
 @implementation TWWebController
+{
+	UIWebView *webView;
+	UIActivityIndicatorView *activityIndicatorView;
+	UIBarButtonItem *goBackItem;
+	UIBarButtonItem *goFowardItem;
+	UIBarButtonItem *stopItem;
+	UIBarButtonItem *reloadItem;
+	UIToolbar *toolbar;
+}
 
 #pragma mark Routines
 

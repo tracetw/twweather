@@ -45,14 +45,8 @@
 #import "TWWeatherAppDelegate.h"
 
 @implementation TWRootViewController
-
-- (void)dealloc
 {
-	[super dealloc];
-}
-- (void)viewDidUnload
-{
-	[super viewDidLoad];
+	BOOL isLoadingOverview;
 }
 
 - (void)viewDidLoad
@@ -89,8 +83,6 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#define U8(x) [NSString stringWithUTF8String:x]
-
 	static NSString *CellIdentifier = @"Cell";
 	TWLoadingCell *cell = (TWLoadingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
@@ -101,50 +93,17 @@
 	if (indexPath.row != 0) {
 		[cell stopAnimating];
 	}
-	switch (indexPath.row) {
-		case 0:
-			cell.textLabel.text = @"目前天氣";
-			break;
-		case 1:
-			cell.textLabel.text = @"關心天氣";
-			if (isLoadingOverview) {
-				[cell startAnimating];
-			}
-			else {
-				[cell stopAnimating];
-			}
-			break;
-		case 2:
-			cell.textLabel.text = @"今明預報";
-			break;
-		case 3:
-			cell.textLabel.text = @"一週天氣";
-			break;
-		case 4:
-			cell.textLabel.text = @"一週旅遊";
-			break;
-		case 5:
-			cell.textLabel.text = @"三天漁業";
-			break;
-		case 6:
-			cell.textLabel.text = @"台灣近海";
-			break;
-		case 7:
-			cell.textLabel.text = @"三天潮汐";
-			break;
-		case 8:
-			cell.textLabel.text = @"全球都市";
-			break;
-		case 9:
-			cell.textLabel.text = @"天氣觀測雲圖";
-			break;
-		default:
-			break;
+	NSArray *titles = @[@"目前天氣", @"關心天氣", @"今明預報", @"一週天氣", @"一週旅遊", @"三天漁業", @"台灣近海", @"三天潮汐", @"全球都市", @"天氣觀測雲圖"];
+	cell.textLabel.text = titles[indexPath.row];
+	if (indexPath.row == 1) {
+		if (isLoadingOverview) {
+			[cell startAnimating];
+		}
+		else {
+			[cell stopAnimating];
+		}
 	}
 	return cell;
-
-#undef U8
-
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -158,29 +117,16 @@
 		self.tableView.userInteractionEnabled = NO;
 		[[TWAPIBox sharedBox] fetchOverviewWithFormat:TWOverviewPlainFormat delegate:self userInfo:nil];
 	}
-	else if (indexPath.row == 2) {
-		controller = [[TWForecastTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	}
-	else if (indexPath.row == 3) {
-		controller = [[TWWeekTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	}
-	else if (indexPath.row == 4) {
-		controller = [[TWWeekTravelTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	}
-	else if (indexPath.row == 5) {
-		controller = [[TWThreeDaySeaTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	}
-	else if (indexPath.row == 6) {
-		controller = [[TWNearSeaTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	}
-	else if (indexPath.row == 7) {
-		controller = [[TWTideTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	}
-	else if (indexPath.row == 8) {
-		controller = [[TWGlobalTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	}
-	else if (indexPath.row == 9) {
-		controller = [[TWImageTableViewController alloc] initWithStyle:UITableViewStylePlain];
+	else {
+		NSArray *classArray = @[@"TWForecastTableViewController",
+									 @"TWWeekTableViewController",
+									 @"TWWeekTravelTableViewController",
+									 @"TWThreeDaySeaTableViewController",
+									 @"TWNearSeaTableViewController",
+									 @"TWTideTableViewController",
+									 @"TWGlobalTableViewController",
+									 @"TWImageTableViewController"];
+		controller = [[NSClassFromString(classArray[indexPath.row -2]) alloc] initWithStyle:UITableViewStylePlain];
 	}
 	if (controller) {
 		[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];

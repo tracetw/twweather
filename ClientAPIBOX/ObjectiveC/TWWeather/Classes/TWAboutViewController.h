@@ -28,11 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @interface TWAboutViewController : UIViewController
-{
-	UILabel *titleLabel;
-	UILabel *copyrightLabel;
-	UILabel *externalLibraryLabel;
-}
 
 @property (retain, nonatomic) UILabel *titleLabel;
 @property (retain, nonatomic) UILabel *copyrightLabel;

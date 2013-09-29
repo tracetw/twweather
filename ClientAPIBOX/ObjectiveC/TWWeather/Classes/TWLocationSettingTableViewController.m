@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -34,41 +34,47 @@
 #import "UIViewController+Compatibility.h"
 
 @implementation TWLocationSettingTableViewController
+{
+	id<TWLocationSettingTableViewControllerDelegate> delegate;
+	NSMutableArray *_filterArray;
+	TWLocationAddTableViewController *_addController;
+}
+
 
 #pragma mark Routines
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[_filterArray release];
 	[_addController release];
-    [super dealloc];
+	[super dealloc];
 }
 
 #pragma mark UIViewContoller Methods
 
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
-    [super viewDidLoad];
-	
+	[super viewDidLoad];
+
 	if (!_filterArray) {
 		_filterArray = [[NSMutableArray alloc] init];
 	}
-	
+
 	if (!_addController) {
 		_addController = [[TWLocationAddTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 		_addController.delegate = self;
 	}
-	
+
 	UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(donelAction:)];
 	self.navigationItem.rightBarButtonItem = cancelItem;
 	[cancelItem release];
-	
+
 	self.tableView.editing = YES;
 }
 
-- (void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning]; 
+	[super didReceiveMemoryWarning];
 }
 
 #pragma mark Actions
@@ -77,7 +83,7 @@
 {
 	if (!_filterArray) {
 		_filterArray = [[NSMutableArray alloc] init];
-	}	
+	}
 	[_filterArray setArray:filter];
 }
 - (IBAction)donelAction:(id)sender
@@ -92,7 +98,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+	return 2;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -111,25 +117,25 @@
 	}
 	return 0;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	static NSString *CellIdentifier = @"Cell";
+
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+	}
 	if (indexPath.section == 0) {
 		cell.textLabel.text = NSLocalizedString(@"Add...", @"");
 	}
 	else {
 		NSInteger locationID = [[_filterArray objectAtIndex:indexPath.row] intValue];
 		NSString *locationName = [[[[TWAPIBox sharedBox] forecastLocations] objectAtIndex:locationID] objectForKey:@"name"];
-		cell.textLabel.text = locationName;	
+		cell.textLabel.text = locationName;
 	}
-    return cell;
+	return cell;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 }
 
@@ -137,8 +143,8 @@
 {
 	if (indexPath.section == 0) {
 		return UITableViewCellEditingStyleInsert;
-	}	
-	return UITableViewCellEditingStyleDelete;	
+	}
+	return UITableViewCellEditingStyleDelete;
 }
 
 
@@ -149,7 +155,7 @@
 	}
 	else if (indexPath.row == 0 && ([_filterArray count] <= 1)) {
 		return NO;
-	}	
+	}
 	return YES;
 }
 
@@ -173,9 +179,9 @@
 			[tableView reloadData];
 		}
 		if (delegate && [delegate respondsToSelector:@selector(settingController:didUpdateFilter:)]) {
-			[delegate settingController:self didUpdateFilter:_filterArray];		
-		}		
-    }  
+			[delegate settingController:self didUpdateFilter:_filterArray];
+		}
+	}
 	else if (editingStyle == UITableViewCellEditingStyleInsert) {
 		[_addController updateContentArrayWithFilterArray:_filterArray];
 		UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_addController];
@@ -193,14 +199,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{	
+{
 	NSUInteger fromRow = fromIndexPath.row;
 	NSUInteger targetRow = toIndexPath.row;
-	
-	[_filterArray exchangeObjectAtIndex:targetRow withObjectAtIndex:fromRow];	
+
+	[_filterArray exchangeObjectAtIndex:targetRow withObjectAtIndex:fromRow];
 	if (delegate && [delegate respondsToSelector:@selector(settingController:didUpdateFilter:)]) {
-		[delegate settingController:self didUpdateFilter:_filterArray];		
-	}	
+		[delegate settingController:self didUpdateFilter:_filterArray];
+	}
 }
 
 #pragma mark TWLocationAddTableViewController delegate methods
@@ -210,14 +216,11 @@
 	NSNumber *number = [NSNumber numberWithInt:locationIdentifier];
 	[_filterArray addObject:number];
 	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:[_filterArray count] - 1 inSection:1]] withRowAnimation:YES];
-//	[self.tableView reloadData];
-	
 	if (delegate && [delegate respondsToSelector:@selector(settingController:didUpdateFilter:)]) {
-		[delegate settingController:self didUpdateFilter:_filterArray];		
-	}	
+		[delegate settingController:self didUpdateFilter:_filterArray];
+	}
 }
 
 @synthesize delegate;
 
 @end
-

@@ -30,6 +30,15 @@
 #import "TWGlobalResultTableViewController.h"
 
 @implementation TWGlobalResultTableViewController
+{
+	UIImage *image;
+	NSString *description;
+	NSString *temperature;
+	NSString *avgTemperature;
+	NSString *avgRain;
+	NSString *pubDate;
+	NSString *validDate;
+}
 
 - (void)dealloc
 {

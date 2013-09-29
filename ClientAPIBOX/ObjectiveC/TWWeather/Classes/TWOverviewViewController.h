@@ -28,10 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @interface TWOverviewViewController : UIViewController
-{
-	UITextView *textView;
-	NSString *_text;
-}
 
 - (void)setText:(NSString *)text;
 - (IBAction)navBarAction:(id)sender;

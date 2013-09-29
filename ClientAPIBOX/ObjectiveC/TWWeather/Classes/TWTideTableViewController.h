@@ -30,8 +30,4 @@
 #import "TWBasicForecastTableViewController.h"
 
 @interface TWTideTableViewController : TWBasicForecastTableViewController 
-{
-
-}
-
 @end

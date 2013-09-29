@@ -28,10 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @interface TWThreeDaySeaResultTableViewController : UITableViewController <UIActionSheetDelegate>
-{
-	NSArray *forecastArray;
-	NSString *publishTime;
-}
 
 @property (retain, nonatomic) NSArray *forecastArray;
 @property (retain, nonatomic) NSString *publishTime;

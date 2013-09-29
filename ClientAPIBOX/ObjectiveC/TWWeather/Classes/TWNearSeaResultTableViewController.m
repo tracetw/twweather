@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -32,8 +32,18 @@
 #import "TWNearSeaCell.h"
 
 @implementation TWNearSeaResultTableViewController
+{
+	NSString *description;;
+	NSString *publishTime;
+	NSString *validBeginTime;
+	NSString *validEndTime;
+	NSString *wave;
+	NSString *waveLevel;
+	NSString *wind;
+	NSString *windScale;
+}
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[publishTime release];
 	[description release];
@@ -43,19 +53,19 @@
 	[waveLevel release];
 	[wind release];
 	[windScale release];
-    [super dealloc];
+	[super dealloc];
 }
 
-- (void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning]; 
+	[super didReceiveMemoryWarning];
 }
 
 - (void)viewDidLoad
 {
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];	
+	[item release];
 }
 
 #pragma mark -
@@ -77,8 +87,8 @@
 	NSString *feedTitle = [NSString stringWithFormat:@"%@ 天氣預報", [self title]];
 	NSString *text = [NSString stringWithFormat:@"%@ %@", feedTitle, [self _feedDescription]];
 	NSArray *activityItems = @[text];
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    [self presentViewController:activityController animated:YES completion:nil];
+	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+	[self presentViewController:activityController animated:YES completion:nil];
 	[activityController release];
 }
 
@@ -86,20 +96,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+	return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+	return 1;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
-    static NSString *CellIdentifier = @"Cell";
-    
-    TWNearSeaCell *cell = (TWNearSeaCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[TWNearSeaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	static NSString *CellIdentifier = @"Cell";
+
+	TWNearSeaCell *cell = (TWNearSeaCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[TWNearSeaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+	}
 	cell.description = self.description;
 	cell.validBeginTime = self.validBeginTime;
 	cell.validEndTime = self.validEndTime;
@@ -108,12 +118,12 @@
 	cell.wind = self.wind;
 	cell.windScale = self.windScale;
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	
+
 	NSString *imageString = [[TWWeatherAppDelegate sharedDelegate] imageNameWithTimeTitle:@"" description:cell.description ];
 	cell.imageView.image = [UIImage imageNamed:imageString];
-	
+
 	[cell setNeedsDisplay];
-    return cell;
+	return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

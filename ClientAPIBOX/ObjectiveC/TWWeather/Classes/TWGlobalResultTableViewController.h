@@ -30,15 +30,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TWGlobalResultTableViewController : UITableViewController
-{
-	UIImage *image;
-	NSString *description;
-	NSString *temperature;
-	NSString *avgTemperature;
-	NSString *avgRain;
-	NSString *pubDate;
-	NSString *validDate;
-}
 
 @property (retain, nonatomic) UIImage *image;
 @property (retain, nonatomic) NSString *description;

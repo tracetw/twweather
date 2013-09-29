@@ -28,8 +28,5 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @interface TWRootViewController : UITableViewController 
-{
-	BOOL isLoadingOverview;
-}
 
 @end

@@ -31,23 +31,6 @@
 #import "TWLoadingView.h"
 
 @interface TWFavoriteTableViewController : UITableViewController <TWLocationSettingTableViewControllerDelegate>
-{
-	NSMutableArray *_filterArray;
-	NSMutableArray *_filteredArray;
-	NSMutableArray *_favArray;
-	NSMutableArray *warningArray;
-	NSMutableDictionary *weekDictionary;
-	NSDate *updateDate;
-
-	TWLoadingView *loadingView;
-	UITableView *_tableView;
-	UILabel *errorLabel;
-
-	BOOL dataLoaded;
-	BOOL isLoading;
-	BOOL isLoadingWeek;
-	NSUInteger loadingWeekIndex;
-}
 
 - (void)updateFilteredArray;
 - (void)loadData;

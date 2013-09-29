@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -31,13 +31,17 @@
 #import "TWWeatherAppDelegate.h"
 
 @implementation TWOverviewViewController
+{
+	UITextView *textView;
+	NSString *_text;
+}
 
 - (void)dealloc
 {
+	[self viewDidUnload];
 	[_text release];
 	_text = nil;
-	[self viewDidUnload];
-    [super dealloc];
+	[super dealloc];
 }
 - (void)viewDidUnload
 {
@@ -48,7 +52,7 @@
 
 #pragma mark UIViewContoller Methods
 
-- (void)loadView 
+- (void)loadView
 {
 	UITextView *theTextView = [[[UITextView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
 	theTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -59,19 +63,19 @@
 	if (![self.title length]) {
 		self.title = @"關心天氣";
 	}
-	
+
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];	
+	[item release];
 }
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	self.textView.text = _text;	
+	self.textView.text = _text;
 }
-- (void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning]; 
+	[super didReceiveMemoryWarning];
 }
 
 - (void)setText:(NSString *)text
@@ -88,12 +92,10 @@
 	NSString *description = [_text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
 	NSString *text = [NSString stringWithFormat:@"%@ %@", feedTitle, description];
 	NSArray *activityItems = @[text];
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    [self presentViewController:activityController animated:YES completion:nil];
+	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+	[self presentViewController:activityController animated:YES completion:nil];
 	[activityController release];
 }
-
-
 
 @synthesize textView;
 @dynamic text;

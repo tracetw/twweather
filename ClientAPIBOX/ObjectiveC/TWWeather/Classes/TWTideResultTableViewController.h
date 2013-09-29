@@ -28,11 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @interface TWTideResultTableViewController : UITableViewController
-{
-	NSArray *forecastArray;
-}
 
 @property (retain, nonatomic) NSArray *forecastArray;
-
-
 @end

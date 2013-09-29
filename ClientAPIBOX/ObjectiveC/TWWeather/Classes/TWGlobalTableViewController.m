@@ -35,6 +35,9 @@
 #import "TWAPIBox+Info.h"
 
 @implementation TWGlobalTableViewController
+{
+	NSMutableArray *_locations;
+}
 
 - (void)dealloc
 {

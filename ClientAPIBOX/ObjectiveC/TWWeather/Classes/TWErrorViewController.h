@@ -28,10 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @interface TWErrorViewController : UIViewController
-{
-	NSError *_error;
-	UILabel *textLabel;
-}
 
 @property (assign, nonatomic) NSError *error;
 @end

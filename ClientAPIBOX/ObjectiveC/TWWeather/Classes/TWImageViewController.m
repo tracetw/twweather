@@ -31,6 +31,14 @@
 #import "TWWeatherAppDelegate.h"
 
 @implementation TWImageViewController
+{
+	UIImageView *_imageView;
+	UIImage *_image;
+	NSURL *_imageURL;
+
+	TWLoadingView *loadingView;
+	BOOL pushingPlurkComposer;
+}
 
 #pragma mark Routines
 

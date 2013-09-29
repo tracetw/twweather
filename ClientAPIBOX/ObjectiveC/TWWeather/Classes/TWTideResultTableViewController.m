@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -33,23 +33,26 @@
 #import "TWAPIBox.h"
 
 @implementation TWTideResultTableViewController
-
-- (void)dealloc 
 {
-	[forecastArray release];
-    [super dealloc];
+	NSArray *forecastArray;
 }
 
-- (void)didReceiveMemoryWarning 
+- (void)dealloc
 {
-    [super didReceiveMemoryWarning]; 
+	[forecastArray release];
+	[super dealloc];
+}
+
+- (void)didReceiveMemoryWarning
+{
+	[super didReceiveMemoryWarning];
 }
 
 - (void)viewDidLoad
 {
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];	
+	[item release];
 }
 
 #pragma mark -
@@ -76,8 +79,8 @@
 	NSString *description = [self _feedDescription];
 	NSString *text = [NSString stringWithFormat:@"%@ %@", feedTitle, description];
 	NSArray *activityItems = @[text];
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    [self presentViewController:activityController animated:YES completion:nil];
+	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+	[self presentViewController:activityController animated:YES completion:nil];
 	[activityController release];
 }
 
@@ -85,22 +88,22 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+	return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [forecastArray count];
+	return [forecastArray count];
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
-    static NSString *CellIdentifier = @"Cell";
-    
-    TWTideCell *cell = (TWTideCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[TWTideCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	static NSString *CellIdentifier = @"Cell";
+
+	TWTideCell *cell = (TWTideCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[TWTideCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+	}
 	NSDictionary *dictionary = forecastArray[indexPath.row];
-	
+
 	NSString *dateString = dictionary[@"date"];
 	NSDate *date = [[TWAPIBox sharedBox] dateFromShortString:dateString];
 	cell.dateString = [[TWAPIBox sharedBox] shortDateStringFromDate:date];
@@ -108,7 +111,7 @@
 	cell.tides = dictionary[@"tides"];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	[cell setNeedsDisplay];
-    return cell;
+	return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -121,4 +124,3 @@
 @synthesize forecastArray;
 
 @end
-

@@ -34,6 +34,10 @@
 #import "UIViewController+Compatibility.h"
 
 @implementation TWLocationAddTableViewController
+{
+	id <TWLocationAddTableViewControllerDelegate> delegate;
+	NSArray *contentArray;
+}
 
 #pragma mark Routines
 
@@ -85,7 +89,6 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
 	static NSString *CellIdentifier = @"Cell";
 
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

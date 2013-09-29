@@ -36,13 +36,7 @@
 - (void)settingController:(TWLocationSettingTableViewController *)controller didUpdateFilter:(NSArray *)filterArray;
 @end
 
-@interface TWLocationSettingTableViewController : UITableViewController <TWLocationAddTableViewControllerDelegate> 
-{
-	id<TWLocationSettingTableViewControllerDelegate> delegate;
-	NSMutableArray *_filterArray;
-	
-	TWLocationAddTableViewController *_addController;
-}
+@interface TWLocationSettingTableViewController : UITableViewController <TWLocationAddTableViewControllerDelegate>
 
 - (void)setFilter:(NSArray *)filter;
 - (IBAction)donelAction:(id)sender;

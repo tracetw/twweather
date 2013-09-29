@@ -33,12 +33,16 @@
 #import "TWAPIBox.h"
 
 @implementation TWThreeDaySeaResultTableViewController
+{
+	NSArray *forecastArray;
+	NSString *publishTime;
+}
 
 - (void)dealloc
 {
 	[forecastArray release];
 	[publishTime release];
-    [super dealloc];
+	[super dealloc];
 }
 
 - (void)viewDidLoad
@@ -70,8 +74,8 @@
 	NSString *description = [self _feedDescription];
 	NSString *text = [NSString stringWithFormat:@"%@ %@", feedTitle, description];
 	NSArray *activityItems = @[text];
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    [self presentViewController:activityController animated:YES completion:nil];
+	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+	[self presentViewController:activityController animated:YES completion:nil];
 	[activityController release];
 }
 
@@ -79,20 +83,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+	return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [forecastArray count];
+	return [forecastArray count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+	static NSString *CellIdentifier = @"Cell";
 
-    TWThreeDaySeaCell *cell = (TWThreeDaySeaCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[TWThreeDaySeaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+	TWThreeDaySeaCell *cell = (TWThreeDaySeaCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[TWThreeDaySeaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+	}
 	NSDictionary *dictionary = forecastArray[indexPath.row];
 	NSString *dateString = dictionary[@"date"];
 	NSDate *date = [[TWAPIBox sharedBox] dateFromShortString:dateString];
@@ -107,7 +111,7 @@
 	cell.weatherImage = [UIImage imageNamed:imageString];
 
 	[cell setNeedsDisplay];
-    return cell;
+	return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

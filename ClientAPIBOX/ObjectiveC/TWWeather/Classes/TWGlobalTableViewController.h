@@ -31,8 +31,4 @@
 #import "TWAPIBox.h"
 
 @interface TWGlobalTableViewController : TWBasicForecastTableViewController
-{
-	NSMutableArray *_locations;
-}
-
 @end

@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -33,8 +33,17 @@
 #import "TWAPIBox.h"
 
 @implementation TWOBSResultTableViewController
+{
+	NSString *description;
+	NSString *rain;
+	NSString *temperature;
+	NSString *time;
+	NSString *windDirection;
+	NSString *windScale;
+	NSString *gustWindScale;
+}
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[description release];
 	[rain release];
@@ -48,31 +57,31 @@
 
 #pragma mark UIViewContoller Methods
 
-- (void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning]; 
+	[super didReceiveMemoryWarning];
 	// Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
+	// Release anything that's not essential, such as cached data
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+	return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+	return 1;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
-    static NSString *CellIdentifier = @"Cell";
-    
-    TWOBSCell *cell = (TWOBSCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[TWOBSCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	static NSString *CellIdentifier = @"Cell";
+
+	TWOBSCell *cell = (TWOBSCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[TWOBSCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+	}
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	cell.description = self.description;
 	cell.rain = self.rain;
@@ -80,7 +89,7 @@
 	cell.windDirection = self.windDirection;
 	cell.windScale = self.windScale;
 	cell.gustWindScale = self.gustWindScale;
-	
+
 	if (![cell.description isEqualToString:@"X"]) {
 		NSString *imageString = [[TWWeatherAppDelegate sharedDelegate] imageNameWithTimeTitle:nil description:cell.description];
 		cell.weatherImage = [UIImage imageNamed:imageString];
@@ -88,9 +97,9 @@
 	else {
 		cell.weatherImage = nil;
 	}
-	
+
 	[cell setNeedsDisplay];
-    return cell;
+	return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -115,4 +124,3 @@
 @synthesize gustWindScale;
 
 @end
-

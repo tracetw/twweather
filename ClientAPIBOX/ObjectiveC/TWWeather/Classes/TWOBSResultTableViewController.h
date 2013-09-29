@@ -29,17 +29,7 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface TWOBSResultTableViewController : UITableViewController 
-{
-	NSString *description;
-	NSString *rain;
-	NSString *temperature;
-	NSString *time;
-	NSString *windDirection;
-	NSString *windScale;
-	NSString *gustWindScale;
-}
 
 @property (retain, nonatomic) NSString *description;
 @property (retain, nonatomic) NSString *rain;

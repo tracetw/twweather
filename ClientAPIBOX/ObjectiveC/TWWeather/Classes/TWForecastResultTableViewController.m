@@ -36,6 +36,13 @@
 #import "TWAPIBox.h"
 
 @implementation TWForecastResultTableViewController
+{
+	NSArray *forecastArray;
+	NSString *weekLocation;
+	NSDictionary *weekDictionary;
+
+	BOOL isLoadingWeek;
+}
 
 - (void)dealloc
 {

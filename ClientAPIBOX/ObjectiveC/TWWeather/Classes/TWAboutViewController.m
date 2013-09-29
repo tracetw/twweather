@@ -30,6 +30,11 @@
 #import "TWAboutViewController.h"
 
 @implementation TWAboutViewController
+{
+	UILabel *titleLabel;
+	UILabel *copyrightLabel;
+	UILabel *externalLibraryLabel;
+}
 
 - (void)dealloc
 {

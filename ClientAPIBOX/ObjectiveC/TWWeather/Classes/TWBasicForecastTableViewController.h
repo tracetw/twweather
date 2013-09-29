@@ -49,5 +49,4 @@
 @property (assign, nonatomic) NSArray *array;
 @property (assign, nonatomic) UITableViewStyle style;
 @property (retain, nonatomic) UITableView *tableView;
-
 @end

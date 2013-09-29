@@ -33,6 +33,10 @@
 #import "TWCommonHeader.h"
 
 @implementation TWSettingTableViewController
+{
+	UISwitch *BGMSwitch;
+	UISwitch *SFXSwitch;
+}
 
 - (void)removeOutletsAndControls_TWSettingTableViewController
 {
