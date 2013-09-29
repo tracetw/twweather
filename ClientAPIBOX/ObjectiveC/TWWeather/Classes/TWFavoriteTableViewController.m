@@ -79,7 +79,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	self.view = view;
 
 	errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 200)];
-	errorLabel.textAlignment = UITextAlignmentCenter;
+	errorLabel.textAlignment = NSTextAlignmentCenter;
 	errorLabel.numberOfLines = 10;
 	errorLabel.font = [UIFont boldSystemFontOfSize:18.0];
 	errorLabel.backgroundColor = [UIColor colorWithHue:1.0 saturation:0.0 brightness:0.9 alpha:1.0];

@@ -59,7 +59,7 @@
 
 	textLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 200)];
 	textLabel.text = @"";
-	textLabel.textAlignment = UITextAlignmentCenter;
+	textLabel.textAlignment = NSTextAlignmentCenter;
 	textLabel.numberOfLines = 10;
 	textLabel.font = [UIFont boldSystemFontOfSize:18.0];
 	textLabel.backgroundColor = [UIColor colorWithHue:1.0 saturation:0.0 brightness:0.9 alpha:1.0];

@@ -127,9 +127,9 @@
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextSaveGState(context);
 	CGContextSetShadowWithColor(context, CGSizeMake(0, 0), 2.0, [UIColor blackColor].CGColor);
-	[@"一週預報" drawInRect:textRect withFont:[UIFont boldSystemFontOfSize:16.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentRight];
+	[@"一週預報" drawInRect:textRect withFont:[UIFont boldSystemFontOfSize:16.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentRight];
 	textRect = CGRectMake(10, (rect.size.height - 18.0) / 2.0 , rect.size.width - 26.0, 18.0);
-	[locationName drawInRect:textRect withFont:[UIFont boldSystemFontOfSize:18.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentLeft];
+	[locationName drawInRect:textRect withFont:[UIFont boldSystemFontOfSize:18.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentLeft];
 
 	CGContextRestoreGState(context);
 }
@@ -211,7 +211,6 @@
 {
 	return UIAccessibilityTraitNone;
 }
-
 
 #pragma mark -
 
