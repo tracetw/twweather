@@ -29,18 +29,7 @@
 
 @class TWOBSCellContentView;
 
-@interface TWOBSCell : UITableViewCell 
-{
-	TWOBSCellContentView *_ourContentView;
-	
-	NSString *description;
-	NSString *rain;
-	NSString *temperature;
-	NSString *windDirection;
-	NSString *windScale;
-	NSString *gustWindScale;
-	UIImage *weatherImage;
-}
+@interface TWOBSCell : UITableViewCell
 
 @property (retain, nonatomic) NSString *description;
 @property (retain, nonatomic) NSString *rain;

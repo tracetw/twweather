@@ -29,9 +29,7 @@
 
 #import "TWLoadingView.h"
 
-@interface TWImageViewController : UIViewController <
-	UIScrollViewDelegate, 
-	UIActionSheetDelegate>
+@interface TWImageViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate>
 
 - (IBAction)navBarAction:(id)sender;
 - (void)showLoadingView;

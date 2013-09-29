@@ -37,5 +37,4 @@
 @property (retain, nonatomic) NSString *wind;
 @property (retain, nonatomic) NSString *windScale;
 
-
 @end

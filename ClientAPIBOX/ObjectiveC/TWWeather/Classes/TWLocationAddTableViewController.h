@@ -34,11 +34,6 @@
 @end
 
 @interface TWLocationAddTableViewController : UITableViewController
-
-- (IBAction)cancelAction:(id)sender;
 - (void)updateContentArrayWithFilterArray:(NSArray *)filterArray;
-
 @property (assign) id <TWLocationAddTableViewControllerDelegate> delegate;
-@property (retain, nonatomic) NSArray *contentArray;
-
 @end

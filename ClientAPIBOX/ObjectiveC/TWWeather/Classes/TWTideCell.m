@@ -181,19 +181,23 @@
 	[super setNeedsDisplay];
 }
 
+#pragma mark -
+
 - (BOOL)isAccessibilityElement
 {
 	return YES;
 }
-
 - (NSString *)accessibilityLabel
 {
 	return [self _description];
 }
-
 - (UIAccessibilityTraits)accessibilityTraits
 {
 	return UIAccessibilityTraitNone;
+}
+- (NSString *)accessibilityLanguage
+{
+	return @"zh-Hant";
 }
 
 @synthesize dateString;

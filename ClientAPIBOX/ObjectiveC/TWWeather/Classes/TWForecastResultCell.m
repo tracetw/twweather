@@ -214,6 +214,8 @@
 	[super setNeedsDisplay];
 }
 
+#pragma mark -
+
 - (BOOL)isAccessibilityElement
 {
 	return YES;
@@ -229,6 +231,10 @@
 - (UIAccessibilityTraits)accessibilityTraits
 {
 	return UIAccessibilityTraitNone;
+}
+- (NSString *)accessibilityLanguage
+{
+	return @"zh-Hant";
 }
 
 @synthesize title;

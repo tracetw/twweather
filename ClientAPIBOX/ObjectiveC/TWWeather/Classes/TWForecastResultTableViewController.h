@@ -28,12 +28,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @interface TWForecastResultTableViewController : UITableViewController
-
-- (IBAction)navBarAction:(id)sender;
-- (void)pushWeekViewController;
-
 @property (retain, nonatomic) NSArray *forecastArray;
 @property (retain, nonatomic) NSString *weekLocation;
 @property (retain, nonatomic) NSDictionary *weekDictionary;
-
 @end

@@ -42,6 +42,19 @@
 static NSString *lastAllForecastsPreferenceName = @"myLastAllForecastsPreferenceName";
 static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 
+@interface TWFavoriteTableViewController()
+- (void)updateFilteredArray;
+- (void)loadData;
+- (void)showLoadingView;
+- (void)hideLoadingView;
+
+- (IBAction)changeSetting:(id)sender;
+- (IBAction)reload:(id)sender;
+
+@property (retain, nonatomic) NSDate *updateDate;
+@property (retain, nonatomic) UITableView *tableView;
+@end
+
 @implementation TWFavoriteTableViewController
 {
 	NSMutableArray *_filterArray;
@@ -513,7 +526,6 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	self.tableView.hidden = YES;
 	errorLabel.text = [error localizedDescription];
 }
-
 - (void)APIBox:(TWAPIBox *)APIBox didFetchWarnings:(id)result userInfo:(id)userInfo
 {
 	[self hideLoadingView];

@@ -37,10 +37,6 @@
 @end
 
 @interface TWLocationSettingTableViewController : UITableViewController <TWLocationAddTableViewControllerDelegate>
-
 - (void)setFilter:(NSArray *)filter;
-- (IBAction)donelAction:(id)sender;
-
 @property (assign, nonatomic) id<TWLocationSettingTableViewControllerDelegate> delegate;
-
 @end

@@ -28,8 +28,4 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @interface TWSettingTableViewController : UITableViewController
-
-- (IBAction)toggleBGMSettingAction:(id)sender;
-- (IBAction)toggleSFXSettingAction:(id)sender;
-
 @end

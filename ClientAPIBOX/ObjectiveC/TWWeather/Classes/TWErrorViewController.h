@@ -27,7 +27,8 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+/*! The view controller for presenting errors. */
 @interface TWErrorViewController : UIViewController
-
+/*! The error to present. */
 @property (assign, nonatomic) NSError *error;
 @end

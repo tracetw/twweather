@@ -112,11 +112,6 @@
 	return YES;
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-	// Save data if appropriate
-}
-
 - (void)pushViewController:(UIViewController *)controller animated:(BOOL)animated
 {
 	[self.navigationController pushViewController:controller animated:YES];
@@ -154,7 +149,6 @@
 	[string appendString:@".png"];
 	return string;
 }
-
 
 @synthesize window;
 @synthesize tabBarController;

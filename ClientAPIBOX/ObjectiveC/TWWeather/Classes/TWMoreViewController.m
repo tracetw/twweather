@@ -32,7 +32,10 @@
 #import "TWAboutViewController.h"
 #import "TWWebController.h"
 #import "TWWeatherAppDelegate.h"
-#import "UIViewController+Compatibility.h"
+
+@interface TWMoreViewController()
+- (IBAction)sendEmailAction:(id)sender;
+@end
 
 @implementation TWMoreViewController
 
@@ -225,7 +228,7 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-	UIViewController *parentController = [controller compitibaleParentViewController];
+	UIViewController *parentController = [controller presentingViewController];
 	[parentController dismissViewControllerAnimated:YES completion:nil];
 	if (result == MFMailComposeResultSent) {
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Your mail is sent!", @"") message:NSLocalizedString(@"Thanks for your feedback.", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];

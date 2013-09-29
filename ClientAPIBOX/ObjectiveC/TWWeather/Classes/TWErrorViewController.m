@@ -39,8 +39,8 @@
 
 - (void)dealloc
 {
-	[_error release];
 	[self viewDidUnload];
+	[_error release];
 	[super dealloc];
 }
 - (void)viewDidUnload

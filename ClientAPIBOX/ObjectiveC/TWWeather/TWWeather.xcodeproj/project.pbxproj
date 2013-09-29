@@ -44,7 +44,6 @@
 		D471EBB8102F476100768C5B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E9C6E410223D6200B955C7 /* SystemConfiguration.framework */; };
 		D471EBB9102F476100768C5B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E9C70010223DBB00B955C7 /* CFNetwork.framework */; };
 		D471EBD8102F47D400768C5B /* TWAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = D471EBD7102F47D400768C5B /* TWAPITest.m */; };
-		D47B0452145DA5C50008D6FB /* UIViewController+Compatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = D47B0451145DA5C50008D6FB /* UIViewController+Compatibility.m */; };
 		D47B55AA11054D830008FE6B /* TWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D47B55A911054D830008FE6B /* TWNavigationController.m */; };
 		D489E3851023DF2500189460 /* TWAPIBox+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = D489E3831023DF2500189460 /* TWAPIBox+Cache.m */; };
 		D489E3AC1023E00100189460 /* DayCloudy.png in Resources */ = {isa = PBXBuildFile; fileRef = D489E3991023E00100189460 /* DayCloudy.png */; };
@@ -164,8 +163,6 @@
 		D471EAB9102F460600768C5B /* TWTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TWTests-Info.plist"; sourceTree = "<group>"; };
 		D471EBD6102F47D400768C5B /* TWAPITest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWAPITest.h; path = ../TWAPIBox/Tests/TWAPITest.h; sourceTree = SOURCE_ROOT; };
 		D471EBD7102F47D400768C5B /* TWAPITest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWAPITest.m; path = ../TWAPIBox/Tests/TWAPITest.m; sourceTree = SOURCE_ROOT; wrapsLines = 1; };
-		D47B0450145DA5C50008D6FB /* UIViewController+Compatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Compatibility.h"; sourceTree = "<group>"; };
-		D47B0451145DA5C50008D6FB /* UIViewController+Compatibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Compatibility.m"; sourceTree = "<group>"; };
 		D47B55A811054D830008FE6B /* TWNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWNavigationController.h; sourceTree = "<group>"; };
 		D47B55A911054D830008FE6B /* TWNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWNavigationController.m; sourceTree = "<group>"; };
 		D489E3831023DF2500189460 /* TWAPIBox+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TWAPIBox+Cache.m"; path = "../TWAPIBox/TWAPIBox+Cache.m"; sourceTree = SOURCE_ROOT; };
@@ -512,8 +509,6 @@
 				D4E50842102391DB002B39D7 /* TWErrorViewController.m */,
 				D4EDBEF11082032900C9EBFE /* TWWebController.h */,
 				D4EDBEF21082032900C9EBFE /* TWWebController.m */,
-				D47B0450145DA5C50008D6FB /* UIViewController+Compatibility.h */,
-				D47B0451145DA5C50008D6FB /* UIViewController+Compatibility.m */,
 			);
 			name = "Other UI Controls";
 			sourceTree = "<group>";
@@ -897,7 +892,6 @@
 				D49F82CF1198962600051439 /* TWFetchOperation.m in Sources */,
 				D40803AF1198BDA40042091E /* TWGlobalTableViewController.m in Sources */,
 				D40803D71198C1730042091E /* TWGlobalResultTableViewController.m in Sources */,
-				D47B0452145DA5C50008D6FB /* UIViewController+Compatibility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

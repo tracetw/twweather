@@ -29,6 +29,7 @@
 
 #include <AudioToolbox/AudioToolbox.h>
 
+/*! Make sound effect. */
 void TWSFX();
 
 @interface TWNavigationController : UINavigationController <UINavigationBarDelegate>

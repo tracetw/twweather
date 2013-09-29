@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,7 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "TWOBSCell.h"
-
 
 @interface TWOBSCell (ProtectedMethods)
 - (void)draw:(CGRect)bounds;
@@ -69,7 +68,7 @@
 }
 - (IBAction)copy:(id)sender
 {
-	[_delegate copy:sender];	
+	[_delegate copy:sender];
 }
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
@@ -88,7 +87,7 @@
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	if ( touchBeginDate && ([[NSDate date] timeIntervalSinceDate:touchBeginDate] > 1.0)) {	
+	if ( touchBeginDate && ([[NSDate date] timeIntervalSinceDate:touchBeginDate] > 1.0)) {
 		[self becomeFirstResponder];
 		[[UIMenuController sharedMenuController] update];
 		[[UIMenuController sharedMenuController] setTargetRect:CGRectMake(0, 0, 100, 100) inView:self];
@@ -105,6 +104,17 @@
 @end
 
 @implementation TWOBSCell
+{
+	TWOBSCellContentView *_ourContentView;
+
+	NSString *description;
+	NSString *rain;
+	NSString *temperature;
+	NSString *windDirection;
+	NSString *windScale;
+	NSString *gustWindScale;
+	UIImage *weatherImage;
+}
 
 - (void)dealloc
 {
@@ -117,7 +127,7 @@
 	[windScale release];
 	[gustWindScale release];
 	[weatherImage release];
-    [super dealloc];
+	[super dealloc];
 }
 - (void)_init
 {
@@ -125,15 +135,15 @@
 		CGRect cellFrame = CGRectMake(10, 10, 280, 290);
 		_ourContentView = [[TWOBSCellContentView alloc] initWithFrame:cellFrame];
 		_ourContentView.delegate = self;
-		[self.contentView addSubview:_ourContentView];	
+		[self.contentView addSubview:_ourContentView];
 	}
 }
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
 	if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
 		[self _init];
-    }
-    return self;
+	}
+	return self;
 }
 - (NSString *)_description
 {
@@ -151,10 +161,10 @@
 {
 	CGSize size = weatherImage.size;
 	[weatherImage drawInRect:CGRectMake(10, 0, size.width * 0.8, size.height * 0.8)];
-	
+
 	[@"天氣現象" drawInRect:CGRectMake(100, 90, 160, 20) withFont:[UIFont boldSystemFontOfSize:16.0]];
 	[description drawInRect:CGRectMake(100, 140, 160, 80) withFont:[UIFont boldSystemFontOfSize:22.0]];
-	
+
 	[[NSString stringWithFormat:@"溫度: %@", temperature] drawInRect:CGRectMake(100, 190, 160, 20) withFont:[UIFont systemFontOfSize:14.0]];
 	[[NSString stringWithFormat:@"累積雨量: %@ 毫米", rain] drawInRect:CGRectMake(100, 210, 160, 20) withFont:[UIFont systemFontOfSize:14.0]];
 	[[NSString stringWithFormat:@"風向: %@", windDirection] drawInRect:CGRectMake(100, 230, 160, 20) withFont:[UIFont systemFontOfSize:14.0]];
@@ -172,19 +182,23 @@
 	[super setNeedsDisplay];
 }
 
+#pragma mark -
+
 - (BOOL)isAccessibilityElement
 {
 	return YES;
 }
-
 - (NSString *)accessibilityLabel
 {
 	return [self _description];
 }
-
 - (UIAccessibilityTraits)accessibilityTraits
 {
 	return UIAccessibilityTraitButton;
+}
+- (NSString *)accessibilityLanguage
+{
+	return @"zh-Hant";
 }
 
 @synthesize description;

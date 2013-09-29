@@ -30,13 +30,12 @@
 #import <AVFoundation/AVFoundation.h>
 #import "TWNavigationController.h"
 
-@interface TWWeatherAppDelegate : NSObject <
-	UIApplicationDelegate,
-	AVAudioPlayerDelegate>
+/*! The application delegate obejct for TW Weather. */
+@interface TWWeatherAppDelegate : NSObject <UIApplicationDelegate, AVAudioPlayerDelegate>
 {
-    UIWindow *window;
+	UIWindow *window;
 	TWNavigationController *navigationController;
-    UITabBarController *tabBarController;
+	UITabBarController *tabBarController;
 	AVAudioPlayer *audioPlayer;
 }
 

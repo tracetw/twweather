@@ -97,7 +97,7 @@ typedef enum {
 {
 	BOOL shouldWaitUntilDone;
 	NSOperationQueue *_operationQueue;
-	
+
 	NSMutableArray *_forecastLocations;
 	NSMutableArray *_weekLocations;
 	NSMutableArray *_weekTravelLocations;

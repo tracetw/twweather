@@ -36,6 +36,7 @@
 	if (audioPlayer) {
 		[audioPlayer stop];
 		[audioPlayer release];
+		audioPlayer = nil;
 	}
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"bgm" ofType:@"mp3"];
 	NSURL *URL = [NSURL fileURLWithPath:path];

@@ -30,7 +30,4 @@
 #import <MessageUI/MessageUI.h>
 
 @interface TWMoreViewController : UITableViewController <MFMailComposeViewControllerDelegate>
-
-- (IBAction)sendEmailAction:(id)sender;
-
 @end

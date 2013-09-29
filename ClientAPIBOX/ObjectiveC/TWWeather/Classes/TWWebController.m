@@ -29,6 +29,19 @@
 
 #import "TWWebController.h"
 
+@interface TWWebController()
+- (IBAction)openInExternalWebBrowser:(id)sender;
+- (void)openInExternalWebBrowser;
+- (void)updateButtonState;
+
+@property (retain, nonatomic) UIActivityIndicatorView *activityIndicatorView;
+@property (retain, nonatomic) UIToolbar *toolbar;
+@property (retain, nonatomic) UIBarButtonItem *goBackItem;
+@property (retain, nonatomic) UIBarButtonItem *goFowardItem;
+@property (retain, nonatomic) UIBarButtonItem *stopItem;
+@property (retain, nonatomic) UIBarButtonItem *reloadItem;
+@end
+
 @implementation TWWebController
 {
 	UIWebView *webView;

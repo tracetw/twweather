@@ -29,9 +29,10 @@
 
 #import "TWWeatherAppDelegate.h"
 
+/*! The category defines method to play background music. */
 @interface TWWeatherAppDelegate(BGM)
-
+/*! Starts playing background music. */
 - (void)startPlayingBGM;
+/*! Stops playing background music. */
 - (void)stopPlayingBGM;
-
 @end

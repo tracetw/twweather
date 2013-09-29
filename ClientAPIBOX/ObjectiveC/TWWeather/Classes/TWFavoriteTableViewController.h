@@ -31,16 +31,4 @@
 #import "TWLoadingView.h"
 
 @interface TWFavoriteTableViewController : UITableViewController <TWLocationSettingTableViewControllerDelegate>
-
-- (void)updateFilteredArray;
-- (void)loadData;
-- (void)showLoadingView;
-- (void)hideLoadingView;
-
-- (IBAction)changeSetting:(id)sender;
-- (IBAction)reload:(id)sender;
-
-@property (retain, nonatomic) NSDate *updateDate;
-@property (retain, nonatomic) UITableView *tableView;
-
 @end

@@ -28,8 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @interface TWFavoriteSectionCell : UITableViewCell
-
 @property (assign, getter=isLoading) BOOL loading;
 @property (retain, nonatomic) NSString *locationName;
-
 @end

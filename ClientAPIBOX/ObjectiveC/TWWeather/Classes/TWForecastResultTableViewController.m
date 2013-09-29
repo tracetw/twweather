@@ -35,6 +35,11 @@
 #import "TWLoadingCell.h"
 #import "TWAPIBox.h"
 
+@interface TWForecastResultTableViewController()
+- (IBAction)navBarAction:(id)sender;
+- (void)pushWeekViewController;
+@end
+
 @implementation TWForecastResultTableViewController
 {
 	NSArray *forecastArray;

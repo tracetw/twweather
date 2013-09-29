@@ -31,7 +31,10 @@
 #import "TWWeatherAppDelegate.h"
 #import "TWAPIBox.h"
 #import "TWAPIBox+Info.h"
-#import "UIViewController+Compatibility.h"
+
+@interface TWLocationSettingTableViewController()
+- (IBAction)donelAction:(id)sender;
+@end
 
 @implementation TWLocationSettingTableViewController
 {
@@ -39,7 +42,6 @@
 	NSMutableArray *_filterArray;
 	TWLocationAddTableViewController *_addController;
 }
-
 
 #pragma mark Routines
 
@@ -88,8 +90,8 @@
 }
 - (IBAction)donelAction:(id)sender
 {
-	if ([self.navigationController compitibaleParentViewController]) {
-		[[self.navigationController compitibaleParentViewController] dismissViewControllerAnimated:YES completion:nil];
+	if ([self.navigationController presentingViewController]) {
+		[[self.navigationController presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 	}
 }
 

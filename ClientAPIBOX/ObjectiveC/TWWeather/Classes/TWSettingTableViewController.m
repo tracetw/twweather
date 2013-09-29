@@ -32,6 +32,11 @@
 #import "TWWeatherAppDelegate+BGM.h"
 #import "TWCommonHeader.h"
 
+@interface TWSettingTableViewController()
+- (IBAction)toggleBGMSettingAction:(id)sender;
+- (IBAction)toggleSFXSettingAction:(id)sender;
+@end
+
 @implementation TWSettingTableViewController
 {
 	UISwitch *BGMSwitch;
@@ -123,7 +128,6 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
 	static NSString *CellIdentifier = @"Cell";
 
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
