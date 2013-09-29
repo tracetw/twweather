@@ -99,6 +99,15 @@
 @end
 
 @implementation TWThreeDaySeaCell
+{
+	TWThreeDaySeaCellContentView *_ourContentView;
+	NSString *date;
+	NSString *description;
+	NSString *wind;
+	NSString *windScale;
+	NSString *wave;
+	UIImage *weatherImage;
+}
 
 - (void)dealloc
 {
@@ -155,7 +164,7 @@
 - (IBAction)copy:(id)sender
 {
 	UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
-	[pasteBoard setString:[self _desciption]];
+	[pasteBoard setString:[self _description]];
 }
 - (void)setNeedsDisplay
 {

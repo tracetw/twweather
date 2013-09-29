@@ -102,6 +102,4 @@
 	return _error;
 }
 
-@dynamic error;
-
 @end

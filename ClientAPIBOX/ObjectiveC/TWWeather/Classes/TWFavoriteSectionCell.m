@@ -90,6 +90,11 @@
 @end
 
 @implementation TWFavoriteSectionCell
+{
+	TWFavoriteSectionCellContentView *_ourContentView;
+	BOOL loading;
+	NSString *locationName;
+}
 
 - (void)dealloc
 {
@@ -240,7 +245,6 @@
 	return loading;
 }
 
-@dynamic loading;
 @synthesize locationName;
 
 @end

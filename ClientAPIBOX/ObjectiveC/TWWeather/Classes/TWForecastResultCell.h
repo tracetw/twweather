@@ -27,19 +27,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-@class TWForecastResultCellContentView;
-
 @interface TWForecastResultCell : UITableViewCell
-{
-	TWForecastResultCellContentView *_ourContentView;
-	NSString *title;
-	NSString *description;
-	NSString *rain;
-	NSString *temperature;
-	NSString *beginTime;
-	NSString *endTime;
-	UIImage *weatherImage;
-}
 
 @property (retain, nonatomic) NSString *title;
 @property (retain, nonatomic) NSString *description;

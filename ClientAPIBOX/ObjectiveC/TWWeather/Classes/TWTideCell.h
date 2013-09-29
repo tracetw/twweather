@@ -27,16 +27,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-@class TWTideCellContentView;
-
-@interface TWTideCell : UITableViewCell 
-{
-	TWTideCellContentView *_ourContentView;
-	NSString *dateString;
-	NSString *lunarDateString;
-	
-	NSArray *tides;
-}
+@interface TWTideCell : UITableViewCell
 
 @property (retain, nonatomic) NSString *dateString;
 @property (retain, nonatomic) NSString *lunarDateString;

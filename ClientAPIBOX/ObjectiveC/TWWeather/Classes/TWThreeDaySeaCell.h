@@ -27,18 +27,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-@class TWThreeDaySeaCellContentView;
-
 @interface TWThreeDaySeaCell : UITableViewCell 
-{
-	TWThreeDaySeaCellContentView *_ourContentView;
-	NSString *date;
-	NSString *description;
-	NSString *wind;
-	NSString *windScale;
-	NSString *wave;
-	UIImage *weatherImage;
-}
 
 @property (retain, nonatomic) NSString *date;
 @property (retain, nonatomic) NSString *description;

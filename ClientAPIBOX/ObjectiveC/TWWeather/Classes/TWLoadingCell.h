@@ -29,9 +29,6 @@
 @class TWLoadingCellContentView;
 
 @interface TWLoadingCell : UITableViewCell 
-{
-	UIActivityIndicatorView *activityIndicator;
-}
 
 - (void)startAnimating;
 - (void)stopAnimating;

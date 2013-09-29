@@ -105,6 +105,13 @@
 @end
 
 @implementation TWWeekResultCell
+{
+	TWWeekResultCellContentView *_ourContentView;
+	NSString *day;
+	NSString *date;
+	NSString *description;
+	NSString *temperature;
+}
 
 - (void)dealloc
 {

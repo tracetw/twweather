@@ -13,7 +13,7 @@ Scan List
 "About" = "About";
 "Data comes from Central Weather Bureau\n\n" = "Data comes from Central Weather Bureau\n\n";
 "Version: %@\n%@" = "Version: %1$@\n%2$@";
-"%@ copyright ifno" = "%@ is an open source project. please check the web site of the project(http://github.com/zonble/twweather) for furthor information.\n\nLFWebAPIKit\nCopyright (c) 2007-2009 Lithoglyph Inc. (http://lithoglyph.com)\nCopyright (c) 2007-2009 Lukhnos D. Liu (http://lukhnos.org)\n\nCocoaCryptoHashing\nCopyright (c) 2004-2009 Denis Defreyne\nCopyright (c) 2008 Chris Verwymeren\nCopyright (c) 2009 Mike Fischer\nAll rights reserved.\n\nfacebook-iphone-sdk\nCopyright 2009 Facebook\nhttp://github.com/facebook/facebook-iphone-sdk\n\nObjectivePlurk\nCopyright (c) 2009 Weizhong Yang. (http://zonble.net)\n\nSFHFKeychainUtils\nby Buzz Andersen\nCopyright 2008 Sci-Fi Hi-Fi.\nAll rights reserved.\n\nMGTwitterEngine\nby Matt Gemmell on 10/02/2008.\nCopyright (c) 2008 Instinctive Code.";
+"%@ copyright ifno" = "%@ is an open source project. please check the web site of the project(http://github.com/zonble/twweather) for furthor information.\n\nLFWebAPIKit\nCopyright (c) 2007-2009 Lithoglyph Inc. (http://lithoglyph.com)\nCopyright (c) 2007-2009 Lukhnos D. Liu (http://lukhnos.org)\n\nCocoaCryptoHashing\nCopyright (c) 2004-2009 Denis Defreyne\nCopyright (c) 2008 Chris Verwymeren\nCopyright (c) 2009 Mike Fischer\nAll rights reserved.";
 
 
 /* TWBasicForecastTableViewController.m */

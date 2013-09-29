@@ -55,7 +55,7 @@
 	scrollView.scrollEnabled = YES;
 	self.view = scrollView;
 
-	UIView *contentView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 800)] autorelease];
+	UIView *contentView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)] autorelease];
 	contentView.backgroundColor = [UIColor whiteColor];
 	[self.view addSubview:contentView];
 	scrollView.contentSize = contentView.frame.size;
@@ -79,7 +79,7 @@
 	self.copyrightLabel = label;
 	[contentView addSubview:self.copyrightLabel];
 
-	label = [[[UILabel alloc] initWithFrame:CGRectMake(20, 120, 280, 600)] autorelease];
+	label = [[[UILabel alloc] initWithFrame:CGRectMake(20, 120, 280, 300)] autorelease];
 	label.font = [UIFont systemFontOfSize:12.0];
 	label.numberOfLines = 100;
 	NSMutableString *text = [NSMutableString stringWithString:NSLocalizedString(@"Data comes from Central Weather Bureau\n\n", @"")];

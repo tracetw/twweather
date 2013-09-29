@@ -105,6 +105,16 @@
 @end
 
 @implementation TWNearSeaCell
+{
+	TWNearSeaCellContentView *_ourContentView;
+	NSString *description;
+	NSString *validBeginTime;
+	NSString *validEndTime;
+	NSString *wave;
+	NSString *waveLevel;
+	NSString *wind;
+	NSString *windScale;
+}
 
 - (void)dealloc
 {

@@ -30,6 +30,9 @@
 #import "TWLoadingCell.h"
 
 @implementation TWLoadingCell
+{
+	UIActivityIndicatorView *activityIndicator;
+}
 
 - (void)dealloc
 {

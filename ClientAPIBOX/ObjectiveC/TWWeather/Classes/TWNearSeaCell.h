@@ -27,19 +27,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-@class TWNearSeaCellContentView;
-
 @interface TWNearSeaCell : UITableViewCell 
-{
-	TWNearSeaCellContentView *_ourContentView;
-	NSString *description;
-	NSString *validBeginTime;
-    NSString *validEndTime;
-    NSString *wave;
-    NSString *waveLevel;
-    NSString *wind;
-    NSString *windScale;
-}
 
 @property (retain, nonatomic) NSString *description;
 @property (retain, nonatomic) NSString *validBeginTime;
