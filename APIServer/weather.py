@@ -56,7 +56,7 @@ class WeatherWarning(object):
 		pass
 	def fetch(self):
 		try:
-			url = urllib.urlopen(WeatherRootURL, proxies={})
+			url = urllib.urlopen(WeatherRootURL)
 		except:
 			return
 		warnings = []
@@ -71,7 +71,7 @@ class WeatherWarning(object):
 		for item in warnings:
 			URLString = WeatherWarningURL % {"id": item['id']}
 			try:
-				url = urllib.urlopen(URLString, proxies={})
+				url = urllib.urlopen(URLString)
 			except:
 				continue
 				pass
@@ -108,7 +108,7 @@ class WeatherOverview(object):
 		pass
 	def fetch(self):
 		try:
-			url = urllib.urlopen(WeatherOverViewURL, proxies={})
+			url = urllib.urlopen(WeatherOverViewURL)
 		except:
 			return
 		lines = url.readlines()
@@ -178,7 +178,7 @@ class WeatherForecast(Forecast):
 
 		URLString = WeatherForecastURL % {"#": int(id)}
 		try:
-			url = urllib.urlopen(URLString, proxies={})
+			url = urllib.urlopen(URLString)
 		except:
 			return None
 
@@ -233,10 +233,11 @@ class WeatherForecast(Forecast):
 
 class TestWeatherForecast(unittest.TestCase):
 	def setUp(self):
-		self.forecest = WeatherForecast()
+		self.forecast = WeatherForecast()
 	def testForecast(self):
-		for i in range(1, 23):
-			result = self.forecest.fetchWithID(i)
+		for item in self.forecast.locations():
+			locationName = item['id']
+			result = self.forecast.fetchWithID(locationName)
 			self.assertTrue(result['locationName'])
 			self.assertTrue(result['weekLocation'])
 			self.assertTrue(result['id'])
@@ -270,7 +271,7 @@ class WeatherWeek(Forecast):
 		return WeatherWeekLocations
 	def handleLines(self, URLString, locationName, name):
 		try:
-			url = urllib.urlopen(URLString, proxies={})
+			url = urllib.urlopen(URLString)
 		except:
 			return None
 		lines = url.readlines()
@@ -382,7 +383,7 @@ class Weather3DaySea(Forecast):
 
 		URLString = Weather3DaySeaURL % {"#": int(id)}
 		try:
-			url = urllib.urlopen(URLString, proxies={})
+			url = urllib.urlopen(URLString)
 		except:
 			return None
 		lines = url.readlines()
@@ -488,7 +489,7 @@ class WeatherNearSea(Forecast):
 
 		URLString = WeatherNearSeaURL % {"#": int(id)}
 		try:
-			url = urllib.urlopen(URLString, proxies={})
+			url = urllib.urlopen(URLString)
 		except:
 			return None
 		
@@ -612,7 +613,7 @@ class WeatherTide(Forecast):
 
 		URLString = WeatherTideURL % {"#": int(id)}
 		try:
-			url = urllib.urlopen(URLString, proxies={})
+			url = urllib.urlopen(URLString)
 		except:
 			return None
 		lines = url.readlines()
@@ -764,7 +765,7 @@ class WeatherOBS(Forecast):
 
 		URLString = WeatherOBSURL % {"location": id}
 		try:
-			url = urllib.urlopen(URLString, proxies={})
+			url = urllib.urlopen(URLString)
 		except:
 			return None
 
@@ -956,7 +957,7 @@ class WeatherGlobal(Forecast):
 
 		URLString = WeatherGloabalURL % {"location": newid, "area": area}
 		try:
-			url = urllib.urlopen(URLString, proxies={})
+			url = urllib.urlopen(URLString)
 		except:
 			return ""
 		lines = url.readlines()
@@ -976,7 +977,10 @@ class WeatherGlobal(Forecast):
 			line = line.strip()
 			if line.startswith('<li class="smallfield">'):
 				infoline = line
-				break
+			elif line.startswith('發布時間'):
+				forecastDate = line.split('<br />')[0].split('發布時間：')[1]
+			elif line.startswith('有效時間'):
+				validDate = line.split('<br />')[0].split('有效時間：')[1]
 	
 		infoline = infoline.strip()
 		parts = infoline.split('<br />')
@@ -1012,7 +1016,7 @@ class WeatherGlobal(Forecast):
 							forecast = forecast.decode("utf-8")
 					elif someParts[0].endswith('溫度'):
 						temperature = someParts[1].replace('℃', '').strip()
-				avgTemperature = '%d' % ((l + h) / 2)
+		avgTemperature = '%d' % ((l + h) / 2)
 		result = {"locationName": locationName, "id": id, "area": area, "forecastDate": forecastDate, "validDate": validDate, "forecast": forecast,  "temperature": temperature, "avgTemperature": avgTemperature, "avgRain": avgRain}
 		# for key in result.keys():
 		# 	print result[key]

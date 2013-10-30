@@ -68,8 +68,6 @@ def add_record(request):
 	current_device.put()
 	pass
 
-siteURL = "http://twweatherapi.appspot.com/"
-
 class WarningController(webapp.RequestHandler):
 	def __init__(self):
 		self.model = weather.WeatherWarning()
