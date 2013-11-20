@@ -105,7 +105,11 @@
 		[self startPlayingBGM];
 	}
 
-	window.rootViewController = nil;
+	[GAI sharedInstance].trackUncaughtExceptions = YES;
+	[GAI sharedInstance].dispatchInterval = 20;
+	[[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+	tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-144934-10"];
+
 	window.rootViewController = self.navigationController;
 	[window makeKeyAndVisible];
 	self.tabBarController.viewControllers = controllerArray;
@@ -153,5 +157,6 @@
 @synthesize window;
 @synthesize tabBarController;
 @synthesize navigationController;
+@synthesize tracker;
 
 @end

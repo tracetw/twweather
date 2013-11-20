@@ -37,6 +37,7 @@
 	[super viewDidLoad];
 	self.array = [[TWAPIBox sharedBox] nearSeaLocations];
 	self.title = @"台灣近海天氣預報";
+	self.screenName = @"Near Sea List";
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate

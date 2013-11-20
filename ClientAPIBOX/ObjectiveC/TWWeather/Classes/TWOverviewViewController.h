@@ -27,7 +27,9 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-@interface TWOverviewViewController : UIViewController
+#import "TWBasicViewController.h"
+
+@interface TWOverviewViewController : TWBasicViewController
 
 - (void)setText:(NSString *)text;
 - (IBAction)navBarAction:(id)sender;

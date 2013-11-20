@@ -27,7 +27,9 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-@interface TWAboutViewController : UIViewController
+#import "TWBasicViewController.h"
+
+@interface TWAboutViewController : TWBasicViewController
 
 @property (retain, nonatomic) UILabel *titleLabel;
 @property (retain, nonatomic) UILabel *copyrightLabel;

@@ -59,6 +59,7 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	self.screenName = @"More";
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -213,7 +214,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 45.0;
+	return 44.0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {

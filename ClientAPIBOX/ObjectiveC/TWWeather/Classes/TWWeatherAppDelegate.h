@@ -32,12 +32,6 @@
 
 /*! The application delegate obejct for TW Weather. */
 @interface TWWeatherAppDelegate : NSObject <UIApplicationDelegate, AVAudioPlayerDelegate>
-{
-	UIWindow *window;
-	TWNavigationController *navigationController;
-	UITabBarController *tabBarController;
-	AVAudioPlayer *audioPlayer;
-}
 
 + (TWWeatherAppDelegate*)sharedDelegate;
 
@@ -47,6 +41,16 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (readonly, nonatomic) id <GAITracker> tracker;
+@end
 
+@interface TWWeatherAppDelegate ()
+{
+	UIWindow *window;
+	TWNavigationController *navigationController;
+	UITabBarController *tabBarController;
+	AVAudioPlayer *audioPlayer;
+	id <GAITracker> tracker;
+}
 @end
 

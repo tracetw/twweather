@@ -29,8 +29,9 @@
 
 #import "TWAPIBox.h"
 #import "TWAPIBox+Info.h"
+#import "TWBasicTableViewController.h"
 
-@interface TWBasicForecastTableViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate>
+@interface TWBasicForecastTableViewController : TWBasicTableViewController <UISearchDisplayDelegate, UISearchBarDelegate>
 {
 	NSMutableArray *_array;
 	NSMutableArray *_filteredArray;

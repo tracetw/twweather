@@ -27,7 +27,9 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-@interface TWGlobalResultTableViewController : UITableViewController
+#import "TWBasicTableViewController.h"
+
+@interface TWGlobalResultTableViewController : TWBasicTableViewController
 
 @property (retain, nonatomic) UIImage *image;
 @property (retain, nonatomic) NSString *description;

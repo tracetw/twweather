@@ -28,6 +28,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "TWLocationAddTableViewController.h"
+#import "TWBasicTableViewController.h"
 
 @class TWLocationSettingTableViewController;
 
@@ -36,7 +37,7 @@
 - (void)settingController:(TWLocationSettingTableViewController *)controller didUpdateFilter:(NSArray *)filterArray;
 @end
 
-@interface TWLocationSettingTableViewController : UITableViewController <TWLocationAddTableViewControllerDelegate>
+@interface TWLocationSettingTableViewController : TWBasicTableViewController <TWLocationAddTableViewControllerDelegate>
 - (void)setFilter:(NSArray *)filter;
 @property (assign, nonatomic) id<TWLocationSettingTableViewControllerDelegate> delegate;
 @end

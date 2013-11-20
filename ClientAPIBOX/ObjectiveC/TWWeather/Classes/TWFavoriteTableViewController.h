@@ -29,6 +29,7 @@
 
 #import "TWLocationSettingTableViewController.h"
 #import "TWLoadingView.h"
+#import "TWBasicTableViewController.h"
 
-@interface TWFavoriteTableViewController : UITableViewController <TWLocationSettingTableViewControllerDelegate>
+@interface TWFavoriteTableViewController : TWBasicTableViewController <TWLocationSettingTableViewControllerDelegate>
 @end

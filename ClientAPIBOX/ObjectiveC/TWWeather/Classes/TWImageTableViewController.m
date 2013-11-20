@@ -37,6 +37,7 @@
 	[super viewDidLoad];
 	self.array = [[TWAPIBox sharedBox] imageIdentifiers];
 	self.title = @"天氣觀測雲圖";
+	self.screenName = @"Images List";
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate

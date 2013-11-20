@@ -27,7 +27,9 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-@interface TWOBSResultTableViewController : UITableViewController 
+#import "TWBasicTableViewController.h"
+
+@interface TWOBSResultTableViewController : TWBasicTableViewController
 
 @property (retain, nonatomic) NSString *description;
 @property (retain, nonatomic) NSString *rain;

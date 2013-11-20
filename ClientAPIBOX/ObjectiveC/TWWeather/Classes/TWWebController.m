@@ -112,6 +112,8 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	self.screenName = @"Web";
+
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:activityIndicatorView];
 	self.navigationItem.rightBarButtonItem = item;
 	[item release];

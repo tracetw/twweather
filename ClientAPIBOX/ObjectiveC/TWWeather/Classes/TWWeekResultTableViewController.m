@@ -52,6 +52,9 @@
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
 	[item release];
+	if (!self.screenName) {
+		self.screenName = @"One Week Details";
+	}
 }
 
 - (void)didReceiveMemoryWarning

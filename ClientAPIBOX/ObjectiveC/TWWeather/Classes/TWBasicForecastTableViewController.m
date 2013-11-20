@@ -84,16 +84,7 @@
 
 - (void)loadView
 {
-	UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
-	view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	self.view = view;
-
-	UITableView *aTableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:self.style] autorelease];
-	aTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	aTableView.delegate = self;
-	aTableView.dataSource = self;
-	self.tableView = aTableView;
-	[self.view addSubview:self.tableView];
+	[super loadView];
 
 	if (!_searchBar) {
 		_searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];

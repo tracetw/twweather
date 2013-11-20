@@ -57,11 +57,10 @@
 
 #pragma mark UIViewContoller Methods
 
-- (void)didReceiveMemoryWarning
+- (void)viewDidLoad
 {
-	[super didReceiveMemoryWarning];
-	// Releases the view if it doesn't have a superview
-	// Release anything that's not essential, such as cached data
+	[super viewDidLoad];
+	self.screenName = @"OBS Details";
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate

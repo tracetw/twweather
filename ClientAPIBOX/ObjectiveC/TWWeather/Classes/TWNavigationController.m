@@ -15,7 +15,7 @@
 //     * Neither the name of Weizhong Yang (zonble) nor the
 //       names of its contributors may be used to endorse or promote products
 //       derived from this software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY WEIZHONG YANG ''AS IS'' AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -36,11 +36,11 @@ void TWSFX()
 {
 	if (!TWSFXFileObject) {
 		CFBundleRef mainBundle = CFBundleGetMainBundle();
-		CFURLRef soundFileURLRef = CFBundleCopyResourceURL(mainBundle, CFSTR ("sfx"),CFSTR ("wav"), FALSE);		
-		AudioServicesCreateSystemSoundID(soundFileURLRef, &TWSFXFileObject);    
+		CFURLRef soundFileURLRef = CFBundleCopyResourceURL(mainBundle, CFSTR ("sfx"),CFSTR ("wav"), FALSE);
+		AudioServicesCreateSystemSoundID(soundFileURLRef, &TWSFXFileObject);
 		CFRelease(soundFileURLRef);
-	}	
-	AudioServicesPlaySystemSound(TWSFXFileObject);	
+	}
+	AudioServicesPlaySystemSound(TWSFXFileObject);
 }
 
 @implementation TWNavigationController
@@ -70,7 +70,7 @@ void TWSFX()
 {
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:TWSFXPreference]) {
 		TWSFX();
-	}	
+	}
 }
 
 @end

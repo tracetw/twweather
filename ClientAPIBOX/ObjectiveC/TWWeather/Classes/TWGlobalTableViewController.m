@@ -110,6 +110,7 @@
 {
 	[super viewDidLoad];
 	self.title = @"全球都市";
+	self.screenName = @"Global Cities List";
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate

@@ -37,6 +37,7 @@
 	[super viewDidLoad];
 	self.array = [[TWAPIBox sharedBox] tideLocations];
 	self.title = @"三天潮汐預報";
+	self.screenName = @"Three Days Tide";
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate

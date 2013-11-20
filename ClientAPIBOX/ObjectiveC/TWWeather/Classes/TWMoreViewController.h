@@ -28,6 +28,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <MessageUI/MessageUI.h>
+#import "TWBasicTableViewController.h"
 
-@interface TWMoreViewController : UITableViewController <MFMailComposeViewControllerDelegate>
+@interface TWMoreViewController : TWBasicTableViewController <MFMailComposeViewControllerDelegate>
 @end

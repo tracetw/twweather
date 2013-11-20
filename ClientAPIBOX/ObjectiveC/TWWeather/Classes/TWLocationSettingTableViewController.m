@@ -57,6 +57,7 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	self.screenName = @"My Favorites Settings";
 
 	if (!_filterArray) {
 		_filterArray = [[NSMutableArray alloc] init];

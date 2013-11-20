@@ -27,7 +27,9 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-@interface TWForecastResultTableViewController : UITableViewController
+#import "TWBasicTableViewController.h"
+
+@interface TWForecastResultTableViewController : TWBasicTableViewController
 @property (retain, nonatomic) NSArray *forecastArray;
 @property (retain, nonatomic) NSString *weekLocation;
 @property (retain, nonatomic) NSDictionary *weekDictionary;

@@ -63,6 +63,7 @@
 {
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
+	self.screenName = @"48 Hours Details";
 	[item release];
 }
 - (void)viewWillDisappear:(BOOL)animated

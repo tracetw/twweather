@@ -39,6 +39,7 @@
 	[super viewDidLoad];
 	self.array = [[TWAPIBox sharedBox] forecastLocations];
 	self.title = @"一週天氣預報";
+	self.screenName = @"One Week List";
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate

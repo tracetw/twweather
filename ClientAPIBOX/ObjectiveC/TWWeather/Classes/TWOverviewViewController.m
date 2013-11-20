@@ -71,6 +71,7 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	self.screenName = @"Overview";
 	self.textView.text = _text;
 }
 - (void)didReceiveMemoryWarning

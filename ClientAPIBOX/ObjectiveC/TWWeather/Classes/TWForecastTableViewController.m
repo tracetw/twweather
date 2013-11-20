@@ -39,6 +39,7 @@
 	[super viewDidLoad];
 	self.array = [[TWAPIBox sharedBox] forecastLocations];
 	self.title = @"48 小時天氣預報";
+	self.screenName = @"48 Hours List";
 }
 
 #pragma mark -

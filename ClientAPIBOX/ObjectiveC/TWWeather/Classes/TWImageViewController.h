@@ -28,8 +28,9 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "TWLoadingView.h"
+#import "TWBasicViewController.h"
 
-@interface TWImageViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate>
+@interface TWImageViewController : TWBasicViewController <UIScrollViewDelegate, UIActionSheetDelegate>
 
 - (IBAction)navBarAction:(id)sender;
 - (void)showLoadingView;

@@ -27,13 +27,15 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#import "TWBasicTableViewController.h"
+
 @class TWLocationAddTableViewController;
 
 @protocol TWLocationAddTableViewControllerDelegate <NSObject>
 - (void)locationAddTableViewController:(TWLocationAddTableViewController *)controller didSelectedLocationIdentifier:(NSUInteger)locationIdentifier;
 @end
 
-@interface TWLocationAddTableViewController : UITableViewController
+@interface TWLocationAddTableViewController : TWBasicTableViewController
 - (void)updateContentArrayWithFilterArray:(NSArray *)filterArray;
 @property (assign) id <TWLocationAddTableViewControllerDelegate> delegate;
 @end

@@ -53,6 +53,8 @@
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
 	[item release];
+
+	self.screenName = @"Three Days Tide Details";
 }
 
 #pragma mark -

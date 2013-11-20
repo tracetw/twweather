@@ -105,16 +105,16 @@
 
 #pragma mark UIViewContoller Methods
 
+- (void)didReceiveMemoryWarning
+{
+	[super didReceiveMemoryWarning];
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
 	self.title = @"目前天氣";
-}
-- (void)didReceiveMemoryWarning
-{
-	[super didReceiveMemoryWarning];
-	// Releases the view if it doesn't have a superview
-	// Release anything that's not essential, such as cached data
+	self.screenName = @"OBS List";
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate

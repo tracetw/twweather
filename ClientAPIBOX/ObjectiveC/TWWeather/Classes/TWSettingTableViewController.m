@@ -43,23 +43,13 @@
 	UISwitch *SFXSwitch;
 }
 
-- (void)removeOutletsAndControls_TWSettingTableViewController
+- (void)dealloc
 {
 	[BGMSwitch release];
 	BGMSwitch = nil;
 	[SFXSwitch release];
 	SFXSwitch = nil;
-}
-
-- (void)dealloc
-{
-	[self removeOutletsAndControls_TWSettingTableViewController];
 	[super dealloc];
-}
-- (void)viewDidUnload
-{
-	[super viewDidUnload];
-	[self removeOutletsAndControls_TWSettingTableViewController];
 }
 
 #pragma mark -
@@ -80,11 +70,9 @@
 		SFXSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:TWSFXPreference];
 	}
 	self.title = NSLocalizedString(@"Settings", @"");
+	self.screenName = @"Settings";
 }
-- (void)viewWillAppear:(BOOL)animated
-{
-	[super viewWillAppear:animated];
-}
+
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
@@ -156,18 +144,9 @@
 	return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-}
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
 	return NSLocalizedString(@"Basic Settings", @"");
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
-{
-	return nil;
 }
 
 @end

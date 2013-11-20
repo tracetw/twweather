@@ -38,16 +38,11 @@
 
 - (void)dealloc
 {
-	[self viewDidUnload];
-	[super dealloc];
-}
-
-- (void)viewDidUnload
-{
 	self.titleLabel = nil;
 	self.copyrightLabel = nil;
 	self.externalLibraryLabel = nil;
 	self.view = nil;
+	[super dealloc];
 }
 
 #pragma mark UIViewContoller Methods
@@ -64,8 +59,6 @@
 	contentView.backgroundColor = [UIColor whiteColor];
 	[self.view addSubview:contentView];
 	scrollView.contentSize = contentView.frame.size;
-
-	self.title = NSLocalizedString(@"About", @"");
 
 	NSBundle *bundle = [NSBundle mainBundle];
 	NSDictionary *loaclizedDictionary = [bundle localizedInfoDictionary];
@@ -94,9 +87,11 @@
 	[contentView addSubview:self.externalLibraryLabel];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewDidLoad
 {
-	[super didReceiveMemoryWarning];
+	[super viewDidLoad];
+	self.title = NSLocalizedString(@"About", @"");
+	self.screenName = @"About";
 }
 
 @synthesize titleLabel;

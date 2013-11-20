@@ -58,6 +58,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
+	self.screenName = @"Home";
+
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
 	// Work around for iOS 7
 	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
@@ -107,7 +109,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewController *controller = nil;
+	TWBasicTableViewController *controller = nil;
 	if (indexPath.row == 0) {
 		controller = [[TWOBSTableViewController alloc] initWithStyle:UITableViewStylePlain];
 	}
@@ -135,7 +137,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 45.0;
+	return 44.0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {

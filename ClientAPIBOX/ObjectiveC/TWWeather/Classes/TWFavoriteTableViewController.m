@@ -130,6 +130,8 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	self.screenName = @"My Favorites";
+
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
 	// Work around for iOS 7
 	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {

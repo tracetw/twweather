@@ -39,6 +39,7 @@
 	[super viewDidLoad];
 	self.array = [[TWAPIBox sharedBox] weekTravelLocations];
 	self.title = @"一週旅遊天氣預報";
+	self.screenName = @"One Week Travel List";
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate
@@ -61,6 +62,7 @@
 		TWWeekResultTableViewController *controller = [[TWWeekResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 		controller.title = result[@"locationName"];
 		controller.forecastArray = result[@"items"];
+		controller.screenName = @"One Week Travel Details";
 		NSString *dateString = result[@"publishTime"];
 		NSDate *date = [[TWAPIBox sharedBox] dateFromString:dateString];
 		controller.publishTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];

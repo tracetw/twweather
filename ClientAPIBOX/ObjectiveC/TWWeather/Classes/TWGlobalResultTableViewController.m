@@ -56,6 +56,7 @@
 {
 	[super viewDidLoad];
 	self.tableView.separatorColor = [UIColor whiteColor];
+	self.screenName = @"Global Cities Details";
 }
 
 #pragma mark Table view methods
