@@ -43,17 +43,6 @@
 	NSString *gustWindScale;
 }
 
-- (void)dealloc
-{
-	[description release];
-	[rain release];
-	[temperature release];
-	[time release];
-	[windDirection release];
-	[windScale release];
-	[gustWindScale release];
-	[super dealloc];
-}
 
 #pragma mark UIViewContoller Methods
 
@@ -79,7 +68,7 @@
 
 	TWOBSCell *cell = (TWOBSCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[TWOBSCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[TWOBSCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	cell.description = self.description;

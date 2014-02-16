@@ -36,19 +36,14 @@
 
 @interface TWTideCellContentView : UIView
 {
-	TWTideCell *_delegate;
+	TWTideCell *__weak _delegate;
 	NSDate *touchBeginDate;
 }
-@property (assign, nonatomic) TWTideCell *delegate;
+@property (weak, nonatomic) TWTideCell *delegate;
 @end
 
 @implementation TWTideCellContentView
 
-- (void)dealloc
-{
-	[touchBeginDate release];
-	[super dealloc];
-}
 - (id)initWithFrame:(CGRect)frame
 {
 	if (self = [super initWithFrame:frame]) {
@@ -80,10 +75,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	[super touchesBegan:touches withEvent:event];
-	if (touchBeginDate) {
-		[touchBeginDate release];
-	}
-	touchBeginDate = [[NSDate date] retain];
+	touchBeginDate = [NSDate date];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -96,7 +88,6 @@
 	else {
 		[super touchesEnded:touches withEvent:event];
 	}
-	[touchBeginDate release];
 	touchBeginDate = nil;
 }
 
@@ -115,14 +106,9 @@
 - (void)dealloc
 {
 	[_ourContentView removeFromSuperview];
-	[_ourContentView release];
 
-	[dateString release];
-	[lunarDateString release];
 
-	[tides release];
 
-	[super dealloc];
 }
 - (void)_init
 {

@@ -47,12 +47,10 @@
 		[controller setSubject:NSLocalizedString(@"TW Weather Questions/Inquiry", @"")];
 		[controller setToRecipients:@[@"Weizhong Yang<service@zonble.net>"]];
 		[self presentViewController:controller animated:YES completion:nil];
-		[controller release];
 	}
 	else {
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"You cannot send email now",@"") message:@"" delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
 		[alertView show];
-		[alertView release];
 	}
 }
 
@@ -96,7 +94,7 @@
 	if (indexPath.section == 0) {
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NormalIdentifier];
 		if (cell == nil) {
-			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NormalIdentifier] autorelease];
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NormalIdentifier];
 		}
 		cell.accessoryType = UITableViewCellAccessoryNone;
 		cell.imageView.image = nil;
@@ -125,7 +123,7 @@
 	else if (indexPath.section == 1) {
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NormalIdentifier];
 		if (cell == nil) {
-			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NormalIdentifier] autorelease];
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NormalIdentifier];
 		}
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		cell.imageView.image = nil;
@@ -168,7 +166,6 @@
 				webController.webView.scalesPageToFit = NO;
 				[webController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.cwb.gov.tw/pda/"]]];
 			}
-			[webController release];
 			return;
 		}
 
@@ -177,7 +174,6 @@
 			NSString *title = [NSString stringWithFormat:NSLocalizedString(@"You can not make a phone call with an %@", @""), model];
 			UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:title message:NSLocalizedString(@"Your device does not supprt to make a phone call, please use a telephone or cellphone to dial the number.", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
 			[alertview show];
-			[alertview release];
 		}
 
 		NSString *URLString = nil;
@@ -208,7 +204,6 @@
 		}
 		if (controller) {
 			[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
-			[controller release];
 		}
 	}
 }
@@ -234,7 +229,6 @@
 	if (result == MFMailComposeResultSent) {
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Your mail is sent!", @"") message:NSLocalizedString(@"Thanks for your feedback.", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
 		[alertView show];
-		[alertView release];
 	}
 }
 

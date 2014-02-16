@@ -35,7 +35,6 @@
 {
 	if (audioPlayer) {
 		[audioPlayer stop];
-		[audioPlayer release];
 		audioPlayer = nil;
 	}
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"bgm" ofType:@"mp3"];
@@ -52,7 +51,6 @@
 {
 	if (audioPlayer) {
 		[audioPlayer stop];
-		[audioPlayer release];
 		audioPlayer = nil;
 	}	
 }

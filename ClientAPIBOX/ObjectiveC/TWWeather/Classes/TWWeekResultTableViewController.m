@@ -38,12 +38,6 @@
 	NSString *publishTime;
 }
 
-- (void)dealloc
-{
-	[forecastArray release];
-	[publishTime release];
-	[super dealloc];
-}
 
 #pragma mark UIViewContoller Methods
 
@@ -51,7 +45,6 @@
 {
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];
 	if (!self.screenName) {
 		self.screenName = @"One Week Details";
 	}
@@ -82,7 +75,6 @@
 	NSArray *activityItems = @[text];
 	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
 	[self presentViewController:activityController animated:YES completion:nil];
-	[activityController release];
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate
@@ -101,7 +93,7 @@
 
 	TWWeekResultCell *cell = (TWWeekResultCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[TWWeekResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[TWWeekResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	NSDictionary *dictionary = forecastArray[indexPath.row];
 	NSString *dateString = dictionary[@"date"];

@@ -37,5 +37,5 @@
 
 @interface TWLocationAddTableViewController : TWBasicTableViewController
 - (void)updateContentArrayWithFilterArray:(NSArray *)filterArray;
-@property (assign) id <TWLocationAddTableViewControllerDelegate> delegate;
+@property (weak) id <TWLocationAddTableViewControllerDelegate> delegate;
 @end

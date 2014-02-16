@@ -47,7 +47,7 @@
 - (void)resetLoading;
 - (void)pushErrorViewWithError:(NSError *)error;
 
-@property (assign, nonatomic) NSArray *array;
+@property (weak, nonatomic) NSArray *array;
 @property (assign, nonatomic) UITableViewStyle style;
-@property (retain, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView;
 @end

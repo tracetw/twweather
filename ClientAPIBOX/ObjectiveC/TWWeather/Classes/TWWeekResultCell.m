@@ -36,19 +36,14 @@
 
 @interface TWWeekResultCellContentView : UIView
 {
-	TWWeekResultCell *_delegate;
+	TWWeekResultCell *__weak _delegate;
 	NSDate *touchBeginDate;
 }
-@property (assign, nonatomic) TWWeekResultCell *delegate;
+@property (weak, nonatomic) TWWeekResultCell *delegate;
 @end
 
 @implementation TWWeekResultCellContentView
 
-- (void)dealloc
-{
-	[touchBeginDate release];
-	[super dealloc];
-}
 - (id)initWithFrame:(CGRect)frame
 {
 	if (self = [super initWithFrame:frame]) {
@@ -80,10 +75,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	[super touchesBegan:touches withEvent:event];
-	if (touchBeginDate) {
-		[touchBeginDate release];
-	}
-	touchBeginDate = [[NSDate date] retain];
+	touchBeginDate = [NSDate date];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -96,7 +88,6 @@
 	else {
 		[super touchesEnded:touches withEvent:event];
 	}
-	[touchBeginDate release];
 	touchBeginDate = nil;
 }
 
@@ -116,12 +107,6 @@
 - (void)dealloc
 {
 	[_ourContentView removeFromSuperview];
-	[_ourContentView release];
-	[day release];
-	[date release];
-	[description release];
-	[temperature release];
-	[super dealloc];
 }
 - (void)_init
 {

@@ -37,19 +37,14 @@
 
 @interface TWNearSeaCellContentView : UIView
 {
-	TWNearSeaCell *_delegate;
+	TWNearSeaCell *__weak _delegate;
 	NSDate *touchBeginDate;
 }
-@property (assign, nonatomic) TWNearSeaCell *delegate;
+@property (weak, nonatomic) TWNearSeaCell *delegate;
 @end
 
 @implementation TWNearSeaCellContentView
 
-- (void)dealloc
-{
-	[touchBeginDate release];
-	[super dealloc];
-}
 - (id)initWithFrame:(CGRect)frame
 {
 	if (self = [super initWithFrame:frame]) {
@@ -81,10 +76,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	[super touchesBegan:touches withEvent:event];
-	if (touchBeginDate) {
-		[touchBeginDate release];
-	}
-	touchBeginDate = [[NSDate date] retain];
+	touchBeginDate = [NSDate date];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -97,7 +89,6 @@
 	else {
 		[super touchesEnded:touches withEvent:event];
 	}
-	[touchBeginDate release];
 	touchBeginDate = nil;
 }
 
@@ -119,17 +110,8 @@
 - (void)dealloc
 {
 	[_ourContentView removeFromSuperview];
-	[_ourContentView release];
 	
-	[description release];
-	[validBeginTime release];
-	[validEndTime release];
-	[wave release];
-	[waveLevel release];
-	[wind release];
-	[windScale release];
 	
-    [super dealloc];
 }
 - (void)_init
 {

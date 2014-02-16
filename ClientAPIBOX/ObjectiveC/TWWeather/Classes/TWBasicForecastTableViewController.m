@@ -37,15 +37,10 @@
 - (void)dealloc
 {
 	[self viewDidUnload];
-	[_array release];
-	[_filteredArray release];
-	[super dealloc];
 }
 - (void)viewDidUnload
 {
-	[_searchController release];
 	_searchController = nil;
-	[_searchBar release];
 	_searchBar = nil;
 	self.tableView = nil;
 	[super viewDidLoad];
@@ -111,7 +106,7 @@
 {
 	[super viewDidLoad];
 	self.tableView.tableHeaderView = _searchBar;
-	self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", @"") style:UIBarButtonItemStyleBordered target:nil action:NULL] autorelease];
+	self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", @"") style:UIBarButtonItemStyleBordered target:nil action:NULL];
 	_firstTimeVisiable = YES;
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -160,7 +155,6 @@
 	TWErrorViewController *controller = [[TWErrorViewController alloc] init];
 	controller.error = error;
 	[self.navigationController pushViewController:controller animated:YES];
-	[controller release];
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate
@@ -180,7 +174,7 @@
 
 	TWLoadingCell *cell = (TWLoadingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	NSArray *array = [self arrayForTableView:tableView];
 	NSDictionary *dictionary = array[indexPath.row];

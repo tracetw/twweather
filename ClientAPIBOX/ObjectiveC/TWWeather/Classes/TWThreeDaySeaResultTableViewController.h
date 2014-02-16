@@ -31,7 +31,7 @@
 
 @interface TWThreeDaySeaResultTableViewController : TWBasicTableViewController <UIActionSheetDelegate>
 
-@property (retain, nonatomic) NSArray *forecastArray;
-@property (retain, nonatomic) NSString *publishTime;
+@property (strong, nonatomic) NSArray *forecastArray;
+@property (strong, nonatomic) NSString *publishTime;
 
 @end

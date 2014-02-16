@@ -45,11 +45,8 @@
 
 - (void)dealloc
 {
-	[BGMSwitch release];
 	BGMSwitch = nil;
-	[SFXSwitch release];
 	SFXSwitch = nil;
-	[super dealloc];
 }
 
 #pragma mark -
@@ -120,7 +117,7 @@
 
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;

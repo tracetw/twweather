@@ -34,11 +34,6 @@
 	UIActivityIndicatorView *activityIndicator;
 }
 
-- (void)dealloc
-{
-	[activityIndicator release];
-	[super dealloc];
-}
 
 - (void)_init
 {

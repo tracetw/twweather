@@ -31,12 +31,12 @@
 
 @interface TWGlobalResultTableViewController : TWBasicTableViewController
 
-@property (retain, nonatomic) UIImage *image;
-@property (retain, nonatomic) NSString *description;
-@property (retain, nonatomic) NSString *temperature;
-@property (retain, nonatomic) NSString *avgTemperature;
-@property (retain, nonatomic) NSString *avgRain;
-@property (retain, nonatomic) NSString *pubDate;
-@property (retain, nonatomic) NSString *validDate;
+@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *temperature;
+@property (strong, nonatomic) NSString *avgTemperature;
+@property (strong, nonatomic) NSString *avgRain;
+@property (strong, nonatomic) NSString *pubDate;
+@property (strong, nonatomic) NSString *validDate;
 
 @end

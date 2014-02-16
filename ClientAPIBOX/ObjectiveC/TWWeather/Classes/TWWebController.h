@@ -30,5 +30,5 @@
 #import "TWBasicViewController.h"
 
 @interface TWWebController : TWBasicViewController <UIWebViewDelegate, UIActionSheetDelegate>
-@property (retain, nonatomic) UIWebView *webView;
+@property (strong, nonatomic) UIWebView *webView;
 @end

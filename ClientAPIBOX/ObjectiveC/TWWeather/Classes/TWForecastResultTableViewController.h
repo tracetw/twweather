@@ -30,7 +30,7 @@
 #import "TWBasicTableViewController.h"
 
 @interface TWForecastResultTableViewController : TWBasicTableViewController
-@property (retain, nonatomic) NSArray *forecastArray;
-@property (retain, nonatomic) NSString *weekLocation;
-@property (retain, nonatomic) NSDictionary *weekDictionary;
+@property (strong, nonatomic) NSArray *forecastArray;
+@property (strong, nonatomic) NSString *weekLocation;
+@property (strong, nonatomic) NSDictionary *weekDictionary;
 @end

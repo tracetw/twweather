@@ -38,19 +38,13 @@
 
 @implementation TWLocationSettingTableViewController
 {
-	id<TWLocationSettingTableViewControllerDelegate> delegate;
+	id<TWLocationSettingTableViewControllerDelegate> __weak delegate;
 	NSMutableArray *_filterArray;
 	TWLocationAddTableViewController *_addController;
 }
 
 #pragma mark Routines
 
-- (void)dealloc
-{
-	[_filterArray release];
-	[_addController release];
-	[super dealloc];
-}
 
 #pragma mark UIViewContoller Methods
 
@@ -70,7 +64,6 @@
 
 	UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(donelAction:)];
 	self.navigationItem.rightBarButtonItem = cancelItem;
-	[cancelItem release];
 
 	self.tableView.editing = YES;
 }
@@ -126,14 +119,14 @@
 
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	if (indexPath.section == 0) {
 		cell.textLabel.text = NSLocalizedString(@"Add...", @"");
 	}
 	else {
-		NSInteger locationID = [[_filterArray objectAtIndex:indexPath.row] intValue];
-		NSString *locationName = [[[[TWAPIBox sharedBox] forecastLocations] objectAtIndex:locationID] objectForKey:@"name"];
+		NSInteger locationID = [_filterArray[indexPath.row] intValue];
+		NSString *locationName = [[TWAPIBox sharedBox] forecastLocations][locationID][@"name"];
 		cell.textLabel.text = locationName;
 	}
 	return cell;
@@ -176,7 +169,7 @@
 		NSInteger index = indexPath.row;
 		[_filterArray removeObjectAtIndex:index];
 		if ([_filterArray count] && [_filterArray count] < [[[TWAPIBox sharedBox] forecastLocations] count] - 1) {
-			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:YES];
 		}
 		else {
 			[tableView reloadData];
@@ -189,7 +182,6 @@
 		[_addController updateContentArrayWithFilterArray:_filterArray];
 		UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_addController];
 		[self presentViewController:controller animated:YES completion:nil];
-		[controller release];
 	}
 }
 
@@ -218,7 +210,7 @@
 {
 	NSNumber *number = [NSNumber numberWithInt:locationIdentifier];
 	[_filterArray addObject:number];
-	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:[_filterArray count] - 1 inSection:1]] withRowAnimation:YES];
+	[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[_filterArray count] - 1 inSection:1]] withRowAnimation:YES];
 	if (delegate && [delegate respondsToSelector:@selector(settingController:didUpdateFilter:)]) {
 		[delegate settingController:self didUpdateFilter:_filterArray];
 	}

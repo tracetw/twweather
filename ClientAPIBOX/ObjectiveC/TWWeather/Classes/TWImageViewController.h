@@ -36,8 +36,8 @@
 - (void)showLoadingView;
 - (void)hideLoadingView;
 
-@property (retain, nonatomic) UIImageView *imageView;
-@property (assign, nonatomic) UIImage *image;
-@property (retain, nonatomic) NSURL *imageURL;
+@property (strong, nonatomic) UIImageView *imageView;
+@property (weak, nonatomic) UIImage *image;
+@property (strong, nonatomic) NSURL *imageURL;
 
 @end

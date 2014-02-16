@@ -49,13 +49,6 @@
 	BOOL isLoadingWeek;
 }
 
-- (void)dealloc
-{
-	self.forecastArray = nil;
-	self.weekLocation = nil;
-	self.weekDictionary = nil;
-	[super dealloc];
-}
 
 #pragma mark UIViewContoller Methods
 
@@ -64,7 +57,6 @@
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
 	self.screenName = @"48 Hours Details";
-	[item release];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -97,7 +89,6 @@
 	NSArray *activityItems = @[text];
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
     [self presentViewController:activityController animated:YES completion:nil];
-	[activityController release];
 }
 
 #pragma mark -
@@ -128,7 +119,7 @@
 	if (indexPath.section == 0) {
 		TWForecastResultCell *cell = (TWForecastResultCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		if (cell == nil) {
-			cell = [[[TWForecastResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+			cell = [[TWForecastResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 		}
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		NSDictionary *dictionary = forecastArray[indexPath.row];
@@ -152,7 +143,7 @@
 	else if (indexPath.section == 1) {
 		TWLoadingCell *cell = (TWLoadingCell *)[tableView dequeueReusableCellWithIdentifier:NormalIdentifier];
 		if (cell == nil) {
-			cell = [[[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NormalIdentifier] autorelease];
+			cell = [[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NormalIdentifier];
 		}
 		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -201,14 +192,12 @@
 	NSDate *date = [[TWAPIBox sharedBox] dateFromString:dateString];
 	controller.publishTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];
 	[self.navigationController pushViewController:controller animated:YES];
-	[controller release];
 }
 - (void)pushErrorViewWithError:(NSError *)error
 {
 	TWErrorViewController *controller = [[TWErrorViewController alloc] init];
 	controller.error = error;
 	[self.navigationController pushViewController:controller animated:YES];
-	[controller release];
 }
 
 - (void)APIBox:(TWAPIBox *)APIBox didFetchWeek:(id)result identifier:(NSString *)identifier userInfo:(id)userInfo

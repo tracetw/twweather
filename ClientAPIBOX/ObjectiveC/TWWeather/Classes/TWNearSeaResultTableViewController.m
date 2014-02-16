@@ -43,18 +43,6 @@
 	NSString *windScale;
 }
 
-- (void)dealloc
-{
-	[publishTime release];
-	[description release];
-	[validBeginTime release];
-	[validEndTime release];
-	[wave release];
-	[waveLevel release];
-	[wind release];
-	[windScale release];
-	[super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -65,7 +53,6 @@
 {
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];
 
 	self.screenName = @"Near Sea Details";
 }
@@ -91,7 +78,6 @@
 	NSArray *activityItems = @[text];
 	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
 	[self presentViewController:activityController animated:YES completion:nil];
-	[activityController release];
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate
@@ -110,7 +96,7 @@
 
 	TWNearSeaCell *cell = (TWNearSeaCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[TWNearSeaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[TWNearSeaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	cell.description = self.description;
 	cell.validBeginTime = self.validBeginTime;

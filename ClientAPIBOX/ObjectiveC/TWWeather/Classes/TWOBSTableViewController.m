@@ -38,11 +38,6 @@
 	NSMutableArray *_locations;
 }
 
-- (void)dealloc
-{
-	[_locations release];
-	[super dealloc];
-}
 
 - (void)_init
 {
@@ -161,7 +156,7 @@
 
 	TWLoadingCell *cell = (TWLoadingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	NSDictionary *dictionary = nil;
 	if (tableView == self.tableView) {
@@ -243,7 +238,6 @@
 		controller.windScale = result[@"windScale"];
 		controller.gustWindScale = result[@"gustWindScale"];
 		[self.navigationController pushViewController:controller animated:YES];
-		[controller release];
 	}
 }
 - (void)APIBox:(TWAPIBox *)APIBox didFailedFetchOBSWithError:(NSError *)error identifier:(NSString *)identifier userInfo:(id)userInfo

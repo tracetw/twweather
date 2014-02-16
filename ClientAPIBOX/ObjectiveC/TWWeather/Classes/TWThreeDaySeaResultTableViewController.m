@@ -38,18 +38,11 @@
 	NSString *publishTime;
 }
 
-- (void)dealloc
-{
-	[forecastArray release];
-	[publishTime release];
-	[super dealloc];
-}
 
 - (void)viewDidLoad
 {
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];
 
 	self.screenName = @"Three Days Sea Details";
 }
@@ -78,7 +71,6 @@
 	NSArray *activityItems = @[text];
 	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
 	[self presentViewController:activityController animated:YES completion:nil];
-	[activityController release];
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate
@@ -97,7 +89,7 @@
 
 	TWThreeDaySeaCell *cell = (TWThreeDaySeaCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[TWThreeDaySeaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[TWThreeDaySeaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	NSDictionary *dictionary = forecastArray[indexPath.row];
 	NSString *dateString = dictionary[@"date"];

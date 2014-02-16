@@ -36,10 +36,10 @@
 
 @interface TWThreeDaySeaCellContentView : UIView
 {
-	TWThreeDaySeaCell *_delegate;
+	TWThreeDaySeaCell *__weak _delegate;
 	NSDate *touchBeginDate;
 }
-@property (assign, nonatomic) TWThreeDaySeaCell *delegate;
+@property (weak, nonatomic) TWThreeDaySeaCell *delegate;
 @end
 
 @implementation TWThreeDaySeaCellContentView
@@ -75,10 +75,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	[super touchesBegan:touches withEvent:event];
-	if (touchBeginDate) {
-		[touchBeginDate release];
-	}
-	touchBeginDate = [[NSDate date] retain];
+	touchBeginDate = [NSDate date];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -91,7 +88,6 @@
 	else {
 		[super touchesEnded:touches withEvent:event];
 	}
-	[touchBeginDate release];
 	touchBeginDate = nil;
 }
 
@@ -112,16 +108,8 @@
 - (void)dealloc
 {
 	[_ourContentView removeFromSuperview];
-	[_ourContentView release];
 
-	[date release];
-	[description release];
-	[wind release];
-	[windScale release];
-	[wave release];
-	[weatherImage release];
 
-	[super dealloc];
 }
 - (void)_init
 {

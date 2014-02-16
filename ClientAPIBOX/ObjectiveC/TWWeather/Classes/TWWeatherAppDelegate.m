@@ -43,14 +43,6 @@
 	return (TWWeatherAppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
-- (void)dealloc
-{
-	[tabBarController release];
-	[navigationController release];
-	[window release];
-	[audioPlayer release];
-	[super dealloc];
-}
 
 
 #pragma mark -
@@ -58,7 +50,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	self.window = [[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+	self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
 	audioPlayer = nil;
 	window.backgroundColor = [UIColor blackColor];
@@ -74,32 +66,26 @@
 	controller.title = loaclizedDictionary[@"CFBundleDisplayName"];
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", @"") style:UIBarButtonItemStyleBordered target:nil action:NULL];
 	controller.navigationItem.backBarButtonItem = item;
-	[item release];
 
 	self.tabBarController = controller;
-	[controller release];
 
 	NSMutableArray *controllerArray = [NSMutableArray array];
 
 	TWFavoriteTableViewController *favController = [[TWFavoriteTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	favController.tabBarItem = [[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:0] autorelease];
+	favController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:0];
 	[favController view];
 	[controllerArray addObject:favController];
-	[favController release];
 
 	TWRootViewController *rootController = [[TWRootViewController alloc] initWithStyle:UITableViewStylePlain];
-	rootController.tabBarItem = [[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Forecasts", @"") image:[UIImage imageNamed:@"forecasts.png"] tag:1] autorelease];
+	rootController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Forecasts", @"") image:[UIImage imageNamed:@"forecasts.png"] tag:1];
 	[controllerArray addObject:rootController];
-	[rootController release];
 
 	TWMoreViewController *moreController = [[TWMoreViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	moreController.tabBarItem = [[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:2] autorelease];
+	moreController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:2];
 	[controllerArray addObject:moreController];
-	[moreController release];
 
 	TWNavigationController *ourNavigationController = [[TWNavigationController alloc] initWithRootViewController:self.tabBarController];
 	self.navigationController = ourNavigationController;
-	[ourNavigationController release];
 
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:TWBGMPreference]) {
 		[self startPlayingBGM];
@@ -107,7 +93,9 @@
 
 	[GAI sharedInstance].trackUncaughtExceptions = YES;
 	[GAI sharedInstance].dispatchInterval = 20;
+#if DEBUG
 	[[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+#endif
 	tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-144934-10"];
 
 	window.rootViewController = self.navigationController;

@@ -36,19 +36,14 @@
 
 @interface TWForecastResultCellContentView : UIView
 {
-	TWForecastResultCell *_delegate;
+	TWForecastResultCell *__weak _delegate;
 	NSDate *touchBeginDate;
 }
-@property (assign, nonatomic) TWForecastResultCell *delegate;
+@property (weak, nonatomic) TWForecastResultCell *delegate;
 @end
 
 @implementation TWForecastResultCellContentView
 
-- (void)dealloc
-{
-	[touchBeginDate release];
-	[super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -84,10 +79,7 @@
 	if (_delegate.selectionStyle != UITableViewCellSelectionStyleNone) {
 		return;
 	}
-	if (touchBeginDate) {
-		[touchBeginDate release];
-	}
-	touchBeginDate = [[NSDate date] retain];
+	touchBeginDate = [NSDate date];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -103,7 +95,6 @@
 	else {
 		[super touchesEnded:touches withEvent:event];
 	}
-	[touchBeginDate release];
 	touchBeginDate = nil;
 }
 
@@ -125,15 +116,6 @@
 - (void)dealloc
 {
 	[_ourContentView removeFromSuperview];
-	[_ourContentView release];
-	[title release];
-	[description release];
-	[rain release];
-	[temperature release];
-	[beginTime release];
-	[endTime release];
-	[weatherImage release];
-	[super dealloc];
 }
 - (void)_init
 {

@@ -78,7 +78,6 @@
 		controller.windScale = result[@"windScale"];
 		
 		[self.navigationController pushViewController:controller animated:YES];
-		[controller release];
 	}	
 }
 - (void)APIBox:(TWAPIBox *)APIBox didFailedFetchNearSeaWithError:(NSError *)error identifier:(NSString *)identifier userInfo:(id)userInfo

@@ -31,5 +31,5 @@
 
 @interface TWTideResultTableViewController : TWBasicTableViewController
 
-@property (retain, nonatomic) NSArray *forecastArray;
+@property (strong, nonatomic) NSArray *forecastArray;
 @end

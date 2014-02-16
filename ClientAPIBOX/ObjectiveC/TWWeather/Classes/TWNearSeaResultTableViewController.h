@@ -31,13 +31,13 @@
 
 @interface TWNearSeaResultTableViewController : TWBasicTableViewController <UIActionSheetDelegate>
 
-@property (retain, nonatomic) NSString *description;
-@property (retain, nonatomic) NSString *publishTime;
-@property (retain, nonatomic) NSString *validBeginTime;
-@property (retain, nonatomic) NSString *validEndTime;
-@property (retain, nonatomic) NSString *wave;
-@property (retain, nonatomic) NSString *waveLevel;
-@property (retain, nonatomic) NSString *wind;
-@property (retain, nonatomic) NSString *windScale;
+@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *publishTime;
+@property (strong, nonatomic) NSString *validBeginTime;
+@property (strong, nonatomic) NSString *validEndTime;
+@property (strong, nonatomic) NSString *wave;
+@property (strong, nonatomic) NSString *waveLevel;
+@property (strong, nonatomic) NSString *wind;
+@property (strong, nonatomic) NSString *windScale;
 
 @end

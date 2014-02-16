@@ -38,21 +38,13 @@
 
 @implementation TWFetchOperation
 
-- (void)dealloc
-{
-	[sessionInfo release];
-	[_request release];
-	[_reachability release];
-	[note release];
-	[super dealloc];
-}
 
 - (id)initWithDelegate:(id)newDelegate sessionInfo:(id)newSessionInfo;
 {
 	self = [super init];
 	if (self != nil) {
 		delegate = newDelegate;
-		sessionInfo = [newSessionInfo retain];
+		sessionInfo = newSessionInfo;
 
 		_reachability = [[LFSiteReachability alloc] init];
 		_reachability.siteURL = [NSURL URLWithString:BASE_URL_STRING];
@@ -95,27 +87,27 @@
 - (void)main
 {
 	@try {
-		NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-		runloopRunning = YES;
+		@autoreleasepool {
+			runloopRunning = YES;
 
-		BOOL shouldWaitUntilDone = NO;
-		if ([delegate respondsToSelector:@selector(shouldWaitUntilDone)]) {
-			shouldWaitUntilDone = [(TWAPIBox *)delegate shouldWaitUntilDone];
-		}
+			BOOL shouldWaitUntilDone = NO;
+			if ([delegate respondsToSelector:@selector(shouldWaitUntilDone)]) {
+				shouldWaitUntilDone = [(TWAPIBox *)delegate shouldWaitUntilDone];
+			}
 
-		if (!shouldWaitUntilDone) {
-			[_reachability startChecking];
-		}
-		else {
-			_request.shouldWaitUntilDone = YES;
-			NSURL *URL = sessionInfo[@"URL"];
-			[_request performMethod:LFHTTPRequestGETMethod onURL:URL withData:nil];
-		}
+			if (!shouldWaitUntilDone) {
+				[_reachability startChecking];
+			}
+			else {
+				_request.shouldWaitUntilDone = YES;
+				NSURL *URL = sessionInfo[@"URL"];
+				[_request performMethod:LFHTTPRequestGETMethod onURL:URL withData:nil];
+			}
 
-		while (runloopRunning && ![self isCancelled]) {
-			[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+			while (runloopRunning && ![self isCancelled]) {
+				[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+			}
 		}
-		[pool release];
 	}
 	@catch(...) {
 		[delegate httpRequestDidCancel:_request];

@@ -34,7 +34,7 @@
 - (void)setText:(NSString *)text;
 - (IBAction)navBarAction:(id)sender;
 
-@property (retain, nonatomic) UITextView *textView;
-@property (retain, nonatomic) NSString *text;
+@property (strong, nonatomic) UITextView *textView;
+@property (strong, nonatomic) NSString *text;
 
 @end

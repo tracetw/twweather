@@ -29,12 +29,12 @@
 
 @interface TWForecastResultCell : UITableViewCell
 
-@property (retain, nonatomic) NSString *title;
-@property (retain, nonatomic) NSString *description;
-@property (retain, nonatomic) NSString *rain;
-@property (retain, nonatomic) NSString *temperature;
-@property (retain, nonatomic) NSString *beginTime;
-@property (retain, nonatomic) NSString *endTime;
-@property (retain, nonatomic) UIImage *weatherImage;
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *rain;
+@property (strong, nonatomic) NSString *temperature;
+@property (strong, nonatomic) NSString *beginTime;
+@property (strong, nonatomic) NSString *endTime;
+@property (strong, nonatomic) UIImage *weatherImage;
 
 @end

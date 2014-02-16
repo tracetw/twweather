@@ -31,8 +31,8 @@
 
 @interface TWAboutViewController : TWBasicViewController
 
-@property (retain, nonatomic) UILabel *titleLabel;
-@property (retain, nonatomic) UILabel *copyrightLabel;
-@property (retain, nonatomic) UILabel *externalLibraryLabel;
+@property (strong, nonatomic) UILabel *titleLabel;
+@property (strong, nonatomic) UILabel *copyrightLabel;
+@property (strong, nonatomic) UILabel *externalLibraryLabel;
 
 @end

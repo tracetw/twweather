@@ -88,7 +88,7 @@
 	static NSString *CellIdentifier = @"Cell";
 	TWLoadingCell *cell = (TWLoadingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	cell.imageView.image = nil;
@@ -132,7 +132,6 @@
 	}
 	if (controller) {
 		[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
-		[controller release];
 	}
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -158,7 +157,6 @@
 	TWOverviewViewController *controller = [[TWOverviewViewController alloc] init];
 	[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
 	[controller setText:string];
-	[controller release];
 }
 - (void)APIBox:(TWAPIBox *)APIBox didFailedFetchOverviewWithError:(NSError *)error
 {
@@ -168,7 +166,6 @@
 	TWErrorViewController *controller = [[TWErrorViewController alloc] init];
 	controller.error = error;
 	[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
-	[controller release];
 }
 
 @end

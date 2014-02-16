@@ -34,12 +34,12 @@
 - (void)openInExternalWebBrowser;
 - (void)updateButtonState;
 
-@property (retain, nonatomic) UIActivityIndicatorView *activityIndicatorView;
-@property (retain, nonatomic) UIToolbar *toolbar;
-@property (retain, nonatomic) UIBarButtonItem *goBackItem;
-@property (retain, nonatomic) UIBarButtonItem *goFowardItem;
-@property (retain, nonatomic) UIBarButtonItem *stopItem;
-@property (retain, nonatomic) UIBarButtonItem *reloadItem;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
+@property (strong, nonatomic) UIToolbar *toolbar;
+@property (strong, nonatomic) UIBarButtonItem *goBackItem;
+@property (strong, nonatomic) UIBarButtonItem *goFowardItem;
+@property (strong, nonatomic) UIBarButtonItem *stopItem;
+@property (strong, nonatomic) UIBarButtonItem *reloadItem;
 @end
 
 @implementation TWWebController
@@ -70,7 +70,6 @@
 - (void)dealloc
 {
 	[self removeOutletsAndControls_TWWebController];
-	[super dealloc];
 }
 - (void)viewDidUnload
 {
@@ -86,7 +85,6 @@
 	UIView *aView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	aView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	self.view = aView;
-	[aView release];
 
 	CGRect webFrame = self.view.bounds;
 	webFrame.size.height -= 44.0;
@@ -116,7 +114,6 @@
 
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:activityIndicatorView];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];
 	activityIndicatorView.hidesWhenStopped = YES;
 	[webView setDelegate:self];
 	[self updateButtonState];
@@ -134,7 +131,6 @@
 {
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Open in Safari", @""), nil];
 	[actionSheet showInView:self.view];
-	[actionSheet release];
 }
 
 #pragma mark -
@@ -171,7 +167,6 @@
 
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Failed to open web page.", @"") message:[error localizedDescription] delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
 	[alertView show];
-	[alertView release];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)aWebView

@@ -39,9 +39,7 @@
 - (void)dealloc
 {
 	[self viewDidUnload];
-	[_text release];
 	_text = nil;
-	[super dealloc];
 }
 - (void)viewDidUnload
 {
@@ -54,7 +52,7 @@
 
 - (void)loadView
 {
-	UITextView *theTextView = [[[UITextView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+	UITextView *theTextView = [[UITextView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	theTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	theTextView.editable = NO;
 	theTextView.font = [UIFont systemFontOfSize:18.0];
@@ -66,7 +64,6 @@
 
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];
 }
 - (void)viewDidLoad
 {
@@ -81,9 +78,7 @@
 
 - (void)setText:(NSString *)text
 {
-	id tmp = _text;
-	_text = [text retain];
-	[tmp release];
+	_text = text;
 	self.textView.text = text;
 }
 
@@ -95,7 +90,6 @@
 	NSArray *activityItems = @[text];
 	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
 	[self presentViewController:activityController animated:YES completion:nil];
-	[activityController release];
 }
 
 @synthesize textView;

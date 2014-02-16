@@ -34,22 +34,17 @@
 
 @interface TWLocationAddTableViewController()
 - (IBAction)cancelAction:(id)sender;
-@property (retain, nonatomic) NSArray *contentArray;
+@property (strong, nonatomic) NSArray *contentArray;
 @end
 
 @implementation TWLocationAddTableViewController
 {
-	id <TWLocationAddTableViewControllerDelegate> delegate;
+	id <TWLocationAddTableViewControllerDelegate> __weak delegate;
 	NSArray *contentArray;
 }
 
 #pragma mark Routines
 
-- (void)dealloc
-{
-	[contentArray release];
-	[super dealloc];
-}
 
 #pragma mark -
 #pragma mark UIViewContoller Methods
@@ -59,7 +54,6 @@
 	[super viewDidLoad];
 	UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction:)];
 	self.navigationItem.leftBarButtonItem = cancelItem;
-	[cancelItem release];
 }
 - (IBAction)cancelAction:(id)sender
 {
@@ -97,7 +91,7 @@
 
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	NSDictionary *d = contentArray[indexPath.row];
 	NSString *name = [d valueForKey:@"name"];

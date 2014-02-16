@@ -66,7 +66,6 @@
 		NSDate *date = [[TWAPIBox sharedBox] dateFromString:dateString];
 		controller.publishTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];
 		[self.navigationController pushViewController:controller animated:YES];
-		[controller release];
 	}
 }
 

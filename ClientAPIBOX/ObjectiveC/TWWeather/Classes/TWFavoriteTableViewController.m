@@ -51,8 +51,8 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 - (IBAction)changeSetting:(id)sender;
 - (IBAction)reload:(id)sender;
 
-@property (retain, nonatomic) NSDate *updateDate;
-@property (retain, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) NSDate *updateDate;
+@property (strong, nonatomic) UITableView *tableView;
 @end
 
 @implementation TWFavoriteTableViewController
@@ -79,21 +79,12 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 - (void)dealloc
 {
 	[self viewDidUnload];
-	[_filteredArray release];
-	[_filterArray release];
-	[_favArray release];
-	[warningArray release];
-	[weekDictionary release];
-	[updateDate release];
-	[super dealloc];
 }
 
 - (void)viewDidUnload
 {
 	[super viewDidLoad];
-	[loadingView release];
 	loadingView = nil;
-	[errorLabel release];
 	errorLabel = nil;
 	self.tableView = nil;
 	self.view = nil;
@@ -103,7 +94,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 
 - (void)loadView
 {
-	UIView *view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+	UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	view.backgroundColor = [UIColor colorWithHue:1.0 saturation:0.0 brightness:0.9 alpha:1.0];
 	self.view = view;
@@ -117,7 +108,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	errorLabel.shadowOffset = CGSizeMake(0, 2);
 	[self.view addSubview:errorLabel];
 
-	UITableView *aTableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
+	UITableView *aTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
 	aTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	aTableView.delegate = self;
 	aTableView.dataSource = self;
@@ -188,11 +179,9 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(changeSetting:)];
 	self.tabBarController.navigationItem.rightBarButtonItem = item;
-	[item release];
 
 	UIBarButtonItem *reloadItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reload:)];
 	self.tabBarController.navigationItem.leftBarButtonItem = reloadItem;
-	[reloadItem release];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -209,15 +198,10 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 {
 	[super didReceiveMemoryWarning];
 	if (!self.view) {
-		[_filterArray release];
 		_filterArray = nil;
-		[_filteredArray release];
 		_filteredArray = nil;
-		[_favArray release];
 		_favArray = nil;
-		[warningArray release];
 		warningArray = nil;
-		[weekDictionary release];
 		weekDictionary = nil;
 	}
 }
@@ -230,7 +214,6 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	TWErrorViewController *controller = [[TWErrorViewController alloc] init];
 	controller.error = error;
 	[self.navigationController pushViewController:controller animated:YES];
-	[controller release];
 }
 - (void)pushWeekViewController:(NSDictionary *)result
 {
@@ -241,7 +224,6 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	NSDate *date = [[TWAPIBox sharedBox] dateFromString:dateString];
 	controller.publishTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];
 	[self.navigationController pushViewController:controller animated:YES];
-	[controller release];
 }
 
 #pragma mark Actions
@@ -257,10 +239,8 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	controller.delegate = self;
 	[controller setFilter:_filterArray];
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-	[controller release];
 	navController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self.tabBarController presentViewController:navController animated:YES completion:nil];
-	[navController release];
 }
 - (IBAction)reload:(id)sender
 {
@@ -336,7 +316,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	if (indexPath.section == 0) {
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WarningCellIdentifier];
 		if (cell == nil) {
-			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:WarningCellIdentifier] autorelease];
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:WarningCellIdentifier];
 		}
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		if (indexPath.row >= [warningArray count]) {
@@ -361,7 +341,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	if (indexPath.row == 0) {
 		TWFavoriteSectionCell *cell = (TWFavoriteSectionCell *)[tableView dequeueReusableCellWithIdentifier:SectionCellIdentifier];
 		if (cell == nil) {
-			cell = [[[TWFavoriteSectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionCellIdentifier] autorelease];
+			cell = [[TWFavoriteSectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionCellIdentifier];
 		}
 //		cell.textLabel.text = [item objectForKey:@"locationName"];
 		cell.locationName = item[@"locationName"];
@@ -377,7 +357,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 
 	TWForecastResultCell *cell = (TWForecastResultCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[TWForecastResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[TWForecastResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 
 	if ([item isKindOfClass:[NSDictionary class]]) {
@@ -416,7 +396,6 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 			[[TWWeatherAppDelegate sharedDelegate] pushViewController:webController animated:YES];
 			[webController view];
 			[webController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.cpa.gov.tw/"]]];
-			[webController release];
 			return;
 		}
 		NSDictionary *dictionary = warningArray[indexPath.row];
@@ -424,7 +403,6 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 		[controller setText:dictionary[@"text"]];
 		controller.title = dictionary[@"name"];
 		[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
-		[controller release];
 		return;
 	}
 
@@ -458,7 +436,6 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	}
 
 	[self.navigationController pushViewController:controller animated:YES];
-	[controller release];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
@@ -469,7 +446,6 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 		[formatter setTimeStyle:kCFDateFormatterMediumStyle];
 		NSString *s = [formatter stringFromDate:self.updateDate];
 		NSString *footerTitle = [NSString stringWithFormat:NSLocalizedString(@"Updated at %@", @""), s];
-		[formatter release];
 		return footerTitle;
 	}
 	return nil;

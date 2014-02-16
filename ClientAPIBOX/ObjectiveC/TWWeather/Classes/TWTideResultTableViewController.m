@@ -37,11 +37,6 @@
 	NSArray *forecastArray;
 }
 
-- (void)dealloc
-{
-	[forecastArray release];
-	[super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -52,7 +47,6 @@
 {
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];
 
 	self.screenName = @"Three Days Tide Details";
 }
@@ -83,7 +77,6 @@
 	NSArray *activityItems = @[text];
 	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
 	[self presentViewController:activityController animated:YES completion:nil];
-	[activityController release];
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate
@@ -102,7 +95,7 @@
 
 	TWTideCell *cell = (TWTideCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[TWTideCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[TWTideCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	NSDictionary *dictionary = forecastArray[indexPath.row];
 

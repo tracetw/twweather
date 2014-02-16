@@ -66,7 +66,6 @@
 	controller.imageURL = [[TWAPIBox sharedBox] imageURLFromIdentifier:identifier];
 	[self.navigationController pushViewController:controller animated:YES];
 	controller.title = name;
-	[controller release];
 
 }
 - (void)APIBox:(TWAPIBox *)APIBox didFailedFetchImageWithError:(NSError *)error identifier:(NSString *)identifier userInfo:(id)userInfo

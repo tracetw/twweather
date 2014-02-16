@@ -406,15 +406,6 @@
 }
 - (void)releaseInfoArrays
 {
-	[_forecastLocations release];
-	[_weekLocations release];
-	[_weekTravelLocations release];
-	[_threeDaySeaLocations release];
-	[_nearSeaLocations release];
-	[_tideLocations release];
-	[_imageIdentifiers release];
-	[_OBSLocations release];
-	[_globalCityLocations release];
 }
 
 - (NSArray *)forecastLocations

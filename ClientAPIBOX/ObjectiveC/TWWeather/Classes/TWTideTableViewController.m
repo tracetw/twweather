@@ -61,7 +61,6 @@
 		controller.title = result[@"locationName"];
 		controller.forecastArray = result[@"items"];
 		[self.navigationController pushViewController:controller animated:YES];
-		[controller release];
 	}
 }
 

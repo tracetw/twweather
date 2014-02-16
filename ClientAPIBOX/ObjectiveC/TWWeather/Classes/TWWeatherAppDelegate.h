@@ -38,10 +38,10 @@
 - (void)pushViewController:(UIViewController *)controller animated:(BOOL)animated;
 - (NSString *)imageNameWithTimeTitle:(NSString *)timeTitle description:(NSString *)description;
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
-@property (readonly, nonatomic) id <GAITracker> tracker;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, strong) IBOutlet UINavigationController *navigationController;
+@property (weak, readonly, nonatomic) id <GAITracker> tracker;
 @end
 
 @interface TWWeatherAppDelegate ()
@@ -50,7 +50,7 @@
 	TWNavigationController *navigationController;
 	UITabBarController *tabBarController;
 	AVAudioPlayer *audioPlayer;
-	id <GAITracker> tracker;
+	id <GAITracker> __weak tracker;
 }
 @end
 

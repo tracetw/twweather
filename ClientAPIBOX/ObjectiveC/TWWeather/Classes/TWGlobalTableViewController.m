@@ -39,11 +39,6 @@
 	NSMutableArray *_locations;
 }
 
-- (void)dealloc
-{
-	[_locations release];
-	[super dealloc];
-}
 
 - (void)_init
 {
@@ -157,7 +152,7 @@
 
 	TWLoadingCell *cell = (TWLoadingCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[TWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	NSDictionary *dictionary = nil;
 	if (tableView == self.tableView) {
@@ -241,7 +236,6 @@
 		controller.pubDate = result[@"forecastDate"];
 		controller.validDate = result[@"validDate"];
 		[self.navigationController pushViewController:controller animated:YES];
-		[controller release];
 	}
 }
 - (void)APIBox:(TWAPIBox *)APIBox didFailedFetchGlobalCityWithError:(NSError *)error identifier:(NSString *)identifier userInfo:(id)userInfo

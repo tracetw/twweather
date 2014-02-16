@@ -37,9 +37,9 @@
 
 @interface TWFavoriteSectionCellContentView : UIView
 {
-	TWFavoriteSectionCell *_delegate;
+	TWFavoriteSectionCell *__weak _delegate;
 }
-@property (assign, nonatomic) TWFavoriteSectionCell *delegate;
+@property (weak, nonatomic) TWFavoriteSectionCell *delegate;
 @end
 
 @implementation TWFavoriteSectionCellContentView
@@ -65,9 +65,9 @@
 
 @interface TWFavoriteSectionCellBackgroundView : UIView
 {
-	TWFavoriteSectionCell *_delegate;
+	TWFavoriteSectionCell *__weak _delegate;
 }
-@property (assign, nonatomic) TWFavoriteSectionCell *delegate;
+@property (weak, nonatomic) TWFavoriteSectionCell *delegate;
 @end
 
 @implementation TWFavoriteSectionCellBackgroundView
@@ -96,12 +96,6 @@
 	NSString *locationName;
 }
 
-- (void)dealloc
-{
-	[_ourContentView release];
-	[locationName release];
-	[super dealloc];
-}
 - (void)_init
 {
 	CGRect cellFrame = self.contentView.bounds;
@@ -113,7 +107,7 @@
 	TWFavoriteSectionCellBackgroundView *ourBackgroundView = [[TWFavoriteSectionCellBackgroundView alloc] initWithFrame:cellFrame];
 	ourBackgroundView.delegate = self;
 	ourBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	self.backgroundView = [ourBackgroundView autorelease];
+	self.backgroundView = ourBackgroundView;
 }
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -227,7 +221,6 @@
 		view.frame = CGRectMake(0, 0, 15, 15);
 		[view startAnimating];
 		self.accessoryView = view;
-		[view release];
 	}
 	else {
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 15, 15)];
@@ -236,7 +229,6 @@
 		label.backgroundColor = [UIColor clearColor];
 		label.textColor = [UIColor whiteColor];
 		self.accessoryView = label;
-		[label release];
 	}
 }
 

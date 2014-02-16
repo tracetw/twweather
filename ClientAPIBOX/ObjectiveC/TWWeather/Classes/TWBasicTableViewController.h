@@ -2,5 +2,5 @@
 
 @interface TWBasicTableViewController : TWBasicViewController <UITableViewDataSource, UITableViewDelegate>
 - (instancetype)initWithStyle:(UITableViewStyle)inStyle;
-@property (retain, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView;
 @end

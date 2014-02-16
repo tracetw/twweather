@@ -67,7 +67,6 @@
 		NSDate *date = [[TWAPIBox sharedBox] dateFromString:dateString];
 		controller.publishTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];
 		[self.navigationController pushViewController:controller animated:YES];
-		[controller release];
 	}
 }
 - (void)APIBox:(TWAPIBox *)APIBox didFailedFetchWeekTravelWithError:(NSError *)error identifier:(NSString *)identifier userInfo:(id)userInfo

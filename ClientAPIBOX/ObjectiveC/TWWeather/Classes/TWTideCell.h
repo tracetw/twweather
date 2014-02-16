@@ -29,8 +29,8 @@
 
 @interface TWTideCell : UITableViewCell
 
-@property (retain, nonatomic) NSString *dateString;
-@property (retain, nonatomic) NSString *lunarDateString;
-@property (retain, nonatomic) NSArray *tides;
+@property (strong, nonatomic) NSString *dateString;
+@property (strong, nonatomic) NSString *lunarDateString;
+@property (strong, nonatomic) NSArray *tides;
 
 @end

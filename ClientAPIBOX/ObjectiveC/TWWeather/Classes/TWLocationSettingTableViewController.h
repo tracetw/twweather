@@ -39,5 +39,5 @@
 
 @interface TWLocationSettingTableViewController : TWBasicTableViewController <TWLocationAddTableViewControllerDelegate>
 - (void)setFilter:(NSArray *)filter;
-@property (assign, nonatomic) id<TWLocationSettingTableViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<TWLocationSettingTableViewControllerDelegate> delegate;
 @end

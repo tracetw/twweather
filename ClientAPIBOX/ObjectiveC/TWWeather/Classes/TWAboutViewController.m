@@ -38,24 +38,20 @@
 
 - (void)dealloc
 {
-	self.titleLabel = nil;
-	self.copyrightLabel = nil;
-	self.externalLibraryLabel = nil;
 	self.view = nil;
-	[super dealloc];
 }
 
 #pragma mark UIViewContoller Methods
 
 - (void)loadView
 {
-	UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+	UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	scrollView.backgroundColor = [UIColor whiteColor];
 	scrollView.scrollEnabled = YES;
 	self.view = scrollView;
 
-	UIView *contentView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)] autorelease];
+	UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
 	contentView.backgroundColor = [UIColor whiteColor];
 	[self.view addSubview:contentView];
 	scrollView.contentSize = contentView.frame.size;
@@ -64,20 +60,20 @@
 	NSDictionary *loaclizedDictionary = [bundle localizedInfoDictionary];
 	NSDictionary *infoDictionary = [bundle infoDictionary];
 
-	UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 30)] autorelease];
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 30)];
 	label.font = [UIFont boldSystemFontOfSize:20.0];
 	label.text = loaclizedDictionary[@"CFBundleDisplayName"];
 	self.titleLabel = label;
 	[contentView addSubview:self.titleLabel];
 
-	label = [[[UILabel alloc] initWithFrame:CGRectMake(20, 50, 280, 60)] autorelease];
+	label = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, 280, 60)];
 	label.font = [UIFont systemFontOfSize:14.0];
 	label.numberOfLines = 3;
 	label.text = [NSString stringWithFormat:NSLocalizedString(@"Version: %@\n%@", @""), infoDictionary[@"CFBundleVersion"], loaclizedDictionary[@"NSHumanReadableCopyright"]];
 	self.copyrightLabel = label;
 	[contentView addSubview:self.copyrightLabel];
 
-	label = [[[UILabel alloc] initWithFrame:CGRectMake(20, 120, 280, 300)] autorelease];
+	label = [[UILabel alloc] initWithFrame:CGRectMake(20, 120, 280, 300)];
 	label.font = [UIFont systemFontOfSize:12.0];
 	label.numberOfLines = 100;
 	NSMutableString *text = [NSMutableString stringWithString:NSLocalizedString(@"Data comes from Central Weather Bureau\n\n", @"")];

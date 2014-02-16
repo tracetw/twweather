@@ -37,6 +37,8 @@
 #import "TWAPIBox+Info.h"
 #import "TWAPIBox+Cache.h"
 #import "TWAPIBox+Private.h"
+#import <objc/runtime.h>
+#include <objc/message.h>
 
 NSString *TWAPIErrorDomain = @"TWAPIErrorDomain";
 
@@ -55,9 +57,6 @@ static TWAPIBox *apibox = nil;
 - (void)dealloc
 {
 	[self releaseInfoArrays];
-	[_operationQueue release];
-	[_formatter release];
-	[super dealloc];
 }
 
 - (id)init
@@ -112,7 +111,7 @@ static TWAPIBox *apibox = nil;
 	if ([identifier isEqualToString:@"image"]) {
 		if ([self shouldUseCachedDataForURL:URL]) {
 			NSData *data = [self dataInCacheForURL:URL];
-			LFHTTPRequest *request = [[[LFHTTPRequest alloc] init] autorelease];
+			LFHTTPRequest *request = [[LFHTTPRequest alloc] init];
 			request.sessionInfo = sessionInfo;
 			[self didFetchImage:request data:data];
 			return;
@@ -120,7 +119,7 @@ static TWAPIBox *apibox = nil;
 	}
 
 
-	TWFetchOperation *operation = [[[TWFetchOperation alloc] initWithDelegate:self sessionInfo:sessionInfo] autorelease];
+	TWFetchOperation *operation = [[TWFetchOperation alloc] initWithDelegate:self sessionInfo:sessionInfo];
 
 #if TARGET_OS_IPHONE
 
@@ -239,7 +238,7 @@ static TWAPIBox *apibox = nil;
 	}
 	if (!_formatter) {
 		_formatter = [[NSDateFormatter alloc] init];
-		[_formatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en"] autorelease]];
+		[_formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en"]];
 	}
 	[_formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 	NSDate *date = [_formatter dateFromString:string];
@@ -252,7 +251,7 @@ static TWAPIBox *apibox = nil;
 	}
 	if (!_formatter) {
 		_formatter = [[NSDateFormatter alloc] init];
-		[_formatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en"] autorelease]];
+		[_formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en"]];
 	}
 	[_formatter setDateFormat:@"yyyy-MM-dd"];
 	NSDate *date = [_formatter dateFromString:string];
@@ -268,7 +267,7 @@ static TWAPIBox *apibox = nil;
 	if (!date) {
 		return nil;
 	}
-	return [_formatter stringFromDate:[[date retain] autorelease]];
+	return [_formatter stringFromDate:date];
 }
 - (NSString *)shortDateStringFromDate:(NSDate *)date
 {
@@ -281,7 +280,7 @@ static TWAPIBox *apibox = nil;
 	if (!date) {
 		return nil;
 	}
-	NSMutableString *s = [NSMutableString stringWithString:[_formatter stringFromDate:[[date retain] autorelease]]];
+	NSMutableString *s = [NSMutableString stringWithString:[_formatter stringFromDate:date]];
 	[_formatter setDateFormat:@"EEE"];
 	[s appendFormat:@" %@", [_formatter stringFromDate:date]];
 	return s;
@@ -295,7 +294,8 @@ static TWAPIBox *apibox = nil;
 	SEL action = NSSelectorFromString(actionString);
 	LFHTTPRequest *request = actionDictionary[@"request"];
 	NSData *data = actionDictionary[@"data"];
-	[self performSelector:action withObject:request withObject:data];
+//	[self performSelector:action withObject:request withObject:data];
+    objc_msgSend(self, action, request, data);
 }
 
 - (void)performFailedAction:(NSDictionary *)actionDictionary
@@ -304,7 +304,8 @@ static TWAPIBox *apibox = nil;
 	SEL action = NSSelectorFromString(actionString);
 	LFHTTPRequest *request = actionDictionary[@"request"];
 	NSString *error = actionDictionary[@"error"];
-	[self performSelector:action withObject:request withObject:error];
+//	[self performSelector:action withObject:request withObject:error];
+    objc_msgSend(self, action, request, error);
 }
 
 - (void)httpRequestDidComplete:(LFHTTPRequest *)request

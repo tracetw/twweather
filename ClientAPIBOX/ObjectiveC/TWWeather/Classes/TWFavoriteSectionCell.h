@@ -29,5 +29,5 @@
 
 @interface TWFavoriteSectionCell : UITableViewCell
 @property (assign, getter=isLoading) BOOL loading;
-@property (retain, nonatomic) NSString *locationName;
+@property (strong, nonatomic) NSString *locationName;
 @end

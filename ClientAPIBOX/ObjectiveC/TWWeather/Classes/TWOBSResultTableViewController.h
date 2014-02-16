@@ -31,12 +31,12 @@
 
 @interface TWOBSResultTableViewController : TWBasicTableViewController
 
-@property (retain, nonatomic) NSString *description;
-@property (retain, nonatomic) NSString *rain;
-@property (retain, nonatomic) NSString *temperature;
-@property (retain, nonatomic) NSString *time;
-@property (retain, nonatomic) NSString *windDirection;
-@property (retain, nonatomic) NSString *windScale;
-@property (retain, nonatomic) NSString *gustWindScale;
+@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *rain;
+@property (strong, nonatomic) NSString *temperature;
+@property (strong, nonatomic) NSString *time;
+@property (strong, nonatomic) NSString *windDirection;
+@property (strong, nonatomic) NSString *windScale;
+@property (strong, nonatomic) NSString *gustWindScale;
 
 @end

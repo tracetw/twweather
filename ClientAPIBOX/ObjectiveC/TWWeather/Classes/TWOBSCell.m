@@ -36,19 +36,14 @@
 
 @interface TWOBSCellContentView : UIView
 {
-	TWOBSCell *_delegate;
+	TWOBSCell *__weak _delegate;
 	NSDate *touchBeginDate;
 }
-@property (assign, nonatomic) TWOBSCell *delegate;
+@property (weak, nonatomic) TWOBSCell *delegate;
 @end
 
 @implementation TWOBSCellContentView
 
-- (void)dealloc
-{
-	[touchBeginDate release];
-	[super dealloc];
-}
 - (id)initWithFrame:(CGRect)frame
 {
 	if (self = [super initWithFrame:frame]) {
@@ -80,10 +75,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	[super touchesBegan:touches withEvent:event];
-	if (touchBeginDate) {
-		[touchBeginDate release];
-	}
-	touchBeginDate = [[NSDate date] retain];
+	touchBeginDate = [NSDate date];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -96,7 +88,6 @@
 	else {
 		[super touchesEnded:touches withEvent:event];
 	}
-	[touchBeginDate release];
 	touchBeginDate = nil;
 }
 
@@ -119,15 +110,6 @@
 - (void)dealloc
 {
 	[_ourContentView removeFromSuperview];
-	[_ourContentView release];
-	[description release];
-	[rain release];
-	[temperature release];
-	[windDirection release];
-	[windScale release];
-	[gustWindScale release];
-	[weatherImage release];
-	[super dealloc];
 }
 - (void)_init
 {

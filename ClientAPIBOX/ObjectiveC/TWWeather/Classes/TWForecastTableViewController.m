@@ -68,7 +68,6 @@
 		controller.forecastArray = dictionary[@"items"];
 		controller.weekLocation = dictionary[@"id"];
 		[self.navigationController pushViewController:controller animated:YES];
-		[controller release];
 	}
 }
 - (void)APIBox:(TWAPIBox *)APIBox didFailedFetchForecastWithError:(NSError *)error identifier:(NSString *)identifier userInfo:(id)userInfo

@@ -29,9 +29,9 @@
 
 @interface TWWeekResultCell : UITableViewCell 
 
-@property (retain, nonatomic) NSString *day;
-@property (retain, nonatomic) NSString *date;
-@property (retain, nonatomic) NSString *description;
-@property (retain, nonatomic) NSString *temperature;
+@property (strong, nonatomic) NSString *day;
+@property (strong, nonatomic) NSString *date;
+@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *temperature;
 
 @end

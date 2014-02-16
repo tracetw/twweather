@@ -40,17 +40,6 @@
 	NSString *validDate;
 }
 
-- (void)dealloc
-{
-	[image release];
-	[description release];
-	[temperature release];
-	[avgTemperature release];
-	[avgRain release];
-	[pubDate release];
-	[validDate release];
-	[super dealloc];
-}
 
 - (void)viewDidLoad
 {
@@ -76,7 +65,7 @@
 	if (indexPath.row == 0) {
 		UITableViewCell *imageCell = [tableView dequeueReusableCellWithIdentifier:ImageCellIdentifier];
 		if (imageCell == nil) {
-			imageCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ImageCellIdentifier] autorelease];
+			imageCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ImageCellIdentifier];
 		}
 		imageCell.imageView.image = self.image;
 		return imageCell;
@@ -86,7 +75,7 @@
 
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
 	}
 
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;

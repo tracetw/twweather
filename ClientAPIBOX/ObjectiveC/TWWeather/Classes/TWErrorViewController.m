@@ -40,12 +40,9 @@
 - (void)dealloc
 {
 	[self viewDidUnload];
-	[_error release];
-	[super dealloc];
 }
 - (void)viewDidUnload
 {
-	[textLabel release];
 	textLabel = nil;
 	self.view = nil;
 }
@@ -55,7 +52,7 @@
 
 - (void)loadView
 {
-	UIView *view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+	UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	view.backgroundColor = [UIColor colorWithHue:1.0 saturation:0.0 brightness:0.9 alpha:1.0];
 	self.view = view;
@@ -94,9 +91,7 @@
 
 - (void)setError:(NSError *)error
 {
-	id tmp = _error;
-	_error = [error retain];
-	[tmp release];
+	_error = error;
 	NSString *description = [error localizedDescription];
 	textLabel.text = description;
 }

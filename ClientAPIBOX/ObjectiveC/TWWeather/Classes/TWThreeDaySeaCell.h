@@ -29,11 +29,11 @@
 
 @interface TWThreeDaySeaCell : UITableViewCell 
 
-@property (retain, nonatomic) NSString *date;
-@property (retain, nonatomic) NSString *description;
-@property (retain, nonatomic) NSString *wind;
-@property (retain, nonatomic) NSString *windScale;
-@property (retain, nonatomic) NSString *wave;
-@property (retain, nonatomic) UIImage *weatherImage;
+@property (strong, nonatomic) NSString *date;
+@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *wind;
+@property (strong, nonatomic) NSString *windScale;
+@property (strong, nonatomic) NSString *wave;
+@property (strong, nonatomic) UIImage *weatherImage;
 
 @end

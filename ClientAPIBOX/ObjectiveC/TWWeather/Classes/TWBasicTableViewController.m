@@ -11,11 +11,6 @@ static NSString *CellIdentifier = @"Cell";
 
 @implementation TWBasicTableViewController
 
-- (void)dealloc
-{
-	[_tableView release];
-	[super dealloc];
-}
 
 - (id)initWithStyle:(UITableViewStyle)inStyle
 {
@@ -33,7 +28,7 @@ static NSString *CellIdentifier = @"Cell";
 
 - (void)loadView
 {
-	UIView *view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+	UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	view.backgroundColor = [UIColor colorWithHue:1.0 saturation:0.0 brightness:0.9 alpha:1.0];
 	self.view = view;
@@ -43,7 +38,6 @@ static NSString *CellIdentifier = @"Cell";
 	aTableView.delegate = self;
 	aTableView.dataSource = self;
 	self.tableView = aTableView;
-	[aTableView release];
 
 	[self.view addSubview:self.tableView];
 }

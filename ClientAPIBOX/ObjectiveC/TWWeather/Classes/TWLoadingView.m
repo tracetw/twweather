@@ -33,11 +33,6 @@ static NSString *TWLoadingViewAnimationID = @"TWLoadingViewAnimationID";
 
 @implementation TWLoadingView
 
-- (void)dealloc
-{
-	[activityIndicator release];
-	[super dealloc];
-}
 
 - (void)resetActivityIndicator
 {

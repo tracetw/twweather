@@ -102,7 +102,7 @@
 
 - (void)didFetchOverview:(LFHTTPRequest *)request data:(NSData *)data
 {
-	NSString *string = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+	NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	if (!string) {
 		string = @"";

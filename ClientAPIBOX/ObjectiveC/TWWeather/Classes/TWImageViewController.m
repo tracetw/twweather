@@ -44,17 +44,14 @@
 
 - (void)dealloc
 {
-	[_image release];
 	_image = nil;
 
 	[self viewDidUnload];
-	[super dealloc];
 }
 - (void)viewDidUnload
 {
 	self.imageView = nil;
 	self.view = nil;
-	[loadingView release];
 	loadingView = nil;
 }
 
@@ -62,7 +59,7 @@
 
 - (void)loadView
 {
-	UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)] autorelease];
+	UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
 	scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	scrollView.backgroundColor = [UIColor blackColor];
 	scrollView.canCancelContentTouches = NO;
@@ -76,7 +73,7 @@
 
 	self.view = scrollView;
 
-	UIImageView *imageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
+	UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
 	imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	imageView.backgroundColor = [UIColor blackColor];
 	imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -94,7 +91,6 @@
 
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
-	[item release];
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -114,9 +110,7 @@
 
 - (void)setImage:(UIImage *)image
 {
-	id tmp = _image;
-	_image = [image retain];
-	[tmp release];
+	_image = image;
 	self.imageView.image = image;
 }
 - (UIImage *)image
@@ -132,7 +126,6 @@
 	NSArray *activityItems = @[_image];
 	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
 	[self presentViewController:activityController animated:YES completion:nil];
-	[activityController release];
 }
 
 - (void)showLoadingView
