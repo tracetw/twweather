@@ -39,10 +39,6 @@
 
 - (void)dealloc
 {
-	[self viewDidUnload];
-}
-- (void)viewDidUnload
-{
 	textLabel = nil;
 	self.view = nil;
 }

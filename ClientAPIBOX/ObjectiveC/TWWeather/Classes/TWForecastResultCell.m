@@ -160,13 +160,10 @@
 	CGSize size = weatherImage.size;
 	[weatherImage drawInRect:CGRectMake(0, -5, size.width * 0.75, size.height * 0.75)];
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
 	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
 		[[UIColor blackColor] set];
 	}
-	else
-#endif
-	if (self.highlighted || self.selected) {
+	else if (self.highlighted || self.selected) {
 		[[UIColor whiteColor] set];
 	}
 	else {

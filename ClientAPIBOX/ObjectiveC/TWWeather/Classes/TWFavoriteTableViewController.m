@@ -78,12 +78,6 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 
 - (void)dealloc
 {
-	[self viewDidUnload];
-}
-
-- (void)viewDidUnload
-{
-	[super viewDidLoad];
 	loadingView = nil;
 	errorLabel = nil;
 	self.tableView = nil;
@@ -123,24 +117,17 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	[super viewDidLoad];
 	self.screenName = @"My Favorites";
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
-	// Work around for iOS 7
 	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
 		self.tableView.contentInset = UIEdgeInsetsMake(64.0, 0.0, 44.0, 0.0);
 	}
-#endif
 
-	if (!_favArray) {
-		_favArray = [[NSMutableArray alloc] init];
-	}
+	_favArray = [[NSMutableArray alloc] init];
 	NSArray *savedResult = [[NSUserDefaults standardUserDefaults] objectForKey:lastAllForecastsPreferenceName];
 	if (savedResult) {
 		[_favArray setArray:savedResult];
 	}
 
-	if (!_filterArray) {
-		_filterArray = [[NSMutableArray alloc] init];
-	}
+	_filterArray = [[NSMutableArray alloc] init];
 	NSArray *favoitesSetting = [[NSUserDefaults standardUserDefaults] objectForKey:favoitesPreferenceName];
 	if (!favoitesSetting) {
 		favoitesSetting = @[@0, @1];
@@ -148,19 +135,11 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	}
 	[_filterArray setArray:favoitesSetting];
 
-	if (!_filteredArray) {
-		_filteredArray = [[NSMutableArray alloc] init];
-	}
+	_filteredArray = [[NSMutableArray alloc] init];
 	[self updateFilteredArray];
 
-	if (!warningArray) {
-		warningArray = [[NSMutableArray alloc] init];
-	}
-
-	if (!weekDictionary) {
-		weekDictionary = [[NSMutableDictionary alloc] init];
-	}
-
+	warningArray = [[NSMutableArray alloc] init];
+	weekDictionary = [[NSMutableDictionary alloc] init];
 	dataLoaded = NO;
 }
 

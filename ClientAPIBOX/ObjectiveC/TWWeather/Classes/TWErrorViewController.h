@@ -30,5 +30,5 @@
 /*! The view controller for presenting errors. */
 @interface TWErrorViewController : UIViewController
 /*! The error to present. */
-@property (weak, nonatomic) NSError *error;
+@property (strong, nonatomic) NSError *error;
 @end

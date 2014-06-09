@@ -404,9 +404,6 @@
 	[self initOBSLocations];
 	[self initGlobalCityLocations];
 }
-- (void)releaseInfoArrays
-{
-}
 
 - (NSArray *)forecastLocations
 {

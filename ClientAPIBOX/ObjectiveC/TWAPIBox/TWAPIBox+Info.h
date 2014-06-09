@@ -39,7 +39,6 @@
 @interface TWAPIBox(Info)
 
 - (void)initInfoArrays;
-- (void)releaseInfoArrays;
 
 @property (readonly) NSArray *forecastLocations;
 @property (readonly) NSArray *weekLocations;

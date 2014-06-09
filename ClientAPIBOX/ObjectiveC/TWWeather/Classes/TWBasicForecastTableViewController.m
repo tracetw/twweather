@@ -36,15 +36,11 @@
 
 - (void)dealloc
 {
-	[self viewDidUnload];
-}
-- (void)viewDidUnload
-{
 	_searchController = nil;
 	_searchBar = nil;
 	self.tableView = nil;
-	[super viewDidLoad];
 }
+
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];

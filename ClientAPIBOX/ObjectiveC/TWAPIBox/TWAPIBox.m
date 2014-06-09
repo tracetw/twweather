@@ -54,11 +54,6 @@ static TWAPIBox *apibox = nil;
 	return apibox;
 }
 
-- (void)dealloc
-{
-	[self releaseInfoArrays];
-}
-
 - (id)init
 {
 	self = [super init];
@@ -294,7 +289,6 @@ static TWAPIBox *apibox = nil;
 	SEL action = NSSelectorFromString(actionString);
 	LFHTTPRequest *request = actionDictionary[@"request"];
 	NSData *data = actionDictionary[@"data"];
-//	[self performSelector:action withObject:request withObject:data];
     objc_msgSend(self, action, request, data);
 }
 
@@ -304,8 +298,7 @@ static TWAPIBox *apibox = nil;
 	SEL action = NSSelectorFromString(actionString);
 	LFHTTPRequest *request = actionDictionary[@"request"];
 	NSString *error = actionDictionary[@"error"];
-//	[self performSelector:action withObject:request withObject:error];
-    objc_msgSend(self, action, request, error);
+	objc_msgSend(self, action, request, error);
 }
 
 - (void)httpRequestDidComplete:(LFHTTPRequest *)request

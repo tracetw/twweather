@@ -38,12 +38,7 @@
 
 - (void)dealloc
 {
-	[self viewDidUnload];
 	_text = nil;
-}
-- (void)viewDidUnload
-{
-	[super viewDidLoad];
 	self.view = nil;
 	self.textView = nil;
 }
@@ -71,6 +66,7 @@
 	self.screenName = @"Overview";
 	self.textView.text = _text;
 }
+
 - (void)didReceiveMemoryWarning
 {
 	[super didReceiveMemoryWarning];

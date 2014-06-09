@@ -45,11 +45,6 @@
 - (void)dealloc
 {
 	_image = nil;
-
-	[self viewDidUnload];
-}
-- (void)viewDidUnload
-{
 	self.imageView = nil;
 	self.view = nil;
 	loadingView = nil;

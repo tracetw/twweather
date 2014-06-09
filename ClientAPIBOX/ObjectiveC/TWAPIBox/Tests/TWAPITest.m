@@ -4,8 +4,6 @@
 
 - (void)testAPI
 {
-//	STFail(@"%s", __PRETTY_FUNCTION__);
-	
 	TWAPIBox *box = [TWAPIBox sharedBox];
 	[box setShouldWaitUntilDone:YES];
 	[box fetchWarningsWithDelegate:self	userInfo:nil];
@@ -21,7 +19,6 @@
 	NSEnumerator *e = [locations objectEnumerator];
 	while (d = [e nextObject]) {		
 		NSString *identifier = [d objectForKey:@"identifier"];
-//		STFail(@"%s %@", __PRETTY_FUNCTION__, identifier);
 		[[TWAPIBox sharedBox] fetchForecastWithLocationIdentifier:identifier delegate:self userInfo:identifier];
 		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 	}
@@ -33,7 +30,6 @@
 	NSEnumerator *e = [locations objectEnumerator];
 	while (d = [e nextObject]) {		
 		NSString *identifier = [d objectForKey:@"identifier"];
-//		STFail(@"%s %@", __PRETTY_FUNCTION__, identifier);
 		[[TWAPIBox sharedBox] fetchWeekWithLocationIdentifier:identifier delegate:self userInfo:identifier];
 		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 	}
@@ -45,7 +41,6 @@
 	NSEnumerator *e = [locations objectEnumerator];
 	while (d = [e nextObject]) {		
 		NSString *identifier = [d objectForKey:@"identifier"];
-//		STFail(@"%s %@", __PRETTY_FUNCTION__, identifier);
 		[[TWAPIBox sharedBox] fetchWeekTravelWithLocationIdentifier:identifier delegate:self userInfo:identifier];
 		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 	}
@@ -57,7 +52,6 @@
 	NSEnumerator *e = [locations objectEnumerator];
 	while (d = [e nextObject]) {		
 		NSString *identifier = [d objectForKey:@"identifier"];
-//		STFail(@"%s %@", __PRETTY_FUNCTION__, identifier);
 		[[TWAPIBox sharedBox] fetchThreeDaySeaWithLocationIdentifier:identifier delegate:self userInfo:identifier];
 		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 	}
@@ -69,7 +63,6 @@
 	NSEnumerator *e = [locations objectEnumerator];
 	while (d = [e nextObject]) {		
 		NSString *identifier = [d objectForKey:@"identifier"];
-//		STFail(@"%s %@", __PRETTY_FUNCTION__, identifier);
 		[[TWAPIBox sharedBox] fetchNearSeaWithLocationIdentifier:identifier delegate:self userInfo:identifier];
 		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 	}
@@ -81,7 +74,6 @@
 	NSEnumerator *e = [locations objectEnumerator];
 	while (d = [e nextObject]) {		
 		NSString *identifier = [d objectForKey:@"identifier"];
-//		STFail(@"%s %@", __PRETTY_FUNCTION__, identifier);
 		[[TWAPIBox sharedBox] fetchTideWithLocationIdentifier:identifier delegate:self userInfo:identifier];
 		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
 	}
@@ -277,8 +269,5 @@
 {
 	STFail(@"%s, %@", __PRETTY_FUNCTION__, [error localizedDescription]);
 }
-
-
-
 
 @end

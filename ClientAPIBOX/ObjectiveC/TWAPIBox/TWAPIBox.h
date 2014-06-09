@@ -90,7 +90,6 @@ typedef enum {
 - (void)APIBox:(TWAPIBox *)APIBox didFetchGlobalCity:(id)result identifier:(NSString *)identifier userInfo:(id)userInfo;
 - (void)APIBox:(TWAPIBox *)APIBox didFailedFetchGlobalCityWithError:(NSError *)error identifier:(NSString *)identifier userInfo:(id)userInfo;
 
-
 @end
 
 @interface TWAPIBox : NSObject
