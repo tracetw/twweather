@@ -28,6 +28,6 @@
 #import "TWBasicViewController.h"
 
 @interface TWBasicTableViewController : TWBasicViewController <UITableViewDataSource, UITableViewDelegate>
-- (instancetype)initWithStyle:(UITableViewStyle)inStyle;
+- (instancetype)initWithStyle:(UITableViewStyle)inStyle NS_DESIGNATED_INITIALIZER;
 @property (strong, nonatomic) UITableView *tableView;
 @end

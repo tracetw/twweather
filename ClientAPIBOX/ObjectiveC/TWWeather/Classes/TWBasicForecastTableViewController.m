@@ -57,7 +57,7 @@
 	}
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (instancetype)initWithStyle:(UITableViewStyle)style
 {
 	if (self = [super initWithStyle:style]) {
 		self.style = style;
@@ -65,7 +65,7 @@
 	}
 	return self;
 }
-- (id)initWithCoder:(NSCoder *)decoder
+- (instancetype)initWithCoder:(NSCoder *)decoder
 {
 	if (self = [super initWithCoder:decoder]) {
 		[self _init];

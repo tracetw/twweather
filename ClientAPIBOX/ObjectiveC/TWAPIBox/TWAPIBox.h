@@ -36,19 +36,19 @@
 #import <Foundation/Foundation.h>
 #import "TWFetchOperation.h"
 
-typedef enum {
+typedef NS_ENUM(NSInteger, TWOverviewFormat) {
 	TWOverviewHTMLFormat = 0,
 	TWOverviewPlainFormat = 1
-} TWOverviewFormat;
+} ;
 
 extern NSString *TWAPIErrorDomain;
 
-typedef enum {
+typedef NS_ENUM(NSInteger, TWAPIError) {
 	TWAPIUnkownError = 0,
 	TWAPIConnectionError = 1,
 	TWAPITimeOutError = 2,
 	TWAPIDataError = 3,
-} TWAPIError;
+} ;
 
 @class TWAPIBox;
 
@@ -124,8 +124,7 @@ typedef enum {
 - (void)fetchImageWithIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo;
 - (void)fetchOBSWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo;
 - (void)fetchGlobalCityWithLocationIdentifier:(NSString *)identifier delegate:(id)delegate userInfo:(id)userInfo;
-- (void)setShouldWaitUntilDone:(BOOL)flag;
-- (BOOL)shouldWaitUntilDone;
+@property (nonatomic) BOOL shouldWaitUntilDone;
 
 - (NSURL *)imageURLFromIdentifier:(NSString *)identifier;
 

@@ -55,7 +55,7 @@
 	BOOL runloopRunning;
 }
 
-- (id)initWithDelegate:(id)delegate sessionInfo:(id)sessionInfo;
+- (instancetype)initWithDelegate:(id)delegate sessionInfo:(id)sessionInfo NS_DESIGNATED_INITIALIZER;
 
 @property (readonly, nonatomic) id sessionInfo;
 @property (strong, nonatomic) NSString *note;

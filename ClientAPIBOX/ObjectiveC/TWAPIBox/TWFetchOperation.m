@@ -39,7 +39,7 @@
 @implementation TWFetchOperation
 
 
-- (id)initWithDelegate:(id)newDelegate sessionInfo:(id)newSessionInfo;
+- (instancetype)initWithDelegate:(id)newDelegate sessionInfo:(id)newSessionInfo;
 {
 	self = [super init];
 	if (self != nil) {

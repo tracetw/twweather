@@ -45,7 +45,7 @@ void TWSFX()
 
 @implementation TWNavigationController
 
-- (id)initWithRootViewController:(UIViewController *)rootViewController
+- (instancetype)initWithRootViewController:(UIViewController *)rootViewController
 {
 	self = [super initWithRootViewController:rootViewController];
 	if (self != nil) {

@@ -39,7 +39,7 @@ static NSString *CellIdentifier = @"Cell";
 @implementation TWBasicTableViewController
 
 
-- (id)initWithStyle:(UITableViewStyle)inStyle
+- (instancetype)initWithStyle:(UITableViewStyle)inStyle
 {
 	self = [super init];
 	if (self) {

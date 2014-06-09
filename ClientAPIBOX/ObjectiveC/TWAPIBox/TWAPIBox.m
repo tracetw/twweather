@@ -54,7 +54,7 @@ static TWAPIBox *apibox = nil;
 	return apibox;
 }
 
-- (id)init
+- (instancetype)init
 {
 	self = [super init];
 	if (self) {
