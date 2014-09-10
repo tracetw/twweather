@@ -27,8 +27,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <MessageUI/MessageUI.h>
 #import "TWBasicTableViewController.h"
 
-@interface TWMoreViewController : TWBasicTableViewController <MFMailComposeViewControllerDelegate>
+@interface TWMoreViewController : TWBasicTableViewController
 @end

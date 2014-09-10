@@ -13,6 +13,14 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28C286E10D94DF7D0034E888 /* TWRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* TWRootViewController.m */; };
+		D404254519C0A4540053A89F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D404254419C0A4540053A89F /* LaunchScreen.xib */; };
+		D404254619C0A4540053A89F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D404254419C0A4540053A89F /* LaunchScreen.xib */; };
+		D404254E19C0A5730053A89F /* ExternalLibraries.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D404254D19C0A5730053A89F /* ExternalLibraries.h */; };
+		D404255019C0A5730053A89F /* ExternalLibraries.m in Sources */ = {isa = PBXBuildFile; fileRef = D404254F19C0A5730053A89F /* ExternalLibraries.m */; };
+		D40425AC19C0A58D0053A89F /* LFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D404256419C0A58D0053A89F /* LFHTTPRequest.m */; };
+		D40425AD19C0A58D0053A89F /* LFSiteReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D404256619C0A58D0053A89F /* LFSiteReachability.m */; };
+		D40425AE19C0A58D0053A89F /* NSData+LFHTTPFormExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D404256919C0A58D0053A89F /* NSData+LFHTTPFormExtensions.m */; };
+		D40425CB19C0A5AB0053A89F /* libExternalLibraries.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D404254B19C0A5730053A89F /* libExternalLibraries.a */; };
 		D40803AF1198BDA40042091E /* TWGlobalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40803AE1198BDA40042091E /* TWGlobalTableViewController.m */; };
 		D40803D71198C1730042091E /* TWGlobalResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40803D61198C1730042091E /* TWGlobalResultTableViewController.m */; };
 		D40D3ADF1835EB13005C98A9 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D40D3ADE1835EB13005C98A9 /* libGoogleAnalyticsServices.a */; };
@@ -42,9 +50,6 @@
 		D471EAE2102F471B00768C5B /* TWAPIBox+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E5025710233338002B39D7 /* TWAPIBox+Info.m */; };
 		D471EAE3102F471B00768C5B /* TWAPIBox+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = D489E3831023DF2500189460 /* TWAPIBox+Cache.m */; };
 		D471EAE4102F471B00768C5B /* TWAPIBox+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C02AAD102BD47000FD1D3B /* TWAPIBox+Private.m */; };
-		D471EAEA102F473F00768C5B /* NSData+LFHTTPFormExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C3A0CE102235DB00E7A430 /* NSData+LFHTTPFormExtensions.m */; };
-		D471EAEB102F473F00768C5B /* LFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C3A0D0102235DB00E7A430 /* LFHTTPRequest.m */; };
-		D471EAEC102F473F00768C5B /* LFSiteReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C3A0D2102235DB00E7A430 /* LFSiteReachability.m */; };
 		D471EBB6102F476100768C5B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		D471EBB7102F476100768C5B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		D471EBB8102F476100768C5B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E9C6E410223D6200B955C7 /* SystemConfiguration.framework */; };
@@ -81,9 +86,6 @@
 		D4C02AAE102BD47000FD1D3B /* TWAPIBox+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C02AAD102BD47000FD1D3B /* TWAPIBox+Private.m */; };
 		D4C02C3D102C03F700FD1D3B /* TWFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C02C3C102C03F700FD1D3B /* TWFavoriteTableViewController.m */; };
 		D4C02E32102C221900FD1D3B /* TWOBSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C02E31102C221900FD1D3B /* TWOBSTableViewController.m */; };
-		D4C3A0D5102235DB00E7A430 /* NSData+LFHTTPFormExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C3A0CE102235DB00E7A430 /* NSData+LFHTTPFormExtensions.m */; };
-		D4C3A0D6102235DB00E7A430 /* LFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C3A0D0102235DB00E7A430 /* LFHTTPRequest.m */; };
-		D4C3A0D7102235DB00E7A430 /* LFSiteReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C3A0D2102235DB00E7A430 /* LFSiteReachability.m */; };
 		D4C3A0DD1022361E00E7A430 /* TWAPIBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C3A0DC1022361E00E7A430 /* TWAPIBox.m */; };
 		D4D82D8E17A19284008393AB /* CocoaCryptoHashing.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D82D8D17A19284008393AB /* CocoaCryptoHashing.m */; };
 		D4D82D8F17A19284008393AB /* CocoaCryptoHashing.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D82D8D17A19284008393AB /* CocoaCryptoHashing.m */; };
@@ -120,6 +122,29 @@
 		D4EDBEFC1082042000C9EBFE /* webForward.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EDBEFA1082042000C9EBFE /* webForward.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D40425C919C0A5A60053A89F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D404254A19C0A5730053A89F;
+			remoteInfo = ExternalLibraries;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D404254919C0A5730053A89F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				D404254E19C0A5730053A89F /* ExternalLibraries.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* TWWeatherAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWWeatherAppDelegate.h; sourceTree = "<group>"; };
@@ -132,6 +157,18 @@
 		28C286E00D94DF7D0034E888 /* TWRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TWWeather-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TWWeather-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D404254419C0A4540053A89F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		D404254B19C0A5730053A89F /* libExternalLibraries.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libExternalLibraries.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D404254D19C0A5730053A89F /* ExternalLibraries.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExternalLibraries.h; sourceTree = "<group>"; };
+		D404254F19C0A5730053A89F /* ExternalLibraries.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExternalLibraries.m; sourceTree = "<group>"; };
+		D404255819C0A5730053A89F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D404256319C0A58D0053A89F /* LFHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFHTTPRequest.h; sourceTree = "<group>"; };
+		D404256419C0A58D0053A89F /* LFHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFHTTPRequest.m; sourceTree = "<group>"; };
+		D404256519C0A58D0053A89F /* LFSiteReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSiteReachability.h; sourceTree = "<group>"; };
+		D404256619C0A58D0053A89F /* LFSiteReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSiteReachability.m; sourceTree = "<group>"; };
+		D404256719C0A58D0053A89F /* LFWebAPIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWebAPIKit.h; sourceTree = "<group>"; };
+		D404256819C0A58D0053A89F /* NSData+LFHTTPFormExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+LFHTTPFormExtensions.h"; sourceTree = "<group>"; };
+		D404256919C0A58D0053A89F /* NSData+LFHTTPFormExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+LFHTTPFormExtensions.m"; sourceTree = "<group>"; };
 		D40803AD1198BDA40042091E /* TWGlobalTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWGlobalTableViewController.h; sourceTree = "<group>"; };
 		D40803AE1198BDA40042091E /* TWGlobalTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWGlobalTableViewController.m; sourceTree = "<group>"; };
 		D40803D51198C1730042091E /* TWGlobalResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWGlobalResultTableViewController.h; sourceTree = "<group>"; };
@@ -224,13 +261,6 @@
 		D4C02C3C102C03F700FD1D3B /* TWFavoriteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWFavoriteTableViewController.m; sourceTree = "<group>"; };
 		D4C02E30102C221900FD1D3B /* TWOBSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWOBSTableViewController.h; sourceTree = "<group>"; };
 		D4C02E31102C221900FD1D3B /* TWOBSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWOBSTableViewController.m; sourceTree = "<group>"; };
-		D4C3A0CE102235DB00E7A430 /* NSData+LFHTTPFormExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+LFHTTPFormExtensions.m"; path = "../External/LFWebAPIKit/NSData+LFHTTPFormExtensions.m"; sourceTree = SOURCE_ROOT; };
-		D4C3A0CF102235DB00E7A430 /* LFHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFHTTPRequest.h; path = ../External/LFWebAPIKit/LFHTTPRequest.h; sourceTree = SOURCE_ROOT; };
-		D4C3A0D0102235DB00E7A430 /* LFHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LFHTTPRequest.m; path = ../External/LFWebAPIKit/LFHTTPRequest.m; sourceTree = SOURCE_ROOT; };
-		D4C3A0D1102235DB00E7A430 /* LFSiteReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFSiteReachability.h; path = ../External/LFWebAPIKit/LFSiteReachability.h; sourceTree = SOURCE_ROOT; };
-		D4C3A0D2102235DB00E7A430 /* LFSiteReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LFSiteReachability.m; path = ../External/LFWebAPIKit/LFSiteReachability.m; sourceTree = SOURCE_ROOT; };
-		D4C3A0D3102235DB00E7A430 /* LFWebAPIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFWebAPIKit.h; path = ../External/LFWebAPIKit/LFWebAPIKit.h; sourceTree = SOURCE_ROOT; };
-		D4C3A0D4102235DB00E7A430 /* NSData+LFHTTPFormExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+LFHTTPFormExtensions.h"; path = "../External/LFWebAPIKit/NSData+LFHTTPFormExtensions.h"; sourceTree = SOURCE_ROOT; };
 		D4C3A0DB1022361E00E7A430 /* TWAPIBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWAPIBox.h; path = ../TWAPIBox/TWAPIBox.h; sourceTree = SOURCE_ROOT; };
 		D4C3A0DC1022361E00E7A430 /* TWAPIBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWAPIBox.m; path = ../TWAPIBox/TWAPIBox.m; sourceTree = SOURCE_ROOT; };
 		D4D82D8517A1877F008393AB /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
@@ -300,6 +330,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D40425CB19C0A5AB0053A89F /* libExternalLibraries.a in Frameworks */,
 				D40D3AED1835F0C5005C98A9 /* AdSupport.framework in Frameworks */,
 				D40D3AEB1835F0C1005C98A9 /* CoreData.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
@@ -315,6 +346,13 @@
 				D4B3BE6C1104E0C6003E5E3D /* libxml2.dylib in Frameworks */,
 				D41B18301107FE0200D78B27 /* AudioToolbox.framework in Frameworks */,
 				D40D3ADF1835EB13005C98A9 /* libGoogleAnalyticsServices.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D404254819C0A5730053A89F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +387,7 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* TWWeather.app */,
 				D471EAB8102F460600768C5B /* TWTests.octest */,
+				D404254B19C0A5730053A89F /* libExternalLibraries.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -361,6 +400,8 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				D404254C19C0A5730053A89F /* ExternalLibraries */,
+				D404255619C0A5730053A89F /* ExternalLibrariesTests */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				D471EAB9102F460600768C5B /* TWTests-Info.plist */,
@@ -388,6 +429,7 @@
 				8D1107310486CEB800E47090 /* TWWeather-Info.plist */,
 				D4E84FAF102D4BEC00A80676 /* Localizable.strings */,
 				D489E59D1024EA4600189460 /* InfoPlist.strings */,
+				D404254419C0A4540053A89F /* LaunchScreen.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -594,6 +636,46 @@
 			name = Sounds;
 			sourceTree = "<group>";
 		};
+		D404254C19C0A5730053A89F /* ExternalLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				D404254D19C0A5730053A89F /* ExternalLibraries.h */,
+				D404254F19C0A5730053A89F /* ExternalLibraries.m */,
+			);
+			path = ExternalLibraries;
+			sourceTree = "<group>";
+		};
+		D404255619C0A5730053A89F /* ExternalLibrariesTests */ = {
+			isa = PBXGroup;
+			children = (
+				D404255719C0A5730053A89F /* Supporting Files */,
+			);
+			path = ExternalLibrariesTests;
+			sourceTree = "<group>";
+		};
+		D404255719C0A5730053A89F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D404255819C0A5730053A89F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D404256119C0A58D0053A89F /* LFWebAPIKit */ = {
+			isa = PBXGroup;
+			children = (
+				D404256319C0A58D0053A89F /* LFHTTPRequest.h */,
+				D404256419C0A58D0053A89F /* LFHTTPRequest.m */,
+				D404256519C0A58D0053A89F /* LFSiteReachability.h */,
+				D404256619C0A58D0053A89F /* LFSiteReachability.m */,
+				D404256719C0A58D0053A89F /* LFWebAPIKit.h */,
+				D404256819C0A58D0053A89F /* NSData+LFHTTPFormExtensions.h */,
+				D404256919C0A58D0053A89F /* NSData+LFHTTPFormExtensions.m */,
+			);
+			name = LFWebAPIKit;
+			path = ../External/LFWebAPIKit;
+			sourceTree = "<group>";
+		};
 		D40803A21198BCA80042091E /* Global Cities */ = {
 			isa = PBXGroup;
 			children = (
@@ -706,25 +788,11 @@
 		D4C3A0CA102235B800E7A430 /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D404256119C0A58D0053A89F /* LFWebAPIKit */,
 				D40D3AD51835EAF4005C98A9 /* GoogleAnalytics */,
 				D4D82D8B17A1927B008393AB /* cocoa_crypto_hashing */,
-				D4C3A0CB102235C900E7A430 /* LFWebAPIKit */,
 			);
 			name = "External Libraries";
-			sourceTree = "<group>";
-		};
-		D4C3A0CB102235C900E7A430 /* LFWebAPIKit */ = {
-			isa = PBXGroup;
-			children = (
-				D4C3A0CE102235DB00E7A430 /* NSData+LFHTTPFormExtensions.m */,
-				D4C3A0CF102235DB00E7A430 /* LFHTTPRequest.h */,
-				D4C3A0D0102235DB00E7A430 /* LFHTTPRequest.m */,
-				D4C3A0D1102235DB00E7A430 /* LFSiteReachability.h */,
-				D4C3A0D2102235DB00E7A430 /* LFSiteReachability.m */,
-				D4C3A0D3102235DB00E7A430 /* LFWebAPIKit.h */,
-				D4C3A0D4102235DB00E7A430 /* NSData+LFHTTPFormExtensions.h */,
-			);
-			name = LFWebAPIKit;
 			sourceTree = "<group>";
 		};
 		D4C3A0D81022360F00E7A430 /* TWAPIBOX */ = {
@@ -768,11 +836,29 @@
 			buildRules = (
 			);
 			dependencies = (
+				D40425CA19C0A5A60053A89F /* PBXTargetDependency */,
 			);
 			name = TWWeather;
 			productName = TWWeather;
 			productReference = 1D6058910D05DD3D006BFB54 /* TWWeather.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D404254A19C0A5730053A89F /* ExternalLibraries */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D404255919C0A5730053A89F /* Build configuration list for PBXNativeTarget "ExternalLibraries" */;
+			buildPhases = (
+				D404254719C0A5730053A89F /* Sources */,
+				D404254819C0A5730053A89F /* Frameworks */,
+				D404254919C0A5730053A89F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExternalLibraries;
+			productName = ExternalLibraries;
+			productReference = D404254B19C0A5730053A89F /* libExternalLibraries.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		D471EAB7102F460600768C5B /* TWTests */ = {
 			isa = PBXNativeTarget;
@@ -790,7 +876,7 @@
 			name = TWTests;
 			productName = TWTests;
 			productReference = D471EAB8102F460600768C5B /* TWTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -802,6 +888,9 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = X29ZB2LBKB;
+					};
+					D404254A19C0A5730053A89F = {
+						CreatedOnToolsVersion = 6.0;
 					};
 				};
 			};
@@ -825,6 +914,7 @@
 			targets = (
 				1D6058900D05DD3D006BFB54 /* TWWeather */,
 				D471EAB7102F460600768C5B /* TWTests */,
+				D404254A19C0A5730053A89F /* ExternalLibraries */,
 			);
 		};
 /* End PBXProject section */
@@ -844,6 +934,7 @@
 				D489E3B21023E00100189460 /* DaySunny.png in Resources */,
 				D489E3B31023E00100189460 /* DaySunnyCloudy.png in Resources */,
 				D489E3B51023E00100189460 /* NightCloudy.png in Resources */,
+				D404254519C0A4540053A89F /* LaunchScreen.xib in Resources */,
 				D489E3B61023E00100189460 /* NightCloudyGlommy.png in Resources */,
 				D489E3B71023E00100189460 /* NightCloudySunny.png in Resources */,
 				D489E3B81023E00100189460 /* NightGlommy.png in Resources */,
@@ -871,6 +962,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D404254619C0A4540053A89F /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,9 +992,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* TWWeatherAppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* TWRootViewController.m in Sources */,
-				D4C3A0D5102235DB00E7A430 /* NSData+LFHTTPFormExtensions.m in Sources */,
-				D4C3A0D6102235DB00E7A430 /* LFHTTPRequest.m in Sources */,
-				D4C3A0D7102235DB00E7A430 /* LFSiteReachability.m in Sources */,
 				D4C3A0DD1022361E00E7A430 /* TWAPIBox.m in Sources */,
 				D4E5025810233338002B39D7 /* TWAPIBox+Info.m in Sources */,
 				D4E5029A10234126002B39D7 /* TWBasicForecastTableViewController.m in Sources */,
@@ -952,14 +1041,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D404254719C0A5730053A89F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D40425AE19C0A58D0053A89F /* NSData+LFHTTPFormExtensions.m in Sources */,
+				D40425AD19C0A58D0053A89F /* LFSiteReachability.m in Sources */,
+				D404255019C0A5730053A89F /* ExternalLibraries.m in Sources */,
+				D40425AC19C0A58D0053A89F /* LFHTTPRequest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D471EAB4102F460600768C5B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D471EAEA102F473F00768C5B /* NSData+LFHTTPFormExtensions.m in Sources */,
 				D4D82D8F17A19284008393AB /* CocoaCryptoHashing.m in Sources */,
-				D471EAEB102F473F00768C5B /* LFHTTPRequest.m in Sources */,
-				D471EAEC102F473F00768C5B /* LFSiteReachability.m in Sources */,
 				D471EAE1102F471B00768C5B /* TWAPIBox.m in Sources */,
 				D471EAE2102F471B00768C5B /* TWAPIBox+Info.m in Sources */,
 				D471EAE3102F471B00768C5B /* TWAPIBox+Cache.m in Sources */,
@@ -970,6 +1067,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D40425CA19C0A5A60053A89F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D404254A19C0A5730053A89F /* ExternalLibraries */;
+			targetProxy = D40425C919C0A5A60053A89F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D489E59D1024EA4600189460 /* InfoPlist.strings */ = {
@@ -1024,10 +1129,12 @@
 					../External/GoogleAnalyticsServicesiOS_3.02/GoogleAnalytics/Library,
 					../External/GoogleAnalyticsServicesiOS_3.02,
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TWWeather;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1061,6 +1168,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1072,7 +1180,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
@@ -1091,6 +1199,119 @@
 			};
 			name = Release;
 		};
+		D404255A19C0A5730053A89F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s";
+			};
+			name = Debug;
+		};
+		D404255B19C0A5730053A89F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
+			};
+			name = Release;
+		};
+		D404255C19C0A5730053A89F /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
+			};
+			name = Distribution;
+		};
 		D41B042E1031F1C1000AA604 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1099,6 +1320,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
@@ -1135,6 +1357,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Distribution;
 		};
@@ -1247,6 +1470,15 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D404255919C0A5730053A89F /* Build configuration list for PBXNativeTarget "ExternalLibraries" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D404255A19C0A5730053A89F /* Debug */,
+				D404255B19C0A5730053A89F /* Release */,
+				D404255C19C0A5730053A89F /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		D471EABC102F460700768C5B /* Build configuration list for PBXNativeTarget "TWTests" */ = {
 			isa = XCConfigurationList;

@@ -39,21 +39,6 @@
 
 @implementation TWMoreViewController
 
-- (void)sendEmailAction:(id)sender
-{
-	if ([MFMailComposeViewController canSendMail]) {
-		MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
-		controller.mailComposeDelegate = self;
-		[controller setSubject:NSLocalizedString(@"TW Weather Questions/Inquiry", @"")];
-		[controller setToRecipients:@[@"Weizhong Yang<service@zonble.net>"]];
-		[self presentViewController:controller animated:YES completion:nil];
-	}
-	else {
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"You cannot send email now",@"") message:@"" delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
-		[alertView show];
-	}
-}
-
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
@@ -77,10 +62,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (section == 0) {
-		return 4;
+		return 3;
 	}
 	else if (section == 1) {
-		return 3;
+		return 2;
 	}
 	return 0;
 }
@@ -101,14 +86,10 @@
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 				break;
 			case 1:
-				cell.textLabel.text = @"中央氣象局網頁 PDA 版";
-				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-				break;
-			case 2:
 				cell.textLabel.text = @"氣象查詢：886-2-23491234";
 				cell.imageView.image = [UIImage imageNamed:@"tel.png"];
 				break;
-			case 3:
+			case 2:
 				cell.textLabel.text = @"地震查詢：886-2-23491168";
 				cell.imageView.image = [UIImage imageNamed:@"tel.png"];
 				break;
@@ -130,10 +111,6 @@
 				break;
 			case 1:
 				cell.textLabel.text = NSLocalizedString(@"About", @"");
-				break;
-			case 2:
-				cell.accessoryType = UITableViewCellAccessoryNone;
-				cell.textLabel.text = NSLocalizedString(@"Feedback", @"");
 				break;
 			default:
 				break;
@@ -157,12 +134,6 @@
 				[webController view];
 				[webController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.cwb.gov.tw/"]]];
 			}
-			else if (indexPath.row == 1) {
-				webController.title = @"中央氣象局網頁 PDA 版";
-				[webController view];
-				webController.webView.scalesPageToFit = NO;
-				[webController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.cwb.gov.tw/pda/"]]];
-			}
 			return;
 		}
 
@@ -174,10 +145,10 @@
 		}
 
 		NSString *URLString = nil;
-		if (indexPath.row == 2) {
+		if (indexPath.row == 1) {
 			URLString = @"tel://+886223491234";
 		}
-		else if (indexPath.row == 3) {
+		else if (indexPath.row == 2) {
 			URLString = @"tel://+886223491168";
 		}
 		if (URLString) {
@@ -187,19 +158,12 @@
 
 	}
 	else if (indexPath.section == 1) {
-		if (indexPath.row == 2) {
-			[self sendEmailAction:self];
-			return;
-		}
-
-		UIViewController *controller = nil;
 		if (indexPath.row == 0) {
-			controller = [[TWSettingTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+			UIViewController *controller = [[TWSettingTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+			[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
 		}
 		else if (indexPath.row == 1) {
-			controller = [[TWAboutViewController alloc] init];
-		}
-		if (controller) {
+			UIViewController *controller = [[TWAboutViewController alloc] init];
 			[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
 		}
 	}
@@ -215,18 +179,6 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
 	return nil;
-}
-
-#pragma mark -
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
-{
-	UIViewController *parentController = [controller presentingViewController];
-	[parentController dismissViewControllerAnimated:YES completion:nil];
-	if (result == MFMailComposeResultSent) {
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Your mail is sent!", @"") message:NSLocalizedString(@"Thanks for your feedback.", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"Dismiss", @"") otherButtonTitles:nil];
-		[alertView show];
-	}
 }
 
 @end
