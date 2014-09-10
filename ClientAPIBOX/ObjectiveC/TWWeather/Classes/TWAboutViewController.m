@@ -36,11 +36,6 @@
 	UILabel *externalLibraryLabel;
 }
 
-- (void)dealloc
-{
-	self.view = nil;
-}
-
 #pragma mark UIViewContoller Methods
 
 - (void)loadView

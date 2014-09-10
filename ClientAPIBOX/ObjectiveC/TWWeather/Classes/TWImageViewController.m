@@ -40,16 +40,6 @@
 	BOOL pushingPlurkComposer;
 }
 
-#pragma mark Routines
-
-- (void)dealloc
-{
-	_image = nil;
-	self.imageView = nil;
-	self.view = nil;
-	loadingView = nil;
-}
-
 #pragma mark UIViewContoller Methods
 
 - (void)loadView

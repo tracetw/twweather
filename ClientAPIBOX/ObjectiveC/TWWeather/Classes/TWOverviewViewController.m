@@ -36,13 +36,6 @@
 	NSString *_text;
 }
 
-- (void)dealloc
-{
-	_text = nil;
-	self.view = nil;
-	self.textView = nil;
-}
-
 #pragma mark UIViewContoller Methods
 
 - (void)loadView

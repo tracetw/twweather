@@ -34,12 +34,11 @@
 	UIActivityIndicatorView *activityIndicator;
 }
 
-
 - (void)_init
 {
 	if (!activityIndicator) {
 		activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-		activityIndicator.frame = CGRectMake(260, 12, 20, 20);
+		activityIndicator.frame = CGRectMake(CGRectGetWidth(self.bounds) - 60, 12, 20, 20);
 		activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 		[self addSubview:activityIndicator];
 	}

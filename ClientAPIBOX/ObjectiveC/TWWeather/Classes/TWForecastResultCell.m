@@ -113,10 +113,6 @@
 	UIImage *weatherImage;
 }
 
-- (void)dealloc
-{
-	[_ourContentView removeFromSuperview];
-}
 - (void)_init
 {
 	if (!_ourContentView) {
@@ -158,29 +154,30 @@
 - (void)draw:(CGRect)bounds
 {
 	CGSize size = weatherImage.size;
-	[weatherImage drawInRect:CGRectMake(0, -5, size.width * 0.75, size.height * 0.75)];
+	[weatherImage drawInRect:CGRectMake(0, -5, size.width * 0.8, size.height * 0.8)];
 
-	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
-		[[UIColor blackColor] set];
-	}
-	else if (self.highlighted || self.selected) {
-		[[UIColor whiteColor] set];
-	}
-	else {
-		[[UIColor blackColor] set];
-	}
+	[[UIColor blackColor] set];
 
-	[title drawInRect:CGRectMake(140, 5, 100, 20) withFont:[UIFont boldSystemFontOfSize:14.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentLeft];
+	NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+	style.lineBreakMode = NSLineBreakByClipping;
+	style.alignment = NSTextAlignmentLeft;
+
+	[title drawInRect:CGRectMake(160, 5, CGRectGetWidth(self.bounds) - 180, 20) withAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:14.0], NSParagraphStyleAttributeName: style}];
+
 	NSString *timeString = [NSString stringWithFormat:@"%@\n%@", beginTime, endTime];
-	[timeString drawInRect:CGRectMake(140, 26, 160, 40) withFont:[UIFont systemFontOfSize:10.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentLeft];
 
-	[description drawInRect:CGRectMake(10, 80, 100, 60) withFont:[UIFont systemFontOfSize:10.0] lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentCenter];
+	[timeString drawInRect:CGRectMake(160, 26, CGRectGetWidth(self.bounds) - 160, 40) withAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10.0], NSParagraphStyleAttributeName: style}];
+
 	NSString *temperatureString = [NSString stringWithFormat:@"%@ ℃", temperature];
-	[temperatureString drawInRect:CGRectMake(140, 56, 100, 20) withFont:[UIFont boldSystemFontOfSize:18.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentLeft];
-	NSString *rainString = [NSString stringWithFormat:@"降雨機率： %@ %%", rain];
-	[rainString drawInRect:CGRectMake(140, 80, 100, 20) withFont:[UIFont systemFontOfSize:12.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentLeft];
+	[temperatureString drawInRect:CGRectMake(160, 56, CGRectGetWidth(self.bounds) - 180, 20) withAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0], NSParagraphStyleAttributeName: style}];
 
+	NSString *rainString = [NSString stringWithFormat:@"降雨機率： %@ %%", rain];
+	[rainString drawInRect:CGRectMake(160, 80, CGRectGetWidth(self.bounds) - 180, 20) withAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12.0], NSParagraphStyleAttributeName: style}];
+
+	style.lineBreakMode = NSLineBreakByCharWrapping;
+	[description drawInRect:CGRectMake(10, 80, CGRectGetWidth(self.bounds) - 180, 60) withAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:10.0], NSParagraphStyleAttributeName: style}];
 }
+
 - (IBAction)copy:(id)sender
 {
 	UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];

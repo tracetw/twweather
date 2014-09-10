@@ -34,13 +34,6 @@
 
 @implementation TWBasicForecastTableViewController
 
-- (void)dealloc
-{
-	_searchController = nil;
-	_searchBar = nil;
-	self.tableView = nil;
-}
-
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];

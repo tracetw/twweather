@@ -58,22 +58,10 @@
 - (void)removeOutletsAndControls_TWWebController
 {
 	[self.webView stopLoading];
-	self.webView = nil;
-	self.activityIndicatorView = nil;
-	self.toolbar = nil;
-	self.goBackItem = nil;
-	self.goFowardItem = nil;
-	self.stopItem = nil;
-	self.reloadItem = nil;
 }
 
 - (void)dealloc
 {
-	[self removeOutletsAndControls_TWWebController];
-}
-- (void)viewDidUnload
-{
-	[super viewDidUnload];
 	[self removeOutletsAndControls_TWWebController];
 }
 

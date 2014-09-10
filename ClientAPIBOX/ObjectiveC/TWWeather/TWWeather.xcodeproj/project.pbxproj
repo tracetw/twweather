@@ -1123,7 +1123,7 @@
 					"../External/facebook-ios-sdk/src/",
 				);
 				INFOPLIST_FILE = "TWWeather-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					../External/GoogleAnalyticsServicesiOS_3.02/GoogleAnalytics/Library,
@@ -1157,7 +1157,7 @@
 					"../External/facebook-ios-sdk/src/",
 				);
 				INFOPLIST_FILE = "TWWeather-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					../External/GoogleAnalyticsServicesiOS_3.02/GoogleAnalytics/Library,
@@ -1346,7 +1346,7 @@
 					"../External/facebook-ios-sdk/src/",
 				);
 				INFOPLIST_FILE = "TWWeather-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					../External/GoogleAnalyticsServicesiOS_3.02/GoogleAnalytics/Library,

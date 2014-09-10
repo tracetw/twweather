@@ -109,6 +109,7 @@
 	ourBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	self.backgroundView = ourBackgroundView;
 }
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
 	if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -117,67 +118,33 @@
 	}
 	return self;
 }
+
 - (void)draw:(CGRect)rect
 {
 	[super drawRect:rect];
-	CGRect textRect = CGRectMake(10, (rect.size.height - 16.0) / 2.0 , rect.size.width - 26.0, 16.0);
 
-	[[UIColor whiteColor] set];
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextSaveGState(context);
 	CGContextSetShadowWithColor(context, CGSizeMake(0, 0), 2.0, [UIColor blackColor].CGColor);
-	[@"一週預報" drawInRect:textRect withFont:[UIFont boldSystemFontOfSize:16.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentRight];
+
+	NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+	style.lineBreakMode = NSLineBreakByClipping;
+	style.alignment = NSTextAlignmentRight;
+
+	CGRect textRect = CGRectMake(10, (rect.size.height - 16.0) / 2.0 , rect.size.width - 26.0, 16.0);
+	[@"一週預報" drawInRect:textRect withAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:16.0], NSForegroundColorAttributeName: [UIColor whiteColor], NSParagraphStyleAttributeName: style}];
+	
 	textRect = CGRectMake(10, (rect.size.height - 18.0) / 2.0 , rect.size.width - 26.0, 18.0);
-	[locationName drawInRect:textRect withFont:[UIFont boldSystemFontOfSize:18.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentLeft];
+	style.alignment = NSTextAlignmentLeft;
+	[locationName drawInRect:textRect withAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0], NSForegroundColorAttributeName: [UIColor whiteColor], NSParagraphStyleAttributeName: style}];
 
 	CGContextRestoreGState(context);
 }
 - (void)drawBackground:(CGRect)bounds
 {
-	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
-		[[UIColor lightGrayColor] setFill];
-		[[UIBezierPath bezierPathWithRect:bounds] fill];
-		return;
-	}
+	[[UIColor lightGrayColor] setFill];
+	[[UIBezierPath bezierPathWithRect:bounds] fill];
 
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
-	CGFloat radius = 10.0;
-
-	CGContextSaveGState(context);
-	CGContextMoveToPoint(context, CGRectGetMinX(bounds), CGRectGetMaxY(bounds));
-	CGContextAddLineToPoint(context, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
-	CGContextAddLineToPoint(context, CGRectGetMaxX(bounds), CGRectGetMinY(bounds) + radius);
-	CGContextAddArcToPoint(context, CGRectGetMaxX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds) - radius, CGRectGetMinY(bounds), radius);
-	CGContextAddLineToPoint(context, CGRectGetMinX(bounds) + radius, CGRectGetMinY(bounds));
-	CGContextAddArcToPoint(context, CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMinX(bounds), CGRectGetMinY(bounds) + radius, radius);
-	CGContextClosePath(context);
-	CGContextClip(context);
-
-	CGFloat gradient1Color[8] = {0.69, 0.74, 0.80, 1.00, 0.58, 0.64, 0.73, 1.00};
-	CGGradientRef gradient1 = CGGradientCreateWithColorComponents(space, gradient1Color, NULL, 2);
-	CGContextDrawLinearGradient(context, gradient1, CGPointMake(CGRectGetMinX(bounds), CGRectGetMinY(bounds)), CGPointMake(CGRectGetMinX(bounds), bounds.origin.y + bounds.size.height / 2), kCGGradientDrawsAfterEndLocation);
-	CGGradientRelease(gradient1);
-
-	CGFloat gradient2Color[8] = {0.55, 0.62, 0.71, 1.00, 0.43, 0.52, 0.64, 1.00};
-	CGGradientRef gradient2 = CGGradientCreateWithColorComponents(space, gradient2Color, NULL, 2);
-	CGContextDrawLinearGradient(context, gradient2, CGPointMake(CGRectGetMinX(bounds), bounds.origin.y + bounds.size.height / 2), CGPointMake(CGRectGetMinX(bounds), CGRectGetMaxY(bounds)), kCGGradientDrawsAfterEndLocation);
-	CGGradientRelease(gradient2);
-
-	CGMutablePathRef path = CGPathCreateMutable();
-
-	CGPathMoveToPoint(path, NULL, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
-	CGPathAddLineToPoint(path, NULL, CGRectGetMaxX(bounds), CGRectGetMinY(bounds) + radius);
-	CGPathAddArcToPoint(path, NULL, CGRectGetMaxX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds) - radius, CGRectGetMinY(bounds), radius);
-	CGPathAddLineToPoint(path, NULL, CGRectGetMinX(bounds) + radius, CGRectGetMinY(bounds));
-	CGPathAddArcToPoint(path, NULL, CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMinX(bounds), CGRectGetMinY(bounds) + radius, radius);
-	CGPathAddLineToPoint(path, NULL, CGRectGetMinX(bounds), CGRectGetMaxY(bounds));
-	CGPathAddLineToPoint(path, NULL, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
-	CGContextAddPath(context, path);
-	[[UIColor grayColor] setStroke];
-	CGContextStrokePath(context);
-	CGPathRelease(path);
-	CGColorSpaceRelease(space);
 }
 - (void)setNeedsDisplay
 {

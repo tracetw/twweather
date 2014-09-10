@@ -74,16 +74,6 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	NSUInteger loadingWeekIndex;
 }
 
-#pragma mark Routines
-
-- (void)dealloc
-{
-	loadingView = nil;
-	errorLabel = nil;
-	self.tableView = nil;
-	self.view = nil;
-}
-
 #pragma mark UIViewContoller Methods
 
 - (void)loadView
@@ -115,11 +105,9 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	self.screenName = @"My Favorites";
 
-	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
-		self.tableView.contentInset = UIEdgeInsetsMake(64.0, 0.0, 44.0, 0.0);
-	}
+	self.screenName = @"My Favorites";
+	self.tableView.contentInset = UIEdgeInsetsMake(64.0, 0.0, 44.0, 0.0);
 
 	_favArray = [[NSMutableArray alloc] init];
 	NSArray *savedResult = [[NSUserDefaults standardUserDefaults] objectForKey:lastAllForecastsPreferenceName];
@@ -192,7 +180,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 {
 	TWErrorViewController *controller = [[TWErrorViewController alloc] init];
 	controller.error = error;
-	[self.navigationController pushViewController:controller animated:YES];
+	[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
 }
 - (void)pushWeekViewController:(NSDictionary *)result
 {
@@ -202,7 +190,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	NSString *dateString = result[@"publishTime"];
 	NSDate *date = [[TWAPIBox sharedBox] dateFromString:dateString];
 	controller.publishTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];
-	[self.navigationController pushViewController:controller animated:YES];
+	[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
 }
 
 #pragma mark Actions
@@ -413,8 +401,7 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 		NSDictionary *result = [weekDictionary valueForKey:weekLocation];
 		controller.weekDictionary = result;
 	}
-
-	[self.navigationController pushViewController:controller animated:YES];
+	[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section

@@ -107,12 +107,6 @@
 	NSString *windScale;
 }
 
-- (void)dealloc
-{
-	[_ourContentView removeFromSuperview];
-	
-	
-}
 - (void)_init
 {
 	if (!_ourContentView) {

@@ -35,14 +35,6 @@
 	UILabel *textLabel;
 }
 
-#pragma mark Routines
-
-- (void)dealloc
-{
-	textLabel = nil;
-	self.view = nil;
-}
-
 #pragma mark -
 #pragma mark UIViewContoller Methods
 

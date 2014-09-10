@@ -43,12 +43,6 @@
 	UISwitch *SFXSwitch;
 }
 
-- (void)dealloc
-{
-	BGMSwitch = nil;
-	SFXSwitch = nil;
-}
-
 #pragma mark -
 #pragma mark UIViewContoller Methods
 

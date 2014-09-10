@@ -48,9 +48,9 @@
 {
 	UIWindow *window;
 	TWNavigationController *navigationController;
+	UISplitViewController *splitViewController;
 	UITabBarController *tabBarController;
 	AVAudioPlayer *audioPlayer;
 	id <GAITracker> __weak tracker;
 }
 @end
-

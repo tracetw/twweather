@@ -43,8 +43,6 @@
 	return (TWWeatherAppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
-
-
 #pragma mark -
 #pragma mark Application lifecycle
 
@@ -84,8 +82,14 @@
 	moreController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:2];
 	[controllerArray addObject:moreController];
 
-	TWNavigationController *ourNavigationController = [[TWNavigationController alloc] initWithRootViewController:self.tabBarController];
-	self.navigationController = ourNavigationController;
+	UINavigationController *mainNavigationController = [[TWNavigationController alloc] initWithRootViewController:self.tabBarController];
+	self.navigationController = [[TWNavigationController alloc] initWithRootViewController:tabBarController];
+
+	if ([[UIDevice currentDevice].systemVersion intValue] > 8) {
+		splitViewController = [[UISplitViewController alloc] init];
+		splitViewController.viewControllers = @[mainNavigationController];
+		splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
+	}
 
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:TWBGMPreference]) {
 		[self startPlayingBGM];
@@ -98,45 +102,62 @@
 #endif
 	tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-144934-10"];
 
-	window.rootViewController = self.navigationController;
+	if ([[UIDevice currentDevice].systemVersion intValue] > 8) {
+		window.rootViewController = splitViewController;
+	}
+	else {
+		window.rootViewController = self.navigationController;
+	}
+	window.backgroundColor = [UIColor clearColor];
 	[window makeKeyAndVisible];
+
 	self.tabBarController.viewControllers = controllerArray;
 	return YES;
 }
 
 - (void)pushViewController:(UIViewController *)controller animated:(BOOL)animated
 {
-	[self.navigationController pushViewController:controller animated:YES];
+	if ([[UIDevice currentDevice].systemVersion intValue] > 8) {
+		UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+		[splitViewController showDetailViewController:navController sender:nil];
+		return;
+	}
+	[self.navigationController pushViewController:controller animated:animated];
 }
 
 - (NSString *)imageNameWithTimeTitle:(NSString *)timeTitle description:(NSString *)description
 {
 	NSMutableString *string = [NSMutableString string];
-	if ([timeTitle isEqualToString:@"今晚至明晨"] || [timeTitle isEqualToString:@"明晚後天"])
-		[string setString:@"Night"];
-	else
-		[string setString:@"Day"];
 
-	if ([description isEqualToString:@"晴時多雲"])
-		[string appendString:@"SunnyCloudy"];
-	else if ([description hasPrefix:@"多雲時晴"])
-		[string appendString:@"CloudySunny"];
-	else if ([description hasPrefix:@"多雲時陰"])
-		[string appendString:@"CloudyGlommy"];
-	else if ([description hasPrefix:@"多雲短暫雨"])
-		[string appendString:@"GloomyRainy"];
-	else if ([description isEqualToString:@"多雲"])
-		[string appendString:@"Cloudy"];
-	else if ([description hasPrefix:@"陰天"])
-		[string appendString:@"Glommy"];
-	else if ([description hasPrefix:@"陰"])
-		[string appendString:@"Glommy"];
-	else if ([description hasPrefix:@"晴天"])
-		[string appendString:@"Sunny"];
-	else if ([description hasPrefix:@"晴"])
-		[string appendString:@"Sunny"];
-	else
+	if ([@[@"今晚至明晨", @"今晚明晨", @"明晚後天"] containsObject: timeTitle]) {
+		[string setString:@"Night"];
+	}
+	else {
+		[string setString:@"Day"];
+	}
+
+	NSDictionary *map = @{
+	  @"晴時多雲": @"SunnyCloudy",
+	  @"多雲時晴": @"CloudySunny",
+	  @"多雲時陰": @"CloudyGlommy",
+	  @"多雲短暫雨": @"GloomyRainy",
+	  @"多雲": @"Cloudy",
+	  @"陰天": @"Glommy",
+	  @"陰": @"Glommy",
+	  @"晴天": @"Sunny",
+	  @"晴": @"Sunny"};
+
+	BOOL found = NO;
+	for (NSString *key in [map allKeys]) {
+		if ([description hasPrefix:key]) {
+			found = YES;
+			[string appendString:map[key]];
+			break;
+		}
+	}
+	if (!found) {
 		[string appendString:@"Rainy"];
+	}
 
 	[string appendString:@".png"];
 	return string;

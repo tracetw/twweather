@@ -34,7 +34,6 @@
 #import "TWWeatherAppDelegate.h"
 
 @interface TWMoreViewController()
-- (IBAction)sendEmailAction:(id)sender;
 @end
 
 @implementation TWMoreViewController
@@ -48,9 +47,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
-		self.tableView.contentInset = UIEdgeInsetsMake(64.0, 0.0, 44.0, 0.0);
-	}
+	self.tableView.contentInset = UIEdgeInsetsMake(64.0, 0.0, 44.0, 0.0);
 }
 
 #pragma mark Table view methods

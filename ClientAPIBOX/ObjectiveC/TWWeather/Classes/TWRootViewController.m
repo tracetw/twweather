@@ -59,10 +59,7 @@
 {
 	[super viewDidAppear:animated];
 	self.screenName = @"Home";
-
-	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
-		self.tableView.contentInset = UIEdgeInsetsMake(64.0, 0.0, 44.0, 0.0);
-	}
+	self.tableView.contentInset = UIEdgeInsetsMake(64.0, 0.0, 44.0, 0.0);
 }
 
 - (void)didReceiveMemoryWarning
