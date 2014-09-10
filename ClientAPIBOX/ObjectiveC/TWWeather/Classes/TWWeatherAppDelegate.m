@@ -82,13 +82,13 @@
 	moreController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:2];
 	[controllerArray addObject:moreController];
 
-	UINavigationController *mainNavigationController = [[TWNavigationController alloc] initWithRootViewController:self.tabBarController];
-	self.navigationController = [[TWNavigationController alloc] initWithRootViewController:tabBarController];
-
-	if ([[UIDevice currentDevice].systemVersion intValue] > 8) {
+	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0) {
 		splitViewController = [[UISplitViewController alloc] init];
+		UINavigationController *mainNavigationController = [[TWNavigationController alloc] initWithRootViewController:self.tabBarController];
 		splitViewController.viewControllers = @[mainNavigationController];
-		splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
+	}
+	else {
+		self.navigationController = [[TWNavigationController alloc] initWithRootViewController:tabBarController];
 	}
 
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:TWBGMPreference]) {
@@ -102,7 +102,7 @@
 #endif
 	tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-144934-10"];
 
-	if ([[UIDevice currentDevice].systemVersion intValue] > 8) {
+	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0) {
 		window.rootViewController = splitViewController;
 	}
 	else {
@@ -117,7 +117,7 @@
 
 - (void)pushViewController:(UIViewController *)controller animated:(BOOL)animated
 {
-	if ([[UIDevice currentDevice].systemVersion intValue] > 8) {
+	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0) {
 		UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
 		[splitViewController showDetailViewController:navController sender:nil];
 		return;
