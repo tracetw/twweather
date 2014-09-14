@@ -29,6 +29,7 @@
 
 #import "TWImageViewController.h"
 #import "TWWeatherAppDelegate.h"
+#import "TWCommonHeader.h"
 
 @implementation TWImageViewController
 {
@@ -37,6 +38,7 @@
 	NSURL *_imageURL;
 
 	TWLoadingView *loadingView;
+	UIPopoverController *popoverController;
 	BOOL pushingPlurkComposer;
 }
 
@@ -81,7 +83,7 @@
 {
 	[super viewWillAppear:animated];
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -110,7 +112,15 @@
 {
 	NSArray *activityItems = @[_image];
 	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-	[self presentViewController:activityController animated:YES completion:nil];
+	if (isIPad()) {
+		if (!popoverController.popoverVisible) {
+			popoverController = [[UIPopoverController alloc] initWithContentViewController:activityController];
+			[popoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+		}
+	}
+	else {
+		[self presentViewController:activityController animated:YES completion:nil];
+	}
 }
 
 - (void)showLoadingView

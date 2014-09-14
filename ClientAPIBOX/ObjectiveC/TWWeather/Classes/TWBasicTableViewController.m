@@ -104,6 +104,11 @@ static NSString *CellIdentifier = @"Cell";
 	return cell;
 }
 
+//- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection
+//{
+//	[self.tableView reloadData];
+//}
+
 @synthesize tableView = _tableView;
 
 @end

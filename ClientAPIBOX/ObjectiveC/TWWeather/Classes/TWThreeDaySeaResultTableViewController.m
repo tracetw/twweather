@@ -31,13 +31,14 @@
 #import "TWWeatherAppDelegate.h"
 #import "TWThreeDaySeaCell.h"
 #import "TWAPIBox.h"
+#import "TWCommonHeader.h"
 
 @implementation TWThreeDaySeaResultTableViewController
 {
 	NSArray *forecastArray;
 	NSString *publishTime;
+	UIPopoverController *popoverController;
 }
-
 
 - (void)viewDidLoad
 {
@@ -70,7 +71,15 @@
 	NSString *text = [NSString stringWithFormat:@"%@ %@", feedTitle, description];
 	NSArray *activityItems = @[text];
 	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-	[self presentViewController:activityController animated:YES completion:nil];
+	if (isIPad()) {
+		if (!popoverController.popoverVisible) {
+			popoverController = [[UIPopoverController alloc] initWithContentViewController:activityController];
+			[popoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+		}
+	}
+	else {
+		[self presentViewController:activityController animated:YES completion:nil];
+	}
 }
 
 #pragma mark UITableViewDataSource and UITableViewDelegate

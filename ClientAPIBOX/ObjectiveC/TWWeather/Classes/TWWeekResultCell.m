@@ -110,6 +110,7 @@
 		CGRect cellFrame = CGRectMake(10, 1, 280, 50);
 		_ourContentView = [[TWWeekResultCellContentView alloc] initWithFrame:cellFrame];
 		_ourContentView.delegate = self;
+		_ourContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		[self.contentView addSubview:_ourContentView];
 	}
 }
@@ -127,11 +128,16 @@
 	if (day) {
 		d = [NSString stringWithFormat:@"%@ %@", date, day];
 	}
-	[d drawInRect:CGRectMake(10, 2, 200, 15) withFont:[UIFont systemFontOfSize:14.0]];
-	[description drawInRect:CGRectMake(10, 23, 200, 30) withFont:[UIFont boldSystemFontOfSize:18.0]];
+	[d drawInRect:CGRectMake(10, 2, 200, 15) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
+	[description drawInRect:CGRectMake(10, 23, CGRectGetWidth(self.bounds) - 120, 30) withAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.0]}];
 	NSString *temperatureString = [NSString stringWithFormat:@"%@ ℃", temperature];
-	[temperatureString drawInRect:CGRectMake(40, 23, 240, 15) withFont:[UIFont systemFontOfSize:12.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentRight];
+	NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+//	style.lineBreakMode = NSLineBreakByTruncatingTail;
+//	style.alignment = NSTextAlignmentRight;
+	CGRect textFrame = CGRectMake(CGRectGetWidth(self.bounds) - 100, 23, 100, 15);
+	[temperatureString drawInRect:textFrame withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12.0], NSParagraphStyleAttributeName:style}];
 }
+
 - (NSString *)_description
 {
 	NSMutableString *s = [NSMutableString string];
@@ -150,6 +156,11 @@
 {
 	[_ourContentView setNeedsDisplay];
 	[super setNeedsDisplay];
+}
+- (void)setFrame:(CGRect)frame
+{
+	[super setFrame:frame];
+	[self setNeedsDisplay];
 }
 
 #pragma mark -

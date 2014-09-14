@@ -31,6 +31,7 @@
 #import "TWWeatherAppDelegate+BGM.h"
 #import "TWRootViewController.h"
 #import "TWMoreViewController.h"
+#import "TWEmptyViewController.h"
 #import "TWFavoriteTableViewController.h"
 #import "TWAPIBox.h"
 #import "TWAPIBox+Info.h"
@@ -82,13 +83,17 @@
 	moreController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:2];
 	[controllerArray addObject:moreController];
 
-	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0) {
+	if (isIOS8()) {
 		splitViewController = [[UISplitViewController alloc] init];
-		UINavigationController *mainNavigationController = [[TWNavigationController alloc] initWithRootViewController:self.tabBarController];
-		splitViewController.viewControllers = @[mainNavigationController];
+		if ([splitViewController respondsToSelector:@selector(preferredDisplayMode)]) {
+			splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
+		}
+		UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.tabBarController];
+		TWEmptyViewController *emptyViewController = [[TWEmptyViewController alloc] init];
+		splitViewController.viewControllers = @[mainNavigationController, emptyViewController];
 	}
 	else {
-		self.navigationController = [[TWNavigationController alloc] initWithRootViewController:tabBarController];
+		self.navigationController = [[UINavigationController alloc] initWithRootViewController:tabBarController];
 	}
 
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:TWBGMPreference]) {
@@ -102,7 +107,7 @@
 #endif
 	tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-144934-10"];
 
-	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0) {
+	if (isIOS8()) {
 		window.rootViewController = splitViewController;
 	}
 	else {
@@ -117,9 +122,11 @@
 
 - (void)pushViewController:(UIViewController *)controller animated:(BOOL)animated
 {
-	if ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0) {
+	if (isIOS8()) {
 		UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-		[splitViewController showDetailViewController:navController sender:nil];
+		if ([splitViewController respondsToSelector:@selector(showDetailViewController:sender:)]) {
+			[splitViewController showDetailViewController:navController sender:nil];
+		}
 		return;
 	}
 	[self.navigationController pushViewController:controller animated:animated];

@@ -136,16 +136,20 @@
 }
 - (void)draw:(CGRect)bounds
 {
-	[dateString drawInRect:CGRectMake(10, 0, 260, 30) withFont:[UIFont boldSystemFontOfSize:20.0]];
-	[lunarDateString drawInRect:CGRectMake(10, 6, 260, 30) withFont:[UIFont systemFontOfSize:14.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentRight];
+	NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+	style.alignment = NSTextAlignmentRight;
+	style.lineBreakMode = NSLineBreakByClipping;
+
+	[dateString drawInRect:CGRectMake(10, 0, 260, 30) withAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:20.0]}];
+	[lunarDateString drawInRect:CGRectMake(10, 6, 260, 30) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0], NSParagraphStyleAttributeName: style}];
 	NSUInteger i = 0;
 	for (NSDictionary *tide in tides) {
 		NSString *name = tide[@"name"];
 		NSString *shortTime = tide[@"shortTime"];
 		NSString *height = tide[@"height"];
-		[name drawInRect:CGRectMake(10, 40.0 + 30 * i, 100, 40) withFont:[UIFont boldSystemFontOfSize:20.0]];
-		[shortTime drawInRect:CGRectMake(90, 44 + 30 * i, 80, 20) withFont:[UIFont systemFontOfSize:16.0]];
-		[[height stringByAppendingString:@"cm"] drawInRect:CGRectMake(160, 44 + 30 * i, 80, 20) withFont:[UIFont systemFontOfSize:16.0] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentRight];
+		[name drawInRect:CGRectMake(10, 40.0 + 30 * i, 100, 40) withAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:20.0]}];
+		[shortTime drawInRect:CGRectMake(90, 44 + 30 * i, 80, 20) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0]}];
+		[[height stringByAppendingString:@"cm"] drawInRect:CGRectMake(160, 44 + 30 * i, 80, 20) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0], NSParagraphStyleAttributeName: style}];
 		i++;
 	}
 }

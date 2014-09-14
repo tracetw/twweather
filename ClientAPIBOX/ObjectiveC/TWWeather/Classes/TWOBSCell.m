@@ -140,14 +140,14 @@
 	CGSize size = weatherImage.size;
 	[weatherImage drawInRect:CGRectMake(10, 0, size.width * 0.8, size.height * 0.8)];
 
-	[@"天氣現象" drawInRect:CGRectMake(100, 90, 160, 20) withFont:[UIFont boldSystemFontOfSize:16.0]];
-	[description drawInRect:CGRectMake(100, 140, 160, 80) withFont:[UIFont boldSystemFontOfSize:22.0]];
+	[@"天氣現象" drawInRect:CGRectMake(100, 90, 160, 20) withAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:16.0]}];
+	[description drawInRect:CGRectMake(100, 140, 160, 80) withAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:22.0]}];
 
-	[[NSString stringWithFormat:@"溫度: %@", temperature] drawInRect:CGRectMake(100, 190, 160, 20) withFont:[UIFont systemFontOfSize:14.0]];
-	[[NSString stringWithFormat:@"累積雨量: %@ 毫米", rain] drawInRect:CGRectMake(100, 210, 160, 20) withFont:[UIFont systemFontOfSize:14.0]];
-	[[NSString stringWithFormat:@"風向: %@", windDirection] drawInRect:CGRectMake(100, 230, 160, 20) withFont:[UIFont systemFontOfSize:14.0]];
-	[[NSString stringWithFormat:@"風力: %@ 級", windScale] drawInRect:CGRectMake(100, 250, 160, 20) withFont:[UIFont systemFontOfSize:14.0]];
-	[[NSString stringWithFormat:@"陣風: %@ 級", gustWindScale] drawInRect:CGRectMake(100, 270, 260, 20) withFont:[UIFont systemFontOfSize:14.0]];
+	[[NSString stringWithFormat:@"溫度: %@", temperature] drawInRect:CGRectMake(100, 190, 160, 20) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
+	[[NSString stringWithFormat:@"累積雨量: %@ 毫米", rain] drawInRect:CGRectMake(100, 210, 160, 20) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
+	[[NSString stringWithFormat:@"風向: %@", windDirection] drawInRect:CGRectMake(100, 230, 160, 20) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
+	[[NSString stringWithFormat:@"風力: %@ 級", windScale] drawInRect:CGRectMake(100, 250, 160, 20) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
+	[[NSString stringWithFormat:@"陣風: %@ 級", gustWindScale] drawInRect:CGRectMake(100, 270, 260, 20) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
 }
 - (IBAction)copy:(id)sender
 {

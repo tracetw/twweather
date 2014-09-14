@@ -46,7 +46,7 @@
 	scrollView.scrollEnabled = YES;
 	self.view = scrollView;
 
-	UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
+	UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 400)];
 	contentView.backgroundColor = [UIColor whiteColor];
 	[self.view addSubview:contentView];
 	scrollView.contentSize = contentView.frame.size;
@@ -55,27 +55,38 @@
 	NSDictionary *loaclizedDictionary = [bundle localizedInfoDictionary];
 	NSDictionary *infoDictionary = [bundle infoDictionary];
 
-	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 30)];
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, CGRectGetWidth(self.view.bounds) - 40, 30)];
+	label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	label.font = [UIFont boldSystemFontOfSize:20.0];
 	label.text = loaclizedDictionary[@"CFBundleDisplayName"];
 	self.titleLabel = label;
 	[contentView addSubview:self.titleLabel];
 
-	label = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, 280, 60)];
+	label = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, CGRectGetWidth(self.view.bounds) - 40, 60)];
+	label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	label.font = [UIFont systemFontOfSize:14.0];
-	label.numberOfLines = 3;
+	label.numberOfLines = -1;
 	label.text = [NSString stringWithFormat:NSLocalizedString(@"Version: %@\n%@", @""), infoDictionary[@"CFBundleVersion"], loaclizedDictionary[@"NSHumanReadableCopyright"]];
 	self.copyrightLabel = label;
 	[contentView addSubview:self.copyrightLabel];
 
-	label = [[UILabel alloc] initWithFrame:CGRectMake(20, 120, 280, 300)];
+	label = [[UILabel alloc] initWithFrame:CGRectMake(20, 120, CGRectGetWidth(self.view.bounds) - 40, 300)];
+	label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	label.font = [UIFont systemFontOfSize:12.0];
-	label.numberOfLines = 100;
+	label.numberOfLines = -1;
 	NSMutableString *text = [NSMutableString stringWithString:NSLocalizedString(@"Data comes from Central Weather Bureau\n\n", @"")];
 	[text appendString:[NSString stringWithFormat:NSLocalizedString(@"%@ copyright ifno" , @""), loaclizedDictionary[@"CFBundleDisplayName"]]];
 	label.text = text;
 	self.externalLibraryLabel = label;
 	[contentView addSubview:self.externalLibraryLabel];
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection
+{
+	UIScrollView *view = (UIScrollView *)self.view;
+	UIView *rootView = view.subviews[0];
+	rootView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 400);
+	view.contentSize = rootView.frame.size;
 }
 
 - (void)viewDidLoad

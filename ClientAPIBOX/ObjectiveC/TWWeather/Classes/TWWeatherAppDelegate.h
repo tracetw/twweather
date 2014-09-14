@@ -28,7 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <AVFoundation/AVFoundation.h>
-#import "TWNavigationController.h"
 
 /*! The application delegate obejct for TW Weather. */
 @interface TWWeatherAppDelegate : NSObject <UIApplicationDelegate, AVAudioPlayerDelegate>
@@ -47,7 +46,7 @@
 @interface TWWeatherAppDelegate ()
 {
 	UIWindow *window;
-	TWNavigationController *navigationController;
+	UINavigationController *navigationController;
 	UISplitViewController *splitViewController;
 	UITabBarController *tabBarController;
 	AVAudioPlayer *audioPlayer;

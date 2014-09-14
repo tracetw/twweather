@@ -35,7 +35,6 @@
 		D41E1D391084288400A6675D /* bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D41E1D381084288400A6675D /* bgm.mp3 */; };
 		D41E1D3E1084289D00A6675D /* TWWeatherAppDelegate+BGM.m in Sources */ = {isa = PBXBuildFile; fileRef = D41E1D3D1084289D00A6675D /* TWWeatherAppDelegate+BGM.m */; };
 		D41E1D4E108428F600A6675D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41E1D4D108428F600A6675D /* AVFoundation.framework */; };
-		D41E1D8F10842B6600A6675D /* TWSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41E1D8E10842B6600A6675D /* TWSettingTableViewController.m */; };
 		D426D6B7102D142C00BBBEB3 /* TWOBSResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D426D6B6102D142C00BBBEB3 /* TWOBSResultTableViewController.m */; };
 		D426D6DD102D17D400BBBEB3 /* TWOBSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D426D6DC102D17D400BBBEB3 /* TWOBSCell.m */; };
 		D426D8CF102D377600BBBEB3 /* TWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D426D8CE102D377600BBBEB3 /* TWLoadingView.m */; };
@@ -55,7 +54,6 @@
 		D471EBB8102F476100768C5B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E9C6E410223D6200B955C7 /* SystemConfiguration.framework */; };
 		D471EBB9102F476100768C5B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E9C70010223DBB00B955C7 /* CFNetwork.framework */; };
 		D471EBD8102F47D400768C5B /* TWAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = D471EBD7102F47D400768C5B /* TWAPITest.m */; };
-		D47B55AA11054D830008FE6B /* TWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D47B55A911054D830008FE6B /* TWNavigationController.m */; };
 		D489E3851023DF2500189460 /* TWAPIBox+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = D489E3831023DF2500189460 /* TWAPIBox+Cache.m */; };
 		D489E3AC1023E00100189460 /* DayCloudy.png in Resources */ = {isa = PBXBuildFile; fileRef = D489E3991023E00100189460 /* DayCloudy.png */; };
 		D489E3AD1023E00100189460 /* DayCloudyGlommy.png in Resources */ = {isa = PBXBuildFile; fileRef = D489E39A1023E00100189460 /* DayCloudyGlommy.png */; };
@@ -80,6 +78,7 @@
 		D49F82CF1198962600051439 /* TWFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F82CE1198962600051439 /* TWFetchOperation.m */; };
 		D49F82D01198962600051439 /* TWFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F82CE1198962600051439 /* TWFetchOperation.m */; };
 		D4A09D3410D95D6000013733 /* TWLocationAddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A09D3310D95D6000013733 /* TWLocationAddTableViewController.m */; };
+		D4AF284019C5DBCB00BF1BBC /* TWEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AF283F19C5DBCB00BF1BBC /* TWEmptyViewController.m */; };
 		D4B3BA7F1104B6EA003E5E3D /* TWFavoriteSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B3BA7E1104B6EA003E5E3D /* TWFavoriteSectionCell.m */; };
 		D4B3BE6C1104E0C6003E5E3D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B3BE6B1104E0C6003E5E3D /* libxml2.dylib */; };
 		D4B3E9A510E521C800B6D5D3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B3E9A410E521C800B6D5D3 /* MobileCoreServices.framework */; };
@@ -194,8 +193,6 @@
 		D41E1D3C1084289D00A6675D /* TWWeatherAppDelegate+BGM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TWWeatherAppDelegate+BGM.h"; sourceTree = "<group>"; };
 		D41E1D3D1084289D00A6675D /* TWWeatherAppDelegate+BGM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TWWeatherAppDelegate+BGM.m"; sourceTree = "<group>"; };
 		D41E1D4D108428F600A6675D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		D41E1D8D10842B6600A6675D /* TWSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSettingTableViewController.h; sourceTree = "<group>"; };
-		D41E1D8E10842B6600A6675D /* TWSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSettingTableViewController.m; sourceTree = "<group>"; };
 		D41E1DD110842E2600A6675D /* TWCommonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCommonHeader.h; sourceTree = "<group>"; };
 		D426D6B5102D142C00BBBEB3 /* TWOBSResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWOBSResultTableViewController.h; sourceTree = "<group>"; };
 		D426D6B6102D142C00BBBEB3 /* TWOBSResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWOBSResultTableViewController.m; sourceTree = "<group>"; };
@@ -220,8 +217,6 @@
 		D471EAB9102F460600768C5B /* TWTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TWTests-Info.plist"; sourceTree = "<group>"; };
 		D471EBD6102F47D400768C5B /* TWAPITest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWAPITest.h; path = ../TWAPIBox/Tests/TWAPITest.h; sourceTree = SOURCE_ROOT; };
 		D471EBD7102F47D400768C5B /* TWAPITest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWAPITest.m; path = ../TWAPIBox/Tests/TWAPITest.m; sourceTree = SOURCE_ROOT; wrapsLines = 1; };
-		D47B55A811054D830008FE6B /* TWNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWNavigationController.h; sourceTree = "<group>"; };
-		D47B55A911054D830008FE6B /* TWNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWNavigationController.m; sourceTree = "<group>"; };
 		D489E3831023DF2500189460 /* TWAPIBox+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TWAPIBox+Cache.m"; path = "../TWAPIBox/TWAPIBox+Cache.m"; sourceTree = SOURCE_ROOT; };
 		D489E3841023DF2500189460 /* TWAPIBox+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TWAPIBox+Cache.h"; path = "../TWAPIBox/TWAPIBox+Cache.h"; sourceTree = SOURCE_ROOT; };
 		D489E3991023E00100189460 /* DayCloudy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DayCloudy.png; path = Images/DayCloudy.png; sourceTree = "<group>"; };
@@ -251,6 +246,8 @@
 		D49F82CE1198962600051439 /* TWFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWFetchOperation.m; path = ../TWAPIBox/TWFetchOperation.m; sourceTree = SOURCE_ROOT; };
 		D4A09D3210D95D6000013733 /* TWLocationAddTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLocationAddTableViewController.h; sourceTree = "<group>"; };
 		D4A09D3310D95D6000013733 /* TWLocationAddTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLocationAddTableViewController.m; sourceTree = "<group>"; };
+		D4AF283E19C5DBCB00BF1BBC /* TWEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEmptyViewController.h; sourceTree = "<group>"; };
+		D4AF283F19C5DBCB00BF1BBC /* TWEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEmptyViewController.m; sourceTree = "<group>"; };
 		D4B3BA7D1104B6E9003E5E3D /* TWFavoriteSectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWFavoriteSectionCell.h; sourceTree = "<group>"; };
 		D4B3BA7E1104B6EA003E5E3D /* TWFavoriteSectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWFavoriteSectionCell.m; sourceTree = "<group>"; };
 		D4B3BE6B1104E0C6003E5E3D /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -598,12 +595,12 @@
 			isa = PBXGroup;
 			children = (
 				D41E1DD110842E2600A6675D /* TWCommonHeader.h */,
-				D47B55A811054D830008FE6B /* TWNavigationController.h */,
-				D47B55A911054D830008FE6B /* TWNavigationController.m */,
 				1D3623240D0F684500981E51 /* TWWeatherAppDelegate.h */,
 				1D3623250D0F684500981E51 /* TWWeatherAppDelegate.m */,
 				D41E1D3C1084289D00A6675D /* TWWeatherAppDelegate+BGM.h */,
 				D41E1D3D1084289D00A6675D /* TWWeatherAppDelegate+BGM.m */,
+				D4AF283E19C5DBCB00BF1BBC /* TWEmptyViewController.h */,
+				D4AF283F19C5DBCB00BF1BBC /* TWEmptyViewController.m */,
 			);
 			name = "App Delegate";
 			sourceTree = "<group>";
@@ -613,8 +610,6 @@
 			children = (
 				D489E5A41024EB3F00189460 /* TWAboutViewController.h */,
 				D489E5A51024EB3F00189460 /* TWAboutViewController.m */,
-				D41E1D8D10842B6600A6675D /* TWSettingTableViewController.h */,
-				D41E1D8E10842B6600A6675D /* TWSettingTableViewController.m */,
 			);
 			name = "Other Controllers";
 			sourceTree = "<group>";
@@ -1030,10 +1025,9 @@
 				D4EDBEF31082032900C9EBFE /* TWWebController.m in Sources */,
 				D46046011083B40E00B97EEF /* TWMoreViewController.m in Sources */,
 				D41E1D3E1084289D00A6675D /* TWWeatherAppDelegate+BGM.m in Sources */,
-				D41E1D8F10842B6600A6675D /* TWSettingTableViewController.m in Sources */,
 				D4A09D3410D95D6000013733 /* TWLocationAddTableViewController.m in Sources */,
 				D4B3BA7F1104B6EA003E5E3D /* TWFavoriteSectionCell.m in Sources */,
-				D47B55AA11054D830008FE6B /* TWNavigationController.m in Sources */,
+				D4AF284019C5DBCB00BF1BBC /* TWEmptyViewController.m in Sources */,
 				D49F82CF1198962600051439 /* TWFetchOperation.m in Sources */,
 				D40803AF1198BDA40042091E /* TWGlobalTableViewController.m in Sources */,
 				D40D3AE31835ED8E005C98A9 /* TWBasicViewController.m in Sources */,
@@ -1133,7 +1127,7 @@
 				PRODUCT_NAME = TWWeather;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
@@ -1167,7 +1161,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
@@ -1356,7 +1350,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Distribution;
@@ -1479,6 +1473,7 @@
 				D404255C19C0A5730053A89F /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D471EABC102F460700768C5B /* Build configuration list for PBXNativeTarget "TWTests" */ = {
 			isa = XCConfigurationList;

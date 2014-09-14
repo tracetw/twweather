@@ -29,11 +29,14 @@
 
 #import "TWOverviewViewController.h"
 #import "TWWeatherAppDelegate.h"
+#import "TWCommonHeader.h"
 
 @implementation TWOverviewViewController
 {
 	UITextView *textView;
 	NSString *_text;
+
+	UIPopoverController *popoverController;
 }
 
 #pragma mark UIViewContoller Methods
@@ -78,7 +81,15 @@
 	NSString *text = [NSString stringWithFormat:@"%@ %@", feedTitle, description];
 	NSArray *activityItems = @[text];
 	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-	[self presentViewController:activityController animated:YES completion:nil];
+	if (isIPad()) {
+		if (!popoverController.popoverVisible) {
+			popoverController = [[UIPopoverController alloc] initWithContentViewController:activityController];
+			[popoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+		}
+	}
+	else {
+		[self presentViewController:activityController animated:YES completion:nil];
+	}
 }
 
 @synthesize textView;

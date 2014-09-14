@@ -27,3 +27,12 @@
 
 #define TWBGMPreference @"TWBGMPreference"
 #define TWSFXPreference @"TWSFXPreference"
+
+
+NS_INLINE BOOL isIOS8() {
+	return ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0);
+}
+
+NS_INLINE BOOL isIPad() {
+	return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
+}

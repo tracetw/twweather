@@ -99,7 +99,8 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	self.tableView = aTableView;
 	[self.view addSubview:self.tableView];
 
-	loadingView = [[TWLoadingView alloc] initWithFrame:CGRectMake(100, 100, 120, 120)];
+	CGFloat w = (CGRectGetWidth(self.tableView.bounds) - 120) / 2;
+	loadingView = [[TWLoadingView alloc] initWithFrame:CGRectMake(w, 120, 120, 120)];
 }
 
 - (void)viewDidLoad
@@ -231,11 +232,16 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 - (void)loadData
 {
 	[self showLoadingView];
+
 	[[TWAPIBox sharedBox] fetchAllForecastsWithDelegate:self userInfo:nil];
 	[[TWAPIBox sharedBox] fetchWarningsWithDelegate:self userInfo:nil];
 }
 - (void)showLoadingView
 {
+	CGFloat w = (CGRectGetWidth(self.tableView.bounds) - 120) / 2;
+	loadingView.frame = CGRectMake(w, 120, 120, 120);
+	loadingView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
+
 	[self.view addSubview:loadingView];
 	[loadingView startAnimating];
 	isLoading = YES;
@@ -350,8 +356,6 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:NO];
-
 	if (isLoading || isLoadingWeek) {
 		return;
 	}

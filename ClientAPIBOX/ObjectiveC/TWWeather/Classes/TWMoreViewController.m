@@ -28,7 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "TWMoreViewController.h"
-#import "TWSettingTableViewController.h"
 #import "TWAboutViewController.h"
 #import "TWWebController.h"
 #import "TWWeatherAppDelegate.h"
@@ -62,7 +61,7 @@
 		return 3;
 	}
 	else if (section == 1) {
-		return 2;
+		return 1;
 	}
 	return 0;
 }
@@ -102,16 +101,7 @@
 		}
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		cell.imageView.image = nil;
-		switch (indexPath.row) {
-			case 0:
-				cell.textLabel.text = NSLocalizedString(@"Settings", @"");
-				break;
-			case 1:
-				cell.textLabel.text = NSLocalizedString(@"About", @"");
-				break;
-			default:
-				break;
-		}
+		cell.textLabel.text = NSLocalizedString(@"About", @"");
 		return cell;
 	}
 
@@ -155,27 +145,9 @@
 
 	}
 	else if (indexPath.section == 1) {
-		if (indexPath.row == 0) {
-			UIViewController *controller = [[TWSettingTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-			[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
-		}
-		else if (indexPath.row == 1) {
-			UIViewController *controller = [[TWAboutViewController alloc] init];
-			[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
-		}
+		UIViewController *controller = [[TWAboutViewController alloc] init];
+		[[TWWeatherAppDelegate sharedDelegate] pushViewController:controller animated:YES];
 	}
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	return 44.0;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-	return 0.0;
-}
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-	return nil;
 }
 
 @end
