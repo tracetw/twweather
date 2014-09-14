@@ -85,12 +85,15 @@
 
 	if (isIOS8()) {
 		splitViewController = [[UISplitViewController alloc] init];
-		if ([splitViewController respondsToSelector:@selector(preferredDisplayMode)]) {
-			splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
-		}
+		splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
 		UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.tabBarController];
 		TWEmptyViewController *emptyViewController = [[TWEmptyViewController alloc] init];
-		splitViewController.viewControllers = @[mainNavigationController, emptyViewController];
+		if (isIPad()) {
+			splitViewController.viewControllers = @[mainNavigationController, emptyViewController];
+		}
+		else {
+			splitViewController.viewControllers = @[mainNavigationController];
+		}
 	}
 	else {
 		self.navigationController = [[UINavigationController alloc] initWithRootViewController:tabBarController];

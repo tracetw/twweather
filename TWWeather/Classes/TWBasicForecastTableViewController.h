@@ -50,4 +50,5 @@
 @property (weak, nonatomic) NSArray *array;
 @property (assign, nonatomic) UITableViewStyle style;
 @property (strong, nonatomic) UITableView *tableView;
+
 @end
