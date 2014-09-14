@@ -1,2 +1,2 @@
  language: objective-c
- script: xcodebuild -project ClientAPIBOX/ObjectiveC/TWWeather/TWWeather.xcodeproj -sdk iphonesimulator -arch i386 clean build
+ script: xcodebuild -project TWWeather/TWWeather.xcodeproj -sdk iphonesimulator -arch i386 clean build
