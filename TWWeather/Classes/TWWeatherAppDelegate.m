@@ -28,7 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "TWWeatherAppDelegate.h"
-#import "TWWeatherAppDelegate+BGM.h"
 #import "TWRootViewController.h"
 #import "TWMoreViewController.h"
 #import "TWEmptyViewController.h"
@@ -97,10 +96,6 @@
 	}
 	else {
 		self.navigationController = [[UINavigationController alloc] initWithRootViewController:tabBarController];
-	}
-
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:TWBGMPreference]) {
-		[self startPlayingBGM];
 	}
 
 	[GAI sharedInstance].trackUncaughtExceptions = YES;
