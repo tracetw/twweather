@@ -56,6 +56,7 @@
 
 - (void)viewDidLoad
 {
+	[super viewDidLoad];
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(navBarAction:)];
 	self.navigationItem.rightBarButtonItem = item;
 	self.screenName = @"48 Hours Details";

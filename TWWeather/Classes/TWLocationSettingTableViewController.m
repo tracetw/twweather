@@ -208,7 +208,7 @@
 
 - (void)locationAddTableViewController:(TWLocationAddTableViewController *)controller didSelectedLocationIdentifier:(NSUInteger)locationIdentifier;
 {
-	NSNumber *number = [NSNumber numberWithInt:locationIdentifier];
+	NSNumber *number = [NSNumber numberWithInteger:locationIdentifier];
 	[_filterArray addObject:number];
 	[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[_filterArray count] - 1 inSection:1]] withRowAnimation:YES];
 	if (delegate && [delegate respondsToSelector:@selector(settingController:didUpdateFilter:)]) {
