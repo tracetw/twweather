@@ -283,13 +283,17 @@ static TWAPIBox *apibox = nil;
 
 #pragma mark -
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
 - (void)performAction:(NSDictionary *)actionDictionary
 {
 	NSString *actionString = actionDictionary[@"action"];
 	SEL action = NSSelectorFromString(actionString);
 	LFHTTPRequest *request = actionDictionary[@"request"];
 	NSData *data = actionDictionary[@"data"];
-    objc_msgSend(self, action, request, data);
+//    objc_msgSend(self, action, request, data);
+	[self performSelector:action withObject:request withObject:data];
 }
 
 - (void)performFailedAction:(NSDictionary *)actionDictionary
@@ -298,8 +302,11 @@ static TWAPIBox *apibox = nil;
 	SEL action = NSSelectorFromString(actionString);
 	LFHTTPRequest *request = actionDictionary[@"request"];
 	NSString *error = actionDictionary[@"error"];
-	objc_msgSend(self, action, request, error);
+//	objc_msgSend(self, action, request, error);
+	[self performSelector:action withObject:request withObject:error];
 }
+
+#pragma clang diagnostic pop
 
 - (void)httpRequestDidComplete:(LFHTTPRequest *)request
 {

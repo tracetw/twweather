@@ -23,7 +23,6 @@
 		D40425CB19C0A5AB0053A89F /* libExternalLibraries.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D404254B19C0A5730053A89F /* libExternalLibraries.a */; };
 		D40803AF1198BDA40042091E /* TWGlobalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40803AE1198BDA40042091E /* TWGlobalTableViewController.m */; };
 		D40803D71198C1730042091E /* TWGlobalResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40803D61198C1730042091E /* TWGlobalResultTableViewController.m */; };
-		D40D3ADF1835EB13005C98A9 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D40D3ADE1835EB13005C98A9 /* libGoogleAnalyticsServices.a */; };
 		D40D3AE31835ED8E005C98A9 /* TWBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40D3AE21835ED8E005C98A9 /* TWBasicViewController.m */; };
 		D40D3AE91835EF03005C98A9 /* TWBasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40D3AE81835EF03005C98A9 /* TWBasicTableViewController.m */; };
 		D40D3AEB1835F0C1005C98A9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D40D3AEA1835F0C1005C98A9 /* CoreData.framework */; };
@@ -76,6 +75,7 @@
 		D49F82D01198962600051439 /* TWFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F82CE1198962600051439 /* TWFetchOperation.m */; };
 		D4A09D3410D95D6000013733 /* TWLocationAddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A09D3310D95D6000013733 /* TWLocationAddTableViewController.m */; };
 		D4AF284019C5DBCB00BF1BBC /* TWEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AF283F19C5DBCB00BF1BBC /* TWEmptyViewController.m */; };
+		D4AF284D19C5F02800BF1BBC /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AF284119C5EFCA00BF1BBC /* libGoogleAnalyticsServices.a */; };
 		D4B3BA7F1104B6EA003E5E3D /* TWFavoriteSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B3BA7E1104B6EA003E5E3D /* TWFavoriteSectionCell.m */; };
 		D4B3BE6C1104E0C6003E5E3D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B3BE6B1104E0C6003E5E3D /* libxml2.dylib */; };
 		D4B3E9A510E521C800B6D5D3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B3E9A410E521C800B6D5D3 /* MobileCoreServices.framework */; };
@@ -169,13 +169,6 @@
 		D40803AE1198BDA40042091E /* TWGlobalTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWGlobalTableViewController.m; sourceTree = "<group>"; };
 		D40803D51198C1730042091E /* TWGlobalResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWGlobalResultTableViewController.h; sourceTree = "<group>"; };
 		D40803D61198C1730042091E /* TWGlobalResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWGlobalResultTableViewController.m; sourceTree = "<group>"; };
-		D40D3AD61835EAF4005C98A9 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		D40D3AD71835EAF4005C98A9 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		D40D3AD81835EAF4005C98A9 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
-		D40D3AD91835EAF4005C98A9 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
-		D40D3ADA1835EAF4005C98A9 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		D40D3ADB1835EAF4005C98A9 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		D40D3ADE1835EB13005C98A9 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ../../libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		D40D3AE11835ED8E005C98A9 /* TWBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWBasicViewController.h; sourceTree = "<group>"; };
 		D40D3AE21835ED8E005C98A9 /* TWBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWBasicViewController.m; sourceTree = "<group>"; };
 		D40D3AE71835EF03005C98A9 /* TWBasicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWBasicTableViewController.h; sourceTree = "<group>"; };
@@ -241,6 +234,17 @@
 		D4A09D3310D95D6000013733 /* TWLocationAddTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLocationAddTableViewController.m; sourceTree = "<group>"; };
 		D4AF283E19C5DBCB00BF1BBC /* TWEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEmptyViewController.h; sourceTree = "<group>"; };
 		D4AF283F19C5DBCB00BF1BBC /* TWEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEmptyViewController.m; sourceTree = "<group>"; };
+		D4AF284119C5EFCA00BF1BBC /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ../../../GoogleAnalyticsServicesiOS_3.09/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		D4AF284319C5EFD800BF1BBC /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = ../../../GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAI.h; sourceTree = "<group>"; };
+		D4AF284419C5EFD800BF1BBC /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = ../../../GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		D4AF284519C5EFD800BF1BBC /* GAIEcommerceFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = ../../../GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAIEcommerceFields.h; sourceTree = "<group>"; };
+		D4AF284619C5EFD800BF1BBC /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = ../../../GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		D4AF284719C5EFD800BF1BBC /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = ../../../GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		D4AF284819C5EFD800BF1BBC /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = ../../../GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		D4AF284919C5EFD800BF1BBC /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = ../../../GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAIFields.h; sourceTree = "<group>"; };
+		D4AF284A19C5EFD800BF1BBC /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = ../../../GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAILogger.h; sourceTree = "<group>"; };
+		D4AF284B19C5EFD800BF1BBC /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = ../../../GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAITrackedViewController.h; sourceTree = "<group>"; };
+		D4AF284C19C5EFD800BF1BBC /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = ../../../GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAITracker.h; sourceTree = "<group>"; };
 		D4B3BA7D1104B6E9003E5E3D /* TWFavoriteSectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWFavoriteSectionCell.h; sourceTree = "<group>"; };
 		D4B3BA7E1104B6EA003E5E3D /* TWFavoriteSectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWFavoriteSectionCell.m; sourceTree = "<group>"; };
 		D4B3BE6B1104E0C6003E5E3D /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -331,11 +335,11 @@
 				D489E5DC1024EF6000189460 /* MessageUI.framework in Frameworks */,
 				D41E1D4E108428F600A6675D /* AVFoundation.framework in Frameworks */,
 				D4B3E9A510E521C800B6D5D3 /* MobileCoreServices.framework in Frameworks */,
+				D4AF284D19C5F02800BF1BBC /* libGoogleAnalyticsServices.a in Frameworks */,
 				D42DDA0F10E932CF00F24E16 /* Security.framework in Frameworks */,
 				D40D3AEF1835F0D8005C98A9 /* libz.dylib in Frameworks */,
 				D4B3BE6C1104E0C6003E5E3D /* libxml2.dylib in Frameworks */,
 				D41B18301107FE0200D78B27 /* AudioToolbox.framework in Frameworks */,
-				D40D3ADF1835EB13005C98A9 /* libGoogleAnalyticsServices.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,13 +670,17 @@
 		D40D3AD51835EAF4005C98A9 /* GoogleAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				D40D3ADE1835EB13005C98A9 /* libGoogleAnalyticsServices.a */,
-				D40D3AD61835EAF4005C98A9 /* GAI.h */,
-				D40D3AD71835EAF4005C98A9 /* GAIDictionaryBuilder.h */,
-				D40D3AD81835EAF4005C98A9 /* GAIFields.h */,
-				D40D3AD91835EAF4005C98A9 /* GAILogger.h */,
-				D40D3ADA1835EAF4005C98A9 /* GAITrackedViewController.h */,
-				D40D3ADB1835EAF4005C98A9 /* GAITracker.h */,
+				D4AF284119C5EFCA00BF1BBC /* libGoogleAnalyticsServices.a */,
+				D4AF284319C5EFD800BF1BBC /* GAI.h */,
+				D4AF284419C5EFD800BF1BBC /* GAIDictionaryBuilder.h */,
+				D4AF284519C5EFD800BF1BBC /* GAIEcommerceFields.h */,
+				D4AF284619C5EFD800BF1BBC /* GAIEcommerceProduct.h */,
+				D4AF284719C5EFD800BF1BBC /* GAIEcommerceProductAction.h */,
+				D4AF284819C5EFD800BF1BBC /* GAIEcommercePromotion.h */,
+				D4AF284919C5EFD800BF1BBC /* GAIFields.h */,
+				D4AF284A19C5EFD800BF1BBC /* GAILogger.h */,
+				D4AF284B19C5EFD800BF1BBC /* GAITrackedViewController.h */,
+				D4AF284C19C5EFD800BF1BBC /* GAITracker.h */,
 			);
 			name = GoogleAnalytics;
 			path = ../External/GoogleAnalyticsServicesiOS_3.02/GoogleAnalytics/Library;
@@ -1100,13 +1108,13 @@
 					"$(inherited)",
 					../External/GoogleAnalyticsServicesiOS_3.02/GoogleAnalytics/Library,
 					../External/GoogleAnalyticsServicesiOS_3.02,
+					/Users/zonble/Work/other/twweather/External/GoogleAnalyticsServicesiOS_3.09,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TWWeather;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1117,8 +1125,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TWWeather_Prefix.pch;
@@ -1134,13 +1142,13 @@
 					"$(inherited)",
 					../External/GoogleAnalyticsServicesiOS_3.02/GoogleAnalytics/Library,
 					../External/GoogleAnalyticsServicesiOS_3.02,
+					/Users/zonble/Work/other/twweather/External/GoogleAnalyticsServicesiOS_3.09,
 				);
 				PRODUCT_NAME = TWWeather;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1208,7 +1216,6 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1244,7 +1251,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1280,7 +1286,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Distribution;
 		};
@@ -1306,8 +1311,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TWWeather_Prefix.pch;
@@ -1323,13 +1328,13 @@
 					"$(inherited)",
 					../External/GoogleAnalyticsServicesiOS_3.02/GoogleAnalytics/Library,
 					../External/GoogleAnalyticsServicesiOS_3.02,
+					/Users/zonble/Work/other/twweather/External/GoogleAnalyticsServicesiOS_3.09,
 				);
 				PRODUCT_NAME = TWWeather;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Distribution;
 		};

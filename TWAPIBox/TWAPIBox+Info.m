@@ -97,19 +97,19 @@
 - (void)initWeekTravelLocations
 {
 	_weekTravelLocations = [[NSMutableArray alloc] init];
-	[self addToArray:_weekTravelLocations name:"陽明山" identifier:@"Yang-ming-shan"];
+	[self addToArray:_weekTravelLocations name:"陽明山" identifier:@"Yangmingshan"];
 	[self addToArray:_weekTravelLocations name:"拉拉山" identifier:@"Lalashan"];
 	[self addToArray:_weekTravelLocations name:"梨山" identifier:@"Lishan"];
-	[self addToArray:_weekTravelLocations name:"合歡山" identifier:@"Hohuan-shan"];
-	[self addToArray:_weekTravelLocations name:"日月潭" identifier:@"Sun-Moon-Lake"];
-	[self addToArray:_weekTravelLocations name:"溪頭" identifier:@"Hsitou"];
+	[self addToArray:_weekTravelLocations name:"合歡山" identifier:@"HehuanMountain"];
+	[self addToArray:_weekTravelLocations name:"日月潭" identifier:@"SunMoonLake"];
+	[self addToArray:_weekTravelLocations name:"溪頭" identifier:@"Xitou"];
 	[self addToArray:_weekTravelLocations name:"阿里山" identifier:@"Alishan"];
 	[self addToArray:_weekTravelLocations name:"玉山" identifier:@"Yushan"];
 	[self addToArray:_weekTravelLocations name:"墾丁" identifier:@"Kenting"];
-	[self addToArray:_weekTravelLocations name:"龍洞" identifier:@"Lung-tung"];
+	[self addToArray:_weekTravelLocations name:"龍洞" identifier:@"Longdong"];
 	[self addToArray:_weekTravelLocations name:"太魯閣" identifier:@"Taroko"];
-	[self addToArray:_weekTravelLocations name:"三仙台" identifier:@"San-shiantai"];
-	[self addToArray:_weekTravelLocations name:"綠島" identifier:@"Lu-Tao"];
+	[self addToArray:_weekTravelLocations name:"三仙台" identifier:@"Sanxiantai"];
+	[self addToArray:_weekTravelLocations name:"綠島" identifier:@"Ludao"];
 	[self addToArray:_weekTravelLocations name:"蘭嶼" identifier:@"Lanyu"];
 }
 - (void)initThreeDaySeaLocations
