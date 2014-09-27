@@ -1133,8 +1133,8 @@
 					/Users/zonble/Work/other/twweather/External/GoogleAnalyticsServicesiOS_3.09,
 				);
 				PRODUCT_NAME = TWWeather;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "2b593328-df92-4b2f-9243-8e10de678bba";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2b593328-df92-4b2f-9243-8e10de678bba";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -67,7 +67,7 @@
 {
 	NSMutableString *attachmentDescription = [NSMutableString string];
 	[attachmentDescription appendFormat:@"※ %@ - %@ ", self.validBeginTime, self.validEndTime];
-	[attachmentDescription appendFormat:@"%@ ", self.description];
+	[attachmentDescription appendFormat:@"%@ ", self.textDescription];
 	[attachmentDescription appendFormat:@"%@ ", self.wave];
 	[attachmentDescription appendFormat:@"%@ ", self.waveLevel];
 	[attachmentDescription appendFormat:@"%@ ", self.wind];
@@ -110,7 +110,7 @@
 	if (cell == nil) {
 		cell = [[TWNearSeaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
-	cell.description = self.description;
+	cell.textDescription = self.textDescription;
 	cell.validBeginTime = self.validBeginTime;
 	cell.validEndTime = self.validEndTime;
 	cell.wave = self.wave;

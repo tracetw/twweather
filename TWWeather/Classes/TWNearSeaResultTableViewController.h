@@ -31,7 +31,7 @@
 
 @interface TWNearSeaResultTableViewController : TWBasicTableViewController <UIActionSheetDelegate>
 
-@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *textDescription;
 @property (strong, nonatomic) NSString *publishTime;
 @property (strong, nonatomic) NSString *validBeginTime;
 @property (strong, nonatomic) NSString *validEndTime;

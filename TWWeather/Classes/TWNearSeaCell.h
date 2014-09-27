@@ -29,7 +29,7 @@
 
 @interface TWNearSeaCell : UITableViewCell 
 
-@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *textDescription;
 @property (strong, nonatomic) NSString *validBeginTime;
 @property (strong, nonatomic) NSString *validEndTime;
 @property (strong, nonatomic) NSString *wave;

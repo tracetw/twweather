@@ -71,7 +71,7 @@
 		date = [[TWAPIBox sharedBox] dateFromString:dateString];
 		controller.validEndTime = [[TWAPIBox sharedBox] shortDateTimeStringFromDate:date];
 		
-		controller.description = result[@"description"];
+		controller.textDescription = result[@"description"];
 		controller.wave = result[@"wave"];
 		controller.waveLevel = result[@"waveLevel"];
 		controller.wind = result[@"wind"];

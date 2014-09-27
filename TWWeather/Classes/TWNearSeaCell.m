@@ -98,13 +98,13 @@
 @implementation TWNearSeaCell
 {
 	TWNearSeaCellContentView *_ourContentView;
-	NSString *description;
-	NSString *validBeginTime;
-	NSString *validEndTime;
-	NSString *wave;
-	NSString *waveLevel;
-	NSString *wind;
-	NSString *windScale;
+//	NSString *textDescription;
+//	NSString *validBeginTime;
+//	NSString *validEndTime;
+//	NSString *wave;
+//	NSString *waveLevel;
+//	NSString *wind;
+//	NSString *windScale;
 }
 
 - (void)_init
@@ -129,7 +129,7 @@
 	[s appendFormat:@"%@\n", @"有效時間"];
 	NSString *valid = [NSString stringWithFormat:@"%@ - %@", validBeginTime, validEndTime];
 	[s appendFormat:@"%@\n", valid];
-	[s appendFormat:@"%@\n", description];
+	[s appendFormat:@"%@\n", textDescription];
 	[s appendFormat:@"%@\n", wind];
 	[s appendFormat:@"%@\n", windScale];
 	[s appendFormat:@"%@\n", wave];
@@ -142,7 +142,7 @@
 	[@"有效時間" drawInRect:CGRectMake(10, 10, 260, 30) withAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:16.0]}];
 	NSString *valid = [NSString stringWithFormat:@"%@ - %@", validBeginTime, validEndTime];
 	[valid drawInRect:CGRectMake(10, 35, 260, 30) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
-	[description drawInRect:CGRectMake(10, 64, 260, 60) withAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:20.0]}];
+	[textDescription drawInRect:CGRectMake(10, 64, 260, 60) withAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:20.0]}];
 	[wind drawInRect:CGRectMake(10, 210, 260, 30) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
 	[windScale drawInRect:CGRectMake(10, 230, 260, 30) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
 	[wave drawInRect:CGRectMake(10, 250, 260, 30) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]}];
@@ -178,7 +178,7 @@
 	return @"zh-Hant";
 }
 
-@synthesize description;
+@synthesize textDescription;
 @synthesize validBeginTime;
 @synthesize validEndTime;
 @synthesize wave;
