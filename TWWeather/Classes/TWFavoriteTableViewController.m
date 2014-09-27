@@ -363,10 +363,10 @@ static NSString *favoitesPreferenceName = @"myFavoitesPreferenceName";
 	if (indexPath.section == 0) {
 		if (indexPath.row >= [warningArray count]) {
 			TWWebController *webController = [[TWWebController alloc] init];
-			webController.title = @"人事行政局網頁";
+			webController.title = @"人事行政總處網頁";
 			[[TWWeatherAppDelegate sharedDelegate] pushViewController:webController animated:YES];
 			[webController view];
-			[webController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.cpa.gov.tw/"]]];
+			[webController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.dgpa.gov.tw/"]]];
 			return;
 		}
 		NSDictionary *dictionary = warningArray[indexPath.row];
